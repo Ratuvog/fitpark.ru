@@ -1,0 +1,385 @@
+/*
+    Document   : fitpark
+    Created on : Mar 1, 2013, 7:34:46 PM
+    Author     : dmitry
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root {
+    display: block;
+}
+
+* {margin: 0;
+padding: 0;}
+
+header, nav, section, article, aside, footer {display:block}
+section section {
+    float: left;
+}
+
+#left-side, #right-side {
+    width: auto;
+}
+
+body {
+    background: url('/image/side-bkgrnd.png');
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    background-color: #ffffff;
+    height: 100%;
+}
+
+
+#center {
+    width: 1000px;
+}
+
+#content {
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    height: 100%;
+    box-shadow: 2px 0 20px #5d5d5d;
+}
+
+#content:before,
+#content:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+
+#title {
+    padding-left:  100px ;
+    background: url('/image/header-bkgrnd.png');
+    height: 35px;
+    box-shadow: 0 2px 20px #5d5d5d;
+}
+
+.name-section {
+    display: block;
+    height: auto;
+    padding: 7px;
+}
+
+.my-link  {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+}
+
+.my-link:hover  {
+    text-decoration: underline;
+}
+
+.logo {
+    margin-left: 10px;
+    float: left;
+    margin-right: 20px;
+}
+
+.header-content {
+    height: 100%;
+    padding-top: 20px;
+    margin-left: 20px;
+}
+
+.search {
+    border-radius: 9px;
+    border: 1px solid #333333;
+    padding: 5px;
+    float: left;
+    display: block;
+    height: 25px;
+    outline: none;
+    margin-right: 10px;
+    width: 230px;
+}
+
+.header {
+    height: 75px;
+}
+
+header-content>* {
+    float: left;
+}
+
+.button-search {
+    width: 36px;
+    height: 36px;
+    float: left;
+    border-radius: 9px;
+    border: 1px solid #333333;
+    background: url('/image/search1.png');
+    margin-right: 60px;
+}
+
+.enter-link {
+    margin-right: 25px;
+    float: left;
+}
+
+.action {
+    padding: 10px;
+}
+
+.action a{
+    text-decoration: none;
+    color: #333333;
+}
+
+.action a:hover {
+    text-decoration: underline;
+}
+
+.telefon-support {
+    float: right;
+    text-align: center;
+    margin-right: 30px;
+}
+
+.telefon-number {
+
+}
+
+.telefon-slogan {
+    text-align: center;
+    color: #c7c7c7;
+}
+
+#menu {
+    background-color: #5a5a5a;
+    height: 30px;
+    width: 100%;
+
+}
+
+#menu li:first-child {
+    margin-left: 20px;
+}
+
+#menu li {
+    list-style-type: none;
+    float: left;
+    margin: 5px;
+    border-right: 1px solid #9c9c9c;
+    padding-right: 10px;
+}
+
+#menu a{
+    text-decoration: none;
+    color: #9c9c9c;
+}
+
+#menu a:hover {
+    color: #ffffff;
+}
+
+#work-area {
+    padding: 28px;
+}
+
+#breadcrumbs {
+    margin-bottom: 27px;
+    margin-top: 20px;
+}
+
+#breadcrumbs a{
+    color: #a1a1a1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+#breadcrumbs li {
+    list-style-type: none;
+    float: left;
+    padding: 5px;
+}
+
+#work-area {
+    background-color: white;
+    padding-top: 20px;
+    height: 100%;
+    /*width: 1000px;*/
+}
+
+#clubs-content>aside {
+    float: left;
+    margin-right: 10px;
+    display: block;
+    width: 190px;
+
+}
+
+#clubs-content>section {
+    float: left;
+    display: block;
+}
+
+.values-option li{
+    list-style-type: none;
+}
+
+#clubs-content {
+    margin-top: 30px;
+}
+
+.name-option h3 {
+    text-decoration: underline;
+    float: left;
+}
+
+.arrow {
+    width: 10px;
+    height: 5px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-top: 7px;
+    background: url('/image/arrow.png');
+    /*display: block;*/
+}
+
+.name-option {
+    margin-bottom: 5px;
+}
+
+.option {
+    margin-bottom: 10px;
+    display: block;
+}
+#clubs-content {
+    width: 20%;
+}
+
+.title-type-sort {
+    color: #919191;
+}
+
+.type-sort li{
+    list-style-type: none;
+    float: left;
+    margin-right: 10px;
+}
+
+.type-sort li a{
+    text-decoration: underline;
+    color: #333333;
+}
+
+.type-sort li a:hover {
+    text-decoration: none;
+}
+
+.active {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.active:hover {
+    text-decoration: underline;
+}
+
+.options {
+    width: 200px;
+}
+
+#clubs-list {
+    float: left;
+}
+
+.option >* {
+    float: left;
+}
+
+.title-section-fitnes {
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+.mini-card-club {
+    border-top: 1px solid #919191;
+    width: 100%;
+    padding-top: 10px;
+    widows: 100%;
+    margin-top: 10px;
+}
+
+.img-club {
+    width: 160px;
+}
+
+#list {
+    width: 100%;
+}
+
+.icons-services li {
+    list-style-type: none;
+    float: left;
+    margin-right: 10px;
+}
+
+.services-pool {
+    width: 40px;
+    height: 40px;
+    background: url('/image/pool.png') no-repeat;
+}
+.services-bicycle {
+    width: 40px;
+    height: 40px;
+    background: url('/image/сайкл.png') no-repeat;
+}
+.services-yoga {
+    width: 40px;
+    height: 40px;
+    background: url('/image/йога.png') no-repeat;
+}
+
+.level-club {
+    float: none;
+}
+.services-club {
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-description-club {
+    float: none;
+}
+
+.level-club {
+    margin-top: 10px;
+}
+
+.button-get-discount {
+    background: url('/image/get-discount.png');
+    width: 217px;
+    height: 29px;
+    margin-top:  5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.button-more {
+    width: 217px;
+    height: 29px;
+    background: url('/image/more-details.png') no-repeat;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.mini-card-club-part {
+    padding: 5px;
+}
+
