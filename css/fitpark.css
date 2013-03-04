@@ -589,3 +589,14 @@ td.active-tab {
 .add-review td{
     padding: 5px;
 }
+
+.slider {
+    width: 150px;
+    margin-left: 10px;
+}
+
+.value-slider {
+    display: block;
+    height: 25px;
+    width: 100%;
+}

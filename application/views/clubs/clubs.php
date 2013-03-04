@@ -11,45 +11,45 @@
                 <table style="width: 100%">
                     <tr>
                         <td class="options" valign="top">
-                            <section class="option">
-                                <header class="name-option">
-                                    <h3>Есть в клубе: </h3>
-                                    <div class="arrow"></div>
-                                    <div style="clear: both;"></div>
-                                </header>
-                                <ul class="values-option">
-                                    <li><input type="checkbox" /> Тренажерный зал</li>
-                                    <li><input type="checkbox" /> Отдельный кардиозал</li>
-                                    <li><input type="checkbox" /> Бассейн</li>
-                                    <li><input type="checkbox" /> финская сауна</li>
-                                </ul>
-                            </section>
-                            <section class="option">
-                                <header class="name-option">
-                                    <h3>Есть в клубе: </h3>
-                                    <div class="arrow"></div>
-                                    <div style="clear: both;"></div>
-                                </header>
-                                <ul class="values-option">
-                                    <li><input type="checkbox" /> Тренажерный зал</li>
-                                    <li><input type="checkbox" /> Отдельный кардиозал</li>
-                                    <li><input type="checkbox" /> Бассейн</li>
-                                    <li><input type="checkbox" /> финская сауна</li>
-                                </ul>
-                            </section>
-                            <section class="option">
-                                <header class="name-option">
-                                    <h3>Есть в клубе: </h3>
-                                    <div class="arrow"></div>
-                                    <div style="clear: both;"></div>
-                                </header>
-                                <ul class="values-option">
-                                    <li><input type="checkbox" /> Тренажерный зал</li>
-                                    <li><input type="checkbox" /> Отдельный кардиозал</li>
-                                    <li><input type="checkbox" /> Бассейн</li>
-                                    <li><input type="checkbox" /> финская сауна</li>
-                                </ul>
-                            </section>
+                            <form action="" id="filter">
+                                <section class="option">
+                                    <header class="name-option">
+                                        <h3>Есть в клубе: </h3>
+                                        <div class="arrow"></div>
+                                        <div style="clear: both;"></div>
+                                    </header>
+                                    <ul class="values-option">
+                                        <li><input type="checkbox" /> Тренажерный зал</li>
+                                        <li><input type="checkbox" /> Отдельный кардиозал</li>
+                                        <li><input type="checkbox" /> Бассейн</li>
+                                        <li><input type="checkbox" /> финская сауна</li>
+                                    </ul>
+                                </section>
+                                <section class="option">
+                                    <header class="name-option">
+                                        <h3>Ценовой диапазон </h3>
+                                        <div class="arrow"></div>
+                                        <div style="clear: both;"></div>
+                                    </header>
+                                    <div class="value-slider"></div>
+                                    <div class="slider" from="10" to="100"></div>
+                                    <hidden name="from"></hidden>
+                                    <hidden name="to"></hidden>
+                                </section>
+                                <section class="option">
+                                    <header class="name-option">
+                                        <h3>Есть в клубе: </h3>
+                                        <div class="arrow"></div>
+                                        <div style="clear: both;"></div>
+                                    </header>
+                                    <ul class="values-option">
+                                        <li><input type="checkbox" /> Тренажерный зал</li>
+                                        <li><input type="checkbox" /> Отдельный кардиозал</li>
+                                        <li><input type="checkbox" /> Бассейн</li>
+                                        <li><input type="checkbox" /> финская сауна</li>
+                                    </ul>
+                                </section>
+                            </form>
                         </td>
                         <td valign="top">
                             <header>
@@ -293,3 +293,4 @@
 
                 <div style="clear: both;"></div>
             </div>
+<script type="text/javascript" src="/js/clubs.js"></script>
