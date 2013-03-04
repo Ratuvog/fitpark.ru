@@ -30,7 +30,7 @@ if($success_message !== null){?>
 	<p><?php echo $success_message; ?></p>
 <?php }
 ?></div>	
-<div class="flexigrid" style='width: 100%;'>
+<div class="flexigrid" style='width: 85%;'>
 	<div class="mDiv">
 		<div class="ftitle">
 			&nbsp;

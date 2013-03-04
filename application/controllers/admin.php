@@ -3,7 +3,7 @@
 class Admin extends CI_Controller {
 	    
     private $baseModel = 0;
-    private $currentTable = '';
+    private $currentTable = 'auth';
     private $state = array(
         0 => array('Категории','service_category'),
         1 => array('Опции фильтрации','category_options'),
@@ -28,6 +28,7 @@ class Admin extends CI_Controller {
 		
 		$this->load->library('grocery_CRUD');
                 $this->load->library('PHPExcel');
+                $this->load->library('session');
                 
                 $ci = &get_instance();
                 $ci->load->model('grocery_CRUD_Model');
@@ -41,17 +42,53 @@ class Admin extends CI_Controller {
             unset($pars[1]);
             unset($pars[2]);
 
-            if ($method != null && $this->session->userdata('logged_in') === true)
+            if ($method != null && $this->session->userdata('logged_in') === true || $method === 'login')
             {
                 call_user_func_array(array($this, $method), $pars);
-            } else {
+            }
+            else
+            {
                 $this->auth();
             }
         }
         
+        function login()
+        {
+            if(isset($_POST['username']) && isset($_POST['password']))
+            {
+                $login = $_POST['username'];
+                $password = $_POST['password'];
+                if(md5($login.$password) === md5('admin40000monkeybananapushintheasshole'))
+                {
+                    $this->session->set_userdata('logged_in',true);
+                    $this->index();
+                }
+            }
+            else
+            {
+                echo "Ошибка входа: Имя пользователя и пароль не должны быть пустыми.";
+                $this->auth();
+            }
+        }
+        
+        function logout()
+        {
+            $this->session->set_userdata('logged_in',false);
+            $this->auth();
+        }
+
         function auth()
         {
+            $this->load->helper('form');
             
+            $output = form_open('admin/login');
+            $userData = array('name' => 'username','placeholder' => 'Имя пользователя');
+            $output .= form_input($userData);
+            $passData = array('name' => 'password','placeholder' => 'Пароль');
+            $output .= form_input($passData);
+            $output .= form_submit('my_submit', 'Войти');
+            
+            $this->render((object)array('output' => $output, 'js_files' => array(), 'css_files' => array()));
         }
 
         function setCurentState($stateNum)
@@ -275,9 +312,7 @@ class Admin extends CI_Controller {
         
         function index()
 	{
-		$this->render((object)array('output' => '' ,
-                    'js_files' => array() ,
-                    'css_files' => array()));
+            $this->categories();
 	}	
 	
 	function offices_management()
