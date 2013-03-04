@@ -73,34 +73,100 @@
                         <table cellpadding="0" cellspacing="0" >
                             <tr>
                                 <!--<td class="empty-tab"></td>-->
-                                <td class="tab active-tab">
-                                    <div >Описание</div>
+                                <td class="tab active-tab" selector="#description-club">
+                                    <div ><a href="#">Описание</a></div>
                                 </td>
+                                <td class="spacer"></td>
                                 <td class="tab">
                                     <div ><a href="#">Фотографии</a></div>
                                 </td>
-                                <td class="tab">
-                                    <div ><a href="#">Отзывы</a></div>
+                                <td class="spacer"></td>
+                                <td class="tab" selector="#review-club">
+                                    <div ><a href="#"><a href="#">Отзывы</a></a></div>
                                 </td>
+                                <td class="spacer"></td>
                                 <td class="tab">
-                                    <div ><a href="#">Новости клуба</a></div>
+                                    <div ><a href="#"><a href="#">Новости клуба</a></a></div>
                                 </td>
+                                <td class="spacer"></td>
                                 <td class="tab">
-                                    <div ><a href="#">Акции</a></div>
+                                    <div ><a href="#"><a href="#">Акции</a></a></div>
                                 </td>
+                                <td class="spacer"></td>
                                 <td class="tab">
                                     <div ><a href="#">Доп. услуги</a></div>
                                 </td>
+                                <td class="spacer"></td>
                                 <td class="empty-tab"></td>
                             </tr>
                         </table>
-                        <section class="full-card-description tabs-content">
+                        <section id="description-club" class="full-card-description tabs-content">
                             <p>
                                 Большое красивое описание непосредственно тут<br>
                                 Дабы покупатель смог прочитать важную информацию и обдумать и после этого тыкнуть в иконку скидки. <br>
                                 После этого мы заработаем денег и будем долго радоваться <br>
                             </p>
                         </section>
+                        <div id="review-club" class="full-card-description tabs-content hideClass">
+                            <div class="review">
+                                <section class="description-review">
+                                    <h4>Леша</h4>
+                                    <span>19.11.12</span>
+                                </section>
+                                <section class="content-review">
+                                    <p>
+                                        Замечательный клуб. Только положительные отзывы. Восторгаюсь. Вот такой идиотский отзыв
+                                    </p>
+                                </section>
+                                <div style="clear: both"></div>
+                            </div>
+                            <div class="review">
+                                <section class="description-review">
+                                    <h4>Леша</h4>
+                                    <span>19.11.12</span>
+                                </section>
+                                <section class="content-review">
+                                    <p>
+                                        Замечательный клуб. Только положительные отзывы. Восторгаюсь. Вот такой идиотский отзыв
+                                    </p>
+                                </section>
+                                <div style="clear: both"></div>
+                            </div>
+                            <section class="add-review">
+                                <header><h3>Оставить отзыв: </h3></header>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Имя
+                                        </td>
+                                        <td><input type="text" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Отзыв</td>
+                                        <td>
+                                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Плюсы
+                                        </td>
+                                        <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Минусы</td>
+                                        <td>
+                                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                            <div class="button-send"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </section>
+                        </div>
                     </section>
                 </section>
                 <section class="analogs">
@@ -143,3 +209,4 @@
 
                 <div style="clear: both;"></div>
             </div>
+<script type="text/javascript" src="/js/club.js"></script>
