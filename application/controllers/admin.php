@@ -19,7 +19,7 @@ class Admin extends CI_Controller {
     );
     private $categoryName = 'Авторизация';
     
-    function __construct()
+        function __construct()
 	{
 		parent::__construct();
 		
@@ -35,6 +35,25 @@ class Admin extends CI_Controller {
             
 	}
         
+        function _remap($method, $param)
+        {
+            $pars = $this->uri->segment_array();    //unsetting uri last segments
+            unset($pars[1]);
+            unset($pars[2]);
+
+            if ($method != null && $this->session->userdata('logged_in') === true)
+            {
+                call_user_func_array(array($this, $method), $pars);
+            } else {
+                $this->auth();
+            }
+        }
+        
+        function auth()
+        {
+            
+        }
+
         function setCurentState($stateNum)
         {
             $this->categoryName = $this->state[$stateNum][0];
@@ -57,15 +76,21 @@ class Admin extends CI_Controller {
             }
             $table = $_POST['table'];
             $config['upload_path'] = 'assets/uploads/';
-            $config['allowed_types'] = 'xls';
+            $config['allowed_types'] = 'xls|xlsx';
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload())
             {
                 $data = array('upload_data' => $this->upload->data());
             }
-            if(!isset($data['upload_data']['file_name']))
+            else
+            {
+                echo "Upload failed:";
+                echo $this->upload->display_errors();
+            }
+            if(!isset($data['upload_data']['full_path']))        
                 return;
+            
             $path = $data['upload_data']['full_path'];
             $inputFileType = 'Excel5';
             $objReader = PHPExcel_IOFactory::createReader($inputFileType);
