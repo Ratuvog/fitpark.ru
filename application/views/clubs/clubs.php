@@ -31,10 +31,11 @@
                                         <div class="arrow"></div>
                                         <div style="clear: both;"></div>
                                     </header>
-                                    <div class="value-slider"></div>
                                     <div class="slider" from="10" to="100"></div>
-                                    <hidden name="from"></hidden>
-                                    <hidden name="to"></hidden>
+                                    <div class="slider-input">
+                                        <input type="text" size="4" name="from" class="slider-from"/>
+                                        <input type="text" size="4" name="to" class="slider-to"/>
+                                    </div>
                                 </section>
                                 <section class="option">
                                     <header class="name-option">

@@ -609,3 +609,16 @@ td.active-tab {
 .hideClass{
     display: none;
 }
+
+.slider-from {
+    float: left;
+    margin-top: 5px;
+    width: 40px;
+}
+
+.slider-to {
+    float: right;
+    margin-left: 80px;
+    margin-top: 5px;
+    width: 40px;
+}
