@@ -11,7 +11,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td class="options" valign="top">
-                            <form action="" id="filter">
+                            <form action="" method="POST" id="filter">
                                 <section class="option">
                                     <header class="name-option">
                                         <h3>Есть в клубе: </h3>
@@ -33,8 +33,11 @@
                                     </header>
                                     <div class="slider" from="10" to="100"></div>
                                     <div class="slider-input">
+                                        <label for="from">от</label>
                                         <input type="text" size="4" name="from" class="slider-from"/>
+                                        <label for="">до</label>
                                         <input type="text" size="4" name="to" class="slider-to"/>
+                                        <label for="">руб.</label>
                                     </div>
                                 </section>
                                 <section class="option">
@@ -50,6 +53,7 @@
                                         <li><input type="checkbox" /> финская сауна</li>
                                     </ul>
                                 </section>
+                                <input type="submit" value="Принять" id="submit-filter" />
                             </form>
                         </td>
                         <td valign="top">
