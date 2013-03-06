@@ -70,7 +70,7 @@
                         </section>
                     </header>
                     <section class="tab-set">
-                        <table cellpadding="0" cellspacing="0" >
+                        <table cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <!--<td class="empty-tab"></td>-->
                                 <td class="tab active-tab" selector="#description-club">
@@ -85,7 +85,7 @@
                                     <div ><a href="#"><a href="#">Отзывы</a></a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="tab">
+<!--                                <td class="tab">
                                     <div ><a href="#"><a href="#">Новости клуба</a></a></div>
                                 </td>
                                 <td class="spacer"></td>
@@ -97,7 +97,8 @@
                                     <div ><a href="#">Доп. услуги</a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="empty-tab"></td>
+                                <td class="empty-tab"></td>-->
+                                <td class="empty-back-item"></td>
                             </tr>
                         </table>
                         <section id="description-club" class="full-card-description tabs-content">
