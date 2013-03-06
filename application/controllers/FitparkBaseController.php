@@ -4,15 +4,15 @@ class FitparkBaseController extends CI_Controller {
 
     protected $allowedPages = array();
     protected $privateAllowedPages = array();
-    
+
     // Name default view *.php
     protected $defaultPage = 'club';
     protected $titlePage = 'club';
-    
+
     // Name header view and data
     protected $header = 'header';
     protected $headerData = array();
-    
+
     // BreadCrumbs view and data
     protected $breadCrumbs = 'breadCrubms';
     protected $breadCrumbsData = array();
@@ -30,11 +30,11 @@ class FitparkBaseController extends CI_Controller {
         parent::__construct();
         $this->init();
     }
-    
+
     /**/
     function init()
     {
-        
+        $this->load->database();
     }
 
     function _remap($method, $param)
@@ -46,7 +46,7 @@ class FitparkBaseController extends CI_Controller {
         $isPublicPage = in_array($method, $this->privateAllowedPages);
         $isPrivatePage = in_array($method, $this->allowedPages);
         $isLoggedIn = $this->session->userdata('logged_in') === true;
-        
+
         if ($method != null)
         {
             if(($isLoggedIn && $isPrivatePage) || $isPublicPage)
@@ -63,23 +63,23 @@ class FitparkBaseController extends CI_Controller {
             $this->toDefaultPage();
         }
     }
-    
+
     public function index()
     {
         $this->renderScene();
     }
-    
-    private function toDefaultPage()
+
+    protected function toDefaultPage()
     {
         $this->renderScene($this->defaultPage);
     }
-    
+
     // Before render scene check view-data variable for initialization
-    private function renderScene($view = null)
+    protected function renderScene($view = null)
     {
         if($view == null)
             $view = $this->view;
-        
+
         $this->load->view($this->header, $this->headerData);
         $this->load->view($this->breadCrumbs, $this->breadCrumbsData);
         $this->load->view($view, $this->viewData);
