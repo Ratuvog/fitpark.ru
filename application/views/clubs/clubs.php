@@ -12,19 +12,20 @@
                     <tr>
                         <td class="options" valign="top">
                             <form action="" method="POST" id="filter">
+                                <?  foreach ($filters as $filter) {?>
                                 <section class="option">
                                     <header class="name-option">
-                                        <h3>Есть в клубе: </h3>
+                                        <h3><?=$filter[0]->filterName;?>: </h3>
                                         <div class="arrow"></div>
                                         <div style="clear: both;"></div>
                                     </header>
                                     <ul class="values-option">
-                                        <li><input type="checkbox" /> Тренажерный зал</li>
-                                        <li><input type="checkbox" /> Отдельный кардиозал</li>
-                                        <li><input type="checkbox" /> Бассейн</li>
-                                        <li><input type="checkbox" /> финская сауна</li>
+                                        <?  foreach ($filter as $item) {?>
+                                        <li><input id="option<?=$item->filterid."-".$item->id;?>" type="checkbox" /> <?=$item->name;?></li>
+                                        <?}?>
                                     </ul>
                                 </section>
+                                <?}?>
                                 <section class="option">
                                     <header class="name-option">
                                         <h3>Ценовой диапазон </h3>
@@ -39,19 +40,6 @@
                                         <input type="text" size="4" name="to" class="slider-to"/>
                                         <label for="">руб.</label>
                                     </div>
-                                </section>
-                                <section class="option">
-                                    <header class="name-option">
-                                        <h3>Есть в клубе: </h3>
-                                        <div class="arrow"></div>
-                                        <div style="clear: both;"></div>
-                                    </header>
-                                    <ul class="values-option">
-                                        <li><input type="checkbox" /> Тренажерный зал</li>
-                                        <li><input type="checkbox" /> Отдельный кардиозал</li>
-                                        <li><input type="checkbox" /> Бассейн</li>
-                                        <li><input type="checkbox" /> финская сауна</li>
-                                    </ul>
                                 </section>
                                 <input type="submit" value="Принять" id="submit-filter" />
                             </form>
@@ -69,45 +57,46 @@
                                 </div>
                             </header>
                             <section id="list">
+                                <? foreach ($content as $row) {
+                                ?>
                                 <article class="mini-card-club">
                                     <table>
                                         <tr>
                                             <td class="mini-card-club-part" valign="top">
                                                 <section class="img-club">
-                                                    <img src="/image/examples-club.png" alt="" />
-
+                                                    <img src="<?=$row->head_picture;?>" alt="" />
                                                 </section>
                                             </td>
                                             <td class="mini-card-club-part">
                                                 <section class="decription-club">
                                                     <header class="name-club">
                                                         <h3>
-                                                            <a href="#">Фитнес-клуб "Imperial Fitness"</a>
+                                                            <a href="#"><?=$row->name;?></a>
                                                         </h3>
                                                         <h3>
-                                                            г. Самара, Московское шоссе, д. 145
+                                                            <?=$row->address;?>
                                                         </h3>
                                                     </header>
                                                     <section class="level-club">
-                                                        Фитнес-клуб премиум уровня
+                                                        Фитнес-клуб <?=$row->segment;?>
                                                     </section>
                                                     <section class="services-club">
                                                         <ul class="icons-services">
-                                                            <li>
-                                                                <div class="services-pool"></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="services-bicycle"></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="services-yoga"></div>
-                                                            </li>
+                                                            <?if(key_exists($row->id, $services)) {  
+                                                                foreach ($services[$row->id] as $opt) {
+                                                                    if(!empty($opt['class'])) {?>
+                                                                <li>
+                                                                    <div class="<?=$opt['class'];?>"></div>
+                                                                </li>
+                                                                  <?}
+                                                                }
+                                                            }?>
                                                         </ul>
                                                         <div style="clear: both;"></div>
                                                     </section>
                                                     <section class="text-description-club">
                                                         <p>
-                                                            Потрясающее описание потрясающего фитнес клуба для слюноотделения потенциальнах покупателей. И все в двух словах
+                                                            <?=$row->description;?>
                                                         </p>
                                                     </section>
                                                 </section>
@@ -115,18 +104,24 @@
                                             <td valign="top" class="mini-card-club-part">
                                                 <section class="price-club">
                                                     <table>
+                                                        <?if(!empty($row->sub1)){?>
                                                         <tr>
                                                             <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
+                                                            <td class="price-club-price"><h4>от <?=$row->sub1;?> рублей</h4></td>
                                                         </tr>
+                                                        <?}?>
+                                                        <?if(!empty($row->sub3)){?>
                                                         <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
+                                                            <td class="price-club-date">3 месяца</td>
+                                                            <td class="price-club-price"><h4>от <?=$row->sub3;?> рублей</h4></td>
                                                         </tr>
+                                                        <?}?>
+                                                        <?if(!empty($row->sub6)){?>
                                                         <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
+                                                            <td class="price-club-date">6 месяцев</td>
+                                                            <td class="price-club-price"><h4>от <?=$row->sub6;?> рублей</h4></td>
                                                         </tr>
+                                                        <?}?>
                                                         <tr>
                                                             <td colspan="2">
                                                                 <div class="button-get-discount"></div>
@@ -143,154 +138,7 @@
                                         </tr>
                                     </table>
                                 </article>
-                                <article class="mini-card-club">
-                                    <table>
-                                        <tr>
-                                            <td class="mini-card-club-part" valign="top">
-                                                <section class="img-club">
-                                                    <img src="/image/examples-club.png" alt="" />
-
-                                                </section>
-                                            </td>
-                                            <td class="mini-card-club-part">
-                                                <section class="decription-club">
-                                                    <header class="name-club">
-                                                        <h3>
-                                                            <a href="#">Фитнес-клуб "Imperial Fitness"</a>
-                                                        </h3>
-                                                        <h3>
-                                                            г. Самара, Московское шоссе, д. 145
-                                                        </h3>
-                                                    </header>
-                                                    <section class="level-club">
-                                                        Фитнес-клуб премиум уровня
-                                                    </section>
-                                                    <section class="services-club">
-                                                        <ul class="icons-services">
-                                                            <li>
-                                                                <div class="services-pool"></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="services-bicycle"></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="services-yoga"></div>
-                                                            </li>
-                                                        </ul>
-                                                        <div style="clear: both;"></div>
-                                                    </section>
-                                                    <section class="text-description-club">
-                                                        <p>
-                                                            Потрясающее описание потрясающего фитнес клуба для слюноотделения потенциальнах покупателей. И все в двух словах
-                                                        </p>
-                                                    </section>
-                                                </section>
-                                            </td>
-                                            <td valign="top" class="mini-card-club-part">
-                                                <section class="price-club">
-                                                    <table>
-                                                        <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">
-                                                                <div class="button-get-discount"></div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">
-                                                                <div class="button-more"></div>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </section>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </article>
-                                <article class="mini-card-club">
-                                    <table>
-                                        <tr>
-                                            <td class="mini-card-club-part" valign="top">
-                                                <section class="img-club">
-                                                    <img src="/image/examples-club.png" alt="" />
-
-                                                </section>
-                                            </td>
-                                            <td class="mini-card-club-part">
-                                                <section class="decription-club">
-                                                    <header class="name-club">
-                                                        <h3>
-                                                            <a href="#">Фитнес-клуб "Imperial Fitness"</a>
-                                                        </h3>
-                                                        <h3>
-                                                            г. Самара, Московское шоссе, д. 145
-                                                        </h3>
-                                                    </header>
-                                                    <section class="level-club">
-                                                        Фитнес-клуб премиум уровня
-                                                    </section>
-                                                    <section class="services-club">
-                                                        <ul class="icons-services">
-                                                            <li>
-                                                                <div class="services-pool"></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="services-bicycle"></div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="services-yoga"></div>
-                                                            </li>
-                                                        </ul>
-                                                        <div style="clear: both;"></div>
-                                                    </section>
-                                                    <section class="text-description-club">
-                                                        <p>
-                                                            Потрясающее описание потрясающего фитнес клуба для слюноотделения потенциальнах покупателей. И все в двух словах
-                                                        </p>
-                                                    </section>
-                                                </section>
-                                            </td>
-                                            <td valign="top" class="mini-card-club-part">
-                                                <section class="price-club">
-                                                    <table>
-                                                        <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="price-club-date">1 месяц</td>
-                                                            <td class="price-club-price"><h4>от 1200 рублей</h4></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">
-                                                                <div class="button-get-discount"></div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">
-                                                                <div class="button-more"></div>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </section>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </article>
+                                <?}//foreach?> 
                             </section>
                         </td>
                     </tr>
