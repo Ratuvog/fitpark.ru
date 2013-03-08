@@ -42,7 +42,7 @@ a:hover
         </div>
     
 	<div style="float:left; width: 15%;" class="menu">
-            <a href='<?php echo site_url('admin/categories')?>'>Категории</a> </br>
+            <a href='<?php echo site_url('admin/fitnesclubs')?>'>Категории</a> </br>
             <a href='<?php echo site_url('admin/options')?>'>Опции фильтрации</a> </br>
             <a href='<?php echo site_url('admin/values')?>'>Значения опций</a> </br>
             <a href='<?php echo site_url('admin/items')?>'>Контент(Фитнес-клубы)</a> </br>

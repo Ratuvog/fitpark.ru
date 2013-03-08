@@ -6,8 +6,8 @@ class FitparkBaseController extends CI_Controller {
     protected $privateAllowedPages = array();
     
     // Name default view *.php
-    protected $defaultPage = 'club';
-    protected $titlePage = 'club';
+    protected $defaultPage = 'clubs/clubs';
+    protected $titlePage = '';
     
     // Name header view and data
     protected $header = 'header';
@@ -24,10 +24,25 @@ class FitparkBaseController extends CI_Controller {
     // Name main view and data
     protected $view = '';
     protected $viewData = array();
+    
+    // DataBase model
+    protected $baseModel;
+    protected $addModel;
 
     function __construct()
     {
         parent::__construct();
+        $this->load->database();
+        $this->load->helper('url');
+
+        $this->load->library('grocery_CRUD');
+        $this->load->library('session');
+
+        $ci = &get_instance();
+        $ci->load->model('grocery_CRUD_Model');
+        $ci->load->model('my_model');
+        $this->baseModel = $ci->grocery_CRUD_Model;
+        $this->addModel = $ci->my_model;
         $this->init();
     }
     

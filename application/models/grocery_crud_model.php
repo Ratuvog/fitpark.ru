@@ -34,8 +34,10 @@ class grocery_CRUD_Model  extends CI_Model  {
 	protected $relation = array();
 	protected $relation_n_n = array();
 	protected $primary_keys = array();
-	
-	function __construct()
+        protected $field = array();
+
+
+        function __construct()
     {
         parent::__construct();
     }
@@ -45,12 +47,19 @@ class grocery_CRUD_Model  extends CI_Model  {
     	return $this->db->table_exists($table_name);
     }
     
+    function add_field($field)
+    {
+        array_push($this->field, $field);
+    }
+
     function get_list()
     {
     	if($this->table_name === null)
     		return false;
     	
     	$select = "`{$this->table_name}`.*";
+        foreach ($this->field as $field)
+            $select.=",`{$field}` ";
     	
     	//set_relation special queries 
     	if(!empty($this->relation))
@@ -168,6 +177,12 @@ class grocery_CRUD_Model  extends CI_Model  {
     	$this->db->limit( $value , $offset );
     }
     
+    function group($field)
+    {
+        $this->db->group_by($field);
+    }
+
+
     function get_total_results()
     {
     	//set_relation_n_n special queries. We prefer sub queries from a simple join for the relation_n_n as it is faster and more stable on big tables.

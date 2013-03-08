@@ -8,7 +8,7 @@ class Admin extends CI_Controller {
         0 => array('Категории','service_category'),
         1 => array('Опции фильтрации','category_options'),
         2 => array('Значения опций','options_value'),
-        3 => array('Элементы категорий(контент)','sale_item'),
+        3 => array('Фитнес-клубы','fitnesclub'),
         4 => array('Группы','item_group'),
         5 => array('Описания элементов','item_description'),
         6 => array('Новости элементов','item_news'),
@@ -179,7 +179,7 @@ class Admin extends CI_Controller {
                     'optionid', 'name', 'priority');
                 
                 $crud->set_relation_n_n('item', 'ref_category_item',
-                'sale_item', 'categoryid', 
+                'fitnesclub', 'categoryid', 
                 'itemid', 'name', 'priority');
                 
                 $output = $crud->render();
@@ -215,7 +215,7 @@ class Admin extends CI_Controller {
 		$this->render($output);
 	}
         
-        function items()
+        function fitnesclubs()
         {
                 $this->setCurentState(3);
                 $crud = new grocery_CRUD();
@@ -245,7 +245,7 @@ class Admin extends CI_Controller {
                 $this->setCurentState(5);
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','sale_item','name');
+                $crud->set_relation('itemId','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
@@ -255,7 +255,7 @@ class Admin extends CI_Controller {
                 $this->setCurentState(6);
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','sale_item','name');
+                $crud->set_relation('itemId','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
@@ -265,7 +265,7 @@ class Admin extends CI_Controller {
                 $this->setCurentState(7);
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','sale_item','name');
+                $crud->set_relation('itemId','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
@@ -284,7 +284,7 @@ class Admin extends CI_Controller {
                 $this->setCurentState(9);
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','sale_item','name');
+                $crud->set_relation('itemId','fitnesclub','name');
                 $crud->set_field_upload('photo','assets/uploads/files');
                 $output = $crud->render();
                 $this->render($output);
@@ -295,7 +295,7 @@ class Admin extends CI_Controller {
                 $this->setCurentState(10);
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','sale_item','name');
+                $crud->set_relation('itemId','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
