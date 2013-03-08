@@ -14,10 +14,10 @@ class FitparkClubsController extends FitparkBaseController {
         $this->init();
     }
     
-    private function init()
+    public function init()
     {
         /* init all data variables */
-        $this->allowedPages = array('club', 'filter');
+        $this->allowedPages = array('index','clubs', 'filter');
         $this->privateAllowedPages = array();
         
         $this->titlePage = 'Фитнес-клубы';
@@ -31,10 +31,10 @@ class FitparkClubsController extends FitparkBaseController {
     
     private function initRecordsOnPage()
     {
-        if(isset($this->session->userdata('showRecOnPages')))
+        if($this->session->userdata('showRecOnPages'))
             $this->showRecOnPages = $this->session->userdata('showRecOnPages');
 
-        if(isset($this->session->userdata('pageNumber')))
+        if($this->session->userdata('pageNumber'))
             $this->pageNumber = $this->session->userdata('pageNumber');   
     }
     
@@ -42,40 +42,47 @@ class FitparkClubsController extends FitparkBaseController {
     {
         $data = array(
             'content' => $this->getContent(),
-            'filters' => $this->getFilters()
+            'filters' => $this->getFilters(),
+            'services' => $this->getClubsOptions(),
+            'ratings' => $this->getClubsRatings()
         );
         return $data;
     }
     
     private function getContent()
-    {
-        /*
-         * club struct:
-         * clubs->array from table fitnesclub;
-         * clubs->options[$id] - club's id
-         */
-        $this->baseModel->set_basic_table($this->tableDB);
-        $this->baseModel->addField('SUM(fitnesclub_rating.value)/COUNT(fitnesclub_rating.id) as totalrating');
-        $this->baseModel->join_relation('clubId','fitnesclub_rating','rating');
-        $this->baseModel->group('id');
-        $this->baseModel->order_by('priority','asc');
-        $this->baseModel->limit($this->showRecOnPage, $this->pageNumber*$this->showRecOnPage);
-        $clubs = $this->baseModel->get_list();
-
-        $clubs->options = $this->getClubsOptions();
-        
-        return $clubs;
+    {   
+        $query = "SELECT fitnesclub.*
+             FROM fitnesclub
+             LIMIT ".$this->pageNumber*$this->showRecOnPage.",".$this->showRecOnPage."";
+        return $this->addModel->freeQuery($query)->result();
     }
 
+    private function getClubsRatings()
+    {
+        $query = "SELECT SUM(rating.value)/COUNT(rating.id) as totalrating
+             FROM fitnesclub JOIN fitnesclub_rating as `rating` ON fitnesclub.id = rating.clubId
+             GROUP BY fitnesclub.id ORDER BY priority LIMIT ".$this->pageNumber*$this->showRecOnPage.",".$this->showRecOnPage."";
+        $results = $this->addModel->freeQuery($query)->result();
+        $ratings = array();
+        foreach ($results as $row)
+        {
+            if(empty($ratings[$row->clubId]))
+                $options[$row->clubId] = array();
+            array_push($options[$row->clubId], $row->totalrating);
+        }
+        return $ratings;
+    }
+    
     private function getClubsOptions()
     {
         $optionQuery = "SELECT fc.id as clubId,
                                fc.name as clubName,
-                               option.id as optionId,
-                               option.name as optionName
-            FROM fitnesclub_rel_option AS `rel_option` 
-                JOIN fitnesclub_option AS `option`
-                    ON option.id = rel_option.optionId
+                               serv.id as serviceId,
+                               serv.name as serviceName,
+                               serv.class as class
+            FROM fitnesclub_rel_services AS `rel_option` 
+                JOIN fitnesclub_services AS `serv`
+                    ON serv.id = rel_option.serviceId
                 JOIN fitnesclub AS `fc`
                     ON fc.id = rel_option.clubId
             ORDER BY rel_option.priority";
@@ -86,7 +93,9 @@ class FitparkClubsController extends FitparkBaseController {
         {
             if(empty($options[$row->clubId]))
                 $options[$row->clubId] = array();
-            array_push($options[$row->clubId], $row->clubId);
+            array_push($options[$row->clubId], array('id' => $row->serviceId,
+                                                     'name' => $row->serviceName,
+                                                     'class' => $row->class));
         }
         return $options;
     }
@@ -101,6 +110,7 @@ class FitparkClubsController extends FitparkBaseController {
             ON f.filterId = filter.id";
             $filters[$table] = $this->addModel->freeQuery($query)->result();
         }
+        $filters['tableList'] = $this->tableList;
         return $filters;
     }
 }

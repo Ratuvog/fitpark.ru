@@ -49,7 +49,6 @@ class FitparkBaseController extends CI_Controller {
     /**/
     function init()
     {
-        $this->load->database();
     }
 
     function _remap($method, $param)
@@ -58,8 +57,8 @@ class FitparkBaseController extends CI_Controller {
         unset($pars[1]);
         unset($pars[2]);
 
-        $isPublicPage = in_array($method, $this->privateAllowedPages);
-        $isPrivatePage = in_array($method, $this->allowedPages);
+        $isPublicPage = in_array($method, $this->allowedPages);
+        $isPrivatePage = in_array($method, $this->privateAllowedPages);
         $isLoggedIn = $this->session->userdata('logged_in') === true;
 
         if ($method != null)
@@ -96,7 +95,7 @@ class FitparkBaseController extends CI_Controller {
             $view = $this->view;
 
         $this->load->view($this->header, $this->headerData);
-        $this->load->view($this->breadCrumbs, $this->breadCrumbsData);
+        //$this->load->view($this->breadCrumbs, $this->breadCrumbsData);
         $this->load->view($view, $this->viewData);
         $this->load->view($this->footer, $this->footerData);
     }
