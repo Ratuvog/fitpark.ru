@@ -634,3 +634,55 @@ td.active-tab {
     /*width: 100%;*/
     border-bottom: 1px solid #a1a1a1;
 }
+
+.image-set {
+    position: relative;
+    height: 507px;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.main-control {
+    width: 100%;
+    position: relative;
+    top: -150px;
+    z-index: 20;
+}
+
+.main-control table {
+    width: 491px;
+}
+
+.main-button {
+    width: 491px;
+    height: 73px;
+    background: url('/image/main-button.png') no-repeat;
+    cursor: pointer;
+}
+
+.non-active-point {
+    width: 12px;
+    height: 12px;
+    background: url('/image/not-active-points.png') no-repeat;
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.active-point {
+    width: 12px;
+    height: 12px;
+    background: url('/image/active-point.png') no-repeat;
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.switch-slide {
+    padding-left: 230px;
+    padding-bottom: 10px;
+}
+.image-set img {
+    float: left;
+    position: relative;
+}
