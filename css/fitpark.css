@@ -626,3 +626,11 @@ td.active-tab {
 .slider-input {
     margin-top: 10px;
 }
+.tab-set>table {
+    float: left;
+}
+.empty-back-item {
+    /*float: left;*/
+    /*width: 100%;*/
+    border-bottom: 1px solid #a1a1a1;
+}
