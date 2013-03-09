@@ -38,9 +38,10 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "main";
 $route['404_override'] = '';
 $route['clubs'] = 'FitparkClubsController';
+$route['club/:num'] = 'FitparkClubController/club';
 
 
 /* End of file routes.php */

@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once(APPPATH.'controllers/FitparkBaseController.php');
-
 class FitparkClubController extends FitparkBaseController {
 
     /* Current club id */
@@ -39,7 +38,6 @@ class FitparkClubController extends FitparkBaseController {
 
         /* Load model */
         $this->load->model('fitpark_model');
-
     }
 
     protected function getBaseInfo() {

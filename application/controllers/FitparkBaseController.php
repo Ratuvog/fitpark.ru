@@ -24,7 +24,7 @@ class FitparkBaseController extends CI_Controller {
     // Name main view and data
     protected $view = '';
     protected $viewData = array();
-    
+
     // DataBase model
     protected $baseModel;
     protected $addModel;

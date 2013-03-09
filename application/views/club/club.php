@@ -13,7 +13,7 @@
                         <section class="main-img-club">
                             <table width="100%" height="100%">
                                 <tr>
-                                    <td align="center"><img src="<?=$base['src'];?>" alt="" /></td>
+                                    <td align="center"><img src="<?=$base['header_picture'];?>" alt="<?=$base['name'];?>" /></td>
                                 </tr>
                             </table>
 
@@ -90,7 +90,7 @@
                             <? if($reviews) { ?>
                             <div class="review">
                                 <section class="description-review">
-                                    <h4><?=$reviews['user'];?></h4>
+                                    <h4><?=$reviews['sender'];?></h4>
                                     <span><?=$reviews['date'];?></span>
                                 </section>
                                 <section class="content-review">
@@ -148,7 +148,7 @@
                                     <? if($countImages%$countImagesOnRow) { ?>
                                     <tr>
                                     <? } ?>
-                                    <td><img src="<?=$currentImage['src'];?>" alt="" /></td>
+                                    <td><img src="<?=$currentImage['photo'];?>" alt="" /></td>
                                     <? if($countImages%($countImagesOnRow-1)) {?>
                                     </tr>
                                     <? } ?>
@@ -176,8 +176,8 @@
                                 <tr>
                                 <? } ?>
                                 <td align="center">
-                                    <img src="<?=$currentClub['img'];?>" alt="<?=$currentClub['name'];?>" />
-                                    <div class="analog-name"><a href="<?=$currentClub['href'];?>"><?=$currentClub['name'];?></a></div>
+                                    <img src="<?=$currentClub['head_picture'];?>" alt="<?=$currentClub['name'];?>" />
+                                    <div class="analog-name"><a href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
                                     <div class="button-get-discount"></div>
                                     <div class="button-more"></div>
                                 </td>
