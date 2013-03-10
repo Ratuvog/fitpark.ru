@@ -12,10 +12,10 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     public function club($clubId) {
-        if($this->m_clubId == NULL) {
-            $this->toDefaultPage();
-            return ;
-        }
+//        if($this->m_clubId == NULL) {
+//            $this->toDefaultPage();
+//            return ;
+//        }
         $this->m_clubId = $clubId;
 
         /* Get full info about club */
@@ -28,6 +28,7 @@ class FitparkClubController extends FitparkBaseController {
         /* Output in view */
         renderScene();
     }
+
 
     protected function init() {
         /* init all data variables */
