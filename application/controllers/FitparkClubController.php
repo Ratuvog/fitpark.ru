@@ -6,6 +6,7 @@ class FitparkClubController extends FitparkBaseController {
     protected $m_clubId = 0;
     protected $m_countImagesOnRow  = 5;
     protected $m_countAnalogsOnRow = 4;
+
     function __construct() {
         parent::__construct();
         $this->init();
@@ -26,23 +27,24 @@ class FitparkClubController extends FitparkBaseController {
         $this->getAnalogs();
 
         /* Output in view */
-        renderScene();
+        $this->renderScene();
     }
 
 
     protected function init() {
         /* init all data variables */
-        $this->allowedPages = array('club');
+        $this->allowedPages = array('index','club');
         $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес-клуб';
-        $this->view = 'clubs/clubs';
+        $this->view = 'club/club';
 
         /* Load model */
         $this->load->model('fitpark_model');
     }
 
     protected function getBaseInfo() {
-        $this->viewData['base'] = $this->fitpark_model->getBaseInfoClub($this->m_clubId);
+        $infoArray = $this->fitpark_model->getBaseInfoClub($this->m_clubId);
+        $this->viewData['base'] = $infoArray[0];
     }
 
     protected function getRates() {
@@ -54,12 +56,12 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     protected function getImages() {
-        $this->viewData['images']           = $this->fitpark_model->getImagesClub($this->m_clubId);
+        $this->viewData['image']           = $this->fitpark_model->getImages($this->m_clubId);
         $this->viewData['countImagesOnRow'] = $this->m_countImagesOnRow;
     }
 
     protected function getAnalogs() {
-        $this->viewData['analogs']           = $this->fitpark_model->getAnalogsClubs($this->m_clubId);
+        $this->viewData['analogs']           = $this->fitpark_model->getAnalogs($this->m_clubId);
         $this->viewData['countAnalogsOnRow'] = $this->m_countAnalogsOnRow;
     }
 }

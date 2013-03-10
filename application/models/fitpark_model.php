@@ -7,7 +7,7 @@ class Fitpark_model extends CI_Model {
 
     /* Get base info club */
     function getBaseInfoClub($clubId) {
-        return $this->getInfon("fitnesclub", "id", $clubId);
+        return $this->db->get_where("fitnesclub",array("id"=>$clubId))->result_array();
     }
 
     /* Get rate club */
@@ -25,22 +25,23 @@ class Fitpark_model extends CI_Model {
                   WHERE
                     id=?";
         $q = $this->db->query($query,array($clubId));
+        $q = $q->result_array();
         $result = array(
             array(
                 "period"=>"1 месяц",
-                "price"=>$q["sub1"]
+                "price"=>$q[0]["sub1"]
                 ),
             array(
                 "period"=>"3 месяца",
-                "price" =>$q["sub3"]
+                "price" =>$q[0]["sub3"]
                 ),
             array(
                 "period"=>"6 месяцев",
-                "price" =>$q["sub6"]
+                "price" =>$q[0]["sub6"]
                 ),
             array(
                 "period"=>"12 месяцев",
-                "price" =>$q["sub12"]
+                "price" =>$q[0]["sub12"]
                 )
         );
         return $result;
@@ -48,11 +49,11 @@ class Fitpark_model extends CI_Model {
 
     /* Get reviews about club */
     function getReviewsClub($clubId) {
-        return $this->getInfon("item_review", "fitnesclubid", $clubId);
+        return $this->getInfon("fitnesclub_review", "fitnesclubid", $clubId);
     }
 
     function getImages($clubId) {
-        return $this->getInfon("item_foto", "fitnesclubid", $clubId);
+        return $this->getInfon("fitnesclub_photo", "fitnesclubid", $clubId);
     }
 
     function getAnalogs($clubId) {
@@ -63,6 +64,53 @@ class Fitpark_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    function getClubList($limit, $offset)
+    {
+        $this->db->select("*")
+                ->from("fitnesclub")
+                ->limit($limit, $offset);
+        return $this->db->get()->result();
+    }
+    
+    
+    function getClubsServices()
+    {
+        $this->db->select("fitnesclub_services.id as serviceId,
+                           fitnesclub_services.name as serviceName,
+                           fitnesclub_services.class as class,
+                           fitnesclub_rel_services.clubId as clubId")
+                ->from("fitnesclub_rel_services")
+                ->join("fitnesclub_services", "fitnesclub_services.id = fitnesclub_rel_services.serviceId")
+                ->join("fitnesclub", "fitnesclub.id = fitnesclub_rel_services.clubId")
+                ->order_by("fitnesclub_rel_services.clubId","asc")
+                ->order_by("fitnesclub_rel_services.priority","asc");
+
+        return $this->db->get()->result();
+            
+    }
+    
+    function getFitnesClubFilter($table)
+    {
+            $this->db->select("varTable.*, filter.name as filterName")
+                    ->from($table." as varTable")
+                    ->join("fitnesclub_filter as filter", "varTable.filterId = filter.id");
+
+        return $this->db->get()->result();
+    }
+    
+    function getClubsTotalRating()
+    {
+        $this->db->select("rating.*, SUM(rating.value)/COUNT(rating.id) as totalrating")
+                ->from("fitnesclub")
+                ->join("fitnesclub_rating as rating", "fitnesclub.id = rating.clubId")
+                ->group_by("fitnesclub.id");
+        return $this->db->get()->result();
+
+    }
+    
+    
+    
 }
 
 ?>
