@@ -31,7 +31,7 @@ class FitparkClubController extends FitparkBaseController {
     }
 
 
-    protected function init() {
+    public function init() {
         /* init all data variables */
         $this->allowedPages = array('index','club');
         $this->privateAllowedPages = array();
