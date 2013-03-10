@@ -486,6 +486,10 @@ td.active-tab {
     border-bottom: none;
 }
 
+.card-clubs{
+    width: 100px;
+}
+
 .card-clubs>header {
     margin-bottom: 40px;
 }
@@ -499,6 +503,7 @@ td.active-tab {
 
 .tab-set {
     margin-top: 45px;
+    width: 100%;
 }
 .tabs-content {
     margin-top: 23px;

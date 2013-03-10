@@ -4,6 +4,8 @@
  */
 $(function(){
     // Tabs
+    $("#image-club").hide();
+//    $("#review-club").hide();
     $(".tab-set > table").delegate('a','click',function(){
         var parentCell = $(this).parents('td');
         if(!parentCell.first().hasClass('tab'))

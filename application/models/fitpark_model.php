@@ -64,7 +64,7 @@ class Fitpark_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-    
+
     function getClubList($limit, $offset)
     {
         $this->db->select("*")
@@ -72,8 +72,8 @@ class Fitpark_model extends CI_Model {
                 ->limit($limit, $offset);
         return $this->db->get()->result();
     }
-    
-    
+
+
     function getClubsServices()
     {
         $this->db->select("fitnesclub_services.id as serviceId,
@@ -87,9 +87,9 @@ class Fitpark_model extends CI_Model {
                 ->order_by("fitnesclub_rel_services.priority","asc");
 
         return $this->db->get()->result();
-            
+
     }
-    
+//dssdc
     function getFitnesClubFilter($table)
     {
             $this->db->select("varTable.*, filter.name as filterName")
@@ -98,7 +98,7 @@ class Fitpark_model extends CI_Model {
 
         return $this->db->get()->result();
     }
-    
+
     function getClubsTotalRating()
     {
         $this->db->select("rating.*, SUM(rating.value)/COUNT(rating.id) as totalrating")
@@ -108,9 +108,9 @@ class Fitpark_model extends CI_Model {
         return $this->db->get()->result();
 
     }
-    
-    
-    
+
+
+
 }
 
 ?>

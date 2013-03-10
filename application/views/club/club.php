@@ -70,7 +70,7 @@
                                     <div ><a href="#">Описание</a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="tab" selector="#foto-club">
+                                <td class="tab" selector="#image-club">
                                     <div ><a href="#">Фотографии</a></div>
                                 </td>
                                 <td class="spacer"></td>
@@ -102,7 +102,7 @@
                             </div>
                             <? } else {?>
                             <div class="review">
-                                <h2>Нет отзывов. Ваш отзыв будет первым.</h2>
+                                <h2 class="no-reviews">Нет отзывов. Ваш отзыв будет первым.</h2>
                             </div>
                             <? } ?>
                             <section class="add-review">
@@ -156,7 +156,7 @@
                                 <? } ?>
                             </table>
                             <? } else{ ?>
-                                <h4>Фотографий нет</h4>
+                                <h2 class="no-foto">Фотографий нет</h2>
                             <? } ?>
                         </section>
                     </section>

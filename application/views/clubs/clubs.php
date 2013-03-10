@@ -62,7 +62,7 @@
                                 <article class="mini-card-club">
                                     <table>
                                         <tr>
-                                            <td class="mini-card-club-part" valign="top">
+                                            <td class="mini-card-club-part image-mini-card" valign="top">
                                                 <section class="img-club">
                                                     <img src="<?=$row->head_picture;?>" alt="" />
                                                 </section>
@@ -82,7 +82,7 @@
                                                     </section>
                                                     <section class="services-club">
                                                         <ul class="icons-services">
-                                                            <?if(key_exists($row->id, $services)) {  
+                                                            <?if(key_exists($row->id, $services)) {
                                                                 foreach ($services[$row->id] as $opt) {
                                                                     if(!empty($opt['class'])) {?>
                                                                 <li>
@@ -101,7 +101,7 @@
                                                     </section>
                                                 </section>
                                             </td>
-                                            <td valign="top" class="mini-card-club-part">
+                                            <td valign="top" class="mini-card-club-part mini-card-club-price">
                                                 <section class="price-club">
                                                     <table>
                                                         <?if(!empty($row->sub1)){?>
@@ -138,7 +138,7 @@
                                         </tr>
                                     </table>
                                 </article>
-                                <?}//foreach?> 
+                                <?}//foreach?>
                             </section>
                         </td>
                     </tr>

@@ -491,6 +491,10 @@ td.active-tab {
     color: #333333;
 }
 
+.card-clubs {
+    width: 100%;
+}
+
 .card-clubs>header {
     margin-bottom: 40px;
 }
@@ -504,6 +508,7 @@ td.active-tab {
 
 .tab-set {
     margin-top: 45px;
+    width: 100%;
 }
 .tabs-content {
     margin-top: 23px;
@@ -685,4 +690,25 @@ td.active-tab {
 .image-set img {
     float: left;
     position: relative;
+}
+
+.no-foto {
+    margin: 10px;
+}
+
+.no-reviews {
+    display: block;
+    margin-top: 30px;
+}
+
+.mini-card-club>table {
+    width: 100%;
+}
+
+.mini-card-club-price {
+    float: right;
+}
+
+.image-mini-card {
+    width: 180px;
 }
