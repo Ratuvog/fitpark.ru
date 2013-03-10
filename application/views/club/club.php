@@ -13,7 +13,7 @@
                         <section class="main-img-club">
                             <table width="100%" height="100%">
                                 <tr>
-                                    <td align="center"><img src="<?=$base['header_picture'];?>" alt="<?=$base['name'];?>" /></td>
+                                    <td align="center"><img src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" /></td>
                                 </tr>
                             </table>
 

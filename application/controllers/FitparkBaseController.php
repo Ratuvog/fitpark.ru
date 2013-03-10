@@ -41,6 +41,8 @@ class FitparkBaseController extends CI_Controller {
         $ci = &get_instance();
         $ci->load->model('grocery_CRUD_Model');
         $ci->load->model('my_model');
+        $ci->load->model('fitpark_model');
+        
         $this->baseModel = $ci->grocery_CRUD_Model;
         $this->addModel = $ci->my_model;
         $this->init();
@@ -55,7 +57,6 @@ class FitparkBaseController extends CI_Controller {
     {
         $pars = $this->uri->segment_array();    //unsetting uri last segments
         unset($pars[1]);
-        unset($pars[2]);
 
         $isPublicPage = in_array($method, $this->allowedPages);
         $isPrivatePage = in_array($method, $this->privateAllowedPages);
