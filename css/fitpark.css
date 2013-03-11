@@ -785,3 +785,8 @@ td.active-tab {
 .success-head-message {
     margin-bottom: 20px;
 }
+
+.error-text {
+    height: 30px;
+    color: red;
+}
