@@ -1,15 +1,28 @@
 <?php
 class Fitpark_model extends CI_Model {
 
-    function getClubList($limit, $offset)
+    function getClubListByPopularity($limit, $offset)
+
     {
         $this->db->select("*")
                 ->from("fitnesclub")
+                ->order_by("viewCount","desc")
                 ->limit($limit, $offset);
         return $this->db->get()->result();
     }
-
-
+    
+    function getClubListByPrice($ord, $limit, $offset)
+    {
+        $this->db->select("*, (sub3)/3 as avg3, (sub6)/6 as avg6, (sub12)/12 as avg12")
+                ->from("fitnesclub")
+                ->order_by("sub1",$ord)
+                ->order_by("avg3",$ord)
+                ->order_by("avg6",$ord)
+                ->order_by("avg12",$ord)
+                ->limit($limit, $offset);
+        return $this->db->get()->result();
+    }
+    
     function getClubsServices()
     {
         $this->db->select("fitnesclub_services.id as serviceId,
@@ -25,7 +38,7 @@ class Fitpark_model extends CI_Model {
         return $this->db->get()->result();
 
     }
-//dssdc
+
     function getFitnesClubFilter($table)
     {
             $this->db->select("varTable.*, filter.name as filterName")

@@ -45,19 +45,18 @@ class FitparkBaseController extends CI_Controller {
 
         $this->baseModel = $ci->grocery_CRUD_Model;
         $this->addModel = $ci->my_model;
-        $this->init();
     }
 
-    /**/
-    function init()
-    {
-    }
-
+    function init(){}
+                
     function _remap($method, $param)
     {
         $pars = $this->uri->segment_array();    //unsetting uri last segments
-        unset($pars[1]);
-
+        $cnt = count($pars);
+        for($i = 1; $i < $cnt; $i++)
+        {
+            unset($pars[$i]);
+        }
         $isPublicPage = in_array($method, $this->allowedPages);
         $isPrivatePage = in_array($method, $this->privateAllowedPages);
         $isLoggedIn = $this->session->userdata('logged_in') === true;
@@ -81,6 +80,7 @@ class FitparkBaseController extends CI_Controller {
 
     public function index()
     {
+        $this->init();
         $this->renderScene();
     }
 
