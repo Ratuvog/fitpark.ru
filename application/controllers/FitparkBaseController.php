@@ -70,7 +70,8 @@ class FitparkBaseController extends CI_Controller {
             }
             else
             {
-                $this->auth();
+                echo 'HER!!!!!';
+//                $this->auth();
             }
         }
         else

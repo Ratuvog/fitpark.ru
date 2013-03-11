@@ -7,12 +7,14 @@ class FitparkClubController extends FitparkBaseController {
     protected $m_countImagesOnRow  = 5;
     protected $m_countAnalogsOnRow = 4;
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
 //        $this->init();
     }
 
-    public function club($clubId) {
+    public function club($clubId)
+    {
 //        if($this->m_clubId == NULL) {
 //            $this->toDefaultPage();
 //            return ;
@@ -35,7 +37,8 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     /* Гостевое посещение клуба */
-    public function getGuest($clubId) {
+    public function getGuest($clubId)
+    {
         $this->fitpark_club_model->getGuest($clubId,
                                             $this->input->post("name"),
                                             $this->input->post("e-mail"),
@@ -46,44 +49,51 @@ class FitparkClubController extends FitparkBaseController {
     }
 
 //    Получение скидки
-    public function getDiscount($clubId) {
+    public function getDiscount($clubId)
+    {
         $this->titlePage = "Ваша заявка принята";
         $this->view      = 'club/success_checkout';
         $this->fitpark_club_model->getDiscount($clubId,
-                                               $_POST["name"],
-                                               $_POST["e-mail"],
-                                               $_POST["tel"]);
+                                               $this->input->post("name"),
+                                               $this->input->post("e-mail"),
+                                               $this->input->post("tel"));
         $this->renderScene();
     }
 
-    public function init() {
+    public function init()
+    {
         /* init all data variables */
-        $this->allowedPages = array('index','club');
+        $this->allowedPages = array('index','club','club/getDiscount','getDiscount');
         $this->privateAllowedPages = array();
 
         /* Load model */
         $this->load->model('fitpark_club_model');
     }
 
-    protected function getBaseInfo() {
+    protected function getBaseInfo()
+    {
         $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->m_clubId);
         $this->viewData['base'] = $infoArray[0];
     }
 
-    protected function getRates() {
+    protected function getRates()
+    {
         $this->viewData['base']['rates'] = $this->fitpark_club_model->getRatesClub($this->m_clubId);
     }
 
-    protected function getReviews() {
+    protected function getReviews()
+    {
         $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->m_clubId);
     }
 
-    protected function getImages() {
+    protected function getImages()
+    {
         $this->viewData['image']           = $this->fitpark_club_model->getImages($this->m_clubId);
         $this->viewData['countImagesOnRow'] = $this->m_countImagesOnRow;
     }
 
-    protected function getAnalogs() {
+    protected function getAnalogs()
+    {
         $this->viewData['analogs']           = $this->fitpark_club_model->getAnalogs($this->m_clubId);
         $this->viewData['countAnalogsOnRow'] = $this->m_countAnalogsOnRow;
     }

@@ -11,7 +11,7 @@
                 <table class="success-message">
                     <tr>
                         <td>
-                            <h1>
+                            <h1 class="success-head-message">
                                 Ваша заявка принята
                             </h1>
                             <p>
