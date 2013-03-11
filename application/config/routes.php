@@ -38,11 +38,12 @@
 |
 */
 
-$route['default_controller'] = "main";
-$route['404_override'] = '';
-$route['clubs'] = 'FitparkClubsController';
-$route['club/:num'] = 'FitparkClubController/club';
-
+$route['default_controller']    = "main";
+$route['404_override']          = '';
+$route['clubs']                 = 'FitparkClubsController';
+$route['club/:num']             = 'FitparkClubController/club';
+$route['club/getDiscount/:num'] = "FitparkClubController/getDiscount";
+$route['club/getGuest/:num']    = 'FitparkClubController/getGuest';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -42,7 +42,7 @@ class FitparkBaseController extends CI_Controller {
         $ci->load->model('grocery_CRUD_Model');
         $ci->load->model('my_model');
         $ci->load->model('fitpark_model');
-        
+
         $this->baseModel = $ci->grocery_CRUD_Model;
         $this->addModel = $ci->my_model;
         $this->init();

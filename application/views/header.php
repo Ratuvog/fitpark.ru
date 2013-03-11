@@ -7,11 +7,13 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="/js/cb/jquery.colorbox.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>
     </head>
     <body>
 
         <header id="title">
-            <span class="name-section"><a href="#" class="my-link">Супермаркет</a></span>
+            <span class="name-section"><a href="#" class="my-link">Фитнес-клубы</a></span>
         </header>
         <section id="content">
             <header class="header">
@@ -27,6 +29,40 @@
                     </div>
                 </div>
             </header>
+
+            <!--окошко-->
+            <div class="dnone">
+                <div id="window-checkout">
+                    <form action="" method="post">
+                        <table width="100%" id="window">
+                            <tr>
+                                <td colspan="2" class="hide-text">
+                                    Все поля обязательны для заполнения
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="window-name-options">Имя</td>
+                                <td><input type="text" class="checkout-input search" name="name"/></td>
+                            </tr>
+                            <tr>
+                                <td class="window-name-options">E-mail</td>
+                                <td><input type="text" class="checkout-input search" name="e-mail"/></td>
+                            </tr>
+                            <tr>
+                                <td class="window-name-options">Телефон</td>
+                                <td><input type="text" class="checkout-input search" name="tel"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <div class="button-send"></div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </form>
+                </div>
+            </div>
+
             <section id="menu">
                 <ul>
                     <li><a href="#">Клубы</a></li>

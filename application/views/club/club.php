@@ -39,10 +39,10 @@
                                 <? } ?>
                                 <tr>
                                     <td colspan="2">
-                                        <div class="button-get-discount card-action-button"></div>
+                                        <div class="button-get-discount card-action-button action-button" href="/club/getDiscount/<?=$base['id'];?>"></div>
                                     </td>
                                     <td >
-                                        <div class="button-guest button-guest-card card-action-button"></div>
+                                        <div class="button-guest button-guest-card card-action-button action-button" href="/club/getGuest/<?=$base['id'];?>"></div>
                                     </td>
                                 </tr>
                                 <? } ?>
@@ -178,7 +178,7 @@
                                 <td align="center">
                                     <img src="<?=$currentClub['head_picture'];?>" alt="<?=$currentClub['name'];?>" />
                                     <div class="analog-name"><a href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
-                                    <div class="button-get-discount"></div>
+                                    <div class="button-get-discount action-button"  href="/club/getDiscount/<?=$currentClub['id'];?>"></div>
                                     <div class="button-more"></div>
                                 </td>
                                 <? if($countClubs%($countAnalogsOnRow-1)==0) {?>

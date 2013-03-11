@@ -124,7 +124,7 @@
                                                         <?}?>
                                                         <tr>
                                                             <td colspan="2">
-                                                                <div class="button-get-discount"></div>
+                                                                <div class="button-get-discount action-button" href="/club/getDiscount/<?=$row->id;?>"></div>
                                                             </td>
                                                         </tr>
                                                         <tr>
