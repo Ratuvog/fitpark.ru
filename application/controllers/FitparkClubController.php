@@ -9,12 +9,12 @@ class FitparkClubController extends FitparkBaseController {
 
     function __construct() {
         parent::__construct();
-        $this->init();
         $this->allowedPages = array('index','club');
         $this->privateAllowedPages = array();
     }
 
     public function club($clubId) {
+
        if($clubId === NULL) {
             $this->toDefaultPage();
             return ;
@@ -72,7 +72,7 @@ class FitparkClubController extends FitparkBaseController {
         $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->m_clubId);
         $this->viewData['base'] = $infoArray[0];
     }
-
+    
     protected function getRates() {
         $this->viewData['base']['rates'] = $this->fitpark_club_model->getRatesClub($this->m_clubId);
     }
@@ -82,8 +82,7 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     protected function getImages() {
-        $this->viewData['image']           = $this->fitpark_club_model->getImages($this->m_clubId);
-        $this->viewData['countImagesOnRow'] = $this->m_countImagesOnRow;
+        $this->viewData['image']  = $this->fitpark_club_model->getImages($this->m_clubId);
     }
 
     protected function getAnalogs() {
