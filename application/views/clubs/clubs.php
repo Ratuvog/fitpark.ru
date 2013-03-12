@@ -1,13 +1,3 @@
-<div id="work-area">
-                <header id="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Главная</a></li>
-                        <li>→</li>
-                        <li><a href="#">Фитнес-клубы</a></li>
-                    </ul>
-                    <div style="clear: both;"></div>
-                </header>
-
                 <table style="width: 100%">
                     <tr>
                         <td class="options" valign="top">

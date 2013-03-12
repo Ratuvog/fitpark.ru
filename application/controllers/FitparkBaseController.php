@@ -7,14 +7,14 @@ class FitparkBaseController extends CI_Controller {
 
     // Name default view *.php
     protected $defaultPage = 'clubs/clubs';
-    protected $titlePage = '';
+    protected $titlePage = 'nothing';
 
     // Name header view and data
     protected $header = 'header';
     protected $headerData = array();
 
     // BreadCrumbs view and data
-    protected $breadCrumbs = 'breadCrubms';
+    protected $breadCrumbs = 'breadcrumbs';
     protected $breadCrumbsData = array();
 
     // Name footer view and data
@@ -96,9 +96,27 @@ class FitparkBaseController extends CI_Controller {
             $view = $this->view;
 
         $this->load->view($this->header, $this->headerData);
-        //$this->load->view($this->breadCrumbs, $this->breadCrumbsData);
+        $this->load->view($this->breadCrumbs, $this->initBreadCrumbs());
         $this->load->view($view, $this->viewData);
         $this->load->view($this->footer, $this->footerData);
+    }
+    
+    protected function initBreadCrumbs()
+    {
+        $stack = (array)$this->session->userdata('breadcrumbs');
+        $newstack = array();
+        foreach ($stack as $item)
+        {
+            if($item === $this->titlePage)
+                break;
+
+            if($item != 0)
+                array_push($newstack, $item);
+        }
+        
+        array_push($newstack, $this->titlePage);
+        $this->session->set_userdata('breadcrumbs', $newstack);
+        return array('stack' => $newstack);
     }
 
 }

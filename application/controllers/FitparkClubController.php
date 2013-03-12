@@ -9,7 +9,7 @@ class FitparkClubController extends FitparkBaseController {
 
     function __construct() {
         parent::__construct();
-        $this->allowedPages = array('index','club');
+        $this->allowedPages = array('index','club','getGuest','getDiscount');
         $this->privateAllowedPages = array();
         /* Load model */
         $this->load->model('fitpark_club_model');

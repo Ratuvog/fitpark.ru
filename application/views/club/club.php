@@ -1,13 +1,3 @@
-<div id="work-area">
-                <header id="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Главная</a></li>
-                        <li>→</li>
-                        <li><a href="#">Фитнес-клубы</a></li>
-                    </ul>
-                    <div style="clear: both;"></div>
-                </header>
-
                 <section class="card-clubs">
                     <header>
                         <section class="main-img-club">

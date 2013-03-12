@@ -110,7 +110,7 @@ class Fitpark_club_model extends CI_Model {
             "e-mail" => $email,
             "tel"    => $tel
         );
-        $this->db->insert('fitpark_checkout',$insertData);
+        $this->db->insert('fitnesclub_checkout',$insertData);
     }
 
 }
