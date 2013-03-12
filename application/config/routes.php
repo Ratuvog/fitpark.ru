@@ -44,8 +44,8 @@ $route['clubs']                 = 'FitparkClubsController';
 $route['club/:num']             = 'FitparkClubController/club';
 $route['club/getDiscount/:num'] = "FitparkClubController/getDiscount";
 $route['club/getGuest/:num']    = 'FitparkClubController/getGuest';
+$route['club/addReview/(\d+)']   = 'FitparkClubController/addReview/$1';
 $route['clubs/([a-z]+)'] = 'FitparkClubsController/$1';
 $route['clubs/([a-z]+)/([a-z]+)'] = 'FitparkClubsController/$1/$2';
-
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

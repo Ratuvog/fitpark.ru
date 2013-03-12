@@ -21,9 +21,9 @@ $(function(){
 
     $("#window-checkout .button-send").click(function(){
         var errorPull = [];
-        var nameField    = $('input[name="name"]');
-        var emailField   = $('input[name="e-mail"]');
-        var telefonField = $('input[name="tel"]');
+        var nameField    = $('#window-checkout input[name="name"]');
+        var emailField   = $('#window-checkout input[name="e-mail"]');
+        var telefonField = $('#window-checkout input[name="tel"]');
         if(!validate.blank(nameField.val())) {
             nameField.css("border-color", "red");
             errorPull.push('Поле "Имя" должно быть непустым');
@@ -39,8 +39,10 @@ $(function(){
             errorPull.push('Поле "Телефон" должно быть непустым');
         }
 
-        if(errorPull.length==0)
+        if(errorPull.length==0) {
             $(this).parents('form').first().submit();
+            return ;
+        }
         $("#window-checkout .error-text").empty();
         $("#window-checkout .error-text").text('Некоторые поля заполнены с ошибками')
 //        for(i in errorPull) {

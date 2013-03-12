@@ -87,14 +87,27 @@ class Fitpark_club_model extends CI_Model {
                 ->from("fitnesclub")
                 ->where("id", $clubId);
         $count = $this->db->get()->result_array();
-        
+
         $data = array(
                'viewCount' => $count[0]['viewCount'] + 1
             );
         $this->db->where('id', $clubId);
-        $this->db->update('fitnesclub', $data); 
+        $this->db->update('fitnesclub', $data);
     }
-    
+
+    function addReview($clubid, $text, $sender, $positive, $negatie)
+    {
+        $insertData = array(
+            "fitnesclubid"=>$clubid,
+            "text"        =>$text,
+            "sender"      =>$sender,
+            "positive"    =>$positive,
+            "negative"    =>$negatie
+        );
+        $this->db->insert("fitnesclub_review",$insertData);
+    }
+
+
 //////////////////////////////private////////////////////////////////////////
 
 

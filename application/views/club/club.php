@@ -80,34 +80,37 @@
                             <? if($reviews) { ?>
                             <? foreach ($reviews as $review){?>
                             <div class="review">
-                                <section class="description-review">
-                                    <h4><?=$review['sender'];?></h4>
-                                    <span><?=$review['outdate'];?></span>
-                                </section>
-                                <section class="content-review">
-                                    <?if($review['text']){?>
-                                    <p>
-                                        <?=$review['text'];?>
-                                    </p>
-                                    <?}?>
-                                    <? if($review['positive']) { ?>
-                                    <h4>
-                                        Плюсы
-                                    </h4>
-                                    <p>
-                                        <?=$review['positive'];?>
-                                    </p>
-                                    <? } ?>
-                                    <? if($review['negative']){ ?>
-                                    <h4>
-                                        Минусы
-                                    </h4>
-                                    <p>
-                                        <?=$review['negative'];?>
-                                    </p>
-                                    <? }?>
-                                </section>
-                                <div style="clear: both"></div>
+                                <table>
+                                    <tr>
+                                        <td class="description-review">
+                                            <h4><?= $review['sender']; ?></h4>
+                                            <span><?= $review['outdate']; ?></span>
+                                        </td>
+                                        <td class="content-review">
+                                                    <? if ($review['text']) { ?>
+                                                        <p>
+                                                            <?= $review['text']; ?>
+                                                        </p>
+                                                    <? } ?>
+                                                    <? if ($review['positive']) { ?>
+                                                        <h4>
+                                                            Плюсы
+                                                        </h4>
+                                                        <p>
+                                                            <?= $review['positive']; ?>
+                                                        </p>
+                                                    <? } ?>
+                                                    <? if ($review['negative']) { ?>
+                                                        <h4>
+                                                            Минусы
+                                                        </h4>
+                                                        <p>
+                                                            <?= $review['negative']; ?>
+                                                        </p>
+                                                    <? } ?>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                             <? }?>
                             <? } else {?>

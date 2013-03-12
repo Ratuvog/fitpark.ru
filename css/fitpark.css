@@ -568,16 +568,28 @@ td.active-tab {
     padding-top: 10px;
 }
 
+.review>table {
+    width: 100%;
+}
+
 .description-review {
     padding-left: 20px;
+    margin-right: 10px;
 }
 
 .description-review h4 {
-    display: block;
+    /*display: block;*/
+        width: 130px;
+    overflow: hidden;
+text-overflow: ellipsis;
+-o-text-overflow: ellipsis;
 }
 
 .description-review {
     width: 130px;
+    overflow: hidden;
+/*text-overflow: ellipsis;
+-o-text-overflow: ellipsis;*/
 }
 
 .button-send {
