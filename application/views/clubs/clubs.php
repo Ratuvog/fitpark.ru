@@ -50,9 +50,15 @@
                                 <div class="type-sort">
                                     <ul>
                                         <li class="title-type-sort">Сортировать по: </li>
-                                        <li class="item-type-sort active"><a href="#">популярности</a></li>
-                                        <li class="item-type-sort"><a href="#">цене (сначала дорогие)</a></li>
-                                        <li class="item-type-sort"><a href="#">цене (сначала недорогие)</a></li>
+                                        <li class="item-type-sort <?if($order=='popularity') echo 'active';?>">
+                                            <a href="<?=site_url('clubs/sort/popularity');?>">популярности</a>
+                                        </li>
+                                        <li class="item-type-sort <?if($order=='expansive') echo 'active';?>">
+                                            <a href="<?=site_url('clubs/sort/expansive');?>">цене (сначала дорогие)</a>
+                                        </li>
+                                        <li class="item-type-sort <?if($order=='cheap') echo 'active';?>">
+                                            <a href="<?=site_url('clubs/sort/cheap');?>">цене (сначала недорогие)</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </header>

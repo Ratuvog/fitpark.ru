@@ -4,55 +4,51 @@ require_once(APPPATH.'controllers/FitparkBaseController.php');
 class FitparkClubsController extends FitparkBaseController {
 
     private $tableDB = 'fitnesclub';
-    private $showRecOnPage = 10;
+    private $showRecOnPage = 100;
     private $pageNumber = 0;
     private $tableFilterList = array('fitnesclub_services',
                                      'fitnesclub_subscribe',
                                      'fitnesclub_district');
+    private $order = 'popularity'; 
+    private $sortOrderList = array('popularity', 'expansive','cheap');
     
     function __construct()
     {
         parent::__construct();
+        $this->allowedPages = array('index','clubs','filter','sort');
+        $this->privateAllowedPages = array();
     }
     
     public function init()
     {
-        /* init all data variables */
-        $this->allowedPages = array('index','clubs', 'filter');
-        $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес-клубы';
-        
-        $this->initRecordsOnPage();
-                
         $this->view = 'clubs/clubs';
         $this->viewData = $this->initViewData();
+    }
         
-    }
-    
-    private function initRecordsOnPage()
-    {
-        if($this->session->userdata('showRecOnPages'))
-            $this->showRecOnPages = $this->session->userdata('showRecOnPages');
-
-        if($this->session->userdata('pageNumber'))
-            $this->pageNumber = $this->session->userdata('pageNumber');
-    }
-    
     private function initViewData()
     {
         $data = array(
-            'content' => $this->getClubList(),
-            'filters' => $this->getFilters(),
+            'content'  => $this->getClubList(),
+            'filters'  => $this->getFilters(),
             'services' => $this->getClubsServices(),
-            'ratings' => $this->getClubsTotalRating()
+            'ratings'  => $this->getClubsTotalRating(),
+            'order'    => $this->order
         );
         return $data;
     }
     
     private function getClubList()
     {   
-        return $this->fitpark_model->getClubList($this->showRecOnPage,
-                $this->showRecOnPage*$this->pageNumber);
+        $limit = $this->showRecOnPage;
+        $offset = $this->showRecOnPage*$this->pageNumber;
+        
+        if($this->order == 'cheap')
+            return $this->fitpark_model->getClubListByPrice("asc", $limit, $offset);
+        else if($this->order == 'expansive')
+            return $this->fitpark_model->getClubListByPrice("desc", $limit, $offset);
+        
+        return $this->fitpark_model->getClubListByPopularity($limit, $offset);
     }
 
     private function getClubsTotalRating()
@@ -85,5 +81,18 @@ class FitparkClubsController extends FitparkBaseController {
             $filters[$table] = $this->fitpark_model->getFitnesClubFilter($table);
         return $filters;
     }
+    
+    public function sort($how)
+    {
+        $this->setSortOrder($how);
+        $this->index();
+    }
+    
+    private function setSortOrder($how)
+    {
+        if(array_search($how, $this->sortOrderList))
+            $this->order = $how;
+    }
+    
 }
 ?>
