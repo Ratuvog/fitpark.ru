@@ -37,7 +37,7 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     /* Гостевое посещение клуба */
-    public function getGuest($clubId)
+    public function getGuest($rr,$clubId)
     {
         $this->fitpark_club_model->getGuest($clubId,
                                             $this->input->post("name"),
@@ -49,7 +49,7 @@ class FitparkClubController extends FitparkBaseController {
     }
 
 //    Получение скидки
-    public function getDiscount($clubId)
+    public function getDiscount($rr,$clubId)
     {
         $this->titlePage = "Ваша заявка принята";
         $this->view      = 'club/success_checkout';
@@ -60,10 +60,19 @@ class FitparkClubController extends FitparkBaseController {
         $this->renderScene();
     }
 
+    public function addReview($rr,$clubId) {
+        $this->fitpark_club_model->addReview($clubId,
+                                             $this->input->post("text"),
+                                             $this->input->post("name"),
+                                             $this->input->post("plus"),
+                                             $this->input->post("minus"));
+        redirect('/club/'.$clubId);
+    }
+
     public function init()
     {
         /* init all data variables */
-        $this->allowedPages = array('index','club','club/getDiscount','getDiscount');
+        $this->allowedPages = array('index','club','club/getDiscount','getDiscount','addReview');
         $this->privateAllowedPages = array();
 
         /* Load model */

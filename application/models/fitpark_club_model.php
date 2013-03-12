@@ -45,7 +45,9 @@ class Fitpark_club_model extends CI_Model {
 
     /* Get reviews about club */
     function getReviewsClub($clubId) {
-        return $this->getInfon("fitnesclub_review", "fitnesclubid", $clubId);
+        $query = "SELECT DATE_FORMAT(date,'%d.%m.%Y') outdate, text, sender, positive, negative FROM fitnesclub_review WHERE fitnesclubid = ?";
+        $q = $this->db->query($query,array($clubId));
+        return $q->result_array();
     }
 
     function getImages($clubId) {
@@ -79,6 +81,16 @@ class Fitpark_club_model extends CI_Model {
         $this->insertCheckout($clubId, $name, $email, $tel, 1);
     }
 
+    function addReview($clubId, $text, $user, $plus, $minus)  {
+        $insertData = array(
+            "sender"       => $user,
+            "fitnesclubid" => $clubId,
+            "text"         => $text,
+            "positive"     => $plus,
+            "negative"     => $minus
+        );
+        $this->db->insert('fitnesclub_review',$insertData);
+    }
 
 //////////////////////////////private////////////////////////////////////////
 

@@ -21,5 +21,9 @@ $(function(){
         $(selector).show();
         return false;
     })
+
+    $(".submit-review").click(function(){
+        $(this).parents('form').first().submit();
+    })
 })
 

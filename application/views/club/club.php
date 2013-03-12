@@ -88,18 +88,38 @@
                         </section>
                         <div id="review-club" class="full-card-description tabs-content hideClass">
                             <? if($reviews) { ?>
+                            <? foreach ($reviews as $review){?>
                             <div class="review">
                                 <section class="description-review">
-                                    <h4><?=$reviews['sender'];?></h4>
-                                    <span><?=$reviews['date'];?></span>
+                                    <h4><?=$review['sender'];?></h4>
+                                    <span><?=$review['outdate'];?></span>
                                 </section>
                                 <section class="content-review">
+                                    <?if($review['text']){?>
                                     <p>
-                                        <?=$reviews['text'];?>
+                                        <?=$review['text'];?>
                                     </p>
+                                    <?}?>
+                                    <? if($review['positive']) { ?>
+                                    <h4>
+                                        Плюсы
+                                    </h4>
+                                    <p>
+                                        <?=$review['positive'];?>
+                                    </p>
+                                    <? } ?>
+                                    <? if($review['negative']){ ?>
+                                    <h4>
+                                        Минусы
+                                    </h4>
+                                    <p>
+                                        <?=$review['negative'];?>
+                                    </p>
+                                    <? }?>
                                 </section>
                                 <div style="clear: both"></div>
                             </div>
+                            <? }?>
                             <? } else {?>
                             <div class="review">
                                 <h2 class="no-reviews">Нет отзывов. Ваш отзыв будет первым.</h2>
@@ -107,37 +127,39 @@
                             <? } ?>
                             <section class="add-review">
                                 <header><h3>Оставить отзыв: </h3></header>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Имя
-                                        </td>
-                                        <td><input type="text" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Отзыв</td>
-                                        <td>
-                                            <textarea name="" id="" cols="30" rows="10"></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Плюсы
-                                        </td>
-                                        <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Минусы</td>
-                                        <td>
-                                            <textarea name="" id="" cols="30" rows="10"></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" align="center">
-                                            <div class="button-send"></div>
-                                        </td>
-                                    </tr>
-                                </table>
+                                <form action="/club/addReview/<?=$base['id'];?>" method="POST">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Имя
+                                            </td>
+                                            <td><input type="text" name="name"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Отзыв</td>
+                                            <td>
+                                                <textarea name="text" id="" cols="30" rows="10"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Плюсы
+                                            </td>
+                                            <td><textarea name="plus" id="" cols="30" rows="10"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Минусы</td>
+                                            <td>
+                                                <textarea name="minus" id="" cols="30" rows="10"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                                <div class="button-send submit-review"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
                             </section>
                         </div>
                         <section id="image-club">

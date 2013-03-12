@@ -790,3 +790,7 @@ td.active-tab {
     height: 30px;
     color: red;
 }
+
+.content-review p {
+    margin-bottom: 10px;
+}
