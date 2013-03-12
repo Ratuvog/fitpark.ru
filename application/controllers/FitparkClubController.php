@@ -11,6 +11,8 @@ class FitparkClubController extends FitparkBaseController {
         parent::__construct();
         $this->allowedPages = array('index','club');
         $this->privateAllowedPages = array();
+        /* Load model */
+        $this->load->model('fitpark_club_model');
     }
 
     public function club($clubId) {
@@ -20,7 +22,7 @@ class FitparkClubController extends FitparkBaseController {
             return ;
         }
         $this->m_clubId = $clubId;
-
+        $this->fitpark_club_model->addClubView($clubId);
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
         $this->view      = 'club/club';
@@ -59,13 +61,7 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     public function init() {
-        /* init all data variables */
-        $this->allowedPages = array('index','club');
-        $this->privateAllowedPages = array();
-        $this->titlePage = 'Фитнес-клуб';
-        $this->view = 'club/club';
-        /* Load model */
-        $this->load->model('fitpark_club_model');
+
     }
 
     protected function getBaseInfo() {

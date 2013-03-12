@@ -79,7 +79,20 @@ class Fitpark_club_model extends CI_Model {
         $this->insertCheckout($clubId, $name, $email, $tel, 1);
     }
 
-
+    function addClubView($clubId)
+    {
+        $this->db->select("viewCount")
+                ->from("fitnesclub")
+                ->where("id", $clubId);
+        $count = $this->db->get()->result_array();
+        
+        $data = array(
+               'viewCount' => $count[0]['viewCount'] + 1
+            );
+        $this->db->where('id', $clubId);
+        $this->db->update('fitnesclub', $data); 
+    }
+    
 //////////////////////////////private////////////////////////////////////////
 
 
