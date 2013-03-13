@@ -1,7 +1,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td class="options" valign="top">
-                            <form action="" method="POST" id="filter">
+                            <form action="<?=site_url('clubs/filter');?>" method="POST" id="filter">
                                 <?  foreach ($filters as $filter) {?>
                                 <section class="option">
                                     <header class="name-option">
@@ -10,8 +10,12 @@
                                         <div style="clear: both;"></div>
                                     </header>
                                     <ul class="values-option">
-                                        <?  foreach ($filter as $item) {?>
-                                        <li><input id="option<?=$item->filterid."-".$item->id;?>" type="checkbox" /> <?=$item->name;?></li>
+                                        <?  foreach ($filter as $item){
+                                            $optinonName = "option".$item->filterid."-".$item->id;?>
+                                        <li><input name="<?=$optinonName;?>"
+                                                   type="checkbox" <?if($activeFilters[$optinonName] === true) echo 'checked';?>/>
+                                             <?=$item->name;?>
+                                        </li>
                                         <?}?>
                                     </ul>
                                 </section>
@@ -41,13 +45,13 @@
                                     <ul>
                                         <li class="title-type-sort">Сортировать по: </li>
                                         <li class="item-type-sort <?if($order=='popularity') echo 'active';?>">
-                                            <a href="<?=site_url('clubs/sort/popularity');?>">популярности</a>
+                                            <span class="sorter" href="<?=site_url('clubs/sort/popularity');?>">популярности</span>
                                         </li>
                                         <li class="item-type-sort <?if($order=='expansive') echo 'active';?>">
-                                            <a href="<?=site_url('clubs/sort/expansive');?>">цене (сначала дорогие)</a>
+                                            <span class="sorter" href="<?=site_url('clubs/sort/expansive');?>">цене (сначала дорогие)</span>
                                         </li>
                                         <li class="item-type-sort <?if($order=='cheap') echo 'active';?>">
-                                            <a href="<?=site_url('clubs/sort/cheap');?>">цене (сначала недорогие)</a>
+                                            <span class="sorter" href="<?=site_url('clubs/sort/cheap');?>">цене (сначала недорогие)</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -100,19 +104,19 @@
                                             <td valign="top" class="mini-card-club-part mini-card-club-price">
                                                 <section class="price-club">
                                                     <table>
-                                                        <?if(!empty($row->sub1)){?>
+                                                        <?if($row->sub1 > 0){?>
                                                         <tr>
                                                             <td class="price-club-date">1 месяц</td>
                                                             <td class="price-club-price"><h4>от <?=$row->sub1;?> рублей</h4></td>
                                                         </tr>
                                                         <?}?>
-                                                        <?if(!empty($row->sub3)){?>
+                                                        <?if($row->sub3 > 0){?>
                                                         <tr>
                                                             <td class="price-club-date">3 месяца</td>
                                                             <td class="price-club-price"><h4>от <?=$row->sub3;?> рублей</h4></td>
                                                         </tr>
                                                         <?}?>
-                                                        <?if(!empty($row->sub6)){?>
+                                                        <?if($row->sub6 > 0){?>
                                                         <tr>
                                                             <td class="price-club-date">6 месяцев</td>
                                                             <td class="price-club-price"><h4>от <?=$row->sub6;?> рублей</h4></td>

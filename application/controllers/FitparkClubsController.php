@@ -12,10 +12,13 @@ class FitparkClubsController extends FitparkBaseController {
     private $order = 'popularity'; 
     private $sortOrderList = array('popularity', 'expansive','cheap');
     
+    private $activeFilters = array();
+    private $filterEnabled = false;
+            
     function __construct()
     {
         parent::__construct();
-        $this->allowedPages = array('index','clubs','filter','sort');
+        $this->allowedPages = array('index','clubs','filter','sort','filter');
         $this->privateAllowedPages = array();
     }
     
@@ -29,8 +32,9 @@ class FitparkClubsController extends FitparkBaseController {
     private function initViewData()
     {
         $data = array(
-            'content'  => $this->getClubList(),
             'filters'  => $this->getFilters(),
+            'content'  => $this->getClubList(),
+            'activeFilters' => $this->activeFilters,
             'services' => $this->getClubsServices(),
             'ratings'  => $this->getClubsTotalRating(),
             'order'    => $this->order
@@ -42,13 +46,16 @@ class FitparkClubsController extends FitparkBaseController {
     {   
         $limit = $this->showRecOnPage;
         $offset = $this->showRecOnPage*$this->pageNumber;
+        $filter = array();
+        if($this->filterEnabled)
+            $filter = $this->generateFilter();
         
         if($this->order == 'cheap')
-            return $this->fitpark_model->getClubListByPrice("asc", $limit, $offset);
+            return $this->fitpark_model->getClubListByPrice("asc", $limit, $offset, $filter);
         else if($this->order == 'expansive')
-            return $this->fitpark_model->getClubListByPrice("desc", $limit, $offset);
+            return $this->fitpark_model->getClubListByPrice("desc", $limit, $offset, $filter);
         
-        return $this->fitpark_model->getClubListByPopularity($limit, $offset);
+        return $this->fitpark_model->getClubListByPopularity($limit, $offset, $filter);
     }
 
     private function getClubsTotalRating()
@@ -77,14 +84,20 @@ class FitparkClubsController extends FitparkBaseController {
     private function getFilters()
     {
         $filters = array();
-        foreach ($this->tableFilterList as $table)
+        foreach ($this->tableFilterList as $table) {
             $filters[$table] = $this->fitpark_model->getFitnesClubFilter($table);
+            foreach ($filters[$table] as $item)
+            {
+                $this->activeFilters["option".$item->filterid."-".$item->id] = false;
+            }
+        }
         return $filters;
     }
     
     public function sort($how)
     {
         $this->setSortOrder($how);
+        $this->setFilter();
         $this->index();
     }
     
@@ -94,5 +107,60 @@ class FitparkClubsController extends FitparkBaseController {
             $this->order = $how;
     }
     
+    public function filter()
+    {
+        $this->setFilter();
+        $this->index();
+    }
+    
+    private function  setFilter()
+    {
+        $this->filterEnabled = true;
+    }
+    
+    private function  generateFilter()
+    {
+        $filters = array();
+        foreach (array_keys($this->activeFilters) as $option)
+        {
+            if($this->input->post($option))
+            {
+                $filters = $this->setFilterValue($filters, $option);
+                $this->activeFilters[$option] = true;
+            }
+        }
+        return $filters;
+    }
+    
+    private function setFilterValue($filterArray, $option)
+    {
+        $findFilterId = true;
+        $filterId = '';
+        $optionId = '';
+        $str = str_split($option);
+        for($i = 0; $i<strlen($option); $i++)
+        {
+            if($findFilterId)
+            {
+                if($str[$i] >= '0' && $str[$i] <= '9')
+                {
+                    $filterId.=$str[$i];
+                }
+                if($str[$i] == '-')
+                    $findFilterId = false;
+            }
+            else
+            {
+                $optionId.=$str[$i];
+            }
+        }
+        if($filterId != '' && $optionId != '')
+        {
+            if(!key_exists($filterId, $filterArray))
+                $filterArray[$filterId] = array();
+            array_push($filterArray[$filterId], $optionId);
+        }
+        return $filterArray;
+    }
 }
 ?>

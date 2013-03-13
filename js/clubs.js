@@ -21,6 +21,11 @@ $(function(){
         });
     })
 
+
+    $(".sorter").click(function(){
+        $("#filter").attr('action',$(this).attr('href'));
+        $("#filter").submit();
+    })
     
 
 })

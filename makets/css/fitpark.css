@@ -272,12 +272,12 @@ header-content>* {
     margin-right: 10px;
 }
 
-.type-sort li a{
+.type-sort li span{
     text-decoration: underline;
     color: #333333;
 }
 
-.type-sort li a:hover {
+.type-sort li span:hover {
     text-decoration: none;
 }
 
