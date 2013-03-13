@@ -578,7 +578,6 @@ td.active-tab {
 }
 
 .description-review h4 {
-    /*display: block;*/
         width: 130px;
     overflow: hidden;
 text-overflow: ellipsis;
