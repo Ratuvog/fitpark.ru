@@ -8,7 +8,7 @@ class FitparkClubsController extends FitparkBaseController {
     private $pageNumber = 0;
     private $tableFilterList = array('fitnesclub_services',
                                      'fitnesclub_subscribe',
-                                     'fitnesclub_district');
+                                     'district');
     private $order = 'popularity'; 
     private $sortOrderList = array('popularity', 'expansive','cheap');
     

@@ -5,17 +5,16 @@ class Admin extends CI_Controller {
     private $baseModel = 0;
     private $currentTable = 'auth';
     private $state = array(
-        0 => array('Категории','service_category'),
-        1 => array('Опции фильтрации','category_options'),
-        2 => array('Значения опций','options_value'),
-        3 => array('Фитнес-клубы','fitnesclub'),
-        4 => array('Группы','item_group'),
-        5 => array('Описания элементов','item_description'),
-        6 => array('Новости элементов','item_news'),
-        7 => array('Отзывы элементов','item_review'),
-        8 => array('Скидки элементов','item_discount'),
-        9 => array('Фото элементов','item_photo'),
-        10 => array('Рейтинг элементов','item_rating')
+        'category' => array('Категории','service_category'),
+        'filters' => array('Фильтры','fitnesclub_filter'),
+        'cities' => array('Города','city'),
+        'districts' => array('Районы','district'),
+        'clubs' => array('Фитнес-клубы','fitnesclub'),
+        'services' => array('Услуги клуба','fitnesclub_services'),
+        'subscribes' => array('Абонементы','fitnesclub_subscribe'),
+        'reviews' => array('Отзывы','fitnesclub_review'),
+        'descriptions' => array('Описания','fitnesclub_description'),
+        'photos' => array('Фотографии','fitnesclub_photo')
     );
     private $categoryName = 'Авторизация';
     
@@ -167,15 +166,15 @@ class Admin extends CI_Controller {
             echo $pa;
         }
         
-	function categories()
+	/*function categories()
 	{
-                $this->setCurentState(0);
+                $this->setCurentState('category');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
 		$crud->set_field_upload('icon','assets/uploads/files');
                 
-                $crud->set_relation_n_n('options', 'ref_category_options',
-                    'category_options', 'categoryid', 
+                $crud->set_relation_n_n('Фильтры', '',
+                    $this->currentTable, 'categoryid', 
                     'optionid', 'name', 'priority');
                 
                 $crud->set_relation_n_n('item', 'ref_category_item',
@@ -185,27 +184,22 @@ class Admin extends CI_Controller {
                 $output = $crud->render();
 		$this->render($output);
                 
-	}
+	} */
         
-        function options()
+        function filters()
 	{
-                $this->setCurentState(1);
+                $this->setCurentState('filters');
                 $crud = new grocery_CRUD();
-                $crud->set_table($this->currentTable);
-                
-                $crud->set_relation_n_n('value', 'ref_option_value',
-                'options_value', 'optionid', 
-                'valueid', 'name', 'priority');
-                
+                $crud->set_table($this->currentTable);           
 		$crud->set_field_upload('icon','assets/uploads/files');
                 
 		$output = $crud->render();
 		$this->render($output);
 	}
 	
-        function values()
-	{
-                $this->setCurentState(2);
+        function cities()
+        {
+                $this->setCurentState('cities');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
                 
@@ -213,214 +207,91 @@ class Admin extends CI_Controller {
                 
 		$output = $crud->render();
 		$this->render($output);
+        }
+        
+        function districts()
+	{
+                $this->setCurentState('districts');
+                $crud = new grocery_CRUD();
+                $crud->set_table($this->currentTable);
+                $crud->set_relation('cityid', 'city', 'name');
+                $crud->set_field_upload('icon','assets/uploads/files');
+                
+		$output = $crud->render();
+		$this->render($output);
 	}
         
-        function fitnesclubs()
+        function clubs()
         {
-                $this->setCurentState(3);
+                $this->setCurentState('clubs');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
                 
                 $crud->set_field_upload('icon','assets/uploads/files');
                 $crud->set_field_upload('head_picture','assets/uploads/files');
                 
-                $crud->set_relation_n_n('groups', 'ref_item_group',
-                'item_group', 'itemid', 
-                'groupid', 'name', 'priority');
+                $crud->set_relation_n_n('Услуги', 'fitnesclub_rel_services',
+                'fitnesclub_services', 'clubId', 
+                'serviceId', 'name', 'priority');
                 
-                $crud->set_relation_n_n('option_values', 'ref_item_optionvalue',
-                'options_value', 'itemid', 
-                'valueid', 'name', 'priority');
-                
-                $crud->set_relation_n_n('discounts', 'ref_item_discount',
-                'item_discount', 'discountid', 
-                'itemid', 'name', 'priority');
+                $crud->set_relation('districtId', 'district', 'name + (SELECT name FROM city c Where c.id = cityid)');
                 
                 $output = $crud->render();
                 $this->render($output);
         }
 
-        function descriptions()
+        function services()
         {
-                $this->setCurentState(5);
+                $this->setCurentState('services');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
         
-        function news()
+        function subscribes()
         {
-                $this->setCurentState(6);
+                $this->setCurentState('subscribes');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
 
         function reviews()
         {
-                $this->setCurentState(7);
+                $this->setCurentState('reviews');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','fitnesclub','name');
+                $crud->set_relation('fitnesclubid','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
         
-        function discounts()
+        function descriptions()
         {
-                $this->setCurentState(8);
+                $this->setCurentState('descriptions');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
+                $crud->set_relation('clubid','fitnesclub','name');
                 $output = $crud->render();
                 $this->render($output);
         }
         
         function photos()
         {
-                $this->setCurentState(9);
+                $this->setCurentState('photos');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','fitnesclub','name');
+                $crud->set_relation('fitnesclubid','fitnesclub','name');
                 $crud->set_field_upload('photo','assets/uploads/files');
                 $output = $crud->render();
                 $this->render($output);
         }
-        
-        function item_ratings()
-        {
-                $this->setCurentState(10);
-                $crud = new grocery_CRUD();
-                $crud->set_table($this->currentTable);
-                $crud->set_relation('itemId','fitnesclub','name');
-                $output = $crud->render();
-                $this->render($output);
-        }
-        
-        function groups()
-        {
-            $this->setCurentState(4);
-            $crud = new grocery_CRUD();
-            $crud->set_table($this->currentTable);
-            $crud->set_field_upload('icon','assets/uploads/files');
-            $output = $crud->render();
-            $this->render($output);
-        }
-        
+            
         function index()
 	{
-            $this->categories();
-	}	
-	
-	function offices_management()
-	{
-		try{
-			$crud = new grocery_CRUD();
-
-			$crud->set_theme('datatables');
-			$crud->set_table('offices');
-			$crud->set_subject('Office');
-			$crud->required_fields('city');
-			$crud->columns('city','country','phone','addressLine1','postalCode');
-			
-			$output = $crud->render();
-			
-			$this->_example_output($output);
-			
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	
-	function employees_management()
-	{
-			$crud = new grocery_CRUD();
-
-			$crud->set_theme('datatables');
-			$crud->set_table('employees');
-			$crud->set_relation('officeCode','offices','city');
-			$crud->display_as('officeCode','Office City');
-			$crud->set_subject('Employee');
-			
-			$crud->required_fields('lastName');
-			
-			$crud->set_field_upload('file_url','assets/uploads/files');
-			
-			$output = $crud->render();
-
-			$this->_example_output($output);
-	}
-	
-	function customers_management()
-	{
-			$crud = new grocery_CRUD();
-
-			$crud->set_table('customers');
-			$crud->columns('customerName','contactLastName','phone','city','country','salesRepEmployeeNumber','creditLimit');
-			$crud->display_as('salesRepEmployeeNumber','from Employeer')
-				 ->display_as('customerName','Name')
-				 ->display_as('contactLastName','Last Name');
-			$crud->set_subject('Customer');
-			$crud->set_relation('salesRepEmployeeNumber','employees','lastName');
-			
-			$output = $crud->render();
-			
-			$this->_example_output($output);
-	}	
-	
-	function orders_management()
-	{
-			$crud = new grocery_CRUD();
-
-			$crud->set_relation('customerNumber','customers','{contactLastName} {contactFirstName}');
-			$crud->display_as('customerNumber','Customer');
-			$crud->set_table('orders');
-			$crud->set_subject('Order');
-			$crud->unset_add();
-			$crud->unset_delete();
-			
-			$output = $crud->render();
-			
-			$this->_example_output($output);
-	}
-	
-	function products_management()
-	{
-			$crud = new grocery_CRUD();
-
-			$crud->set_table('products');
-			$crud->set_subject('Product');
-			$crud->unset_columns('productDescription');
-			$crud->callback_column('buyPrice',array($this,'valueToEuro'));
-			
-			$output = $crud->render();
-			
-			$this->_example_output($output);
-	}	
-	
-	function valueToEuro($value, $row)
-	{
-		return $value.' &euro;';
-	}
-	
-	function film_management()
-	{
-		$crud = new grocery_CRUD();
-		
-		$crud->set_table('film');
-		$crud->set_relation_n_n('actors', 'film_actor', 'actor', 'film_id', 'actor_id', 'fullname','priority');
-		$crud->set_relation_n_n('category', 'film_category', 'category', 'film_id', 'category_id', 'name');
-		$crud->unset_columns('special_features','description','actors');
-		
-		$crud->fields('title', 'description', 'actors' ,  'category' ,'release_year', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating', 'special_features');
-		
-		$output = $crud->render();
-		
-		$this->_example_output($output);
-	}
-	
+            $this->clubs();
+	}		
 }
 ?>

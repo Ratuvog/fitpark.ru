@@ -42,17 +42,15 @@ a:hover
         </div>
     
 	<div style="float:left; width: 15%;" class="menu">
-            <a href='<?php echo site_url('admin/fitnesclubs')?>'>Категории</a> </br>
-            <a href='<?php echo site_url('admin/options')?>'>Опции фильтрации</a> </br>
-            <a href='<?php echo site_url('admin/values')?>'>Значения опций</a> </br>
-            <a href='<?php echo site_url('admin/items')?>'>Контент(Фитнес-клубы)</a> </br>
-            <a href='<?php echo site_url('admin/groups')?>'>Группы (Районы, Города)</a> </br>
-            <a href='<?php echo site_url('admin/descriptions')?>'>Описания</a> </br>
-            <a href='<?php echo site_url('admin/news')?>'>Новости</a> </br>
+            <a href='<?php echo site_url('admin/filters')?>'>Фильтры</a> </br>
+            <a href='<?php echo site_url('admin/cities')?>'>Города</a> </br>
+            <a href='<?php echo site_url('admin/districts')?>'>Районы</a> </br>
+            <a href='<?php echo site_url('admin/clubs')?>'>Фитнес-клубы</a> </br>
+            <a href='<?php echo site_url('admin/services')?>'>Услуги клубов</a> </br>
+            <a href='<?php echo site_url('admin/subscribes')?>'>Абонементы</a> </br>
             <a href='<?php echo site_url('admin/reviews')?>'>Отзывы</a> </br>
-            <a href='<?php echo site_url('admin/discounts')?>'>Скидки</a> </br>
+            <a href='<?php echo site_url('admin/descriptions')?>'>Описания</a> </br>
             <a href='<?php echo site_url('admin/photos')?>'>Фото</a> </br>
-            <a href='<?php echo site_url('admin/item_ratings')?>'>Рейтинги</a>
 	</div>
     
         <div>
