@@ -97,7 +97,7 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getImages()
     {
-        $this->viewData['image']           = $this->fitpark_club_model->getImages($this->m_clubId);
+        $this->viewData['images']           = $this->fitpark_club_model->getImages($this->m_clubId);
         $this->viewData['countImagesOnRow'] = $this->m_countImagesOnRow;
     }
 

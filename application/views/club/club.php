@@ -156,7 +156,7 @@
                             </section>
                         </div>
                         <section id="image-club">
-                            <? if($image) {?>
+                            <? if($images) {?>
                             <table>
                                 <? $countImages = 0;?>
                                 <? foreach ($images as $currentImage) {?>

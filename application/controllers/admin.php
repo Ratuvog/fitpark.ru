@@ -230,11 +230,11 @@ class Admin extends CI_Controller {
                 $crud->set_field_upload('icon','assets/uploads/files');
                 $crud->set_field_upload('head_picture','assets/uploads/files');
                 
-                $crud->set_relation_n_n('Услуги', 'fitnesclub_rel_services',
+                $crud->set_relation_n_n('services', 'fitnesclub_rel_services',
                 'fitnesclub_services', 'clubId', 
                 'serviceId', 'name', 'priority');
                 
-                $crud->set_relation('districtId', 'district', 'name + (SELECT name FROM city c Where c.id = cityid)');
+                $crud->set_relation('districtId', 'district', 'name');
                 
                 $output = $crud->render();
                 $this->render($output);
