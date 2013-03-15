@@ -654,8 +654,12 @@ text-overflow: ellipsis;
 .image-set {
     position: relative;
     height: 507px;
-    z-index: 10;
+    z-index: 1;
     overflow: hidden;
+}
+
+.image-set img{
+    position: relative;
 }
 
 .main-control {
@@ -674,6 +678,7 @@ text-overflow: ellipsis;
     height: 73px;
     background: url('/image/main-button2.png') no-repeat;
     cursor: pointer;
+    margin-bottom: 30px;
 }
 
 .non-active-point {
@@ -696,7 +701,7 @@ text-overflow: ellipsis;
 
 .switch-slide {
     padding-left: 230px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 .image-set img {
     float: left;
@@ -805,3 +810,24 @@ text-overflow: ellipsis;
 .content-review p {
     margin-bottom: 10px;
 }
+
+
+/*SLIDER*/
+
+.bxslider {
+    margin-top: 50px;
+
+}
+
+.control-slide {
+    width: 70px;
+    margin-bottom: 20px;
+/*    margin-top: 20px;*/
+}
+
+.main-controls-slide {
+    position: relative;
+    z-index: 10;
+    top: -120px;
+}
+/*END SLIDER*/

@@ -4,67 +4,26 @@
  */
 
 $(function(){
-    function UserException(message) {
-        this.message = message;
-        this.name = "UserException";
-    }
-    var slider = {
-        currentIndexImg : 0,
-        prevIndex: 0,
-        slider : $("#slider"),
-        buttons : $(".main-control .non-active-point"),
-        intervalID: 0,
-        images : $("#slider").find("img"),
-        init : function() {
-            var self = this;
-            this.images.each(function(){
-                $(this).hide();
-            })
-            var index = 0;
-            this.buttons.each(function(){
-                $(this).attr("index",index++);
-            })
-            index = 0;
-            this.images.each(function(){
-                $(this).attr("index",index++);
-            })
-            this.buttons.click(function(){
-                clearInterval(self.intervalID);
-                var index = parseInt($(this).attr("index"));
-//                self.currentIndexImg = index;
-                self.show(index);
-                self.run();
-            })
-            this.show(this.currentIndexImg);
-            this.run();
-        },
-        run: function(){
-            var self = this;
-//            this.show(this.currentIndexImg);
-            this.intervalID = setInterval(function(){
-                self.show.call(self,self.currentIndexImg)
-            }, 10000);
-        },
-        show: function(index) {
-            if(index>=this.images.length)
-                index = 0;
-            var self = this;
-            $(this.images[this.prevIndex]).fadeOut(1000,function(){
-                $(self.images[index]).fadeIn(1000);
-            })
-//            $(this.images[this.currentIndexImg]).hide();
-            this.activateButton(index);
-            this.prevIndex = index;
-            this.currentIndexImg = index+1;
-//            this.run();
-        },
-        activateButton: function(index) {
-            this.buttons.each(function(){
-                $(this).removeClass("active-point").addClass("non-active-point");
-            })
-            $(this.buttons[index]).addClass("active-point");
+    var slider = $('.bxslider').bxSlider({
+        mode: 'horizontal',
+        auto: true,
+        speed: 1000,
+        pause: 10000,
+        tickerHover: false,
+        pager: false,
+        controls: false,
+        onSlideBefore: function($slideElement, oldIndex, newIndex){
+            if(oldIndex>=0 && oldIndex<=2)
+                $(".control-slide div:eq("+oldIndex+")").removeClass('active-point').addClass('non-active-point');
+            $(".control-slide div:eq("+newIndex+")").addClass('active-point');
         }
-    }
-    slider.init();
+    });
+    $(".control-slide").delegate('div', 'click', function() {
+        var indexPage = parseInt($(this).attr("index"));
+        slider.stopAuto();
+        slider.goToSlide(indexPage);
+        slider.startAuto();
+        return false;
+    })
 })
 
