@@ -64,7 +64,7 @@
                                         <tr>
                                             <td class="mini-card-club-part image-mini-card" valign="top">
                                                 <section class="img-club">
-                                                    <img src="<?=$row->head_picture;?>" alt="" />
+                                                    <img style="max-width: 160px" src="<?=$row->head_picture;?>" alt="" />
                                                 </section>
                                             </td>
                                             <td class="mini-card-club-part">
