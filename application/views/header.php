@@ -20,8 +20,8 @@
             <header class="header">
                 <img src="/image/logo.png" alt="" width="200" height="60" class="logo"/>
                 <div class="header-content">
-                    <input type="text" class="search" placeholder="что ищем?"/>
-                    <div class="button-search"></div>
+                    <input type="text" class="search" id="search" placeholder="что ищем?"/>
+                    <div class="button-search" id="submit-search"></div>
 <!--                    <div class="action enter-link"><a href="#">Войти</a></div>
                     <div class="action reg-link"><a href="#">Зарегистрироваться</a></div>-->
                     <div class="telefon-support">

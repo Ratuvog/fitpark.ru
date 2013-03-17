@@ -3,6 +3,11 @@
  * and open the template in the editor.
  */
 $(function(){
+    /* Поиск по клубу    */
+    $("#submit-search").click(function(){
+        var href = "http://"+location.host+'/clubs/search/'+$("#search").val();
+        window.location.href = href;
+    })
 
     /* Валидация полей формы*/
     var validate = {

@@ -44,7 +44,7 @@
                                 <div class="type-sort">
                                     <ul>
                                         <li class="title-type-sort">Сортировать по: </li>
-                                        <li class="item-type-sort <?if($order=='popularity') echo 'active';?>">
+                                        <li class="item-type-sort <?if($order=='Popularity') echo 'active';?>">
                                             <span class="sorter" href="<?=site_url('clubs/sort/popularity');?>">популярности</span>
                                         </li>
                                         <li class="item-type-sort <?if($order=='expansive') echo 'active';?>">
@@ -71,7 +71,7 @@
                                                 <section class="decription-club">
                                                     <header class="name-club">
                                                         <h3>
-                                                            <a href="#"><?=$row->name;?></a>
+                                                            <a href="<?=$baseUrlClub.$row->id;?>"><?=$row->name;?></a>
                                                         </h3>
                                                         <h3>
                                                             <?=$row->address;?>
@@ -129,7 +129,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
-                                                                <div class="button-more"></div>
+                                                                <a href="<?=$baseUrlClub.$row->id;?>"><div class="button-more"></div></a>
                                                             </td>
                                                         </tr>
                                                     </table>

@@ -6,38 +6,143 @@ class Fitpark_model extends CI_Model {
         2 => 'district',
         3 => 'subscribe'
     );
-    
+
     private $subscribeIdToType = array(
         1 => 'sub1',
         2 => 'sub3',
         3 => 'sub6',
         4 => 'sub12'
     );
-    
-    function getClubListByPopularity($limit, $offset, $filter)
 
+    /**
+     * Доступные стратегии сортировки
+     * @var array
+     */
+    private $m_avialableSortStrategy = array(
+        "Popularity",
+        "PriceDesc",
+        "PriceAsc"
+    );
+
+    private $m_avialableSearchStrategy = array(
+        "Name"
+    );
+
+    /**
+     * Стратегии начальной инициализации запросов
+     */
+
+    /**
+     * Метод возвращает список фитнес-клубов
+     */
+    private function initListClubs($limit,$offset)
     {
-        $this->db->select("*")
-                ->from("fitnesclub")
-                ->order_by("viewCount","desc")
-                ->limit($limit, $offset);
-        $this->installFilter($filter);        
-        return $this->db->get()->result();
+         $this->db->select("*, (sub3)/3 as avg3, (sub6)/6 as avg6, (sub12)/12 as avg12")
+            ->from("fitnesclub")
+            ->limit($limit,$offset);
     }
-    
-    function getClubListByPrice($ord, $limit, $offset, $filter)
+
+
+    /**
+     * Стратегии сортировки данных
+     */
+
+    /**
+     * Сортировка по популярности
+     */
+    private function sortByPopularity()
     {
-        $this->db->select("*, (sub3)/3 as avg3, (sub6)/6 as avg6, (sub12)/12 as avg12")
-                ->from("fitnesclub")
-                ->order_by("sub1",$ord)
-                ->order_by("avg3",$ord)
-                ->order_by("avg6",$ord)
-                ->order_by("avg12",$ord)
-                ->limit($limit, $offset);
+        $this->db->order_by("viewCount","desc");
+    }
+    /**
+     * Сортировка по цене
+     * @param string $ord порядок соритровки
+     */
+    private function sortByPriceAsc()
+    {
+        $this->order_by("sub1", 'asc')
+             ->order_by("avg3", 'asc')
+             ->order_by("avg6", 'asc')
+             ->order_by("avg12",'asc');
+    }
+    private function sortByPriceDesc()
+    {
+        $this->order_by("sub1", 'desc')
+             ->order_by("avg3", 'desc')
+             ->order_by("avg6", 'desc')
+             ->order_by("avg12",'desc');
+    }
+
+    /**
+     * Вызов соответствующей стратегии сортировки по имени
+     * @param string $name название стратегии
+     */
+    private function getSortStrategyByName($name)
+    {
+        if(in_array($name, $this->m_avialableSortStrategy)) {
+            call_user_func(array($this,'sortBy'.$name));
+        } else {
+            call_user_method(array('sortByPopularity', $this));
+        }
+    }
+
+
+    /**
+     * Стратегии поиска
+     */
+
+    /**
+     * Поиск по названию
+     */
+    private function searchByName($name)
+    {
+        $this->db->like("name",$name, 'both');
+    }
+
+    /**
+     * Вызов соотвтетствующей стратегии поиска по имени
+     * @param string $nameStrategy имя стратегии
+     * @param string $searchString поисковый запрос
+     */
+    private function getSearchStrategyByName($nameStrategy, $searchString)
+    {
+        if(in_array($nameStrategy, $this->m_avialableSearchStrategy)) {
+            call_user_func(array($this, 'searchBy'.$nameStrategy), $searchString);
+        }
+    }
+
+    /**
+     * Выводит список клубов.
+     * @param string $ord порядок сортировки
+     * @param int $limit  количество клубов на странице
+     * @param int $offset смещение
+     * @param mixed $filter фильтер клубов
+     * @return array список клубов
+     */
+    function getClubList($ord, $limit, $offset, $filter)
+    {
+        $this->initListClubs($limit, $offset);
+        $this->getSortStrategyByName($ord);
         $this->installFilter($filter);
         return $this->db->get()->result();
     }
-    
+
+    /**
+     * Поиск клубов по имени
+     * @param type $name имя клуба
+     * @param type $ord порядок сортировки
+     * @param type $limit количество клубов на странице
+     * @param type $offset смещение
+     * @return array список клубов
+     */
+    function getClubsByName($name, $ord, $limit, $offset)
+    {
+        $this->initListClubs($limit, $offset);
+        $this->getSortStrategyByName($ord);
+        $this->getSearchStrategyByName('Name',$name);
+        return $this->db->get()->result();
+    }
+
     private function installFilter($filter)
     {
         if(count($filter) == 0)
@@ -57,13 +162,13 @@ class Fitpark_model extends CI_Model {
                 $this->filterForSubscribe($filter[$filterId]);
         }
     }
-          
+
     private function filterForSubscribe($set)
     {
         foreach ($set as $item)
             $this->db->where($this->subscribeIdToType[$item].' >', "0");
     }
-            
+
     function getClubsServices()
     {
         $this->db->select("fitnesclub_services.id as serviceId,
