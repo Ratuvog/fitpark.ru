@@ -150,16 +150,24 @@ class Fitpark_model extends CI_Model {
         $this->db->group_by("fitnesclub.id");
         foreach (array_keys($filter) as $filterId)
         {
-            $type = $this->filterIdToType[$filterId];
-            if($type === 'service')
+            if($filterId === 'rangeF')
+                $this->filterForLowRange($filter[$filterId]);
+            if($filterId === 'rangeT')
+                $this->filterForHighRange($filter[$filterId]);
+            
+            if(key_exists($filterId, $this->filterIdToType))
             {
-                $this->db->join("fitnesclub_rel_services service","fitnesclub.id = service.clubId");
-                $this->db->where_in('service.serviceId', $filter[$filterId]);
+                $type = $this->filterIdToType[$filterId];
+                if($type === 'service')
+                {
+                    $this->db->join("fitnesclub_rel_services service","fitnesclub.id = service.clubId");
+                    $this->db->where_in('service.serviceId', $filter[$filterId]);
+                }
+                if($type === 'district')
+                    $this->db->where_in('fitnesclub.districtId', $filter[$filterId]);
+                if($type === 'subscribe')
+                    $this->filterForSubscribe($filter[$filterId]);
             }
-            if($type === 'district')
-                $this->db->where_in('fitnesclub.districtId', $filter[$filterId]);
-            if($type === 'subscribe')
-                $this->filterForSubscribe($filter[$filterId]);
         }
     }
 
@@ -167,6 +175,18 @@ class Fitpark_model extends CI_Model {
     {
         foreach ($set as $item)
             $this->db->where($this->subscribeIdToType[$item].' >', "0");
+    }
+     
+    private function filterForLowRange($val)
+    {
+        $cond = 'sub1 >=';
+        $this->db->where($cond, $val[0]);
+    }
+    
+        private function filterForHighRange($val)
+    {
+        $cond = 'sub1 <=';
+        $this->db->where($cond, $val[0]);
     }
 
     function getClubsServices()
@@ -203,8 +223,6 @@ class Fitpark_model extends CI_Model {
         return $this->db->get()->result();
 
     }
-
-
 
 }
 

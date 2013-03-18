@@ -29,9 +29,11 @@
                                     <div class="slider" from="10" to="100"></div>
                                     <div class="slider-input">
                                         <label for="from">от</label>
-                                        <input type="text" size="4" name="from" class="slider-from"/>
+                                        <input type="text" size="4" name="rangeF" class="slider-from" 
+                                               value="<?if(key_exists('rangeF',$activeFilters)) echo $activeFilters['rangeF'];?>"/>
                                         <label for="">до</label>
-                                        <input type="text" size="4" name="to" class="slider-to"/>
+                                        <input type="text" size="4" name="rangeT" class="slider-to" 
+                                               value="<?if(key_exists('rangeT',$activeFilters)) echo $activeFilters['rangeT'];?>"/>
                                         <label for="">руб.</label>
                                     </div>
                                 </section>

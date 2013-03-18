@@ -102,13 +102,13 @@ class FitparkClubsController extends FitparkBaseController {
     private function getFilters()
     {
         $filters = array();
-        foreach ($this->tableFilterList as $table) {
+        foreach ($this->tableFilterList as $table) 
+        {
             $filters[$table] = $this->fitpark_model->getFitnesClubFilter($table);
             foreach ($filters[$table] as $item)
-            {
                 $this->activeFilters["option".$item->filterid."-".$item->id] = false;
-            }
         }
+            $this->activeFilters['rangeF'] = $this->activeFilters['rangeT'] = false;
         return $filters;
     }
 
@@ -144,8 +144,17 @@ class FitparkClubsController extends FitparkBaseController {
             if(in_array($option, $filters))
             if($this->input->post($option))
             {
-                $filters = $this->setFilterValue($filters, $option);
-                $this->activeFilters[$option] = true;
+                $value = $this->input->post($option);
+                if($option === 'rangeF' || $option === 'rangeT')
+                {
+                    $filters = $this->setPriceRangeFilter($filters, $option);
+                    $this->activeFilters[$option] = $value;
+                }
+                else
+                {
+                    $filters = $this->setFilterValue($filters, $option);
+                    $this->activeFilters[$option] = true;
+                }
             }
         }
         return $filters;
@@ -179,6 +188,15 @@ class FitparkClubsController extends FitparkBaseController {
                 $filterArray[$filterId] = array();
             array_push($filterArray[$filterId], $optionId);
         }
+        return $filterArray;
+    }
+    
+    private function setPriceRangeFilter($filterArray, $option)
+    {
+        if(!key_exists($option, $filterArray))
+            $filterArray[$option] = array();
+        array_push($filterArray[$option], $this->input->post($option));
+
         return $filterArray;
     }
 }
