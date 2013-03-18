@@ -44,7 +44,7 @@ body {
     margin-right: auto;
     background-color: white;
     height: 100%;
-    box-shadow: 2px 0 20px #5d5d5d;
+    /*box-shadow: 2px 0 20px #5d5d5d;*/
 }
 
 #content:before,
@@ -814,10 +814,6 @@ text-overflow: ellipsis;
 
 /*SLIDER*/
 
-.bxslider {
-    margin-top: 50px;
-
-}
 
 .control-slide {
     width: 70px;
@@ -829,5 +825,13 @@ text-overflow: ellipsis;
     position: relative;
     z-index: 10;
     top: -120px;
+}
+
+.centerSpan {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 /*END SLIDER*/
