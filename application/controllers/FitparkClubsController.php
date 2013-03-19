@@ -10,7 +10,7 @@ class FitparkClubsController extends FitparkBaseController {
                                      'fitnesclub_subscribe',
                                      'district');
     private $order = "Popularity";
-    private $sortOrderList = array('popularity', 'expansive','cheap');
+    private $sortOrderList = array('Popularity', 'PriceDesc','PriceAsc');
 
     private $activeFilters = array();
     private $filterEnabled = false;
@@ -102,7 +102,7 @@ class FitparkClubsController extends FitparkBaseController {
     private function getFilters()
     {
         $filters = array();
-        foreach ($this->tableFilterList as $table) 
+        foreach ($this->tableFilterList as $table)
         {
             $filters[$table] = $this->fitpark_model->getFitnesClubFilter($table);
             foreach ($filters[$table] as $item)
@@ -190,7 +190,7 @@ class FitparkClubsController extends FitparkBaseController {
         }
         return $filterArray;
     }
-    
+
     private function setPriceRangeFilter($filterArray, $option)
     {
         if(!key_exists($option, $filterArray))

@@ -60,14 +60,14 @@ class Fitpark_model extends CI_Model {
      */
     private function sortByPriceAsc()
     {
-        $this->order_by("sub1", 'asc')
+        $this->db->order_by("sub1", 'asc')
              ->order_by("avg3", 'asc')
              ->order_by("avg6", 'asc')
              ->order_by("avg12",'asc');
     }
     private function sortByPriceDesc()
     {
-        $this->order_by("sub1", 'desc')
+        $this->db->order_by("sub1", 'desc')
              ->order_by("avg3", 'desc')
              ->order_by("avg6", 'desc')
              ->order_by("avg12",'desc');
@@ -82,7 +82,7 @@ class Fitpark_model extends CI_Model {
         if(in_array($name, $this->m_avialableSortStrategy)) {
             call_user_func(array($this,'sortBy'.$name));
         } else {
-            call_user_method(array('sortByPopularity', $this));
+            call_user_func(array('sortByPopularity', $this));
         }
     }
 
@@ -154,7 +154,7 @@ class Fitpark_model extends CI_Model {
                 $this->filterForLowRange($filter[$filterId]);
             if($filterId === 'rangeT')
                 $this->filterForHighRange($filter[$filterId]);
-            
+
             if(key_exists($filterId, $this->filterIdToType))
             {
                 $type = $this->filterIdToType[$filterId];
@@ -176,13 +176,13 @@ class Fitpark_model extends CI_Model {
         foreach ($set as $item)
             $this->db->where($this->subscribeIdToType[$item].' >', "0");
     }
-     
+
     private function filterForLowRange($val)
     {
         $cond = 'sub1 >=';
         $this->db->where($cond, $val[0]);
     }
-    
+
         private function filterForHighRange($val)
     {
         $cond = 'sub1 <=';

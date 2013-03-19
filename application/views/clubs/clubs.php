@@ -29,10 +29,10 @@
                                     <div class="slider" from="10" to="100"></div>
                                     <div class="slider-input">
                                         <label for="from">от</label>
-                                        <input type="text" size="4" name="rangeF" class="slider-from" 
+                                        <input type="text" size="4" name="rangeF" class="slider-from"
                                                value="<?if(key_exists('rangeF',$activeFilters)) echo $activeFilters['rangeF'];?>"/>
                                         <label for="">до</label>
-                                        <input type="text" size="4" name="rangeT" class="slider-to" 
+                                        <input type="text" size="4" name="rangeT" class="slider-to"
                                                value="<?if(key_exists('rangeT',$activeFilters)) echo $activeFilters['rangeT'];?>"/>
                                         <label for="">руб.</label>
                                     </div>
@@ -47,13 +47,13 @@
                                     <ul>
                                         <li class="title-type-sort">Сортировать по: </li>
                                         <li class="item-type-sort <?if($order=='Popularity') echo 'active';?>">
-                                            <span class="sorter" href="<?=site_url('clubs/sort/popularity');?>">популярности</span>
+                                            <span class="sorter" href="<?=site_url('clubs/sort/Popularity');?>">популярности</span>
                                         </li>
-                                        <li class="item-type-sort <?if($order=='expansive') echo 'active';?>">
-                                            <span class="sorter" href="<?=site_url('clubs/sort/expansive');?>">цене (сначала дорогие)</span>
+                                        <li class="item-type-sort <?if($order=='PriceDesc') echo 'active';?>">
+                                            <span class="sorter" href="<?=site_url('clubs/sort/PriceDesc');?>">цене (сначала дорогие)</span>
                                         </li>
-                                        <li class="item-type-sort <?if($order=='cheap') echo 'active';?>">
-                                            <span class="sorter" href="<?=site_url('clubs/sort/cheap');?>">цене (сначала недорогие)</span>
+                                        <li class="item-type-sort <?if($order=='PriceAsc') echo 'active';?>">
+                                            <span class="sorter" href="<?=site_url('clubs/sort/PriceAsc');?>">цене (сначала недорогие)</span>
                                         </li>
                                     </ul>
                                 </div>
