@@ -14,20 +14,22 @@
     <body>
 
         <header id="title">
-            <span class="name-section"><a href="#" class="my-link">Фитнес-клубы</a></span>
+            <span class="name-section"><a href="/clubs" class="my-link">Фитнес-клубы</a></span>
         </header>
         <section id="content">
             <header class="header">
                 <img src="/image/logo.png" alt="" width="200" height="60" class="logo"/>
                 <div class="header-content">
-                    <input type="text" class="search" id="search" placeholder="что ищем?"/>
-                    <div class="button-search" id="submit-search"></div>
-<!--                    <div class="action enter-link"><a href="#">Войти</a></div>
-                    <div class="action reg-link"><a href="#">Зарегистрироваться</a></div>-->
+                    <form action="/clubs/search" method="get">
+                        <input type="hidden" name="order" value="<?=$order;?>"/>
+                        <input type="text" class="search" name="search" id="search" placeholder="что ищем?"/>
+                        <div class="button-search" id="submit-search"></div>
+                    </form>
                     <div class="telefon-support">
                         <h2 class="telefon-number">8-800-350-12-14</h1>
-                        <h5 class="telefon-slogan">Мы рады любым вопросам</h5>
+                            <h5 class="telefon-slogan">Мы рады любым вопросам</h5>
                     </div>
+
                 </div>
             </header>
 

@@ -82,7 +82,7 @@ class Fitpark_model extends CI_Model {
         if(in_array($name, $this->m_avialableSortStrategy)) {
             call_user_func(array($this,'sortBy'.$name));
         } else {
-            call_user_func(array('sortByPopularity', $this));
+            call_user_func(array($this, 'sortByPopularity'));
         }
     }
 

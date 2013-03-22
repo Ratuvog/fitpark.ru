@@ -11,7 +11,7 @@
     </head>
     <body>
         <header id="title">
-            <span class="name-section"><a href="#" class="my-link">Фитнес-клубы</a></span>
+            <span class="name-section"><a href="/clubs" class="my-link">Фитнес-клубы</a></span>
         </header>
 <!--        <section id="content" class="">
             <div class="image-set" id="slider">

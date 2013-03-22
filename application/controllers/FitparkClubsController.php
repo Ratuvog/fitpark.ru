@@ -9,9 +9,8 @@ class FitparkClubsController extends FitparkBaseController {
     private $tableFilterList = array('fitnesclub_services',
                                      'fitnesclub_subscribe',
                                      'district');
-    private $order = "Popularity";
     private $sortOrderList = array('Popularity', 'PriceDesc','PriceAsc');
-
+    private $order = 'Popularity';
     private $activeFilters = array();
     private $filterEnabled = false;
     private $nonFilterField = array("order");
@@ -27,11 +26,24 @@ class FitparkClubsController extends FitparkBaseController {
     {
         $this->titlePage = 'Фитнес-клубы';
         $this->view = 'clubs/clubs';
-        $this->viewData = $this->initViewData();
+        $this->viewData   = $this->initViewData();
+        $this->headerData = $this->initHeaderData();
+    }
+
+    private function initHeaderData()
+    {
+        $data = array();
+        if($this->input->get("order"))
+            $data["order"] = $this->input->get("order");
+        else
+            $data["order"] = 'Popularity';
+        return $data;
     }
 
     private function initViewData()
     {
+        if($this->input->get("order"))
+            $this->order = $this->input->get("order");
         $data = array(
             'filters'  => $this->getFilters(),
             'content'  => $this->getClubList(),
@@ -54,19 +66,25 @@ class FitparkClubsController extends FitparkBaseController {
         return $this->fitpark_model->getClubList($this->order, $limit,$offset, $filter);
     }
 
-    function search($queryString)
+    function search()
     {
         $this->titlePage = "Поиск фитнес-клубов";
         $this->view      = "clubs/clubs";
+        if($this->input->get("order"))
+            $this->order = $this->input->get("order");
+        // Initialize content data
         $this->viewData  = array(
             'filters'       => $this->getFilters(),
-            'content'       => $this->getClubsByString($queryString),
+            'content'       => $this->getClubsByString($this->input->get("search")),
             'activeFilters' => $this->activeFilters,
             'services'      => $this->getClubsServices(),
             'ratings'       => $this->getClubsTotalRating(),
             'order'         => $this->order,
             'baseUrlClub'   => $this->config->item("base_url")."/club/"
         );
+
+        // initialize view data
+        $this->headerData = $this->initHeaderData();
         $this->renderScene();
     }
 

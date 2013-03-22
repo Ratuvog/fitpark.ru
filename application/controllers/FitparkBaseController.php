@@ -47,8 +47,9 @@ class FitparkBaseController extends CI_Controller {
         $this->addModel = $ci->my_model;
     }
 
-    function init(){}
-                
+    function init(){
+    }
+
     function _remap($method, $param)
     {
         $pars = $this->uri->segment_array();    //unsetting uri last segments
@@ -101,7 +102,7 @@ class FitparkBaseController extends CI_Controller {
         $this->load->view($view, $this->viewData);
         $this->load->view($this->footer, $this->footerData);
     }
-    
+
     protected function initBreadCrumbs()
     {
         $stack = (array)$this->session->userdata('breadcrumbs');
@@ -114,7 +115,7 @@ class FitparkBaseController extends CI_Controller {
             if($item != 0)
                 array_push($newstack, $item);
         }
-        
+
         array_push($newstack, $this->titlePage);
         $this->session->set_userdata('breadcrumbs', $newstack);
         return array('stack' => $newstack);

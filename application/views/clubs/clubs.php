@@ -2,6 +2,7 @@
                     <tr>
                         <td class="options" valign="top">
                             <form action="<?=site_url('clubs/filter');?>" method="POST" id="filter">
+                                <input type="hidden" name="order" value="<? if(isset($order)) echo $order;?>" />
                                 <?  foreach ($filters as $filter) {?>
                                 <section class="option">
                                     <header class="name-option">
@@ -47,13 +48,13 @@
                                     <ul>
                                         <li class="title-type-sort">Сортировать по: </li>
                                         <li class="item-type-sort <?if($order=='Popularity') echo 'active';?>">
-                                            <span class="sorter" href="<?=site_url('clubs/sort/Popularity');?>">популярности</span>
+                                            <a class="sorter" href="Popularity">популярности</a>
                                         </li>
                                         <li class="item-type-sort <?if($order=='PriceDesc') echo 'active';?>">
-                                            <span class="sorter" href="<?=site_url('clubs/sort/PriceDesc');?>">цене (сначала дорогие)</span>
+                                            <a class="sorter" href="PriceDesc">цене (сначала дорогие)</a>
                                         </li>
                                         <li class="item-type-sort <?if($order=='PriceAsc') echo 'active';?>">
-                                            <span class="sorter" href="<?=site_url('clubs/sort/PriceAsc');?>">цене (сначала недорогие)</span>
+                                            <a class="sorter" href="PriceAsc">цене (сначала недорогие)</a>
                                         </li>
                                     </ul>
                                 </div>
