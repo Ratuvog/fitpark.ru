@@ -160,9 +160,9 @@ class FitparkClubsController extends FitparkBaseController {
         foreach (array_keys($this->activeFilters) as $option)
         {
             if(in_array($option, $filters))
-            if($this->input->post($option))
+            if($this->input->get($option))
             {
-                $value = $this->input->post($option);
+                $value = $this->input->get($option);
                 if($option === 'rangeF' || $option === 'rangeT')
                 {
                     $filters = $this->setPriceRangeFilter($filters, $option);

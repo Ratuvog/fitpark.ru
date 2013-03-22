@@ -1,8 +1,8 @@
                 <table style="width: 100%">
                     <tr>
                         <td class="options" valign="top">
-                            <form action="<?=site_url('clubs/filter');?>" method="POST" id="filter">
-                                <input type="hidden" name="order" value="<? if(isset($order)) echo $order;?>" />
+                            <form action="<?=site_url('clubs/filter');?>" method="GET" id="filter">
+                                <input type="hidden" name="order" value="<?=$order;?>" />
                                 <?  foreach ($filters as $filter) {?>
                                 <section class="option">
                                     <header class="name-option">
