@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Фитпарк - Ваш проводник в мире фитнес-клубов</title>
         <link rel="stylesheet" href="/css/fitpark.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="/js/slider/jquery.bxslider.js"></script>
         <!--<link rel="stylesheet" href="/js/slider/jquery.bxslider.css" />-->
         <script type="text/javascript" src="/js/main.js"> </script>
+        <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
     <body>
         <header id="title">
-            <span class="name-section"><a href="/clubs" class="my-link">Фитнес-клубы</a></span>
+            <span class="name-section"><a href="#" class="my-link">Фитнес-клубы</a></span>
         </header>
 <!--        <section id="content" class="">
             <div class="image-set" id="slider">
@@ -65,6 +66,27 @@
                     </td>
                 </tr>
             </table>
+            <section id="main-content">
+                <h2>Удобно</h2>
+<p>Мы собрали на ФитПарке все фитнес - клубы Самары.</p>
+<p>Больше не надо просматривать массу сайтов и сравнивать цены, проходящие акции, есть ли скидки, чем оборудован зал, каковы условия покупки абонементов и прочие параметры.</p>
+<p>Все есть у нас.</p>
+
+<h2>Информативно</h2>
+<p>Мы сделали очень подробное описание каждого клуба.</p>
+<p>Благодаря этому легко можно узнать, что есть в фитнес – клубе (бассейн, кардиозона и т.п.), а фотографии дадут представление о том, в каком состоянии клуб.</p>
+<p>Отзывы посетителей и рейтинги помогут сделать верный выбор.</p>
+
+<h2>Актуально</h2>
+<p>Мы постоянно контролируем изменение условий посещения и информации о клубах.</p>
+<p>Ради наших посетителей мы размещаем точное расписание занятий клубов, фамилии тренеров, ведущих занятие, стоимость услуг и прочие необходимые данные.</p>
+<p>И все эти данные проверены и точны.</p>
+<h2>Быстро</h2>
+<p>Не стоит тратить время на мониторинг условий, звонки в клубы, уточнение информации.</p>
+<p>Ведь мы дали возможность сразу связаться с менеджерами клуба онлайн, уточнить данные и сразу купить абонемент в фитнес – центр.</p>
+<p>Невероятная экономия времени с ФитПарком.</p>
+
+            </section>
         </section>
         <footer>
             <div class="centerSpan">
@@ -73,23 +95,15 @@
                 <script type="text/javascript">share42('http://fitpark.com/js/share42/')</script>
             </div>
             <div class="centerSpan">
+                <p>Проводник в мир фитнеса «ФитПарк». Фитнес клубы, расписание тренировок, цены абонементов, отзывы.</p>
+                <p>Самара фитнес.</p>
                 <p>
-                    Whidofit. On-line дневник для контроля за питанием, физическими нагрузками и образом жизни.
-                    <br>Удобный поиск по упражнениям для фитнеса и бодибилдинга, автоматический калькулятор
-                    калорий и питательных веществ, услуги диетологов и фитнес-тренеров.
+                   «ФитПарк» 2012-2013. Все права защищены.
                 </p>
                 <hr/>
-                <p>Whidofit. Все права защищены. 2012</p>
-                <p>
-                    <a class="link" href="https://passport.webmoney.ru/asp/certview.asp?wmid=130348514579" target="_blank" style="display: inline; margin-right: 10px;">
-                        <img src="http://whido.ru/img/88x31_wm_v_blue_on_transparent_ru.png" title="Здесь находится аттестат нашего WM идентификатора 130348514579" style="border:none;" alt="">
-                    </a>
-                    <a class="link" href="http://webmoney.ru" target="_blank" style="display: inline;">
-                        <img src="http://whido.ru/img/88x31_wm_blue_on_transparent_ru.png" style="border:none;" alt="">
-                    </a>
-                </p>
             </div>
-        </footer><!--footer-->
+        </footer>
+        <!--footer-->
     </body>
 </html>
 

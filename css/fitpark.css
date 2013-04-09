@@ -822,9 +822,11 @@ text-overflow: ellipsis;
 }
 
 .main-controls-slide {
-    position: relative;
-    z-index: 10;
-    top: -120px;
+    position: absolute;
+    width: 700px;
+    top: 390px;
+    left: 300px;
+    z-index: 30000;
 }
 
 .centerSpan {
@@ -833,5 +835,22 @@ text-overflow: ellipsis;
     margin-top: 10px;
     margin-bottom: 30px;
     text-align: center;
+}
+
+footer {
+    background: url('/image/footer.png') repeat-x;
+    height: 120px;
+    padding: 50px;
+    color: white;
+}
+
+#main-content {
+    position: relative;
+
+    padding: 30px;
+}
+
+#main-content h2 {
+    margin-top: 30px;
 }
 /*END SLIDER*/
