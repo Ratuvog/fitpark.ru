@@ -10,6 +10,7 @@
         <script type="text/javascript" src="/js/cb/jquery.colorbox.js"></script>
         <script type="text/javascript" src="/js/common.js"></script>
         <script type="text/javascript" src="/js/jquery.form.validation.js"></script>
+        <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
     <body>
 
