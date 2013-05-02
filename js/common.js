@@ -4,9 +4,26 @@
  */
 $(function(){
     /* Поиск по клубу    */
+    var BLACK = "rgb(0, 0, 0)";
     $("#submit-search").click(function(){
         $(this).parents('form').submit();
     })
+    $(".not-empty").focusin(function(){
+        if($(this).css("color")!==BLACK)
+            $(this).val("");
+        $(this).css("color","black");
+    })
+
+    $(".not-empty").focusout(function(){
+        if($(this).val()==="") {
+            $(this).css("color","gray");
+            $(this).val($(this).attr('place'));
+        }
+    })
+
+    var nonEmptyText = $(".not-empty");
+    nonEmptyText.val(nonEmptyText.attr('place'));
+    nonEmptyText.css("color","gray");
 
     /* Валидация полей формы*/
     var validate = {
