@@ -6,7 +6,7 @@ class FitparkClubController extends FitparkBaseController {
     protected $m_clubId = 0;
     protected $m_countImagesOnRow  = 5;
     protected $m_countAnalogsOnRow = 4;
-
+    private   $order = "Popularity";
     function __construct()
     {
         parent::__construct();
@@ -83,6 +83,7 @@ class FitparkClubController extends FitparkBaseController {
     {
         $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->m_clubId);
         $this->viewData['base'] = $infoArray[0];
+        $this->headerData['order'] = $this->order;
     }
 
     protected function getRates()
