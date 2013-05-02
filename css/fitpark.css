@@ -832,15 +832,13 @@ text-overflow: ellipsis;
 .centerSpan {
     margin-left: 25%;
     margin-right: 25%;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
 }
 
 footer {
     background: url('/image/footer.png') repeat-x;
-    height: 120px;
-    padding: 50px;
     color: white;
 }
 
@@ -852,5 +850,15 @@ footer {
 
 #main-content h2 {
     margin-top: 30px;
+}
+
+.clubs-contacts {
+    margin-top: 20px;
+}
+
+.clubs-contacts li {
+    display: block;
+    float: left;
+    margin-right: 40px;
 }
 /*END SLIDER*/

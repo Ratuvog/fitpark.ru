@@ -27,6 +27,7 @@
                                     <td></td>
                                 </tr>
                                 <? } ?>
+
                                 <tr>
                                     <td colspan="2">
                                         <div class="button-get-discount card-action-button action-button" href="/club/getDiscount/<?=$base['id'];?>"></div>
@@ -37,18 +38,24 @@
                                 </tr>
                                 <? } ?>
                                 <tr>
-                                    <td colspan="3" class="card-home card-icons"><div class="icon-home card-img-home"></div> <?=$base['address'];?></td>
+                                    <td colspan="3">
+                                        <ul class="clubs-contacts">
+                                            <li>
+                                               <div class="icon-home card-img-home"></div> <?=$base['address'];?>
+                                            </li>
+                                            <? if($base['site']) {?>
+                                            <li>
+                                                <a href="<?=$base['site'];?>"><div class="icon-hand-up card-img-hand-up"></div> <?=$base['site'];?></a>
+                                            </li>
+                                            <? } ?>
+                                            <? if($base['phone']) {?>
+                                            <li>
+                                                <div class="icon-phone card-img-phone"></div> <?=$base['phone'];?>
+                                            </li>
+                                            <? } ?>
+                                        </ul>
+                                    </td>
                                 </tr>
-                                <? if($base['site']) {?>
-                                <tr>
-                                    <td colspan="3" class="card-icons"><a href="<?=$base['site'];?>"><div class="icon-hand-up card-img-hand-up"></div> <?=$base['site'];?></a></td>
-                                </tr>
-                                <? } ?>
-                                <? if($base['phone']) {?>
-                                <tr>
-                                    <td colspan="3" class="card-icons"><div class="icon-phone card-img-phone"></div> <?=$base['phone'];?></td>
-                                </tr>
-                                <? } ?>
                             </table>
                         </section>
                     </header>
