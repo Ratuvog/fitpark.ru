@@ -7,6 +7,7 @@ class FitparkClubController extends FitparkBaseController {
     protected $m_countImagesOnRow  = 5;
     protected $m_countAnalogsOnRow = 4;
     private   $order = "Popularity";
+    private   $currency = " руб.";
     function __construct()
     {
         parent::__construct();
@@ -89,6 +90,9 @@ class FitparkClubController extends FitparkBaseController {
     protected function getRates()
     {
         $this->viewData['base']['rates'] = $this->fitpark_club_model->getRatesClub($this->m_clubId);
+        foreach ($this->viewData['base']['rates'] as &$currentRate) {
+            $currentRate['price'] = substr($currentRate['price'], 0, strpos($currentRate['price'], ".")).$this->currency;
+        }
     }
 
     protected function getReviews()
