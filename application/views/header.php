@@ -63,7 +63,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <div class="button-send"></div>
+                                    <div class="button-send button">Отправить</div>
                                 </td>
                             </tr>
 

@@ -30,10 +30,10 @@
 
                                 <tr>
                                     <td colspan="2">
-                                        <div class="button-get-discount card-action-button action-button" href="/club/getDiscount/<?=$base['id'];?>"></div>
+                                        <div class="button-get-discount button card-action-button action-button" href="/club/getDiscount/<?=$base['id'];?>">Получить скидку 5%</div>
                                     </td>
                                     <td >
-                                        <div class="button-guest button-guest-card card-action-button action-button" href="/club/getGuest/<?=$base['id'];?>"></div>
+                                        <div class="button-guest button button-guest-card card-action-button action-button" href="/club/getGuest/<?=$base['id'];?>">Гостевое посещение</div>
                                     </td>
                                 </tr>
                                 <? } ?>
@@ -155,7 +155,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2" align="center">
-                                                <div class="button-send submit-review"></div>
+                                                <div class="button-send button submit-review">Отправить</div>
                                             </td>
                                         </tr>
                                     </table>

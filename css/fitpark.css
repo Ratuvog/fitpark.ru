@@ -21,7 +21,7 @@ padding: 0;}
     background: -webkit-gradient(linear, left top, left bottom, from(#3af83a), to(#03b003));
     background: -moz-linear-gradient(top, #3af83a, #03b003);
     background: -o-linear-gradient(top, #3af83a, #03b003);
-    padding: 5px 10px;
+    padding: 4px 5px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -419,20 +419,11 @@ header-content>* {
 }
 
 .button-get-discount {
-    background: url('/image/get-discount.png');
     width: 217px;
-    height: 29px;
-    margin-top:  5px;
-    margin-bottom: 5px;
-    cursor: pointer;
 }
 .button-more {
     width: 217px;
-    height: 29px;
-    background: url('/image/more-details.png') no-repeat;
     margin-top: 5px;
-    margin-bottom: 5px;
-    cursor: pointer;
 }
 
 .mini-card-club-part {
@@ -481,13 +472,9 @@ header-content>* {
 }
 
 .button-guest {
-    background: url('/image/guest.png') no-repeat;
     width: 217px;
-    height: 29px;
-    cursor: pointer;
 }
-
-.main-img-club {
+main-img-club {
     margin-right: 45px;
     width: 350px;
 
@@ -651,10 +638,7 @@ text-overflow: ellipsis;
 }
 
 .button-send {
-    background: url('/image/send.png') no-repeat;
     width: 131px;
-    height: 29px;
-    cursor: pointer;
 }
 
 .add-review {
