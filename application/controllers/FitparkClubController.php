@@ -75,7 +75,7 @@ class FitparkClubController extends FitparkBaseController {
         /* init all data variables */
         $this->allowedPages = array('index','club','club/getDiscount', 'getGuest','getDiscount','addReview');
         $this->privateAllowedPages = array();
-
+        $this->headerData['order'] = $this->order;
         /* Load model */
         $this->load->model('fitpark_club_model');
     }
