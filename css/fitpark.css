@@ -13,6 +13,49 @@ root {
 * {margin: 0;
 padding: 0;}
 
+/* Style Buttons */
+
+.button {
+    border-top: 1px solid #3af83a;
+    background: #03b003;
+    background: -webkit-gradient(linear, left top, left bottom, from(#3af83a), to(#03b003));
+    background: -moz-linear-gradient(top, #3af83a, #03b003);
+    background: -o-linear-gradient(top, #3af83a, #03b003);
+    padding: 5px 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+/*    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;*/
+/*    box-shadow: rgba(0,0,0,1) 0 1px 0;*/
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    text-decoration: underline;
+    vertical-align: middle;
+    cursor: pointer;
+    min-width: 150px;
+    text-align: center;
+}
+
+.button:hover {
+    color: #ffffff;
+    background: #3af83a;
+    background: -webkit-gradient(linear, left top, left bottom, from(#03b003), to(#3af83a));
+    background: -moz-linear-gradient(top, #03b003, #3af83a);
+    background: -o-linear-gradient(top, #03b003, #3af83a);
+}
+
+.button:active {
+    border-top-color: #03b003;
+    background: #03b003;
+}
+
+/* End Style buttons*/
+
+
 header, nav, section, article, aside, footer {display:block}
 section section {
     float: left;
@@ -25,7 +68,7 @@ section section {
 body {
     background: #dddddd url('/image/background.png');
     margin: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: #333333;

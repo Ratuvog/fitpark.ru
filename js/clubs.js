@@ -74,5 +74,8 @@ $(function(){
         $("#filter").submit();
     })
 
-
+    // ПРименение натроек фильтра
+    $("#submit-filter").click(function(){
+        $("#filter").submit();
+    })
 })

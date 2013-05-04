@@ -39,7 +39,7 @@
                                     </div>
                                 </section>
                                 <section class="option">
-                                    <input type="submit" value="Принять" id="submit-filter" />
+                                    <div id="submit-filter" class="button">Принять</div>
                                 </section>
                             </form>
                         </td>
