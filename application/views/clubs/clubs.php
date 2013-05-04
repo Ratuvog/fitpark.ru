@@ -7,7 +7,7 @@
                                 <section class="option">
                                     <header class="name-option">
                                         <h3><?=$filter[0]->filterName;?>: </h3>
-                                        <div class="arrow"></div>
+                                        <div class="state-option arrow"></div>
                                         <div style="clear: both;"></div>
                                     </header>
                                     <ul class="values-option">
@@ -24,7 +24,7 @@
                                 <section class="option">
                                     <header class="name-option">
                                         <h3>Ценовой диапазон </h3>
-                                        <div class="arrow"></div>
+                                        <div class="state-option arrow"></div>
                                         <div style="clear: both;"></div>
                                     </header>
                                     <div class="slider" from="10" to="100"></div>
@@ -38,7 +38,9 @@
                                         <label for="">руб.</label>
                                     </div>
                                 </section>
-                                <input type="submit" value="Принять" id="submit-filter" />
+                                <section class="option">
+                                    <input type="submit" value="Принять" id="submit-filter" />
+                                </section>
                             </form>
                         </td>
                         <td valign="top">

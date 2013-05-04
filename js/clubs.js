@@ -21,6 +21,20 @@ $(function(){
         });
     })
 
+    // Схлопывание пунктов меня в фильтре
+    $(".name-option").click(function(){
+        var self = $(this);
+        if(self.data("state")==="collapse") {
+            self.find('.state-option').removeClass("right-arrow").addClass("arrow");
+            self.next().fadeIn();
+            self.data("state","expand");
+        } else {
+            self.find('.state-option').removeClass("arrow").addClass("right-arrow");
+            self.data("state","collapse");
+            self.next().fadeOut();
+        }
+    })
+
     // Сортировка
 
     function parseGetParams() {
