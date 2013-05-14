@@ -45,6 +45,15 @@ class FitparkBaseController extends CI_Controller {
 
         $this->baseModel = $ci->grocery_CRUD_Model;
         $this->addModel = $ci->my_model;
+
+        $this->breadCrumbsData[] = array(
+            'href'  => base_url(),
+            'title' => 'Главная'
+        );
+        $this->breadCrumbsData[] = array(
+            'href'  =>  site_url(array('clubs')),
+            'title' => 'Список клубов'
+        );
     }
 
     function init(){
@@ -98,7 +107,7 @@ class FitparkBaseController extends CI_Controller {
             $view = $this->view;
 
         $this->load->view($this->header, $this->headerData);
-        $this->load->view($this->breadCrumbs, $this->initBreadCrumbs());
+        $this->load->view($this->breadCrumbs, array("stack" => $this->breadCrumbsData) );
         $this->load->view($view, $this->viewData);
         $this->load->view($this->footer, $this->footerData);
     }

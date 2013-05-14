@@ -53,6 +53,7 @@ class FitparkClubsController extends FitparkBaseController {
             'order'    => $this->order,
             'baseUrlClub'   => $this->config->item("base_url")."/club/"
         );
+
         return $data;
     }
 
@@ -82,7 +83,10 @@ class FitparkClubsController extends FitparkBaseController {
             'order'         => $this->order,
             'baseUrlClub'   => $this->config->item("base_url")."/club/"
         );
-
+        $this->breadCrumbsData[] = array(
+            'href'  => current_url(),
+            'title' => 'Поиск клубов'
+        );
         // initialize view data
         $this->headerData = $this->initHeaderData();
         $this->renderScene();

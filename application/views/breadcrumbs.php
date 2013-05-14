@@ -1,11 +1,13 @@
 <div id="work-area">
         <header id="breadcrumbs">
             <ul>
-                <li><a href="#">Главная</a></li>
-                <?  foreach ($stack as $item) {
+                <? $flag = false; foreach ($stack as $item) {
                 ?>
+                    <? if($flag) { ?>
                     <li>→</li>
-                    <li><a href="#"><?=$item;?></a></li>
+                    <? } $flag = true; ?>
+
+                    <li><a href="<?=$item['href'];?>"><?=$item['title'];?></a></li>
                 <?
                 }
                 ?>

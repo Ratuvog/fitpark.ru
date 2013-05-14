@@ -21,7 +21,6 @@ class FitparkClubController extends FitparkBaseController {
 //            return ;
 //        }
         $this->m_clubId = $clubId;
-
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
         $this->view      = 'club/club';
@@ -33,6 +32,11 @@ class FitparkClubController extends FitparkBaseController {
         $this->getImages();
         $this->getAnalogs();
 
+        
+        $this->breadCrumbsData[] = array(
+            'href'  => current_url(),
+            'title' => $this->viewData['base']['name']
+        );
         /* Output in view */
         $this->renderScene();
     }
