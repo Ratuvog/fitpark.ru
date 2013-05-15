@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Фитпарк - Ваш проводник в мире фитнес-клубов</title>
+        <title>ФитПарк. Фитнес клубы Самары, тренажерные залы, фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.</title>
+        <meta name="description" content="ФитПарк – твой проводник в фитнес мир. У нас собраны отзывы, цены абонементов, стоимость услуг, расписания, контакты клубов. Весь фитнес Самара.">
+        <meta name="keywords" content="Фитнес, Самара, Клуб, Ботек, Империал, Алекс-фитнес, Кинап, Зебра, Территория фитнеса, Отзывы, Абонементы, Уран, Планета, Гейзер, Бассейн, Сок, Стоимость, Цены, Грация, Вива Лэнд, Лакшери, Акции, Самарский, Скидки, Купить, Матрешка, Тренажерный зал, Мтл арена">
         <link rel="stylesheet" href="/css/fitpark.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -12,7 +14,7 @@
     </head>
     <body>
         <header id="title">
-            <span class="name-section"><a href="#" class="my-link">Фитнес-клубы</a></span>
+            <span class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></span>
         </header>
 <!--        <section id="content" class="">
             <div class="image-set" id="slider">
