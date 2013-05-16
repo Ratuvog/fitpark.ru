@@ -161,6 +161,7 @@ header-content>* {
     border: 1px solid #333333;
     background: url('/image/search1.png');
     margin-right: 60px;
+    cursor: pointer;
 }
 
 .enter-link {
