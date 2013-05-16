@@ -14,17 +14,13 @@ class FitparkClubController extends FitparkBaseController {
         $this->init();
     }
 
-    public function club($clubId)
+    public function club($clubId, $isComment = FALSE)
     {
-//        if($this->m_clubId == NULL) {
-//            $this->toDefaultPage();
-//            return ;
-//        }
         $this->m_clubId = $clubId;
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
         $this->view      = 'club/club';
-
+        $this->viewData["isComment"] = $isComment;
         /* Get full info about club */
         $this->getBaseInfo();
         $this->getRates();
@@ -32,7 +28,7 @@ class FitparkClubController extends FitparkBaseController {
         $this->getImages();
         $this->getAnalogs();
 
-        
+
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),
             'title' => $this->viewData['base']['name']
@@ -71,7 +67,8 @@ class FitparkClubController extends FitparkBaseController {
                                              $this->input->post("name"),
                                              $this->input->post("plus"),
                                              $this->input->post("minus"));
-        redirect('club/'.$clubId);
+        $this->club($clubId,TRUE);
+//        redirect('club/'.$clubId);
     }
 
     public function init()

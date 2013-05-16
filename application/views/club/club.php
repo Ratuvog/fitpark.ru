@@ -63,7 +63,7 @@
                         <table cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <!--<td class="empty-tab"></td>-->
-                                <td class="tab active-tab" selector="#description-club">
+                                <td class="tab <? if(!$isComment) {?>active-tab<?}?>" selector="#description-club">
                                     <div ><a href="#">Описание</a></div>
                                 </td>
                                 <td class="spacer"></td>
@@ -71,19 +71,19 @@
                                     <div ><a href="#">Фотографии</a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="tab" selector="#review-club">
+                                <td class="tab <? if($isComment) {?>active-tab<?}?>" selector="#review-club">
                                     <div ><a href="#"><a href="#">Отзывы</a></a></div>
                                 </td>
                                 <td class="spacer"></td>
                                 <td class="empty-back-item"></td>
                             </tr>
                         </table>
-                        <section id="description-club" class="full-card-description tabs-content">
+                        <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">
                             <p>
                                 <?=$base['description'];?>
                             </p>
                         </section>
-                        <div id="review-club" class="full-card-description tabs-content hideClass">
+                        <div id="review-club" class="full-card-description tabs-content <? if(!$isComment) {?>hideClass<?}?> ">
                             <? if($reviews) { ?>
                             <? foreach ($reviews as $review){?>
                             <div class="review">

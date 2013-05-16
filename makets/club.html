@@ -105,13 +105,13 @@
                         <table cellpadding="0" cellspacing="0" >
                             <tr>
                                 <!--<td class="empty-tab"></td>-->
-                                <td class="tab active-tab">
+                                <td class="tab <? if(!$isComment) {?>active-tab<?}?>">
                                     <div >Описание</div>
                                 </td>
                                 <td class="tab">
                                     <div ><a href="#">Фотографии</a></div>
                                 </td>
-                                <td class="tab">
+                                <td class="tab <? if($isComment) {?>active-tab<?}?>">
                                     <div ><a href="#">Отзывы</a></div>
                                 </td>
                                 <td class="tab">
