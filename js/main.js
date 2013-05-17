@@ -25,5 +25,12 @@ $(function(){
         slider.startAuto();
         return false;
     })
+
+    // Центрирование кнопки
+    var widthControl = $(".main-controls-slide").width();
+    var widthContent = $(".bx-wrapper").width();
+    var offset = $(".bx-wrapper").offset();
+    $(".main-controls-slide").offset({left: offset["left"]+(widthContent/2-widthControl/2)});
+
 })
 
