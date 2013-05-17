@@ -13,83 +13,58 @@
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <header id="title">
-            <span class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></span>
-        </header>
-<!--        <section id="content" class="">
-            <div class="image-set" id="slider">
-                <img src="/image/main-slider1.png" alt="" width="1100" />
-                <img src="/image/main-slider2.png" alt="" width="1100" />
-                <img src="/image/main-slider3.png" alt="" width="1100" />
-            </div>
-            <table class="main-control">
-                <tr>
-                    <td align="center" valign="bottom">
-                        <table >
-                            <tr>
-                                <td align="center">
-                                    <div class="switch-slide">
-                                        <div class="non-active-point"></div>
-                                        <div class="non-active-point"></div>
-                                        <div class="non-active-point"></div>
-                                        <div style="clear: both;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <div class="main-button"></div>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </section>-->
-        <section id="content">
-            <ul class="bxslider">
-                <li><img src="/image/main-slider1.jpg" title="Funky roots" /></li>
-                <li><img src="/image/main-slider2.jpg" title="The long and winding road" /></li>
-                <li><img src="/image/main-slider3.jpg" title="Happy trees" /></li>
-            </ul>
-            <table width="100%" class="main-controls-slide">
-                <tr>
-                    <td align="center">
-<!--                        <div class="switch-slide">-->
-                       <div class="control-slide">
-                            <div class="active-point" index="0"></div>
-                            <div class="non-active-point" index="1"></div>
-                            <div class="non-active-point" index="2"></div>
+        <div class="main">
+            <header id="title">
+                <span class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></span>
+            </header>
+            <section id="content">
+                <ul class="bxslider">
+                    <li><img src="/image/main-slider1.jpg" title="Funky roots" /></li>
+                    <li><img src="/image/main-slider2.jpg" title="The long and winding road" /></li>
+                    <li><img src="/image/main-slider3.jpg" title="Happy trees" /></li>
+                </ul>
+                <table width="100%" class="main-controls-slide">
+                    <tr>
+                        <td align="center">
+            <!--                        <div class="switch-slide">-->
+                           <div class="control-slide">
+                                <div class="active-point" index="0"></div>
+                                <div class="non-active-point" index="1"></div>
+                                <div class="non-active-point" index="2"></div>
+                                <div style="clear: both;"></div>
+                            </div>
+            <!--                        </div>-->
                             <div style="clear: both;"></div>
-                        </div>
-<!--                        </div>-->
-                        <div style="clear: both;"></div>
-                        <div class="main-button"></div>
-                    </td>
-                </tr>
-            </table>
-            <section id="main-content">
-                <h2>Удобно</h2>
-<p>Мы собрали на ФитПарке все фитнес - клубы Самары.</p>
-<p>Больше не надо просматривать массу сайтов и сравнивать цены, проходящие акции, есть ли скидки, чем оборудован зал, каковы условия покупки абонементов и прочие параметры.</p>
-<p>Все есть у нас.</p>
+                            <div class="main-button"></div>
+                        </td>
+                    </tr>
+                </table>
+                <section id="main-content">
+                    <h2>Удобно</h2>
+            <p>Мы собрали на ФитПарке все фитнес - клубы Самары.</p>
+            <p>Больше не надо просматривать массу сайтов и сравнивать цены, проходящие акции, есть ли скидки, чем оборудован зал, каковы условия покупки абонементов и прочие параметры.</p>
+            <p>Все есть у нас.</p>
 
-<h2>Информативно</h2>
-<p>Мы сделали очень подробное описание каждого клуба.</p>
-<p>Благодаря этому легко можно узнать, что есть в фитнес – клубе (бассейн, кардиозона и т.п.), а фотографии дадут представление о том, в каком состоянии клуб.</p>
-<p>Отзывы посетителей и рейтинги помогут сделать верный выбор.</p>
+            <h2>Информативно</h2>
+            <p>Мы сделали очень подробное описание каждого клуба.</p>
+            <p>Благодаря этому легко можно узнать, что есть в фитнес – клубе (бассейн, кардиозона и т.п.), а фотографии дадут представление о том, в каком состоянии клуб.</p>
+            <p>Отзывы посетителей и рейтинги помогут сделать верный выбор.</p>
 
-<h2>Актуально</h2>
-<p>Мы постоянно контролируем изменение условий посещения и информации о клубах.</p>
-<p>Ради наших посетителей мы размещаем точное расписание занятий клубов, фамилии тренеров, ведущих занятие, стоимость услуг и прочие необходимые данные.</p>
-<p>И все эти данные проверены и точны.</p>
-<h2>Быстро</h2>
-<p>Не стоит тратить время на мониторинг условий, звонки в клубы, уточнение информации.</p>
-<p>Ведь мы дали возможность сразу связаться с менеджерами клуба онлайн, уточнить данные и сразу купить абонемент в фитнес – центр.</p>
-<p>Невероятная экономия времени с ФитПарком.</p>
+            <h2>Актуально</h2>
+            <p>Мы постоянно контролируем изменение условий посещения и информации о клубах.</p>
+            <p>Ради наших посетителей мы размещаем точное расписание занятий клубов, фамилии тренеров, ведущих занятие, стоимость услуг и прочие необходимые данные.</p>
+            <p>И все эти данные проверены и точны.</p>
+            <h2>Быстро</h2>
+            <p>Не стоит тратить время на мониторинг условий, звонки в клубы, уточнение информации.</p>
+            <p>Ведь мы дали возможность сразу связаться с менеджерами клуба онлайн, уточнить данные и сразу купить абонемент в фитнес – центр.</p>
+            <p>Невероятная экономия времени с ФитПарком.</p>
 
+                </section>
+                <div style="clear: both;"></div>
             </section>
-        </section>
+            <div class="spacer">
+            </div>
+        </div>
         <footer>
             <div class="centerSpan">
                 <div class="share42init"></div>

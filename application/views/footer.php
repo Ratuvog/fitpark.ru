@@ -1,4 +1,8 @@
-        </section>
+<div style="clear: both;"></div>
+</section>
+        <div class="spacer">
+        </div>
+ </div>
 <footer>
             <div class="centerSpan">
                 <div class="share42init"></div>

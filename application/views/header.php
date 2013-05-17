@@ -15,6 +15,7 @@
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
     <body>
+        <div class="main">
         <header id="title">
             <span class="name-section"><a href="<?=site_url(array('clubs'));?>" class="my-link">Фитнес-клубы</a></span>
         </header>
