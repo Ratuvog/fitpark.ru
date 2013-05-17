@@ -584,6 +584,10 @@ td.active-tab {
     width: 100%;
 }
 
+.analogs-list td {
+    padding-bottom: 100px;
+}
+
 .analogs-list>tbody>tr>td{
     width: 217px;
 }

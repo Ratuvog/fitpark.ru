@@ -184,7 +184,7 @@
                     </section>
                 </section>
                 <section class="analogs">
-                    <? if($analogs) {?>
+                    <? if($analogs && !$base['isHideAnalogs']) {?>
                     <header class="title-analogs-section">
                         <h2>
                             Похожие фитнес-клубы
@@ -192,16 +192,16 @@
                     </header>
                     <section>
                         <table class="analogs-list">
-                            <? $countClubs = 0; ?>
+                            <? $countClubs = 1; ?>
                             <? foreach ($analogs as $currentClub) { ?>
                                 <? if($countClubs%$countAnalogsOnRow==0) { ?>
                                 <tr>
                                 <? } ?>
                                 <td align="center">
-                                    <img src="<?=$currentClub['head_picture'];?>" alt="<?=$currentClub['name'];?>" />
+                                    <img src="<?=$currentClub['head_picture'];?>" alt="<?=$currentClub['name'];?>" height="134" />
                                     <div class="analog-name"><a href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
-                                    <div class="button-get-discount action-button"  href="/club/getDiscount/<?=$currentClub['id'];?>"></div>
-                                    <div class="button-more"></div>
+                                    <div class="button-get-discount button action-button"  href="/club/getDiscount/<?=$currentClub['id'];?>">Получить скидку 5%</div>
+                                    <a href="/club/<?=$currentClub['id'];?>"><div class="button-more button">Подробнее о клубе</div></a>
                                 </td>
                                 <? if($countClubs%($countAnalogsOnRow-1)==0) {?>
                                 </tr>

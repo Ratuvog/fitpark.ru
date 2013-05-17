@@ -83,7 +83,7 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getBaseInfo()
     {
-        $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->m_clubId);
+        $infoArray = $this->setEmptyPhoto($this->fitpark_club_model->getBaseInfoClub($this->m_clubId));
         $this->viewData['base'] = $infoArray[0];
         $this->headerData['order'] = $this->order;
     }
@@ -109,7 +109,7 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getAnalogs()
     {
-        $this->viewData['analogs']           = $this->fitpark_club_model->getAnalogs($this->m_clubId);
+        $this->viewData['analogs']           = $this->setEmptyPhoto($this->fitpark_club_model->getAnalogs($this->m_clubId));
         $this->viewData['countAnalogsOnRow'] = $this->m_countAnalogsOnRow;
     }
 }

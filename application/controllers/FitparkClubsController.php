@@ -64,7 +64,7 @@ class FitparkClubsController extends FitparkBaseController {
         $filter = array();
         if($this->filterEnabled)
             $filter = $this->generateFilter();
-        return $this->fitpark_model->getClubList($this->order, $limit,$offset, $filter);
+        return $this->setEmptyPhotoObject($this->fitpark_model->getClubList($this->order, $limit,$offset, $filter));
     }
 
     function search()

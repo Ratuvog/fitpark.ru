@@ -29,6 +29,9 @@ class FitparkBaseController extends CI_Controller {
     protected $baseModel;
     protected $addModel;
 
+    // Название пустого фото
+    protected $emptyPhoto = "no-foto.jpg";
+
     function __construct()
     {
         parent::__construct();
@@ -128,6 +131,28 @@ class FitparkBaseController extends CI_Controller {
         array_push($newstack, $this->titlePage);
         $this->session->set_userdata('breadcrumbs', $newstack);
         return array('stack' => $newstack);
+    }
+
+    protected function setEmptyPhoto($inData) {
+        foreach ($inData as &$data) {
+            foreach ($data as $key=>$value) {
+                if($key=="head_picture" && !$data[$key]) {
+                    $data[$key] = site_url(array("image",  $this->emptyPhoto));
+                }
+            }
+        }
+        return $inData;
+    }
+
+    protected function setEmptyPhotoObject($inData) {
+        foreach ($inData as &$data) {
+            foreach ($data as $key=>$value) {
+                if($key=="head_picture" && !$data->$key) {
+                    $data->$key = site_url(array("image",  $this->emptyPhoto));
+                }
+            }
+        }
+        return $inData;
     }
 
 }
