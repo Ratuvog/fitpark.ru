@@ -19,9 +19,9 @@
             </header>
             <section id="content">
                 <ul class="bxslider">
-                    <li><img src="/image/main-slider1.jpg" title="Funky roots" /></li>
-                    <li><img src="/image/main-slider2.jpg" title="The long and winding road" /></li>
-                    <li><img src="/image/main-slider3.jpg" title="Happy trees" /></li>
+                    <li><img src="/image/main-slider1.jpg"/></li>
+                    <li><img src="/image/main-slider2.jpg"/></li>
+                    <li><img src="/image/main-slider3.jpg"/></li>
                 </ul>
                 <table width="100%" class="main-controls-slide">
                     <tr>
