@@ -51,7 +51,7 @@ class FitparkClubsController extends FitparkBaseController {
             'services' => $this->getClubsServices(),
             'ratings'  => $this->getClubsTotalRating(),
             'order'    => $this->order,
-            'baseUrlClub'   => $this->config->item("base_url")."/club/"
+            'baseUrlClub'   => $this->config->item("base_url")."club/"
         );
 
         return $data;
@@ -81,7 +81,7 @@ class FitparkClubsController extends FitparkBaseController {
             'services'      => $this->getClubsServices(),
             'ratings'       => $this->getClubsTotalRating(),
             'order'         => $this->order,
-            'baseUrlClub'   => $this->config->item("base_url")."/club/"
+            'baseUrlClub'   => $this->config->item("base_url")."club/"
         );
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),
