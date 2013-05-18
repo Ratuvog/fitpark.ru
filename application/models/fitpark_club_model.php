@@ -116,7 +116,7 @@ class Fitpark_club_model extends CI_Model {
 
      /* Get info */
     private function getInfon($tableName, $row, $value) {
-        return $this->db->get_where($tableName,array($row=>$value))->result();
+        return $this->db->get_where($tableName,array($row=>$value))->result_array();
     }
 
     private function insertCheckout($clubid,$name, $email, $tel, $type)
