@@ -407,20 +407,9 @@ header-content>* {
     margin-right: 10px;
 }
 
-.services-pool {
+.icons-services div {
     width: 40px;
     height: 40px;
-    background: url('/image/pool.png') no-repeat;
-}
-.services-bicycle {
-    width: 40px;
-    height: 40px;
-    background: url('/image/сайкл.png') no-repeat;
-}
-.services-yoga {
-    width: 40px;
-    height: 40px;
-    background: url('/image/йога.png') no-repeat;
 }
 
 .level-club {

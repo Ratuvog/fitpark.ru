@@ -89,9 +89,9 @@
                                                         <ul class="icons-services">
                                                             <?if(key_exists($row->id, $services)) {
                                                                 foreach ($services[$row->id] as $opt) {
-                                                                    if(!empty($opt['class'])) {?>
+                                                                    if(!empty($opt['icon'])) {?>
                                                                 <li>
-                                                                    <div class="<?=$opt['class'];?>"></div>
+                                                                    <div style="background: url('<?=$opt['icon'];?>') no-repeat;" title="<?=$opt['name'];?>" class="services-club" ></div>
                                                                 </li>
                                                                   <?}
                                                                 }

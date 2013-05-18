@@ -194,6 +194,7 @@ class Fitpark_model extends CI_Model {
         $this->db->select("fitnesclub_services.id as serviceId,
                            fitnesclub_services.name as serviceName,
                            fitnesclub_services.class as class,
+                           fitnesclub_services.icon as icon,
                            fitnesclub_rel_services.clubId as clubId")
                 ->from("fitnesclub_rel_services")
                 ->join("fitnesclub_services", "fitnesclub_services.id = fitnesclub_rel_services.serviceId")

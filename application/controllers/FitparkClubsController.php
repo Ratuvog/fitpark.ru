@@ -114,9 +114,12 @@ class FitparkClubsController extends FitparkBaseController {
         $options = array();
         foreach ($results as $row)
         {
-            $options[$row->clubId] = array('id' => $row->serviceId,
-                                           'name' => $row->serviceName,
-                                           'class' => $row->class);
+            if(!key_exists($row->clubId, $options))
+                $options[$row->clubId] = array();
+            array_push($options[$row->clubId], array('id' => $row->serviceId,
+                                                     'name' => $row->serviceName,
+                                                     'class' => $row->class,
+                                                     'icon' => site_url(array('image',$row->icon))));
         }
         return $options;
     }
