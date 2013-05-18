@@ -137,6 +137,9 @@ body {
 }
 
 .logo {
+    width: 200px;
+    height: 60px;
+    background: url('/image/logo.png');
     margin-left: 10px;
     float: left;
     margin-right: 20px;

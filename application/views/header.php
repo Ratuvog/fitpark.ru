@@ -21,7 +21,7 @@
         </header>
         <section id="content">
             <header class="header">
-                <img src="/image/logo.png" alt="" width="200" height="60" class="logo"/>
+                <a href="<?=base_url();?>" class="logo"></a>
                 <div class="header-content">
                     <form action="/clubs/search" method="get">
                         <input type="hidden" name="order" value="<?=$order;?>"/>
