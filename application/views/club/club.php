@@ -170,7 +170,7 @@
                                     <? if($countImages%$countImagesOnRow) { ?>
                                     <tr>
                                     <? } ?>
-                                    <td><img src="<?=$currentImage['photo'];?>" alt="" /></td>
+                                        <td><img src="<?=site_url(array('image', 'club', $currentImage['photo']));?>" alt="" /></td>
                                     <? if($countImages%($countImagesOnRow-1)) {?>
                                     </tr>
                                     <? } ?>

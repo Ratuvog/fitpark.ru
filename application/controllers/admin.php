@@ -228,8 +228,8 @@ class Admin extends CI_Controller {
                 $crud->set_table($this->currentTable);
                 
                 $crud->set_field_upload('icon','assets/uploads/files');
-                $crud->set_field_upload('head_picture','assets/uploads/files');
-                
+                $crud->set_field_upload('head_picture','image/club');
+
                 $crud->set_relation_n_n('services', 'fitnesclub_rel_services',
                 'fitnesclub_services', 'clubId', 
                 'serviceId', 'name', 'priority');
@@ -284,7 +284,7 @@ class Admin extends CI_Controller {
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
                 $crud->set_relation('fitnesclubid','fitnesclub','name');
-                $crud->set_field_upload('photo','assets/uploads/files');
+                $crud->set_field_upload('photo','image/club');
                 $output = $crud->render();
                 $this->render($output);
         }

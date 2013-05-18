@@ -136,8 +136,11 @@ class FitparkBaseController extends CI_Controller {
     protected function setEmptyPhoto($inData) {
         foreach ($inData as &$data) {
             foreach ($data as $key=>$value) {
-                if($key=="head_picture" && !$data[$key]) {
-                    $data[$key] = site_url(array("image",  $this->emptyPhoto));
+                if($key=="head_picture") {
+                    if(!$data[$key])
+                        $data[$key] = site_url(array("image",  $this->emptyPhoto));
+                    else 
+                        $data[$key] = site_url(array("image",  $data[$key]));
                 }
             }
         }
