@@ -140,7 +140,7 @@ class FitparkBaseController extends CI_Controller {
                     if(!$data[$key])
                         $data[$key] = site_url(array("image",  $this->emptyPhoto));
                     else 
-                        $data[$key] = site_url(array("image",  $data[$key]));
+                        $data[$key] = site_url(array("image", "club", $data[$key]));
                 }
             }
         }
@@ -152,9 +152,9 @@ class FitparkBaseController extends CI_Controller {
             foreach ($data as $key=>$value) {
                 if($key=="head_picture") {
                     if(!$data->$key)
-                        $data->$key = site_url(array("image",  $this->emptyPhoto));
+                        $data->$key = site_url(array("image", $this->emptyPhoto));
                     else 
-                        $data->$key = site_url(array("image",  $data->$key));
+                        $data->$key = site_url(array("image", "club",  $data->$key));
                 }
             }
         }

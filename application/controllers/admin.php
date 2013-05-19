@@ -292,7 +292,7 @@ class Admin extends CI_Controller {
             
         function index()
 	{
-            $this->clubs();
+            redirect('admin/clubs');
 	}		
 }
 ?>
