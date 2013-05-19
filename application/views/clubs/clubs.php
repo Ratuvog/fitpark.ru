@@ -13,10 +13,11 @@
                                     <ul class="values-option">
                                         <?  foreach ($filter as $item){
                                             $optinonName = "option".$item->filterid."-".$item->id;?>
-                                        <li><input name="<?=$optinonName;?>"
-                                                   type="checkbox" <?if($activeFilters[$optinonName] === true) echo 'checked';?>/>
-                                             <?=$item->name;?>
+                                        <li>
+                                             <input id="<?=$optinonName;?>" type="checkbox" <?if($activeFilters[$optinonName] === true) echo 'checked';?> class="green-checkbox"/>
+                                             <label for="<?=$optinonName;?>" class="green-checkbox-label"><?=$item->name;?></label>
                                         </li>
+
                                         <?}?>
                                     </ul>
                                 </section>

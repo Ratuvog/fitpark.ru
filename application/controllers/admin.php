@@ -112,7 +112,7 @@ class Admin extends CI_Controller {
             }
             $table = $_POST['table'];
             $config['upload_path'] = 'assets/uploads/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload())

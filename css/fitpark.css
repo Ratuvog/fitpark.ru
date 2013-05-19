@@ -120,7 +120,7 @@ body {
     color: #777;
 
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
 
     border-right: 1px solid rgba(67, 105, 53, 0.78);
     border-left: 1px solid rgba(183, 253, 165, 0.7);
@@ -280,8 +280,8 @@ header-content>* {
 }
 
 #breadcrumbs {
-    margin-bottom: 27px;
-    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-top: 25px;
 }
 
 #breadcrumbs a{
@@ -323,6 +323,34 @@ header-content>* {
     display: block;
 }
 
+input[type=checkbox].green-checkbox{ 
+    display:none;
+}  
+
+input[type=checkbox].green-checkbox + label.green-checkbox-label { 
+    padding-left:20px;
+    height:15px; 
+    display:inline-block;
+    line-height:15px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:15px;
+    vertical-align:middle;
+    cursor:pointer;
+}  
+
+input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
+    background-position: 0 -15px;
+}  
+
+.green-checkbox-label{ 
+    background-image: url(/image/lite-green-check.png); 
+}
+
+.values-option{
+    margin-left: 10px;
+}
+
 .values-option li{
     list-style-type: none;
 }
@@ -332,7 +360,7 @@ header-content>* {
 }
 
 .name-option h3 {
-    text-decoration: underline;
+    text-decoration: none;
     float: left;
 }
 
@@ -357,11 +385,11 @@ header-content>* {
 }
 
 .name-option {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .option {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     display: block;
 }
 #clubs-content {
@@ -402,6 +430,7 @@ header-content>* {
 
 .options {
     width: 200px;
+    padding-top: 10px;
 }
 
 #clubs-list {
