@@ -12,7 +12,6 @@
                             <header class="card-name-club">
                                 <h3><?=$base['name'];?></h3>
                             </header>
-
                             <table>
                                 <? if($base['rates']){ ?>
                                 <tr>
