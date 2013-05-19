@@ -110,7 +110,7 @@ body {
 
     background: url('/image/header-bkgrnd.png');
     box-shadow: 0 2px 5px #5d5d5d;
-    
+
     margin-bottom: 10px;
 }
 
@@ -126,7 +126,7 @@ body {
     border-left: 1px solid rgba(183, 253, 165, 0.7);
     border-bottom: 1px solid rgb(101, 180, 82);
     border-top: 1px solid rgba(215, 255, 215, 0.7);
-    
+
     padding: 7px;
     padding-left: 20px;
     padding-right: 20px;
@@ -136,12 +136,12 @@ body {
 
 .name-section:hover {
     background: rgba(195, 240, 181, 0.54);
-    
+
     background-image: -moz-linear-gradient(#fafbfd, rgb(209, 236, 219));
     background-image: -webkit-linear-gradient(#fafbfd, rgb(209, 236, 219));
     background-image: linear-gradient(#fafbfd, rgb(209, 236, 219));
-    
-    
+
+
     border-left: 1px solid rgba(67, 105, 53, 0.78);
     border-right: 1px solid rgba(183, 253, 165, 0.7);
     border-top: 1px solid rgb(101, 180, 82);
@@ -330,13 +330,13 @@ header-content>* {
     display: block;
 }
 
-input[type=checkbox].green-checkbox{ 
+input[type=checkbox].green-checkbox{
     display:none;
-}  
+}
 
-input[type=checkbox].green-checkbox + label.green-checkbox-label { 
+input[type=checkbox].green-checkbox + label.green-checkbox-label {
     padding-left:20px;
-    height:15px; 
+    height:15px;
     display:inline-block;
     line-height:15px;
     background-repeat:no-repeat;
@@ -344,14 +344,14 @@ input[type=checkbox].green-checkbox + label.green-checkbox-label {
     font-size:15px;
     vertical-align:middle;
     cursor:pointer;
-}  
+}
 
 input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     background-position: 0 -15px;
-}  
+}
 
-.green-checkbox-label{ 
-    background-image: url(/image/lite-green-check.png); 
+.green-checkbox-label{
+    background-image: url(/image/lite-green-check.png);
 }
 
 .values-option{
@@ -513,10 +513,11 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 
 .short-description-card {
     float: left;
-    background-color: #CCCCCC;
+    background-color: rgb(243, 243, 243);
     padding: 20px;
     border-radius: 15px;
 }
+
 
 
 .short-description-card header {
@@ -524,27 +525,38 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .icon-home {
-    background: url('/image/png/glyphicons_020_home.png') no-repeat;
+    background: url('/image/home.png') no-repeat;
     width: 27px;
     height: 27px;
     float: left;
+    position: relative;
+    top: -2px;
     margin-right: 5px;
 }
 
 .icon-hand-up {
-    background: url('/image/png/glyphicons_347_hand_up.png') no-repeat;
-    width: 19px;
-    height: 26px;
+    background: url('/image/monitor.png') no-repeat;
+    width: 27px;
+    height: 27px;
     float: left;
+    position: relative;
+    top: -2px;
     margin-right: 5px;
 }
 
 .icon-phone {
-    background: url('/image/png/glyphicons_169_phone.png') no-repeat;
-    width: 15px;
-    height: 25px;
+    background: url('/image/mobile-phone.png') no-repeat;
+    width: 27px;
+    height: 27px;
+    position: relative;
+    top: -2px;
     float: left;
     margin-right: 5px;
+}
+
+.spacer {
+    width: 10px;
+    border-bottom: 1px solid #a1a1a1;
 }
 
 .button-guest {
