@@ -309,6 +309,13 @@ header-content>* {
     height: 100%;
     /*width: 1000px;*/
 }
+.list-header{
+    height: 50px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background: rgb(227, 243, 222);
+}
 
 #clubs-content>aside {
     float: left;
@@ -411,21 +418,18 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .type-sort li a{
-    text-decoration: underline;
+    text-decoration: none;
     color: #333333;
 }
 
 .type-sort li a:hover {
-    text-decoration: none;
+    color: #387038;
+    font-weight: bold;
 }
 
 .active {
     text-decoration: none;
     font-weight: bold;
-}
-
-.active:hover {
-    text-decoration: underline;
 }
 
 .options {
@@ -442,8 +446,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .title-section-fitnes {
-    margin-top: 10px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 }
 
 .mini-card-club {

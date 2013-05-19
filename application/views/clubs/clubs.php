@@ -45,22 +45,20 @@
                             </form>
                         </td>
                         <td valign="top">
-                            <header>
+                            <header class="list-header">
                                 <h1 class="title-section-fitnes">Фитнес клубы</h1>
-                                <div class="type-sort">
-                                    <ul>
-                                        <li class="title-type-sort">Сортировать по: </li>
-                                        <li class="item-type-sort <?if($order=='Popularity') echo 'active';?>">
-                                            <a class="sorter" href="Popularity">популярности</a>
-                                        </li>
-                                        <li class="item-type-sort <?if($order=='PriceDesc') echo 'active';?>">
-                                            <a class="sorter" href="PriceDesc">цене (сначала дорогие)</a>
-                                        </li>
-                                        <li class="item-type-sort <?if($order=='PriceAsc') echo 'active';?>">
-                                            <a class="sorter" href="PriceAsc">цене (сначала недорогие)</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="type-sort">
+                                    <li class="title-type-sort">Сортировать: </li>
+                                    <li class="item-type-sort <?if($order=='Popularity') echo 'active';?>">
+                                        <a class="sorter" href="Popularity">популярность</a>
+                                    </li>
+                                    <li class="item-type-sort <?if($order=='PriceDesc') echo 'active';?>">
+                                        <a class="sorter" href="PriceDesc">дорогие</a>
+                                    </li>
+                                    <li class="item-type-sort <?if($order=='PriceAsc') echo 'active';?>">
+                                        <a class="sorter" href="PriceAsc">недорогие</a>
+                                    </li>
+                                </ul>
                             </header>
                             <section id="list">
                                 <? foreach ($content as $row) {
