@@ -6,7 +6,7 @@ class FitparkClubController extends FitparkBaseController {
     protected $m_clubId = 0;
     protected $m_countImagesOnRow  = 5;
     protected $m_countAnalogsOnRow = 4;
-    private   $order = "Popularity";
+    private   $order = "rating";
     private   $currency = " руб.";
     function __construct()
     {

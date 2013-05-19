@@ -46,17 +46,17 @@
                         </td>
                         <td valign="top">
                             <header class="list-header">
-                                <h1 class="title-section-fitnes">Фитнес клубы</h1>
+                                <h1 class="title-section-fitnes"><?=$list_header;?></h1>
                                 <ul class="type-sort">
                                     <li class="title-type-sort">Сортировать: </li>
-                                    <li class="item-type-sort <?if($order=='Popularity') echo 'active';?>">
-                                        <a class="sorter" href="Popularity">популярность</a>
+                                    <li class="item-type-sort <?if($order=='rating') echo 'active';?>">
+                                        <a class="sorter" href="<?=site_url(array('clubs','sort','rating'));?>">популярность</a>
                                     </li>
-                                    <li class="item-type-sort <?if($order=='PriceDesc') echo 'active';?>">
-                                        <a class="sorter" href="PriceDesc">дорогие</a>
+                                    <li class="item-type-sort <?if($order=='pricedesc') echo 'active';?>">
+                                        <a class="sorter" href="<?=site_url(array('clubs','sort','pricedesc'));?>">дорогие</a>
                                     </li>
-                                    <li class="item-type-sort <?if($order=='PriceAsc') echo 'active';?>">
-                                        <a class="sorter" href="PriceAsc">недорогие</a>
+                                    <li class="item-type-sort <?if($order=='priceasc') echo 'active';?>">
+                                        <a class="sorter" href="<?=site_url(array('clubs','sort','priceasc'));?>">недорогие</a>
                                     </li>
                                 </ul>
                             </header>

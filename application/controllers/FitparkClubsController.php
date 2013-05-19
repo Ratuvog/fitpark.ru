@@ -9,49 +9,53 @@ class FitparkClubsController extends FitparkBaseController {
     private $tableFilterList = array('fitnesclub_services',
                                      'fitnesclub_subscribe',
                                      'district');
-    private $sortOrderList = array('Popularity', 'PriceDesc','PriceAsc');
-    private $order = 'Popularity';
+    private $sortOrderList = array('rating', 'pricedesc','priceasc');
+    private $order = 'rating';
     private $activeFilters = array();
     private $filterEnabled = false;
     private $nonFilterField = array("order");
+    private $searchQuery;
 
     function __construct()
     {
         parent::__construct();
         $this->allowedPages = array('index','clubs','filter','sort','filter','search');
         $this->privateAllowedPages = array();
+        $this->titlePage = 'Фитнес клубы';
+        $this->view= 'clubs/clubs';
     }
 
     public function init()
     {
-        $this->titlePage = 'Фитнес-клубы';
-        $this->view = 'clubs/clubs';
+        $this->searchQuery = $this->session->userdata('search');
+        
         $this->viewData   = $this->initViewData();
         $this->headerData = $this->initHeaderData();
+    }
+
+    public function clubs()
+    {
+        $this->session->unset_userdata('search');
+        $this->index();
     }
 
     private function initHeaderData()
     {
         $data = array();
-        if($this->input->get("order"))
-            $data["order"] = $this->input->get("order");
-        else
-            $data["order"] = 'Popularity';
         return $data;
     }
 
     private function initViewData()
     {
-        if($this->input->get("order"))
-            $this->order = $this->input->get("order");
         $data = array(
-            'filters'  => $this->getFilters(),
-            'content'  => $this->getClubList(),
+            'list_header'   => $this->titlePage,
+            'filters'       => $this->getFilters(),
             'activeFilters' => $this->activeFilters,
-            'services' => $this->getClubsServices(),
-            'ratings'  => $this->getClubsTotalRating(),
-            'order'    => $this->order,
-            'baseUrlClub'   => $this->config->item("base_url")."club/"
+            'services'      => $this->getClubsServices(),
+            'ratings'       => $this->getClubsTotalRating(),
+            'order'         => $this->prepareOrder(),
+            'baseUrlClub'   => $this->config->item("base_url")."club/",
+            'content'       => $this->getClubList()
         );
 
         return $data;
@@ -61,42 +65,38 @@ class FitparkClubsController extends FitparkBaseController {
     {
         $limit = $this->showRecOnPage;
         $offset = $this->showRecOnPage*$this->pageNumber;
+        
         $filter = array();
         if($this->filterEnabled)
             $filter = $this->generateFilter();
-        return $this->setEmptyPhotoObject($this->fitpark_model->getClubList($this->order, $limit,$offset, $filter));
+        
+        if(!empty($this->searchQuery))
+            return $this->setEmptyPhotoObject($this->getClubsByString());
+        
+        return $this->setEmptyPhotoObject($this->fitpark_model->getClubList($this->order, $limit, $offset, $filter));
     }
 
     function search()
     {
-        $this->titlePage = "Поиск фитнес-клубов";
-        $this->view      = "clubs/clubs";
-        if($this->input->get("order"))
-            $this->order = $this->input->get("order");
-        // Initialize content data
-        $this->viewData  = array(
-            'filters'       => $this->getFilters(),
-            'content'       => $this->getClubsByString($this->input->get("search")),
-            'activeFilters' => $this->activeFilters,
-            'services'      => $this->getClubsServices(),
-            'ratings'       => $this->getClubsTotalRating(),
-            'order'         => $this->order,
-            'baseUrlClub'   => $this->config->item("base_url")."club/"
-        );
+        $this->searchQuery = $this->input->post("search");
+        $this->session->set_userdata('search', $this->searchQuery);
+        
+        $this->titlePage = "Поиск фитнес клубов: ".$this->searchQuery;
+
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),
             'title' => 'Поиск клубов'
         );
-        // initialize view data
-        $this->headerData = $this->initHeaderData();
-        $this->renderScene();
+        $this->index();
+
     }
 
-    private function getClubsByString($queryString)
+    private function getClubsByString()
     {
         $limit = $this->showRecOnPage;
         $offset = $this->showRecOnPage*$this->pageNumber;
-        return $this->fitpark_model->getClubsByName($queryString, $this->order, $limit, $offset);
+      
+        return $this->fitpark_model->getClubsByName($this->searchQuery, $this->order, $limit, $offset);
     }
 
     private function getClubsTotalRating()
@@ -146,8 +146,18 @@ class FitparkClubsController extends FitparkBaseController {
 
     private function setSortOrder($how)
     {
-        if(array_search($how, $this->sortOrderList))
+        if(in_array($how, $this->sortOrderList))
+        {
+            $this->session->set_userdata('order', $how);
             $this->order = $how;
+        }
+    }
+    
+    private function prepareOrder()
+    {   
+        if($this->session->userdata('order'))
+            $this->order = $this->session->userdata('order');
+        return $this->order;
     }
 
     public function filter()
