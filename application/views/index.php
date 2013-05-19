@@ -14,9 +14,15 @@
     </head>
     <body>
         <div class="main">
-            <header id="title">
-                <span class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></span>
-            </header>
+        <header id="title">
+            <div id="title-menu">
+                <ul>
+                    <li class="name-section"><a href="#" class="my-link">Главная</a></li>
+                    <li class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</li>
+                    <li class="name-section"><a href="#" class="my-link">О ФитПарке</a></li>
+                </ul>
+            </div>
+        </header>
             <section id="content">
                 <ul class="bxslider">
                     <li><img src="/image/main-slider1.jpg"/></li>

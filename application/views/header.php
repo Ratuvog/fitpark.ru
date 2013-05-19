@@ -17,7 +17,13 @@
     <body>
         <div class="main">
         <header id="title">
-            <span class="name-section"><a href="<?=site_url(array('clubs'));?>" class="my-link">Фитнес-клубы</a></span>
+            <div id="title-menu">
+                <ul>
+                    <li class="name-section"><a href="<?=base_url();?>" class="my-link">Главная</a></li>
+                    <li class="name-section"><a href="<?=site_url(array('clubs'));?>" class="my-link">Фитнес-клубы</li>
+                    <li class="name-section"><a href="<?=site_url(array('#'));?>" class="my-link">О ФитПарке</a></li>
+                </ul>
+            </div>
         </header>
         <section id="content">
             <header class="header">

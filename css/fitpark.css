@@ -94,15 +94,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-/*    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin-bottom: -100px;*/
-    /*box-shadow: 2px 0 20px #5d5d5d;*/
-}
-
-.spacer {
-    height: 160px;
+    border-radius: 3px;
+    padding-bottom: 5px;
 }
 
 #content:before,
@@ -112,18 +105,57 @@ body {
   content: "";
 }
 
-
 #title {
-    padding-left:  77px ;
+    height: 37px;
+
     background: url('/image/header-bkgrnd.png');
-    height: 35px;
-    box-shadow: 0 2px 20px #5d5d5d;
+    box-shadow: 0 2px 5px #5d5d5d;
+    
+    margin-bottom: 10px;
 }
 
 .name-section {
     display: block;
-    height: auto;
+
+    color: #777;
+
+    text-align: center;
+    font-size: 12px;
+
+    border-right: 1px solid rgba(67, 105, 53, 0.78);
+    border-left: 1px solid rgba(183, 253, 165, 0.7);
+    border-bottom: 2px solid rgb(101, 180, 82);
+    border-top: 1px solid rgba(215, 255, 215, 0.7);
+    
     padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    float: left;
+}
+
+.name-section:hover {
+    background: rgba(195, 240, 181, 0.54);
+    
+    background-image: -moz-linear-gradient(#fafbfd, rgb(209, 236, 219));
+    background-image: -webkit-linear-gradient(#fafbfd, rgb(209, 236, 219));
+    background-image: linear-gradient(#fafbfd, rgb(209, 236, 219));
+    
+    
+    border-left: 1px solid rgba(67, 105, 53, 0.78);
+    border-right: 1px solid rgba(183, 253, 165, 0.7);
+    border-top: 1px solid rgb(101, 180, 82);
+    border-bottom: 2px solid rgba(205, 245, 205, 0.7);
+}
+
+.name-section:hover a{
+    color: rgb(22, 92, 19);
+}
+
+#title-menu {
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .my-link  {
@@ -133,7 +165,7 @@ body {
 }
 
 .my-link:hover  {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .logo {
@@ -520,11 +552,6 @@ main-img-club {
     text-align: center;
 }
 
-.spacer {
-    border-bottom: 1px solid #a1a1a1;
-    width: 16px;
-}
-
 .tab div {
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
@@ -899,7 +926,7 @@ footer {
     background: url('/image/footer.png') repeat-x;
     color: white;
     height: 160px;
-    margin-top: -160px;
+    margin-top: 10px;
 }
 
 #main-content {
