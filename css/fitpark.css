@@ -106,7 +106,7 @@ body {
 }
 
 #title {
-    height: 37px;
+    height: 35px;
 
     background: url('/image/header-bkgrnd.png');
     box-shadow: 0 2px 5px #5d5d5d;
@@ -124,7 +124,7 @@ body {
 
     border-right: 1px solid rgba(67, 105, 53, 0.78);
     border-left: 1px solid rgba(183, 253, 165, 0.7);
-    border-bottom: 2px solid rgb(101, 180, 82);
+    border-bottom: 1px solid rgb(101, 180, 82);
     border-top: 1px solid rgba(215, 255, 215, 0.7);
     
     padding: 7px;
@@ -145,7 +145,7 @@ body {
     border-left: 1px solid rgba(67, 105, 53, 0.78);
     border-right: 1px solid rgba(183, 253, 165, 0.7);
     border-top: 1px solid rgb(101, 180, 82);
-    border-bottom: 2px solid rgba(205, 245, 205, 0.7);
+    border-bottom: 1px solid rgba(205, 245, 205, 0.7);
 }
 
 .name-section:hover a{
