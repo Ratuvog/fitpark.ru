@@ -11,6 +11,8 @@
         <!--<link rel="stylesheet" href="/js/slider/jquery.bxslider.css" />-->
         <script type="text/javascript" src="/js/main.js"> </script>
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
+        <meta name='yandex-verification' content='781c2dd8ae286aca' />
+        <meta name="google-site-verification" content="LPcTvq9lj7flD6_bLTq3HL-vJF9SFxRaLNq0eWIYGLs" />
     </head>
     <body>
         <div class="main">
@@ -76,6 +78,7 @@
                 <div class="share42init"></div>
                 <script type="text/javascript" src="/js/share42/share42.js"></script>
                 <script type="text/javascript">share42('http://фитпарк.рф/js/share42/')</script>
+                <hr/>
             </div>
             <div class="centerSpan">
                 <p>Проводник в мир фитнеса «ФитПарк». Фитнес клубы, расписание тренировок, цены абонементов, отзывы.</p>
@@ -83,10 +86,49 @@
                 <p>
                    «ФитПарк» 2012-2013. Все права защищены.
                 </p>
-                <hr/>
             </div>
         </footer>
         <!--footer-->
+        <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38777113-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter20271514 = new Ya.Metrika({id:20271514,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/20271514" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
     </body>
 </html>
 

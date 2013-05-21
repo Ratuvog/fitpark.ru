@@ -74,14 +74,50 @@ class Fitpark_club_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    function getGuest($clubId, $name, $email, $tel)
+    function getGuest($clubId, $name, $tel, $email, $date)
     {
-        $this->insertCheckout($clubId, $name, $email, $tel, 2);
+        $data = array(
+            "clubid" => $clubId,
+            "name"   => $name,
+            "tel"    => $tel,
+            "email"  => $email,
+            "date"   => $date
+        );
+        $this->db->insert("guest", $data);
     }
 
-    function getDiscount($clubId, $name, $email, $tel)
+    function getAbonement($clubId, $name, $surname, $tel, $email, $date)
     {
-        $this->insertCheckout($clubId, $name, $email, $tel, 1);
+        $data = array(
+            "clubid" =>$clubId,
+            "name"   =>$name,
+            "surname"=>$surname,
+            "tel"    =>$surname,
+            "email"  =>$email,
+            "date"   =>$date
+        );
+        $this->db->insert("Abonements", $data);
+    }
+
+    function getFeedback($clubId, $name, $tel)
+    {
+        $data = array(
+            "clubId" => $clubId,
+            "name"   => $name,
+            "tel"    => $tel
+        );
+        $this->db->insert("feedback", $data);
+    }
+
+    function getQuestion($clubId, $name, $email, $question)
+    {
+        $data = array(
+            "clubid"  => $clubId,
+            "name"    => $name,
+            "email"   => $email,
+            "question"=> $question
+        );
+        $this->db->insert("question", $data);
     }
 
     function addClubView($clubId)

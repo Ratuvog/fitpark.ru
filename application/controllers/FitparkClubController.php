@@ -42,22 +42,45 @@ class FitparkClubController extends FitparkBaseController {
     {
         $this->fitpark_club_model->getGuest($clubId,
                                             $this->input->post("name"),
+                                            $this->input->post("tel"),
                                             $this->input->post("e-mail"),
-                                            $this->input->post("tel"));
+                                            $this->input->post("date"));
         $this->titlePage = "Ваша заявка принята";
         $this->view      = 'club/success_checkout';
         $this->renderScene();
     }
 
 //    Получение скидки
-    public function getDiscount($clubId)
+    public function getAbonement($clubId)
     {
         $this->titlePage = "Ваша заявка принята";
         $this->view      = 'club/success_checkout';
-        $this->fitpark_club_model->getDiscount($clubId,
+        $this->fitpark_club_model->getAbonement($clubId,
                                                $this->input->post("name"),
+                                               $this->input->post("surname"),
+                                               $this->input->post("tel"),
                                                $this->input->post("e-mail"),
-                                               $this->input->post("tel"));
+                                               $this->input->post("date"));
+        $this->renderScene();
+    }
+
+    public function getFeedback($clubId) {
+        $this->titlePage = "Ваша заявка принята";
+        $this->view      = 'club/success_checkout';
+        $this->fitpark_club_model->getFeedback($clubId,
+                                               $this->input->post("name"),
+                                               $this->input->post("tel")
+                );
+        $this->renderScene();
+    }
+
+    public function getQuestion($clubId) {
+        $this->titlePage = "Ваша заявка принята";
+        $this->view      = 'club/success_checkout';
+        $this->fitpark_club_model->getQuestion($clubId,
+                                               $this->input->post("name"),
+                                               $this->input->post("email"),
+                                               $this->input->post("question"));
         $this->renderScene();
     }
 
@@ -68,7 +91,6 @@ class FitparkClubController extends FitparkBaseController {
                                              $this->input->post("plus"),
                                              $this->input->post("minus"));
         $this->club($clubId,TRUE);
-//        redirect('club/'.$clubId);
     }
 
     public function init()

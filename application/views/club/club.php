@@ -3,7 +3,7 @@
                         <section class="main-img-club">
                             <table width="100%" height="100%">
                                 <tr>
-                                    <td align="center"><img style="max-width: 310px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" /></td>
+                                    <td align="center"><img style="max-width: 290px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" /></td>
                                 </tr>
                             </table>
 
@@ -15,8 +15,21 @@
                             <table>
                                 <? if($base['rates']){ ?>
                                 <tr>
-                                    <td colspan="3">
+                                    <td colspan="2">
                                         <h4 class="variation-abonements">Варианты абонементов</h4>
+                                    </td>
+                                    <td>
+                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-feedback" href="/club/getFeedback/<?= $base['id']; ?>">
+                                                    <ul>
+                                                        <li>
+                                                            <div class="icon-small-help"></div>
+                                                        </li>
+                                                        <li>
+                                                            <span class="button-text">Заказать звонок из клуба</span>
+                                                        </li>
+                                                    </ul>
+                                                    <div style="clear: both;"></div>
+                                                </div>
                                     </td>
                                 </tr>
                                 <? foreach ($base['rates'] as $currentRate){ ?>
@@ -28,33 +41,47 @@
                                 <? } ?>
 
                                 <tr>
-                                    <td colspan="2">
-                                        <div class="button-get-discount button card-action-button action-button" href="/club/getDiscount/<?=$base['id'];?>">Получить скидку 5%</div>
+                                    <td>
+                                        <div class="button-get-discount button-club card-action-button action-button" selector="#get-abon" href="/club/getAbonement/<?=$base['id'];?>">
+                                            <ul>
+                                                <li>
+                                                    <div class="icon-small-buy"></div>
+                                                </li>
+                                                <li>
+                                                    <span class="button-text">Заявка на карту клуба</span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </td>
                                     <td >
-                                        <div class="button-guest button button-guest-card card-action-button action-button" href="/club/getGuest/<?=$base['id'];?>">Гостевое посещение</div>
+                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-guest" href="/club/getGuest/<?=$base['id'];?>">
+                                            <ul>
+                                                <li>
+                                                    <div class="icon-small-calendar"></div>
+                                                </li>
+                                                <li>
+                                                    <span class="button-text">Посетить клуб</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </td>
+                                    <td >
+                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-answer" href="/club/getQuestion/<?=$base['id'];?>">
+                                            <ul>
+                                                <li>
+                                                    <div class="icon-small-help"></div>
+                                                </li>
+                                                <li>
+                                                    <span class="button-text">Вопрос менеджеру клуба</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td >
                                     </td>
                                 </tr>
                                 <? } ?>
-                                <tr>
-                                    <td colspan="3">
-                                        <ul class="clubs-contacts">
-                                            <li>
-                                               <div class="icon-home card-img-home"></div> <?=$base['address'];?>
-                                            </li>
-                                            <? if($base['site']) {?>
-                                            <li>
-                                                <a href="<?=$base['site'];?>"><div class="icon-hand-up card-img-hand-up"></div> <?=$base['site'];?></a>
-                                            </li>
-                                            <? } ?>
-                                            <? if($base['phone']) {?>
-                                            <li>
-                                                <div class="icon-phone card-img-phone"></div> <?=$base['phone'];?>
-                                            </li>
-                                            <? } ?>
-                                        </ul>
-                                    </td>
-                                </tr>
                             </table>
                         </section>
                     </header>
@@ -78,7 +105,44 @@
                             </tr>
                         </table>
                         <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">
+
+                                    <div class="club-info"><div class="desc-text">
+                                        <div class="icon-home card-img-home"></div> <div class="text-card-club"><?= $base['address']; ?></div>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                        <? if ($base['phone']) { ?>
+                                        <div class="desc-text">
+                                            <div class="icon-phone card-img-phone"></div> <div><?= $base['phone']; ?></div>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                        <? } ?>
+                                        <? if ($base['site']) { ?>
+                                        <div class="desc-text">
+                                            <a href=http://<?= $base['site']; ?>><div class="icon-hand-up card-img-hand-up"></div> <div><?= $base['site']; ?></div></a>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                        <? } ?>
+
+                                    </div>
+                            <div style="clear: both;"></div>
+
                             <p>
+
+<!--                                <ul class="clubs-contacts">
+                                    <li>
+
+                                    </li>
+                                    <? if ($base['site']) { ?>
+                                        <li>
+                                            <a href="<?= $base['site']; ?>"><div class="icon-hand-up card-img-hand-up"></div> <?= $base['site']; ?></a>
+                                        </li>
+                                    <? } ?>
+                                    <? if ($base['phone']) { ?>
+                                        <li>
+                                            <div class="icon-phone card-img-phone"></div> <?= $base['phone']; ?>
+                                        </li>
+                                    <? } ?>
+                                </ul>-->
                                 <?=$base['description'];?>
                             </p>
                         </section>
@@ -199,8 +263,17 @@
                                 <td align="center">
                                     <img src="<?=$currentClub['head_picture'];?>" alt="<?=$currentClub['name'];?>" height="134" />
                                     <div class="analog-name"><a href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
-                                    <div class="button-get-discount button action-button"  href="/club/getDiscount/<?=$currentClub['id'];?>">Получить скидку 5%</div>
-                                    <a href="/club/<?=$currentClub['id'];?>"><div class="button-more button">Подробнее о клубе</div></a>
+                                    <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub['id'];?>">
+                                        <ul>
+                                            <li>
+                                                <div class="icon-small-help"></div>
+                                            </li>
+                                            <li>
+                                                <span class="button-text">Вопрос менеджеру клуба</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="/club/<?=$currentClub['id'];?>" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                 </td>
                                 <? if($countClubs%($countAnalogsOnRow-1)==0) {?>
                                 </tr>

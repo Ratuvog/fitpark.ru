@@ -4,6 +4,6 @@ AddDefaultCharset utf-8
 	RewriteEngine on
         RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteCond $1 !^(index\.php|css|image|js|robots\.txt)
+	RewriteCond $1 !^(index\.php|css|image|js|robots\.txt|yandex_781c2dd8ae286aca\.html|googleda81b1acc0923503.html)
 	RewriteRule ^(.*)$ /index.php/$1 [L]
 </IfModule>

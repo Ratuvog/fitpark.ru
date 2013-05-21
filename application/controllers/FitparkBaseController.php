@@ -70,26 +70,27 @@ class FitparkBaseController extends CI_Controller {
         {
             unset($pars[$i]);
         }
-        $isPublicPage = in_array($method, $this->allowedPages);
-        $isPrivatePage = in_array($method, $this->privateAllowedPages);
-        $isLoggedIn = $this->session->userdata('logged_in') === true;
-
-        if ($method != null)
-        {
-            if(($isLoggedIn && $isPrivatePage) || $isPublicPage)
-            {
-                call_user_func_array(array($this, $method), $pars);
-            }
-            else
-            {
-                echo 'HER!!!!!';
-//                $this->auth();
-            }
-        }
-        else
-        {
-            $this->toDefaultPage();
-        }
+        call_user_func_array(array($this, $method), $pars);
+//        $isPublicPage = in_array($method, $this->allowedPages);
+//        $isPrivatePage = in_array($method, $this->privateAllowedPages);
+//        $isLoggedIn = $this->session->userdata('logged_in') === true;
+//
+//        if ($method != null)
+//        {
+//            if(($isLoggedIn && $isPrivatePage) || $isPublicPage)
+//            {
+//
+//            }
+//            else
+//            {
+//                echo 'HER!!!!!';
+////                $this->auth();
+//            }
+//        }
+//        else
+//        {
+//            $this->toDefaultPage();
+//        }
     }
 
     public function index()
@@ -139,7 +140,7 @@ class FitparkBaseController extends CI_Controller {
                 if($key=="head_picture") {
                     if(!$data[$key])
                         $data[$key] = site_url(array("image",  $this->emptyPhoto));
-                    else 
+                    else
                         $data[$key] = site_url(array("image", "club", $data[$key]));
                 }
             }
@@ -153,7 +154,7 @@ class FitparkBaseController extends CI_Controller {
                 if($key=="head_picture") {
                     if(!$data->$key)
                         $data->$key = site_url(array("image", $this->emptyPhoto));
-                    else 
+                    else
                         $data->$key = site_url(array("image", "club",  $data->$key));
                 }
             }

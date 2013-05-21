@@ -142,12 +142,21 @@
                                                         <?}?>
                                                         <tr>
                                                             <td colspan="2">
-                                                                <div class="button-get-discount button action-button" href="/club/getDiscount/<?=$row->id;?>">Получить скидку 5%</div>
+                                                                <div class="button-get-discount button-club action-button" selector="#get-answer" href="/club/getQuestion/<?=$row->id;?>">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <div class="icon-small-help"></div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="button-text">Задать вопрос менеджеру</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
-                                                                <a href="<?=$baseUrlClub.$row->id;?>"><div class="button-more button">Подробнее о клубе</div></a>
+                                                                <a href="<?=$baseUrlClub.$row->id;?>" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                                             </td>
                                                         </tr>
                                                     </table>

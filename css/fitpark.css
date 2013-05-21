@@ -41,11 +41,14 @@ padding: 0;}
     font-size: 14px;
     font-weight: bold;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    text-decoration: underline;
     vertical-align: middle;
     cursor: pointer;
     min-width: 150px;
     text-align: center;
+}
+
+.no-decoration {
+    text-decoration: none;
 }
 
 .button:hover {
@@ -531,7 +534,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     float: left;
     position: relative;
     top: -2px;
-    margin-right: 5px;
+    margin-right: 16px;
 }
 
 .icon-hand-up {
@@ -542,6 +545,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     position: relative;
     top: -2px;
     margin-right: 5px;
+    right: -2px;
 }
 
 .icon-phone {
@@ -550,6 +554,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     height: 27px;
     position: relative;
     top: -2px;
+    left: -2px;
     float: left;
     margin-right: 5px;
 }
@@ -576,8 +581,9 @@ main-img-club {
 }
 
 .button-guest-card {
-    margin-left: 50px;
+    margin-left: 13px;
 }
+
 
 .card-home {
     padding-top: 20px;
@@ -644,8 +650,7 @@ td.active-tab {
     width: 100%;
 }
 .tabs-content {
-    margin-top: 23px;
-    margin-left: 20px;
+    margin-left: 13px;
     margin-bottom: 30px;
 
 }
@@ -686,11 +691,11 @@ td.active-tab {
 }
 
 .card-img-hand-up {
-    margin-right: 12px;
+    margin-right: 18px;
 }
 
 .card-img-phone {
-    margin-right: 13px;
+    margin-right: 14px;
     margin-left: 3px;
 }
 
@@ -864,7 +869,7 @@ text-overflow: ellipsis;
 }
 
 .dnone {display:none;}
-#window-checkout {padding: 10px; padding-top: 20px; }
+.message-dialog {padding: 10px; padding-top: 20px; }
 
 /*
     ColorBox Core Style:
@@ -910,15 +915,15 @@ text-overflow: ellipsis;
         #cboxNext:hover{background-position:bottom right;}
         #cboxClose{position:absolute; top:5px; right:5px; display:block; background:url(/image/close.png) no-repeat; width:15px; height:15px; text-indent:-9999px;}
         #cboxClose:hover{background-position:bottom center;}
-#window .window-name-options {
+.window .window-name-options {
     width: 150px;
 }
 
-#window {
+.window {
     width: 100%;
 }
 
-#window td{
+.window td{
     padding: 5px;
 }
 
@@ -988,13 +993,81 @@ footer {
     margin-top: 30px;
 }
 
+#description-club {
+    width: 100%;
+}
+
+.desc-text div {
+    float: left;
+}
+
+.desc-text {
+    float: none;
+    height: 30px;
+}
+
+.club-info {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.club-info>div {
+    margin-bottom: 10px;
+}
+
 .clubs-contacts {
     margin-top: 20px;
 }
 
 .clubs-contacts li {
+    list-style-type: none;
     display: block;
-    float: left;
     margin-right: 40px;
+}
+
+.button-club {
+    height: 28px;
+    padding: 2px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid #03b003;
+    cursor: pointer;
+}
+
+.button-club li {
+    float: left;
+    list-style-type: none;
+    margin-right: 5px;
+}
+
+
+.button-text {
+    position: relative;
+    top: 4px;
+}
+
+.icon-small-help {
+    width: 28px;
+    height: 28px;
+    background: url("/image/help.png") no-repeat;
+}
+
+.icon-small-calendar {
+    width: 28px;
+    height: 28px;
+    background: url("/image/calendar.png") no-repeat;
+}
+
+.icon-small-buy {
+    width: 28px;
+    height: 28px;
+    background: url("/image/buy.png") no-repeat;
+}
+
+.icon-small-phone{
+    width: 28px;
+    height: 28px;
+    background: url("/image/phone.png") no-repeat;
 }
 /*END SLIDER*/
