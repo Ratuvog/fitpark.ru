@@ -59,6 +59,20 @@
                                         <a class="sorter" href="<?=site_url(array('clubs','sort','priceasc'));?>">недорогие</a>
                                     </li>
                                 </ul>
+                                <div style="clear: both;"></div>
+                                <ul class="type-sort">
+                                    <li class="title-type-sort">Выводить по: </li>
+                                    <li class="item-type-sort">
+                                        <a class="sorter" href="<?=site_url(array('clubs','row',10));?>">10</a>|
+                                    </li>
+                                    <li class="item-type-sort">
+                                        <a class="sorter" href="<?=site_url(array('clubs','row',25));?>">25</a>|
+                                    </li>
+                                    <li class="item-type-sort">
+                                        <a class="sorter" href="<?=site_url(array('clubs','row',50));?>">50</a>
+                                    </li>
+                                </ul>
+                                <?=$paging;?>
                             </header>
                             <section id="list">
                                 <? foreach ($content as $row) {

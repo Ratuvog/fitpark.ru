@@ -4,22 +4,27 @@ require_once(APPPATH.'controllers/FitparkBaseController.php');
 class FitparkClubsController extends FitparkBaseController {
 
     private $tableDB = 'fitnesclub';
-    private $showRecOnPage = 100;
+    private $showRecOnPage = 10;
     private $pageNumber = 0;
+    private $rowCount = 0;
     private $tableFilterList = array('fitnesclub_services',
                                      'fitnesclub_subscribe',
                                      'district');
     private $sortOrderList = array('rating', 'pricedesc','priceasc');
+    private $rowOnPageList = array(10,25,50);
     private $order = 'rating';
     private $activeFilters = array();
     private $filterEnabled = false;
-    private $nonFilterField = array("order");
     private $searchQuery;
+    
+    private $functionGetList = 'getClubsList';
+    private $functionRowCount = 'getRowCount';
 
     function __construct()
     {
         parent::__construct();
-        $this->allowedPages = array('index','clubs','filter','sort','filter','search');
+        $this->allowedPages = array('index', 'clubs', 'filter',
+                                    'sort', 'search', 'row', 'page');
         $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес клубы';
         $this->view= 'clubs/clubs';
@@ -27,8 +32,9 @@ class FitparkClubsController extends FitparkBaseController {
 
     public function init()
     {
-        $this->searchQuery = $this->session->userdata('search');
-        
+        $this->searchMode();
+        if($this->session->userdata('rowOnPage'))
+            $this->showRecOnPage = $this->session->userdata('rowOnPage');
         $this->viewData   = $this->initViewData();
         $this->headerData = $this->initHeaderData();
     }
@@ -55,38 +61,46 @@ class FitparkClubsController extends FitparkBaseController {
             'ratings'       => $this->getClubsTotalRating(),
             'order'         => $this->prepareOrder(),
             'baseUrlClub'   => $this->config->item("base_url")."club/",
-            'content'       => $this->getClubList()
+            'content'       => $this->prapareClubList(),
+            'paging'        => $this->preparePaging()
         );
 
         return $data;
     }
 
-    private function getClubList()
+    private function prapareClubList()
+    {
+        $list = $this->setEmptyPhotoObject(call_user_func(array($this, $this->functionGetList)));
+        $this->rowCount = call_user_func(array($this, $this->functionRowCount));
+        return $list;
+    }
+
+    private function getClubsList()
     {
         $limit = $this->showRecOnPage;
-        $offset = $this->showRecOnPage*$this->pageNumber;
-        
+        $offset = $this->pageNumber;
+
         $filter = array();
         if($this->filterEnabled)
             $filter = $this->generateFilter();
         
-        if(!empty($this->searchQuery))
-            return $this->setEmptyPhotoObject($this->getClubsByString());
-        
-        return $this->setEmptyPhotoObject($this->fitpark_model->getClubList($this->order, $limit, $offset, $filter));
+        return $this->fitpark_model->getClubList($this->order, $limit, $offset, $filter);
     }
-
+    
+    private function  getRowCount()
+    {
+        $filter = array();
+        if($this->filterEnabled)
+            $filter = $this->generateFilter();
+        
+        return count($this->fitpark_model->getClubList($this->order, 10000000, 0, $filter));
+    }
+            
     function search()
     {
         $this->searchQuery = $this->input->post("search");
         $this->session->set_userdata('search', $this->searchQuery);
-        
-        $this->titlePage = "Поиск фитнес клубов: ".$this->searchQuery;
-
-        $this->breadCrumbsData[] = array(
-            'href'  => current_url(),
-            'title' => 'Поиск клубов'
-        );
+     
         $this->index();
 
     }
@@ -94,9 +108,14 @@ class FitparkClubsController extends FitparkBaseController {
     private function getClubsByString()
     {
         $limit = $this->showRecOnPage;
-        $offset = $this->showRecOnPage*$this->pageNumber;
+        $offset = $this->pageNumber;
       
         return $this->fitpark_model->getClubsByName($this->searchQuery, $this->order, $limit, $offset);
+    }
+    
+    private function  getRowCountByString()
+    {
+        return count($this->fitpark_model->getClubsByName($this->searchQuery, $this->order, 1000000, 0));
     }
 
     private function getClubsTotalRating()
@@ -116,9 +135,9 @@ class FitparkClubsController extends FitparkBaseController {
         {
             if(!key_exists($row->clubId, $options))
                 $options[$row->clubId] = array();
-            array_push($options[$row->clubId], array('id' => $row->serviceId,
+            array_push($options[$row->clubId], array('id'   => $row->serviceId,
                                                      'name' => $row->serviceName,
-                                                     'class' => $row->class,
+                                                     'class'=> $row->class,
                                                      'icon' => site_url(array('image',$row->icon))));
         }
         return $options;
@@ -233,6 +252,70 @@ class FitparkClubsController extends FitparkBaseController {
         array_push($filterArray[$option], $this->input->post($option));
 
         return $filterArray;
+    }
+    
+    public function row($onPage)
+    {
+        if(in_array($onPage, $this->rowOnPageList))
+            $this->session->set_userdata('rowOnPage', $onPage);
+
+        redirect(site_url(array('clubs','page')));
+    }
+
+    public function page($offset)
+    {
+        $this->pageNumber = (int)$offset;
+        $this->index();
+    }
+
+    private function preparePaging()
+    {
+        $this->load->library('pagination');
+        $pars = $this->uri->segment_array(); 
+
+        $config['full_tag_open'] = '<ul class="type-sort" style="float:right;"> <li class="title-type-sort">Страница: </li>';
+        $config['full_tag_close'] = '</ul>';
+        $config['num_tag_open'] = '<li class="item-type-sort">';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="item-type-sort">';
+        $config['cur_tag_close'] = '</li>';
+        $config['next_link'] = 'Далее';
+        $config['next_tag_open'] = '<li class="item-type-sort">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = 'Назад';
+        $config['prev_tag_open'] = '<li class="item-type-sort">';
+        $config['prev_tag_close'] = '</li>';
+        $config['last_link'] = 'В конец';
+        $config['last_tag_open'] = '<li class="item-type-sort">';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = 'В начало';
+        $config['first_tag_open'] = '<li class="item-type-sort">';
+        $config['first_tag_close'] = '</li>';
+        
+        $config['base_url'] = site_url(array('clubs','page'));
+        $config['uri_segment'] = count($pars);
+        $config['total_rows'] = $this->rowCount;
+        $config['per_page'] = $this->showRecOnPage;
+        $config['cur_page'] = $this->pageNumber;
+        
+        $this->pagination->initialize($config); 
+
+        return $this->pagination->create_links();
+    }
+
+    private function searchMode() 
+    {
+        $this->searchQuery = $this->session->userdata('search');
+        if(!empty($this->searchQuery))
+        {
+            $this->titlePage = "Поиск фитнес клубов: ".$this->searchQuery;
+            $this->functionGetList = 'getClubsByString';
+            $this->functionRowCount = 'getRowCountByString';
+            $this->breadCrumbsData[] = array(
+                'href'  => current_url(),
+                'title' => 'Поиск клубов'
+        );
+        }
     }
 }
 ?>
