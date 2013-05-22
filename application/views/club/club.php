@@ -3,7 +3,11 @@
                         <section class="main-img-club">
                             <table width="100%" height="100%">
                                 <tr>
-                                    <td align="center"><img style="max-width: 290px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" /></td>
+                                    <td align="center">
+                                        <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
+                                            <img style="max-width: 290px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
+                                        </a>
+                                    </td>
                                 </tr>
                             </table>
 
@@ -227,20 +231,27 @@
                         </div>
                         <section id="image-club">
                             <? if($images) {?>
-                            <table>
+                            <table class="images-galery">
                                 <? $countImages = 0;?>
                                 <? foreach ($images as $currentImage) {?>
-                                    <? if($countImages%$countImagesOnRow) { ?>
+                                    <? if($countImages%3==0) { ?>
                                     <tr>
                                     <? } ?>
-                                        <td><img src="<?=site_url(array('image', 'club', $currentImage['photo']));?>" alt="" /></td>
-                                    <? if($countImages%($countImagesOnRow-1)) {?>
+                                        <td align="center" valign="middle">
+                                            <a href="<?=$currentImage['photo'];?>" class="fancybox gallery" rel="gallery1"><img src="<?=$currentImage['min_photo'];?>" alt="" /></a>
+                                        </td>
+                                    <? if(($countImages+1)%(3)==0) {?>
                                     </tr>
                                     <? } ?>
                                     <? $countImages++; ?>
                                 <? } ?>
                             </table>
                             <? } else{ ?>
+<!--                            <a href="/image/test/1.jpg" class="fancybox gallery" rel="gallery1"><img src="/image/test/1m.jpg" alt="" /></a>
+                            <a href="/image/test/2.png" class="fancybox gallery" rel="gallery1"><img src="/image/test/2m.jpg" alt="" /></a>
+                            <a href="/image/test/3.jpeg" class="fancybox gallery" rel="gallery1"><img src="/image/test/3m.jpeg" alt="" /></a>
+                            <a href="/image/test/4.jpg" class="fancybox gallery" rel="gallery1"><img src="/image/test/4m.jpg" alt="" /></a>
+                            <a href="/image/test/5.jpg" class="fancybox gallery" rel="gallery1"><img src="/image/test/5m.jpg" alt="" /></a>-->
                                 <h2 class="no-foto">Фотографий нет</h2>
                             <? } ?>
                         </section>

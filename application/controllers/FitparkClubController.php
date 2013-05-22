@@ -12,6 +12,7 @@ class FitparkClubController extends FitparkBaseController {
     {
         parent::__construct();
         $this->init();
+
     }
 
     public function club($clubId, $isComment = FALSE)
@@ -125,7 +126,41 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getImages()
     {
+        $ADDITIONAL = "_min";
         $this->viewData['images']           = $this->fitpark_club_model->getImages($this->m_clubId);
+        $i = 0;
+        foreach ($this->viewData['images'] as &$currentImage) {
+            if(!$currentImage["min_photo"]) {
+
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $currentImage["photo"];
+                $config['create_thumb'] = TRUE;
+                $config['maintain_ratio'] = TRUE;
+                $config['width'] = 300;
+                $config['height'] = 150;
+                $config['thumb_marker'] = $ADDITIONAL;
+
+                $this->load->library("image_lib");
+                $this->image_lib->initialize($config);
+                if (!$this->image_lib->resize()) {
+                    echo $i."<br>";
+                    echo $this->image_lib->display_errors();
+                    exit;
+                }
+                $i++;
+                $fileParts = explode('.', $currentImage["photo"]);
+                $extension = $fileParts[count($fileParts)-1];
+                array_pop($fileParts);
+                $fileName = implode('.', $fileParts);
+
+                $resultFileName = $fileName.$ADDITIONAL.'.'.$extension;
+                $this->fitpark_club_model->updateThumb($currentImage['id'],$resultFileName);
+                $currentImage['min_photo'] = $resultFileName;
+                $this->image_lib->clear();
+            }
+            $currentImage["photo"]     = site_url($currentImage["photo"]);
+            $currentImage['min_photo'] = site_url($currentImage["min_photo"]);
+        }
         $this->viewData['countImagesOnRow'] = $this->m_countImagesOnRow;
     }
 

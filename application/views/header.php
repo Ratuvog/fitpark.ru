@@ -7,11 +7,21 @@
         <link rel="stylesheet" href="/css/fitpark.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="/js/fancybox/jquery.fancybox.css" />
+        <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-buttons.css" />
+        <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-thumbs.css" />
+
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/cb/jquery.colorbox.js"></script>
         <script type="text/javascript" src="/js/common.js"></script>
         <script type="text/javascript" src="/js/jquery.form.validation.js"></script>
+        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-media.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
+
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
     <body>

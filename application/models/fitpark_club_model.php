@@ -54,7 +54,13 @@ class Fitpark_club_model extends CI_Model {
         return $this->getInfon("fitnesclub_photo", "fitnesclubid", $clubId);
     }
 
-    function getAnalogs($clubId) {
+    function updateThumb($id, $src) {
+        $data = array(
+            "min_photo"=>$src
+        );
+        $this->db->update("fitnesclub_photo",$data,array("id"=>$id));
+    }
+                function getAnalogs($clubId) {
         $query = "SELECT f1 . *
                 FROM fitnesclub f1, fitnesclub f2
                 WHERE

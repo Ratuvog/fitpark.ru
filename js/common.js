@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 $(function(){
+    $(".fancybox").fancybox();
+
     /* Поиск по клубу    */
     var BLACK = "rgb(0, 0, 0)";
     $("#submit-search").click(function(){

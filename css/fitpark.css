@@ -537,6 +537,19 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     margin-right: 16px;
 }
 
+.gallery {
+    display: block;
+    float: left;
+    width:  300px;
+}
+
+.images-galery {
+    margin-left: 50px;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .icon-hand-up {
     background: url('/image/monitor.png') no-repeat;
     width: 27px;
