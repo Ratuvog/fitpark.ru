@@ -56,13 +56,13 @@ class FitparkClubsController extends FitparkBaseController {
         $data = array(
             'list_header'   => $this->titlePage,
             'filters'       => $this->getFilters(),
-            'activeFilters' => $this->activeFilters,
             'services'      => $this->getClubsServices(),
             'ratings'       => $this->getClubsTotalRating(),
             'order'         => $this->prepareOrder(),
             'baseUrlClub'   => $this->config->item("base_url")."club/",
             'content'       => $this->prapareClubList(),
-            'paging'        => $this->preparePaging()
+            'paging'        => $this->preparePaging(),
+            'activeFilters' => $this->activeFilters
         );
 
         return $data;
@@ -135,10 +135,12 @@ class FitparkClubsController extends FitparkBaseController {
         {
             if(!key_exists($row->clubId, $options))
                 $options[$row->clubId] = array();
+            if(empty($row->icon))
+                continue;
             array_push($options[$row->clubId], array('id'   => $row->serviceId,
                                                      'name' => $row->serviceName,
                                                      'class'=> $row->class,
-                                                     'icon' => site_url(array('image',$row->icon))));
+                                                     'icon' => site_url(array('image','services_icon',$row->icon))));
         }
         return $options;
     }
@@ -195,10 +197,9 @@ class FitparkClubsController extends FitparkBaseController {
         $filters = array();
         foreach (array_keys($this->activeFilters) as $option)
         {
-            if(in_array($option, $filters))
-            if($this->input->get($option))
+            if($this->input->post($option))
             {
-                $value = $this->input->get($option);
+                $value = $this->input->post($option);
                 if($option === 'rangeF' || $option === 'rangeT')
                 {
                     $filters = $this->setPriceRangeFilter($filters, $option);

@@ -245,7 +245,7 @@ class Admin extends CI_Controller {
                 $this->setCurentState('services');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
-                $crud->set_field_upload('icon','image');
+                $crud->set_field_upload('icon','image/services_icon');
                 $output = $crud->render();
                 $this->render($output);
         }

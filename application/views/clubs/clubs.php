@@ -1,7 +1,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td class="options" valign="top">
-                            <form action="<?=site_url('clubs/filter');?>" method="GET" id="filter">
+                            <form action="<?=site_url('clubs/filter');?>" method="post" id="filter">
                                 <input type="hidden" name="order" value="<?=$order;?>" />
                                 <?  foreach ($filters as $filter) {?>
                                 <section class="option">
@@ -14,7 +14,7 @@
                                         <?  foreach ($filter as $item){
                                             $optinonName = "option".$item->filterid."-".$item->id;?>
                                         <li>
-                                             <input id="<?=$optinonName;?>" type="checkbox" <?if($activeFilters[$optinonName] === true) echo 'checked';?> class="green-checkbox"/>
+                                             <input name="<?=$optinonName;?>" id="<?=$optinonName;?>" type="checkbox" <?if($activeFilters[$optinonName] === true) echo 'checked';?> class="green-checkbox"/>
                                              <label for="<?=$optinonName;?>" class="green-checkbox-label"><?=$item->name;?></label>
                                         </li>
 
@@ -28,7 +28,10 @@
                                         <div class="state-option arrow"></div>
                                         <div style="clear: both;"></div>
                                     </header>
-                                    <div class="slider" from="10" to="100"></div>
+                                    <div class="slider"
+                                         from="<?if(key_exists('rangeF',$activeFilters)) echo $activeFilters['rangeF']; else echo 0;?>"
+                                         to="<?if(key_exists('rangeT',$activeFilters)) echo $activeFilters['rangeT']; else echo 10000?>">
+                                    </div>
                                     <div class="slider-input">
                                         <label for="from">от</label>
                                         <input type="text" size="4" name="rangeF" class="slider-from"
@@ -40,7 +43,7 @@
                                     </div>
                                 </section>
                                 <section class="option">
-                                    <div id="submit-filter" class="button">Принять</div>
+                                    <input id="submit-filter" type="submit" class="button">Принять</input>
                                 </section>
                             </form>
                         </td>
