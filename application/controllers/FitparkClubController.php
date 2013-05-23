@@ -117,6 +117,7 @@ class FitparkClubController extends FitparkBaseController {
     {
         $infoArray = $this->setEmptyPhoto($this->fitpark_club_model->getBaseInfoClub($this->m_clubId));
         $this->viewData['base'] = $infoArray[0];
+        $this->viewData['base']["header_picture"] = site_url($this->viewData['base']["header_picture"]);
         $this->headerData['order'] = $this->order;
     }
 
