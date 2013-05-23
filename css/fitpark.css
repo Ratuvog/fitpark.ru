@@ -497,7 +497,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .button-get-discount {
-    width: 217px;
+    width: 221px;
 }
 .button-more {
     width: 217px;
@@ -755,7 +755,7 @@ text-overflow: ellipsis;
 }
 
 .add-review header {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     margin-top: 15px;
 }
 
@@ -957,6 +957,10 @@ text-overflow: ellipsis;
 .error-text {
     height: 30px;
     color: red;
+}
+
+.review-text {
+    height: 70px !important;
 }
 
 .content-review p {

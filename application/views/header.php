@@ -21,6 +21,7 @@
         <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-media.js"></script>
         <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
         <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="/js/validator_helper.js"></script>
 
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>

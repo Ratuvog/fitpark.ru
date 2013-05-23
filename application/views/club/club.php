@@ -195,29 +195,30 @@
                             <section class="add-review">
                                 <header><h3>Оставить отзыв: </h3></header>
                                 <form action="/club/addReview/<?=$base['id'];?>" method="POST">
+                                <div class="error-text"></div>
                                     <table>
                                         <tr>
                                             <td>
                                                 Имя
                                             </td>
-                                            <td><input type="text" name="name"/></td>
+                                            <td><input class="search" type="text" name="name" isReq="false" text="Имя" validator="blank"/></td>
                                         </tr>
                                         <tr>
                                             <td>Отзыв</td>
                                             <td>
-                                                <textarea name="text" id="" cols="30" rows="10"></textarea>
+                                                <textarea class="search review-text" name="text" cols="30"  rows="10"  text="Отзыв" validator="blank"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 Плюсы
                                             </td>
-                                            <td><textarea name="plus" id="" cols="30" rows="10"></textarea></td>
+                                            <td><textarea class="search review-text" name="plus" isReq="false" id="" cols="30" rows="10"  text="Плюсы" validator="blank"></textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Минусы</td>
                                             <td>
-                                                <textarea name="minus" id="" cols="30" rows="10"></textarea>
+                                                <textarea class="search review-text" name="minus" isReq="false" id="" cols="30" rows="10"  text="минусы" validator="blank"></textarea>
                                             </td>
                                         </tr>
                                         <tr>

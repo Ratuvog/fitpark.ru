@@ -22,8 +22,6 @@ $(function(){
         return false;
     })
 
-    $(".submit-review").click(function(){
-        $(this).parents('form').first().submit();
-    })
+    $(".submit-review").click(checkForm);
 })
 

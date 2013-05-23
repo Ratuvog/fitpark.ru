@@ -1,6 +1,6 @@
 <?php
 class Fitpark_club_model extends CI_Model {
-
+    private $defaultUser = "Неизвестный";
     /* Get base info club */
     function getBaseInfoClub($clubId) {
         return $this->db->get_where("fitnesclub",array("id"=>$clubId))->result_array();
@@ -142,6 +142,9 @@ class Fitpark_club_model extends CI_Model {
 
     function addReview($clubid, $text, $sender, $positive, $negatie)
     {
+        if(!$sender) {
+            $sender = $this->defaultUser;
+        }
         $insertData = array(
             "fitnesclubid"=>$clubid,
             "text"        =>$text,
