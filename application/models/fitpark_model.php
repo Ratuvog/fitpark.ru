@@ -135,11 +135,12 @@ class Fitpark_model extends CI_Model {
      * @param type $offset смещение
      * @return array список клубов
      */
-    function getClubsByName($name, $ord, $limit, $offset)
+    function getClubsByName($name, $ord, $limit, $offset, $filter)
     {
         $this->initListClubs($limit, $offset);
         $this->getSortStrategyByName($ord);
         $this->getSearchStrategyByName('Name', $name);
+        $this->installFilter($filter);
         return $this->db->get()->result();
     }
 
@@ -148,12 +149,14 @@ class Fitpark_model extends CI_Model {
         if(count($filter) == 0)
             return;
         $this->db->group_by("fitnesclub.id");
+        $priceTop = 0;
+        $priceBot = 0;
         foreach (array_keys($filter) as $filterId)
         {
             if($filterId === 'rangeF')
-                $this->filterForLowRange($filter[$filterId]);
+                $priceBot = $filter[$filterId];
             if($filterId === 'rangeT')
-                $this->filterForHighRange($filter[$filterId]);
+                $priceTop = $filter[$filterId];
 
             if(key_exists($filterId, $this->filterIdToType))
             {
@@ -169,24 +172,20 @@ class Fitpark_model extends CI_Model {
                     $this->filterForSubscribe($filter[$filterId]);
             }
         }
+        $this->filterForPriceRange($priceBot[0], $priceTop[0]);
     }
+    
+    function filterForPriceRange($l, $r)
+    {
+        $this->db->where('sub1 >=', $l);
+        $this->db->where('sub1 <=', $r);
+    }
+    
 
     private function filterForSubscribe($set)
     {
         foreach ($set as $item)
             $this->db->where($this->subscribeIdToType[$item].' >', "0");
-    }
-
-    private function filterForLowRange($val)
-    {
-        $cond = 'sub1 >=';
-        $this->db->where($cond, $val[0]);
-    }
-
-        private function filterForHighRange($val)
-    {
-        $cond = 'sub1 <=';
-        $this->db->where($cond, $val[0]);
     }
 
     function getClubsServices()

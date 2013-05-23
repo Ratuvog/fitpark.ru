@@ -24,7 +24,7 @@ class FitparkClubsController extends FitparkBaseController {
     {
         parent::__construct();
         $this->allowedPages = array('index', 'clubs', 'filter',
-                                    'sort', 'search', 'row', 'page');
+                                    'sort', 'search', 'row', 'page', 'clear');
         $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес клубы';
         $this->view= 'clubs/clubs';
@@ -80,19 +80,13 @@ class FitparkClubsController extends FitparkBaseController {
         $limit = $this->showRecOnPage;
         $offset = $this->pageNumber;
 
-        $filter = array();
-        if($this->filterEnabled)
-            $filter = $this->generateFilter();
-        
+        $filter = $this->generateFilter();     
         return $this->fitpark_model->getClubList($this->order, $limit, $offset, $filter);
     }
     
     private function  getRowCount()
     {
-        $filter = array();
-        if($this->filterEnabled)
-            $filter = $this->generateFilter();
-        
+        $filter = $this->generateFilter();     
         return count($this->fitpark_model->getClubList($this->order, 10000000, 0, $filter));
     }
             
@@ -102,20 +96,21 @@ class FitparkClubsController extends FitparkBaseController {
         $this->session->set_userdata('search', $this->searchQuery);
      
         $this->index();
-
     }
 
     private function getClubsByString()
     {
         $limit = $this->showRecOnPage;
         $offset = $this->pageNumber;
-      
-        return $this->fitpark_model->getClubsByName($this->searchQuery, $this->order, $limit, $offset);
+
+        $filter = $this->generateFilter();
+        return $this->fitpark_model->getClubsByName($this->searchQuery, $this->order, $limit, $offset, $filter);
     }
     
     private function  getRowCountByString()
     {
-        return count($this->fitpark_model->getClubsByName($this->searchQuery, $this->order, 1000000, 0));
+        $filter = $this->generateFilter();
+        return count($this->fitpark_model->getClubsByName($this->searchQuery, $this->order, 1000000, 0, $filter));
     }
 
     private function getClubsTotalRating()
@@ -146,7 +141,7 @@ class FitparkClubsController extends FitparkBaseController {
     }
 
     private function getFilters()
-    {
+    {   
         $filters = array();
         foreach ($this->tableFilterList as $table)
         {
@@ -154,7 +149,7 @@ class FitparkClubsController extends FitparkBaseController {
             foreach ($filters[$table] as $item)
                 $this->activeFilters["option".$item->filterid."-".$item->id] = false;
         }
-            $this->activeFilters['rangeF'] = $this->activeFilters['rangeT'] = false;
+        $this->activeFilters['rangeF'] = $this->activeFilters['rangeT'] = false;
         return $filters;
     }
 
@@ -186,33 +181,59 @@ class FitparkClubsController extends FitparkBaseController {
         $this->setFilter();
         $this->index();
     }
+    
+    public function clear()
+    {
+        $this->session->unset_userdata('filter');
+        $this->session->unset_userdata('activeFilter');
+        $pars = $this->uri->segment_array();
+        unset($pars[count($pars)]);
+        redirect(site_url($pars));
+    }
 
-    private function  setFilter()
+    private function setFilter()
     {
         $this->filterEnabled = true;
     }
 
     private function  generateFilter()
     {
-        $filters = array();
-        foreach (array_keys($this->activeFilters) as $option)
+        if($this->filterEnabled)
         {
-            if($this->input->post($option))
+            // User push on button "Filter"
+            $filters = array();
+            foreach (array_keys($this->activeFilters) as $option)
             {
-                $value = $this->input->post($option);
-                if($option === 'rangeF' || $option === 'rangeT')
+                if($this->input->post($option))
                 {
-                    $filters = $this->setPriceRangeFilter($filters, $option);
-                    $this->activeFilters[$option] = $value;
-                }
-                else
-                {
-                    $filters = $this->setFilterValue($filters, $option);
-                    $this->activeFilters[$option] = true;
+                    $value = $this->input->post($option);
+                    if($option === 'rangeF' || $option === 'rangeT')
+                    {
+                        $filters = $this->setPriceRangeFilter($filters, $option);
+                        $this->activeFilters[$option] = $value;
+                    }
+                    else
+                    {
+                        $filters = $this->setFilterValue($filters, $option);
+                        $this->activeFilters[$option] = true;
+                    }
                 }
             }
+            $this->session->set_userdata('filter', json_encode((array)$filters));
+            $this->session->set_userdata('activeFilter', json_encode((array)$this->activeFilters));
+            return $filters;
         }
-        return $filters;
+        else
+        {
+            // Get filter from session
+            if($this->session->userdata('filter') && $this->session->userdata('activeFilter'))
+            {
+                $filters = (array)json_decode($this->session->userdata('filter'));
+                $this->activeFilters = (array)json_decode($this->session->userdata('activeFilter'));
+                return $filters;
+            }
+            return array();
+        }
     }
 
     private function setFilterValue($filterArray, $option)

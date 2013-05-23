@@ -766,6 +766,7 @@ text-overflow: ellipsis;
 .slider {
     width: 150px;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 .value-slider {
@@ -792,7 +793,8 @@ text-overflow: ellipsis;
 }
 
 .slider-input {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-left: 5px;
 }
 .tab-set>table {
     float: left;

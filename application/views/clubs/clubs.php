@@ -32,10 +32,10 @@
                                     <div class="slider-input">
                                         <label for="from">от</label>
                                         <input type="text" size="4" name="rangeF" class="slider-from"
-                                               value="<?if($activeFilters['rangeF'] > 0) echo $activeFilters['rangeF'];?>"/>
+                                               value="<?if($activeFilters['rangeF'] > 0) echo $activeFilters['rangeF']; else echo 1;?>"/>
                                         <label for="">до</label>
                                         <input type="text" size="4" name="rangeT" class="slider-to"
-                                               value="<?if($activeFilters['rangeT'] > 0) echo $activeFilters['rangeT'];?>"/>
+                                               value="<?if($activeFilters['rangeT'] > 0) echo $activeFilters['rangeT']; else echo 10000;?>"/>
                                         <label for="">руб.</label>
                                     </div>
                                 </section>
