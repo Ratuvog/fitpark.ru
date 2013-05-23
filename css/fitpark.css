@@ -26,9 +26,9 @@ padding: 0;}
 .button {
     border-top: 1px solid #3af83a;
     background: #03b003;
-    background: -webkit-gradient(linear, left top, left bottom, from(#3af83a), to(#03b003));
-    background: -moz-linear-gradient(top, #3af83a, #03b003);
-    background: -o-linear-gradient(top, #3af83a, #03b003);
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ff33), to(#00cd01));
+    background: -moz-linear-gradient(top, #00ff33, #00cd01);
+    background: -o-linear-gradient(top, #00ff33, #00cd01);
     padding: 4px 5px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -54,14 +54,14 @@ padding: 0;}
 .button:hover {
     color: #ffffff;
     background: #3af83a;
-    background: -webkit-gradient(linear, left top, left bottom, from(#03b003), to(#3af83a));
-    background: -moz-linear-gradient(top, #03b003, #3af83a);
-    background: -o-linear-gradient(top, #03b003, #3af83a);
+    background: -webkit-gradient(linear, left top, left bottom, from(#00cd01), to(#00ff33));
+    background: -moz-linear-gradient(top, #00cd01, #00ff33);
+    background: -o-linear-gradient(top, #00cd01, #00ff33);
 }
 
 .button:active {
-    border-top-color: #03b003;
-    background: #03b003;
+    border-top-color: #00cd01;
+    background: #00cd01;
 }
 
 /* End Style buttons*/
