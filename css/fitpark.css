@@ -896,13 +896,15 @@ text-overflow: ellipsis;
     position: relative;
 }
 
-.no-foto {
-    margin: 10px;
+.no-info {
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .no-reviews {
     display: block;
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 .mini-card-club>table {

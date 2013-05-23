@@ -226,12 +226,7 @@
                                 <? } ?>
                             </table>
                             <? } else{ ?>
-<!--                            <a href="/image/test/1.jpg" class="fancybox gallery" rel="gallery1"><img src="/image/test/1m.jpg" alt="" /></a>
-                            <a href="/image/test/2.png" class="fancybox gallery" rel="gallery1"><img src="/image/test/2m.jpg" alt="" /></a>
-                            <a href="/image/test/3.jpeg" class="fancybox gallery" rel="gallery1"><img src="/image/test/3m.jpeg" alt="" /></a>
-                            <a href="/image/test/4.jpg" class="fancybox gallery" rel="gallery1"><img src="/image/test/4m.jpg" alt="" /></a>
-                            <a href="/image/test/5.jpg" class="fancybox gallery" rel="gallery1"><img src="/image/test/5m.jpg" alt="" /></a>-->
-                                <h2 class="no-foto">Фотографий нет</h2>
+                                <h2 class="no-info">Фотографий нет</h2>
                             <? } ?>
                         </section>
                     </section>
