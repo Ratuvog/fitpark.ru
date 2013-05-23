@@ -28,22 +28,19 @@
                                         <div class="state-option arrow"></div>
                                         <div style="clear: both;"></div>
                                     </header>
-                                    <div class="slider"
-                                         from="<?if(key_exists('rangeF',$activeFilters)) echo $activeFilters['rangeF']; else echo 0;?>"
-                                         to="<?if(key_exists('rangeT',$activeFilters)) echo $activeFilters['rangeT']; else echo 10000?>">
-                                    </div>
+                                    <div class="slider" from="1" to="10000"> </div>
                                     <div class="slider-input">
                                         <label for="from">от</label>
                                         <input type="text" size="4" name="rangeF" class="slider-from"
-                                               value="<?if(key_exists('rangeF',$activeFilters)) echo $activeFilters['rangeF'];?>"/>
+                                               value="<?if($activeFilters['rangeF'] > 0) echo $activeFilters['rangeF'];?>"/>
                                         <label for="">до</label>
                                         <input type="text" size="4" name="rangeT" class="slider-to"
-                                               value="<?if(key_exists('rangeT',$activeFilters)) echo $activeFilters['rangeT'];?>"/>
+                                               value="<?if($activeFilters['rangeT'] > 0) echo $activeFilters['rangeT'];?>"/>
                                         <label for="">руб.</label>
                                     </div>
                                 </section>
                                 <section class="option">
-                                    <input id="submit-filter" type="submit" class="button">Принять</input>
+                                    <input id="submit-filter" type="submit" class="button" value="Принять"/>
                                 </section>
                             </form>
                         </td>
@@ -66,10 +63,10 @@
                                 <ul class="type-sort">
                                     <li class="title-type-sort">Выводить по: </li>
                                     <li class="item-type-sort">
-                                        <a class="sorter" href="<?=site_url(array('clubs','row',10));?>">10</a>|
+                                        <a class="sorter" href="<?=site_url(array('clubs','row',10));?>">10</a>
                                     </li>
                                     <li class="item-type-sort">
-                                        <a class="sorter" href="<?=site_url(array('clubs','row',25));?>">25</a>|
+                                        <a class="sorter" href="<?=site_url(array('clubs','row',25));?>">25</a>
                                     </li>
                                     <li class="item-type-sort">
                                         <a class="sorter" href="<?=site_url(array('clubs','row',50));?>">50</a>
