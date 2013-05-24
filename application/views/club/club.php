@@ -1,7 +1,7 @@
                 <section class="card-clubs">
                     <header>
                         <section class="main-img-club">
-                            <table width="100%" height="100%" class="head-image">
+                            <table width="280px" height="100%" class="head-image">
                                 <tr>
                                     <td align="center">
                                         <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
