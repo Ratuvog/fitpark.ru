@@ -156,7 +156,6 @@ class FitparkClubsController extends FitparkBaseController {
     public function sort($how)
     {
         $this->setSortOrder($how);
-        $this->setFilter();
         $this->index();
     }
 
@@ -219,8 +218,8 @@ class FitparkClubsController extends FitparkBaseController {
                     }
                 }
             }
-            $this->session->set_userdata('filter', json_encode((array)$filters));
-            $this->session->set_userdata('activeFilter', json_encode((array)$this->activeFilters));
+            $this->session->set_userdata('filter', json_encode($filters));
+            $this->session->set_userdata('activeFilter', json_encode($this->activeFilters));
             return $filters;
         }
         else
@@ -228,8 +227,8 @@ class FitparkClubsController extends FitparkBaseController {
             // Get filter from session
             if($this->session->userdata('filter') && $this->session->userdata('activeFilter'))
             {
-                $filters = (array)json_decode($this->session->userdata('filter'));
-                $this->activeFilters = (array)json_decode($this->session->userdata('activeFilter'));
+                $filters = json_decode($this->session->userdata('filter'), true);
+                $this->activeFilters = json_decode($this->session->userdata('activeFilter'), true);
                 return $filters;
             }
             return array();

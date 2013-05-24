@@ -344,7 +344,7 @@ input[type=checkbox].green-checkbox + label.green-checkbox-label {
     line-height:15px;
     background-repeat:no-repeat;
     background-position: 0 0;
-    font-size:15px;
+    font-size:14px;
     vertical-align:middle;
     cursor:pointer;
 }
@@ -363,6 +363,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 
 .values-option li{
     list-style-type: none;
+    margin-bottom: 12px;
 }
 
 #clubs-content {

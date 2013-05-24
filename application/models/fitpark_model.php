@@ -2,9 +2,9 @@
 class Fitpark_model extends CI_Model {
 
     private $filterIdToType = array(
-        1 => 'service',
-        2 => 'district',
-        3 => 'subscribe'
+       1 => 'service',
+       2 => 'district',
+       3 => 'subscribe'
     );
 
     private $subscribeIdToType = array(
@@ -152,12 +152,7 @@ class Fitpark_model extends CI_Model {
         $priceTop = 0;
         $priceBot = 0;
         foreach (array_keys($filter) as $filterId)
-        {
-            if($filterId === 'rangeF')
-                $priceBot = $filter[$filterId];
-            if($filterId === 'rangeT')
-                $priceTop = $filter[$filterId];
-
+        {           
             if(key_exists($filterId, $this->filterIdToType))
             {
                 $type = $this->filterIdToType[$filterId];
@@ -170,6 +165,18 @@ class Fitpark_model extends CI_Model {
                     $this->db->where_in('fitnesclub.districtId', $filter[$filterId]);
                 if($type === 'subscribe')
                     $this->filterForSubscribe($filter[$filterId]);
+            }
+            
+             if($filterId === 'rangeF')
+            {
+                $priceBot = $filter[$filterId];
+                continue;
+            }
+            
+            if($filterId === 'rangeT')
+            {
+                $priceTop = $filter[$filterId];
+                continue;
             }
         }
         $this->filterForPriceRange($priceBot[0], $priceTop[0]);

@@ -28,15 +28,17 @@
                                         <div class="state-option arrow"></div>
                                         <div style="clear: both;"></div>
                                     </header>
-                                    <div class="slider" from="1" to="10000"> </div>
-                                    <div class="slider-input">
-                                        <label for="from">от</label>
-                                        <input type="text" size="4" name="rangeF" class="slider-from"
-                                               value="<?if($activeFilters['rangeF'] > 0) echo $activeFilters['rangeF']; else echo 1;?>"/>
-                                        <label for="">до</label>
-                                        <input type="text" size="4" name="rangeT" class="slider-to"
-                                               value="<?if($activeFilters['rangeT'] > 0) echo $activeFilters['rangeT']; else echo 10000;?>"/>
-                                        <label for="">руб.</label>
+                                    <div>
+                                        <div class="slider" from="1" to="10000"> </div>
+                                        <div class="slider-input">
+                                            <label for="from">от</label>
+                                            <input type="text" size="4" name="rangeF" class="slider-from"
+                                                   value="<?if($activeFilters['rangeF'] > 0) echo $activeFilters['rangeF']; else echo 1;?>"/>
+                                            <label for="">до</label>
+                                            <input type="text" size="4" name="rangeT" class="slider-to"
+                                                   value="<?if($activeFilters['rangeT'] > 0) echo $activeFilters['rangeT']; else echo 10000;?>"/>
+                                            <label for="">руб.</label>
+                                        </div>
                                     </div>
                                 </section>
                                 <section class="option">
@@ -167,6 +169,7 @@
                                 </article>
                                 <?}//foreach?>
                             </section>
+                            <?=$paging;?>
                         </td>
                     </tr>
                 </table>
