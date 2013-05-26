@@ -86,12 +86,21 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     public function addReview($clubId) {
+        
+        $this->fitpark_club_model->trans_start();
+        
         $this->fitpark_club_model->addReview($clubId,
-                                             $this->input->post("text"),
-                                             $this->input->post("name"),
-                                             $this->input->post("plus"),
-                                             $this->input->post("minus"));
-        $this->club($clubId,TRUE);
+                                         $this->input->post("text"),
+                                         $this->input->post("name"),
+                                         $this->input->post("plus"),
+                                         $this->input->post("minus"));
+        $val = $this->input->post('score');
+        $reviewID = $this->fitpark_club_model->lastInsertedId();
+        $this->fitpark_club_model->addVote($clubId, $reviewID, $val);
+        
+        $this->fitpark_club_model->trans_commit();
+        
+        $this->club($clubId, TRUE);
     }
 
     public function init()

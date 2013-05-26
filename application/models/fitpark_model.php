@@ -37,8 +37,10 @@ class Fitpark_model extends CI_Model {
      */
     private function initListClubs($limit,$offset)
     {
-         $this->db->select("*, (sub3)/3 as avg3, (sub6)/6 as avg6, (sub12)/12 as avg12")
+         $this->db->select("*, fitnesclub.id, (sub3)/3 as avg3, (sub6)/6 as avg6, (sub12)/12 as avg12, AVG(r.value) as rating, COUNT(r.clubId) as votes")
             ->from("fitnesclub")
+            ->join("fitnesclub_rating as r", "fitnesclub.id = r.clubId", 'left')
+            ->group_by("fitnesclub.id")
             ->limit($limit,$offset);
     }
 
@@ -148,7 +150,6 @@ class Fitpark_model extends CI_Model {
     {
         if(count($filter) == 0)
             return;
-        $this->db->group_by("fitnesclub.id");
         $priceTop = 0;
         $priceBot = 0;
         foreach (array_keys($filter) as $filterId)

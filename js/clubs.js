@@ -36,4 +36,11 @@ $(function(){
             self.next().fadeOut();
         }
     })
+    
+    $(".rating").rating({
+        fx:     'full',
+        image:  location.origin+'/js/jquery.rating/images/stars.png',
+        loader: location.origin+'/js/jquery.rating/images/ajax-loader.gif',
+        readOnly: true
+    });
 })

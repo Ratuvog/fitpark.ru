@@ -3,7 +3,7 @@ require_once(APPPATH.'controllers/FitparkBaseController.php');
 
 class FitparkClubsController extends FitparkBaseController {
 
-    private $tableDB = 'fitnesclub';
+    private $controllerName = 'clubs';
     private $showRecOnPage = 10;
     private $pageNumber = 0;
     private $rowCount = 0;
@@ -24,10 +24,11 @@ class FitparkClubsController extends FitparkBaseController {
     {
         parent::__construct();
         $this->allowedPages = array('index', 'clubs', 'filter',
-                                    'sort', 'search', 'row', 'page', 'clear');
+                                    'sort', 'search', 'row',
+                                    'page', 'clear', 'vote');
         $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес клубы';
-        $this->view= 'clubs/clubs';
+        $this->view = 'clubs/clubs';
     }
 
     public function init()
@@ -57,7 +58,6 @@ class FitparkClubsController extends FitparkBaseController {
             'list_header'   => $this->titlePage,
             'filters'       => $this->getFilters(),
             'services'      => $this->getClubsServices(),
-            'ratings'       => $this->getClubsTotalRating(),
             'order'         => $this->prepareOrder(),
             'baseUrlClub'   => $this->config->item("base_url")."club/",
             'content'       => $this->prapareClubList(),
@@ -111,15 +111,6 @@ class FitparkClubsController extends FitparkBaseController {
     {
         $filter = $this->generateFilter();
         return count($this->fitpark_model->getClubsByName($this->searchQuery, $this->order, 1000000, 0, $filter));
-    }
-
-    private function getClubsTotalRating()
-    {
-        $results = $this->fitpark_model->getClubsTotalRating();
-        $ratings = array();
-        foreach ($results as $row)
-            $ratings[$row->clubId] = $row->totalrating;
-        return $ratings;
     }
 
     private function getClubsServices()
@@ -338,5 +329,6 @@ class FitparkClubsController extends FitparkBaseController {
         );
         }
     }
+    
 }
 ?>

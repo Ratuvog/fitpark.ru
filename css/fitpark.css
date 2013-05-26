@@ -364,6 +364,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 .values-option li{
     list-style-type: none;
     margin-bottom: 12px;
+    overflow: hidden;
 }
 
 #clubs-content {
@@ -475,26 +476,21 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     margin-right: 10px;
 }
 
-.icons-services div {
-    width: 40px;
-    height: 40px;
+.icons-services img {
+    width: 30px;
+    height: 30px;
 }
 
 .level-club {
-    float: none;
+    font-style: italic;
 }
+
+.text-description-club{
+    clear: left;
+}
+
 .services-club {
-    float: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.text-description-club {
-    float: none;
-}
-
-.level-club {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .button-get-discount {
@@ -506,7 +502,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .mini-card-club-part {
-    padding: 5px;
+   padding: 5px;
 }
 
 .main-img-club {
@@ -751,8 +747,27 @@ text-overflow: ellipsis;
     width: 131px;
 }
 
+.rating-club-passive
+{
+    margin-left: 5px;
+    float: left;
+}
+
+.rating-club-passive .button
+{
+    margin-top: 5px;
+    float: left;
+}
+
 .add-review {
     margin-bottom: 30px;
+    margin-top: 30px;
+    width: 96.5%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #eee;
+    padding: 5px;
+    padding-right: 20px;
 }
 
 .add-review header {
@@ -885,7 +900,7 @@ text-overflow: ellipsis;
 }
 
 .dnone {display:none;}
-.message-dialog {padding: 10px; padding-top: 20px; }
+.message-dialog {padding: 10px; padding-top: 15px; }
 
 /*
     ColorBox Core Style:
@@ -958,7 +973,7 @@ text-overflow: ellipsis;
 }
 
 .error-text {
-    height: 30px;
+    height: 0px;
     color: red;
 }
 
@@ -1045,6 +1060,10 @@ footer {
     margin-right: 40px;
 }
 
+.add-review-button {
+    float: right;
+}
+
 .button-club {
     height: 28px;
     padding: 2px;
@@ -1060,7 +1079,6 @@ footer {
     list-style-type: none;
     margin-right: 5px;
 }
-
 
 .button-text {
     position: relative;

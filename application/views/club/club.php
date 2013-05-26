@@ -1,16 +1,9 @@
                 <section class="card-clubs">
                     <header>
                         <section class="main-img-club">
-                            <table width="100%" height="100%">
-                                <tr>
-                                    <td align="center">
-                                        <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
-                                            <img style="max-width: 290px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-
+                            <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
+                                <img style="max-width: 290px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
+                            </a>
                         </section>
                         <section class="short-description-card">
                             <header class="card-name-club">
@@ -151,6 +144,23 @@
                             </p>
                         </section>
                         <div id="review-club" class="full-card-description tabs-content <? if(!$isComment) {?>hideClass<?}?> ">
+                            <section class="add-review">
+                                <div class="rating-club-passive" title="Средняя оценка клуба: <?=round($base['rating'],2);?>">
+                                    <input type="hidden" name="val" value="<?=$base['rating'];?>"/>
+                                    <input type="hidden" name="votes" value="<?=$base['votes'];?>"/>
+                                    <input type="hidden" name="vote-id" value="<?=$base['id'];?>"/>
+                                </div>
+                                <div class="button-guest button-club action-button add-review-button" selector="#get-review" href="/club/addReview/<?=$base['id']?>">
+                                    <ul>
+                                        <li>
+                                            <div class="icon-small-help"></div>
+                                        </li>
+                                        <li>
+                                            <span class="button-text">Оставить отзыв</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
                             <? if($reviews) { ?>
                             <? foreach ($reviews as $review){?>
                             <div class="review">
@@ -159,6 +169,11 @@
                                         <td class="description-review">
                                             <h4><?= $review['sender']; ?></h4>
                                             <span><?= $review['outdate']; ?></span>
+                                            <div class="rating-club-passive-mini" title="Оценил на: <?=round($review['rating'],2);?>">
+                                                <input type="hidden" name="val" value="<?=$review['rating'];?>"/>
+                                                <input type="hidden" name="votes" value="1"/>
+                                                <input type="hidden" name="vote-id" value="<?=$base['id'];?>"/>
+                                            </div>
                                         </td>
                                         <td class="content-review">
                                                     <? if ($review['text']) { ?>
@@ -192,43 +207,6 @@
                                 <h2 class="no-reviews">Нет отзывов. Ваш отзыв будет первым.</h2>
                             </div>
                             <? } ?>
-                            <section class="add-review">
-                                <header><h3>Оставить отзыв: </h3></header>
-                                <form action="/club/addReview/<?=$base['id'];?>" method="POST">
-                                <div class="error-text"></div>
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                Имя
-                                            </td>
-                                            <td><input class="search" type="text" name="name" isReq="false" text="Имя" validator="blank"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Отзыв</td>
-                                            <td>
-                                                <textarea class="search review-text" name="text" cols="30"  rows="10"  text="Отзыв" validator="blank"></textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Плюсы
-                                            </td>
-                                            <td><textarea class="search review-text" name="plus" isReq="false" id="" cols="30" rows="10"  text="Плюсы" validator="blank"></textarea></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Минусы</td>
-                                            <td>
-                                                <textarea class="search review-text" name="minus" isReq="false" id="" cols="30" rows="10"  text="минусы" validator="blank"></textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" align="center">
-                                                <div class="button-send button submit-review">Отправить</div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </section>
                         </div>
                         <section id="image-club">
                             <? if($images) {?>
@@ -298,5 +276,59 @@
                 </section>
 
                 <div style="clear: both;"></div>
+                
             </div>
 <script type="text/javascript" src="/js/club.js"></script>
+
+<div class="dnone">
+    <div id="get-review" class="message-dialog">
+        <form action="" method="post">
+            <h4> Мой отзыв о <?=$base['name'];?> </h4>
+            <table width="100%" class="window">
+                <tr>
+                    <td colspan="2" class="error-text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Имя
+                    </td>
+                    <td><input class="checkout-input search" type="text" name="name" isReq="false" text="Имя" validator="blank"/></td>
+                </tr>
+                <tr>
+                    <td>Отзыв</td>
+                    <td>
+                        <textarea class="search review-text" name="text" cols="30"  rows="10"  text="Отзыв" validator="blank"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Плюсы
+                    </td>
+                    <td><textarea class="search review-text" name="plus" isReq="false" id="" cols="30" rows="10"  text="Плюсы" validator="blank"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Минусы</td>
+                    <td>
+                        <textarea class="search review-text" name="minus" isReq="false" id="" cols="30" rows="10"  text="минусы" validator="blank"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Оценка
+                    </td>
+                    <td>
+                        <div class="rating-club-active" title="Оцени клуб">
+                            <input type="hidden" name="vote-id" value="<?=$base['id'];?>"/>
+                        </div>
+                    <td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <div class="button-send button submit-review">Отправить</div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

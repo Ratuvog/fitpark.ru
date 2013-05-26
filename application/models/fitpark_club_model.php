@@ -2,8 +2,30 @@
 class Fitpark_club_model extends CI_Model {
     private $defaultUser = "Неизвестный";
     /* Get base info club */
-    function getBaseInfoClub($clubId) {
-        return $this->db->get_where("fitnesclub",array("id"=>$clubId))->result_array();
+    
+    function trans_start()
+    {
+        $this->db->trans_start();
+    }
+    
+    function  trans_commit()
+    {
+        $this->db->trans_complete();
+    }
+    
+    function lastInsertedId()
+    {
+        return $this->db->insert_id();
+    }
+            
+    function getBaseInfoClub($clubId)
+    {
+        $this->db->select("fitnesclub.*, AVG(r.value) as rating, COUNT(r.clubId) as votes")
+            ->from("fitnesclub")
+            ->join("fitnesclub_rating as r", "fitnesclub.id = r.clubId", 'left')
+            ->group_by("r.clubId")
+            ->where(array('fitnesclub.id'=>$clubId));
+        return $this->db->get()->result_array();
     }
 
     /* Get rate club */
@@ -45,9 +67,12 @@ class Fitpark_club_model extends CI_Model {
 
     /* Get reviews about club */
     function getReviewsClub($clubId) {
-        $query = "SELECT DATE_FORMAT(date,'%d.%m.%Y') outdate, text, sender, positive, negative FROM fitnesclub_review WHERE fitnesclubid = ?";
-        $q = $this->db->query($query,array($clubId));
-        return $q->result_array();
+        $this->db->select("DATE_FORMAT(date, '%d.%m.%Y') outdate, text, f.sender, positive, negative, r.value as rating", FALSE)
+                 ->from("fitnesclub_review f")
+                 ->join("fitnesclub_rating r", "f.id = r.reviewId", 'left')
+                 ->where(array("f.fitnesclubid"=>$clubId))
+                 ->order_by("f.id", "desc");
+        return $this->db->get()->result_array();
     }
 
     function getImages($clubId) {
@@ -60,7 +85,8 @@ class Fitpark_club_model extends CI_Model {
         );
         $this->db->update("fitnesclub_photo",$data,array("id"=>$id));
     }
-                function getAnalogs($clubId) {
+    
+    function getAnalogs($clubId) {
         $query = "SELECT f1 . *
                 FROM fitnesclub f1, fitnesclub f2
                 WHERE
@@ -153,6 +179,17 @@ class Fitpark_club_model extends CI_Model {
             "negative"    =>$negatie
         );
         $this->db->insert("fitnesclub_review",$insertData);
+    }
+    
+    function addVote($clubId, $reviewId, $val)
+    {
+        $data = array(
+               'clubId' => $clubId,
+               'reviewId' => $reviewId,
+               'value'  => $val
+            );
+        $this->db->insert('fitnesclub_rating', $data);
+        return true;
     }
 
 

@@ -23,5 +23,25 @@ $(function(){
     })
 
     $(".submit-review").click(checkForm);
+    
+    $(".rating-club-passive").rating({
+        fx:     'full',
+        image:  location.origin+'/js/jquery.rating/images/stars32.png',
+        readOnly: true,
+        showVoteCount: true
+    });
+    
+    $(".rating-club-passive-mini").rating({
+        fx:     'full',
+        image:  location.origin+'/js/jquery.rating/images/stars.png',
+        readOnly: true
+    });
+
+    $(".rating-club-active").rating({
+        fx:     'full',
+        image:  location.origin+'/js/jquery.rating/images/stars24.png',
+        loader: location.origin+'/js/jquery.rating/images/ajax-loader.gif',
+    });
+    
 })
 

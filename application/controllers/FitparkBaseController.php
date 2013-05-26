@@ -4,11 +4,11 @@ class FitparkBaseController extends CI_Controller {
 
     protected $allowedPages = array();
     protected $privateAllowedPages = array();
-
+    
     // Name default view *.php
     protected $defaultPage = 'clubs/clubs';
     protected $titlePage = 'nothing';
-
+    
     // Name header view and data
     protected $header = 'header';
     protected $headerData = array();

@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/js/fancybox/jquery.fancybox.css" />
         <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-buttons.css" />
         <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-thumbs.css" />
+        <link href="/js/jquery.rating/jquery.rating.css" rel="stylesheet" type="text/css" />
 
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
@@ -22,7 +23,7 @@
         <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
         <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
         <script type="text/javascript" src="/js/validator_helper.js"></script>
-
+        <script type="text/javascript" src="/js/jquery.rating/jquery.rating.js"></script>
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
     <body>
@@ -213,7 +214,7 @@
                         </table>
                     </form>
                 </div>
-            </div>
+            </div>       
 
             <section id="menu">
                 <ul>

@@ -47,19 +47,26 @@ checkForm = function(event) {
     var errorPull = [];
     var form = $(this).parents("form").first();
     form.find('input,textarea').each(function() {
-        var validator = $(this).attr("validator");
-        var textField = $(this).attr("text");
-        var isRequire = $(this).attr("isReq");
-        if (!validate[validator].func($(this).val()) && (isRequire !== "false")) {
-            $(this).css("border-color", "red");
-            errorPull.push(validate[validator].errorPattern(textField));
+        var type = $(this).attr("type");
+        if(type !== "hidden")
+        {
+            var validator = $(this).attr("validator");
+            var textField = $(this).attr("text");
+            var isRequire = $(this).attr("isReq");
+            if (!validate[validator].func($(this).val()) && (isRequire !== "false")) {
+                $(this).css("border-color", "red");
+                errorPull.push(validate[validator].errorPattern(textField));
+            }
         }
     })
     if (errorPull.length === 0) {
         form.submit();
         return;
     }
-    form.find('.error-text').empty();
-    form.find('.error-text').text("Некоторые поля заполнены с ошибками");
+    var error = form.find('.error-text');
+    error.empty();
+    error.css("display", "");
+    error.text("Некоторые поля заполнены с ошибками");
+    error.fadeOut(2000);
     errorPull = [];
 }
