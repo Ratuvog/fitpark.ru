@@ -1,9 +1,16 @@
                 <section class="card-clubs">
                     <header>
                         <section class="main-img-club">
-                            <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
-                                <img style="max-width: 290px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
-                            </a>
+                            <table width="100%" height="100%" class="head-image">
+                                <tr>
+                                    <td align="center">
+                                        <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
+                                            <img style="max-width: 280px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
                         </section>
                         <section class="short-description-card">
                             <header class="card-name-club">
@@ -246,7 +253,7 @@
                                 <tr>
                                 <? } ?>
                                 <td align="center">
-                                    <img src="<?=$currentClub['head_picture'];?>" alt="<?=$currentClub['name'];?>" height="134" />
+                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" height="134" />
                                     <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
                                     <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub['id'];?>">
                                         <ul>

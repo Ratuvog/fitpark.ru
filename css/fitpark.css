@@ -59,6 +59,14 @@ padding: 0;}
     background: -o-linear-gradient(top, #00cd01, #00ff33);
 }
 
+.head-image {
+    margin-right: 10px;
+}
+
+.analog-foto {
+    max-width: 310px;
+}
+
 .button:active {
     border-top-color: #00cd01;
     background: #00cd01;
