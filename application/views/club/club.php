@@ -247,7 +247,7 @@
                                 <? } ?>
                                 <td align="center">
                                     <img src="<?=$currentClub['head_picture'];?>" alt="<?=$currentClub['name'];?>" height="134" />
-                                    <div class="analog-name"><a href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
+                                    <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
                                     <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub['id'];?>">
                                         <ul>
                                             <li>
@@ -258,7 +258,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="/club/<?=$currentClub['id'];?>" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
+                                    <a href="/club/<?=$currentClub['id'];?>"  target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                 </td>
                                 <? if($countClubs%($countAnalogsOnRow-1)==0) {?>
                                 </tr>
