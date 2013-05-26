@@ -93,7 +93,7 @@
                         <table cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <!--<td class="empty-tab"></td>-->
-                                <td class="tab <? if(!$isComment) {?>active-tab<?}?>" selector="#description-club">
+                                <td class="tab <? if(!$isComment == 1) {?>active-tab<?}?>" selector="#description-club">
                                     <div ><a href="#">Описание</a></div>
                                 </td>
                                 <td class="spacer"></td>
@@ -101,14 +101,14 @@
                                     <div ><a href="#">Фотографии</a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="tab <? if($isComment) {?>active-tab<?}?>" selector="#review-club">
+                                <td class="tab <? if($isComment == 1) {?>active-tab<?}?>" selector="#review-club">
                                     <div ><a href="#"><a href="#">Отзывы</a></a></div>
                                 </td>
                                 <td class="spacer"></td>
                                 <td class="empty-back-item"></td>
                             </tr>
                         </table>
-                        <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">
+                        <section id="description-club" class="full-card-description tabs-content <? if($isComment == 1) {?>hideClass<?}?>">
 
                                     <div class="club-info"><div class="desc-text">
                                         <div class="icon-home card-img-home"></div> <div class="text-card-club"><?= $base['address']; ?></div>

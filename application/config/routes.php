@@ -47,6 +47,7 @@ $route['clubs/(\w+)']             = 'FitparkClubsController/$1';
 $route['clubs/(\w+)/(\w+)']       = 'FitparkClubsController/$1/$2';
 
 $route['club/:num']               = 'FitparkClubController/club';
+$route['club/(:num)/(:num)']      = 'FitparkClubController/club/$1/$2';
 $route['club/getAbonement/:num']   = "FitparkClubController/getAbonement";
 $route['club/getFeedback/:num']   = "FitparkClubController/getFeedback";
 $route['club/getQuestion/:num']   = "FitparkClubController/getQuestion";
