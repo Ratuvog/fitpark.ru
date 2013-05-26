@@ -19,7 +19,9 @@ class Fitpark_model extends CI_Model {
      * @var array
      */
     private $m_avialableSortStrategy = array(
-        "rating",
+        "popularity",
+        "ratingasc",
+        "ratingdesc",
         "pricedesc",
         "priceasc"
     );
@@ -52,10 +54,21 @@ class Fitpark_model extends CI_Model {
     /**
      * Сортировка по популярности
      */
-    private function sortBy_rating()
+    private function sortBy_popularity()
     {
         $this->db->order_by("viewCount","desc");
     }
+    
+    private function sortBy_ratingasc()
+    {
+        $this->db->order_by("rating","asc");
+    }
+    
+    private function sortBy_ratingdesc()
+    {
+        $this->db->order_by("rating","desc");
+    }
+    
     /**
      * Сортировка по цене
      * @param string $ord порядок соритровки
@@ -84,7 +97,7 @@ class Fitpark_model extends CI_Model {
         if(in_array($name, $this->m_avialableSortStrategy)) {
             call_user_func(array($this,'sortBy_'.$name));
         } else {
-            call_user_func(array($this, 'sortBy_rating'));
+            call_user_func(array($this, 'sortBy_popularity'));
         }
     }
 

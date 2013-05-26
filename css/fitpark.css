@@ -432,8 +432,8 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .type-sort li a:hover {
-    color: #387038;
-    font-weight: bold;
+    color: #03b003;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .active {

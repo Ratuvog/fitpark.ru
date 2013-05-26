@@ -53,9 +53,24 @@
                 <h1 class="title-section-fitnes"><?=$list_header;?></h1>
                 <ul class="type-sort">
                     <li class="title-type-sort">Сортировать: </li>
-                    <li class="item-type-sort <?if($order=='rating') echo 'active';?>">
-                        <a class="sorter" href="<?=site_url(array('clubs','sort','rating'));?>">по популярности</a>
+                    <li class="item-type-sort <?if($order=='popularity') echo 'active';?>">
+                        <a class="sorter" href="<?=site_url(array('clubs','sort','popularity'));?>">по популярности</a>
                     </li>
+
+                    <?if($order=='ratingdesc') { ?>
+                        <li class="item-type-sort active">
+                            <a class="sorter" href="<?=site_url(array('clubs','sort','ratingasc'));?>">по рейтингу
+                                <img src="<?=site_url(array('image','arrow_down.png'));?>"></img>
+                            </a>
+                        </li>
+                    <?} else { ?>
+                        <li class="item-type-sort <?if($order=='ratingdesc') echo 'active';?>">
+                            <a class="sorter" href="<?=site_url(array('clubs','sort','ratingdesc'));?>">по рейтингу</a>
+                                <img src="<?=site_url(array('image','arrow_up.png'));?>"></img>
+                            </a>
+                        </li>
+                    <? } ?>
+                    
                     <?if($order=='pricedesc') { ?>
                         <li class="item-type-sort active">
                             <a class="sorter" href="<?=site_url(array('clubs','sort','priceasc'));?>">по стоимости 

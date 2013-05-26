@@ -10,7 +10,7 @@ class FitparkClubsController extends FitparkBaseController {
     private $tableFilterList = array('fitnesclub_services',
                                      'fitnesclub_subscribe',
                                      'district');
-    private $sortOrderList = array('rating', 'pricedesc','priceasc');
+    private $sortOrderList = array('popularity', 'ratingasc', 'ratingdesc', 'pricedesc','priceasc');
     private $rowOnPageList = array(10,25,50);
     private $order = 'rating';
     private $activeFilters = array();
@@ -35,7 +35,7 @@ class FitparkClubsController extends FitparkBaseController {
     {
         $this->searchMode();
         if($this->session->userdata('rowOnPage'))
-            $this->showRecOnPage = $this->session->userdata('rowOnPage');
+        $this->showRecOnPage = $this->session->userdata('rowOnPage');
         $this->viewData   = $this->initViewData();
         $this->headerData = $this->initHeaderData();
     }
