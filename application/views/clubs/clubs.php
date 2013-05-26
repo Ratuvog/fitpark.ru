@@ -54,14 +54,21 @@
                 <ul class="type-sort">
                     <li class="title-type-sort">Сортировать: </li>
                     <li class="item-type-sort <?if($order=='rating') echo 'active';?>">
-                        <a class="sorter" href="<?=site_url(array('clubs','sort','rating'));?>">популярность</a>
+                        <a class="sorter" href="<?=site_url(array('clubs','sort','rating'));?>">по популярности</a>
                     </li>
-                    <li class="item-type-sort <?if($order=='pricedesc') echo 'active';?>">
-                        <a class="sorter" href="<?=site_url(array('clubs','sort','pricedesc'));?>">дорогие</a>
-                    </li>
-                    <li class="item-type-sort <?if($order=='priceasc') echo 'active';?>">
-                        <a class="sorter" href="<?=site_url(array('clubs','sort','priceasc'));?>">недорогие</a>
-                    </li>
+                    <?if($order=='pricedesc') { ?>
+                        <li class="item-type-sort active">
+                            <a class="sorter" href="<?=site_url(array('clubs','sort','priceasc'));?>">по стоимости 
+                                <img src="<?=site_url(array('image','arrow_down.png'));?>"></img>
+                            </a>
+                        </li>
+                    <?} else { ?>
+                        <li class="item-type-sort <?if($order=='priceasc') echo 'active';?>">
+                            <a class="sorter" href="<?=site_url(array('clubs','sort','pricedesc'));?>">по стоимости 
+                                <img src="<?=site_url(array('image','arrow_up.png'));?>"></img>
+                            </a>
+                        </li>
+                    <? } ?>
                 </ul>
                 <div style="clear: both;"></div>
                 <ul class="type-sort">
