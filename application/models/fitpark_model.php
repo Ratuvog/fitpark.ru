@@ -98,7 +98,7 @@ class Fitpark_model extends CI_Model {
      */
     private function searchByName($name)
     {
-        $this->db->like("name",$name, 'both');
+        $this->db->like("fitnesclub.name",$name, 'both');
     }
 
     /**

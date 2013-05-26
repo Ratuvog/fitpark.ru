@@ -39,7 +39,12 @@
         </header>
         <section id="content">
             <header class="header">
-                <a href="<?=base_url();?>" class="logo"></a>
+                <div class="logo">
+                    <a href="<?=base_url();?>">
+                        <img src="<?=site_url(array('image','logo.png'))?>"></img>
+                    </a>
+                </div>
+                
                 <div class="header-content">
                     <form action="<?=site_url(array('clubs','search'))?>" method="post">
                         <input type="text" class="search not-empty" name="search" id="search" place="что ищем?"/>
