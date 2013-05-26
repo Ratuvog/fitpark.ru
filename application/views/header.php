@@ -47,7 +47,7 @@
                 
                 <div class="header-content">
                     <form action="<?=site_url(array('clubs','search'))?>" method="post">
-                        <input type="text" class="search not-empty" name="search" id="search" place="что ищем?"/>
+                        <input type="text" class="search not-empty" name="search" id="search" place="Что ищем?"/>
                         <div class="button-search" id="submit-search"></div>
                     </form>
 
