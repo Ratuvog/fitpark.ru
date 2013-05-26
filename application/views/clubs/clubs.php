@@ -70,16 +70,16 @@
                             </a>
                         </li>
                     <? } ?>
-                    
+
                     <?if($order=='pricedesc') { ?>
                         <li class="item-type-sort active">
-                            <a class="sorter" href="<?=site_url(array('clubs','sort','priceasc'));?>">по стоимости 
+                            <a class="sorter" href="<?=site_url(array('clubs','sort','priceasc'));?>">по стоимости
                                 <img src="<?=site_url(array('image','arrow_down.png'));?>"></img>
                             </a>
                         </li>
                     <?} else { ?>
                         <li class="item-type-sort <?if($order=='priceasc') echo 'active';?>">
-                            <a class="sorter" href="<?=site_url(array('clubs','sort','pricedesc'));?>">по стоимости 
+                            <a class="sorter" href="<?=site_url(array('clubs','sort','pricedesc'));?>">по стоимости
                                 <img src="<?=site_url(array('image','arrow_up.png'));?>"></img>
                             </a>
                         </li>
@@ -108,7 +108,13 @@
                         <tr>
                             <td class="mini-card-club-part image-mini-card" valign="top">
                                 <section class="img-club">
-                                    <img style="max-width: 160px" src="<?=$row->head_picture;?>" alt=""/>
+                                    <table class="image-wrapper">
+                                        <tr>
+                                            <td align="center" valign="middle" >
+                                                <img style="max-width: 160px" src="<?=$row->head_picture;?>" alt=""/>
+                                            </td>
+                                        </tr>
+                                    </table>
                                     <div class="rating" title="Средняя оценка клуба: <?=round($row->rating,2);?>. Оценок: <?=round($row->votes,2);?>">
                                         <input type="hidden" name="val" value="<?=$row->rating;?>"/>
                                         <input type="hidden" name="votes" value="<?=$row->votes;?>"/>
@@ -120,7 +126,7 @@
                                 <section class="decription-club">
                                     <header class="name-club">
                                         <h3>
-                                            <a href="<?=$baseUrlClub.$row->id;?>"><?=$row->name;?></a>
+                                            <a href="<?=$baseUrlClub.$row->id;?>" target="_blank"><?=$row->name;?></a>
                                         </h3>
                                         <div style="color: #aaa;">
                                             <?=$row->address;?>
@@ -187,7 +193,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <a href="<?=$baseUrlClub.$row->id;?>" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
+                                                <a href="<?=$baseUrlClub.$row->id;?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                             </td>
                                         </tr>
                                     </table>

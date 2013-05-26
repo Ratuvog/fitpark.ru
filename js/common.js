@@ -30,8 +30,10 @@ $(function(){
     $(".action-button").click(function(){
         var href = $(this).attr("href");
         var selectorForm = $(this).attr("selector");
+        $(selectorForm).find('.error-text').empty();
         $(selectorForm+" form").attr("action", href);
         $(selectorForm+" form").on("click", ".button-send", checkForm);
+        $(selectorForm).find('input,textarea').css("border-color", "#333333");
         $.colorbox({
             href: selectorForm,
             inline: true

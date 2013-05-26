@@ -65,8 +65,8 @@ checkForm = function(event) {
     }
     var error = form.find('.error-text');
     error.empty();
-    error.css("display", "");
+//    error.css("display", "");
     error.text("Некоторые поля заполнены с ошибками");
-    error.fadeOut(2000);
+//    error.fadeOut(2000);
     errorPull = [];
 }

@@ -240,7 +240,7 @@ header-content>* {
     -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Для Firefox */
     -webkit-box-shadow: 1px 3px 2px rgba(0,0,0,0.5); /* Для Safari и Chrome */
     box-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Параметры тени */
-    
+
 }
 
 .enter-link {
@@ -1001,8 +1001,12 @@ text-overflow: ellipsis;
 }
 
 .error-text {
-    height: 0px;
+    height: 20px;
     color: red;
+}
+.image-wrapper {
+    min-height: 130px;
+    width: 100%;
 }
 
 .review-text {
