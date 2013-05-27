@@ -115,10 +115,9 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <div class="rating" title="Средняя оценка клуба: <?=round($row->rating,2);?>. Оценок: <?=round($row->votes,2);?>">
-                                        <input type="hidden" name="val" value="<?=$row->rating;?>"/>
-                                        <input type="hidden" name="votes" value="<?=$row->votes;?>"/>
-                                        <input type="hidden" name="vote-id" value="<?=$row->id;?>"/>
+                                    <div class="rating clubs-mini" 
+                                         title="Средняя оценка клуба: <?=round($row->rating,2);?>. Оценок: <?=round($row->votes,2);?>"
+                                         data-score="<?=$row->rating;?>">
                                     </div>
                                 </section>
                             </td>

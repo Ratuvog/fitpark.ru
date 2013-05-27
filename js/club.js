@@ -24,23 +24,58 @@ $(function(){
 
     $(".submit-review").click(checkForm);
     
-    $(".rating-club-passive").rating({
-        fx:     'full',
-        image:  location.origin+'/js/jquery.rating/images/stars32.png',
-        readOnly: true,
-        showVoteCount: true
+    $(".club-big").raty({
+        score: function() {
+            return $(this).attr('data-score');
+        }, 
+        path : location.origin+'/js/raty-2.5.2/img/',
+        hints : ['', '', '', '', ''],
+        starHalf : 'star-half-big.png',
+        starOff  : 'star-off-big.png',
+        starOn   : 'star-on-big.png',
+        size: 24,
+        readOnly : function (){
+            return ($(this).attr('ro') == 'true');
+        },
+        noRatedMsg: function() {
+            return $(this).attr('title');
+        },
+        click: function(score, evt) {
+              $.ajax({
+                    url: location.origin+'/club/vote/',
+                    type: 'post',
+                    data: {
+                        'score' : score,
+                        'vote-id' : $(this).attr('data-vote-id')
+                    },
+                    dataType: 'json',
+                    success: function(data){
+                        if(data.status == 'OK')
+                        {
+                            $('.rating-vote-answer').html(data.msg);
+                            $(".rating,club-big").raty('readOnly', true);
+                        }
+                        else
+                        {
+                            $('.rating-vote-answer').html(data.msg);
+                            $(".rating,club-big").raty('reload');
+                        }      
+                    }
+            });
+        }
     });
     
-    $(".rating-club-passive-mini").rating({
-        fx:     'full',
-        image:  location.origin+'/js/jquery.rating/images/stars.png',
-        readOnly: true
-    });
+    $(".club-mini").raty({      
+        score: function() {
+            return $(this).attr('data-score');
+        }, 
+        path : location.origin+'/js/raty-2.5.2/img/',
+        readOnly : true,
+        noRatedMsg: function() {
+            return $(this).attr('title');
+        },
+        hints: ['', '', '', '', '']
 
-    $(".rating-club-active").rating({
-        fx:     'full',
-        image:  location.origin+'/js/jquery.rating/images/stars24.png',
-        loader: location.origin+'/js/jquery.rating/images/ajax-loader.gif',
     });
     
 })

@@ -61,6 +61,8 @@ padding: 0;}
 
 .head-image {
     margin-right: 10px;
+    width: 280px;
+    height: 270px;
 }
 
 .analog-foto {
@@ -519,6 +521,30 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     clear: left;
 }
 
+.rating.clubs-mini{
+    margin-left: 30px;
+}
+
+.rating.club-big{
+    width: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rating-vote-answer{
+    height: 15px;
+    text-align: center;
+    color: #aaa;
+}
+
+.rating-votes{
+    color: #aaa;
+    font-size: 10px;
+    float: right;
+    line-height: 10px;
+    margin-right: -10px;
+}
+
 .services-club {
     margin-top: 5px;
 }
@@ -537,8 +563,6 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 
 .main-img-club {
     float: left;
-    height: 100%;
-    margin-top: 60px;
 }
 
 .short-description-card {
@@ -610,10 +634,6 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 main-img-club {
     margin-right: 45px;
     width: 350px;
-
-}
-.main-img-club img {
-    vertical-align: middle;
 }
 
 .variation-abonements {

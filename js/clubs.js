@@ -37,10 +37,16 @@ $(function(){
         }
     })
     
-    $(".rating").rating({
-        fx:     'full',
-        image:  location.origin+'/js/jquery.rating/images/stars.png',
-        loader: location.origin+'/js/jquery.rating/images/ajax-loader.gif',
-        readOnly: true
+    $(".rating").raty({      
+        score: function() {
+            return $(this).attr('data-score');
+        }, 
+        path : location.origin+'/js/raty-2.5.2/img/',
+        readOnly : true,
+        noRatedMsg: function() {
+            return $(this).attr('title');
+        },
+        hints: ['', '', '', '', '']
+
     });
 })

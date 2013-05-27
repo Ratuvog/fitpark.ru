@@ -46,12 +46,13 @@ $route['clubs/search:any']        = 'FitparkClubsController/search';
 $route['clubs/(\w+)']             = 'FitparkClubsController/$1';
 $route['clubs/(\w+)/(\w+)']       = 'FitparkClubsController/$1/$2';
 
-$route['club/:num']               = 'FitparkClubController/club';
-$route['club/(:num)/(:num)']      = 'FitparkClubController/club/$1/$2';
-$route['club/getAbonement/:num']   = "FitparkClubController/getAbonement";
-$route['club/getFeedback/:num']   = "FitparkClubController/getFeedback";
-$route['club/getQuestion/:num']   = "FitparkClubController/getQuestion";
-$route['club/getGuest/:num']      = 'FitparkClubController/getGuest';
-$route['club/addReview/(\d+)']    = 'FitparkClubController/addReview/$1';
+$route['club/(:num)']               = 'FitparkClubController/club/$1';
+$route['club/(:num)/(:num)']        = 'FitparkClubController/club/$1/$2';
+$route['club/getAbonement/(:num)']    = "FitparkClubController/getAbonement/$1";
+$route['club/getFeedback/(:num)']     = "FitparkClubController/getFeedback/$1";
+$route['club/getQuestion/(:num)']     = "FitparkClubController/getQuestion/$1";
+$route['club/getGuest/(:num)']        = 'FitparkClubController/getGuest/$1';
+$route['club/addReview/(\d+)']      = 'FitparkClubController/addReview/$1';
+$route['club/vote']               = 'FitparkClubController/vote';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

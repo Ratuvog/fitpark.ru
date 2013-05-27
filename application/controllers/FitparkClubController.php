@@ -88,19 +88,12 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     public function addReview($clubId) {
-
-        $this->fitpark_club_model->trans_start();
-
-        $this->fitpark_club_model->addReview($clubId,
+        
+        $this->fitpark_club_model->addReview($clubId, $_SERVER['REMOTE_ADDR'],
                                          $this->input->post("text"),
                                          $this->input->post("name"),
                                          $this->input->post("plus"),
                                          $this->input->post("minus"));
-        $val = $this->input->post('score');
-        $reviewID = $this->fitpark_club_model->lastInsertedId();
-        $this->fitpark_club_model->addVote($clubId, $reviewID, $val);
-
-        $this->fitpark_club_model->trans_commit();
         redirect(site_url(array('club',$clubId,'1')));
     }
 
@@ -132,7 +125,7 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getReviews()
     {
-        $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->m_clubId);
+        $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->m_clubId, $_SERVER['REMOTE_ADDR']);
     }
 
     protected function getImages()
@@ -187,6 +180,30 @@ class FitparkClubController extends FitparkBaseController {
         if(count($arr) < 3)
             return 0;
         return $arr[count($arr)-1];
+    }
+    
+    public function vote()
+    {
+        $ok = array('status'=>'OK','msg'=>'Спасибо! Ваша оценка учтена.');
+        $err = array('status'=>'ERR','msg'=>'Вы уже оценивали этот клуб.');
+        $servErr = array('status'=>'ERR','msg'=>'Извините, произошла ошибка на сервере.');
+        
+        $val = $this->input->post('score');
+        $clubId = $this->input->post('vote-id');
+
+        if(!$val || !$clubId)
+        {
+            echo json_encode ($servErr);
+            return;
+        }
+        
+        $senderID = $_SERVER['REMOTE_ADDR'];
+        if($this->fitpark_club_model->addVote($clubId, $senderID, $val))
+            echo json_encode($ok);
+        else
+            echo json_encode($err);
+        return;
+            
     }
 }
 

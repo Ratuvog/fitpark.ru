@@ -69,7 +69,7 @@ class Fitpark_club_model extends CI_Model {
     function getReviewsClub($clubId) {
         $this->db->select("DATE_FORMAT(date, '%d.%m.%Y') outdate, text, f.sender, positive, negative, r.value as rating", FALSE)
                  ->from("fitnesclub_review f")
-                 ->join("fitnesclub_rating r", "f.id = r.reviewId", 'left')
+                 ->join("fitnesclub_rating r", "f.senderIP = r.sender", 'left')
                  ->where(array("f.fitnesclubid"=>$clubId))
                  ->order_by("f.id", "desc");
         return $this->db->get()->result_array();
@@ -166,7 +166,7 @@ class Fitpark_club_model extends CI_Model {
         $this->db->update('fitnesclub', $data);
     }
 
-    function addReview($clubid, $text, $sender, $positive, $negatie)
+    function addReview($clubid, $senderIP, $text, $sender, $positive, $negatie)
     {
         if(!$sender) {
             $sender = $this->defaultUser;
@@ -176,16 +176,25 @@ class Fitpark_club_model extends CI_Model {
             "text"        =>$text,
             "sender"      =>$sender,
             "positive"    =>$positive,
-            "negative"    =>$negatie
+            "negative"    =>$negatie,
+            "senderIP"    =>$senderIP
         );
         $this->db->insert("fitnesclub_review",$insertData);
     }
     
-    function addVote($clubId, $reviewId, $val)
+    function addVote($clubId, $sender, $val)
     {
+        $query = $this->db->select("*")
+                 ->from('fitnesclub_rating')
+                 ->where(array('sender'=>$sender, 'clubId'=>$clubId))
+                 ->get()->result_array();
+        
+        if(count($query) != 0)
+            return false;
+        
         $data = array(
                'clubId' => $clubId,
-               'reviewId' => $reviewId,
+               'sender' => $sender,
                'value'  => $val
             );
         $this->db->insert('fitnesclub_rating', $data);
