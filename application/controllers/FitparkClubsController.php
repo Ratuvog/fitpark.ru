@@ -16,7 +16,7 @@ class FitparkClubsController extends FitparkBaseController {
     private $activeFilters = array();
     private $filterEnabled = false;
     private $searchQuery;
-    
+
     private $functionGetList = 'getClubsList';
     private $functionRowCount = 'getRowCount';
 
@@ -43,6 +43,9 @@ class FitparkClubsController extends FitparkBaseController {
     public function clubs()
     {
         $this->session->unset_userdata('search');
+        $this->session->unset_userdata('filter');
+        $this->session->unset_userdata('activeFilter');
+        $this->filterEnabled = false;
         $this->index();
     }
 
@@ -80,21 +83,21 @@ class FitparkClubsController extends FitparkBaseController {
         $limit = $this->showRecOnPage;
         $offset = $this->pageNumber;
 
-        $filter = $this->generateFilter();     
+        $filter = $this->generateFilter();
         return $this->fitpark_model->getClubList($this->order, $limit, $offset, $filter);
     }
-    
+
     private function  getRowCount()
     {
-        $filter = $this->generateFilter();     
+        $filter = $this->generateFilter();
         return count($this->fitpark_model->getClubList($this->order, 10000000, 0, $filter));
     }
-            
+
     function search()
     {
         $this->searchQuery = $this->input->post("search");
         $this->session->set_userdata('search', $this->searchQuery);
-     
+
         $this->index();
     }
 
@@ -106,7 +109,7 @@ class FitparkClubsController extends FitparkBaseController {
         $filter = $this->generateFilter();
         return $this->fitpark_model->getClubsByName($this->searchQuery, $this->order, $limit, $offset, $filter);
     }
-    
+
     private function  getRowCountByString()
     {
         $filter = $this->generateFilter();
@@ -126,13 +129,13 @@ class FitparkClubsController extends FitparkBaseController {
             array_push($options[$row->clubId], array('id'   => $row->serviceId,
                                                      'name' => $row->serviceName,
                                                      'class'=> $row->class,
-                                                     'icon' => site_url(array('image','services_icon',$row->icon))));
+                                                     'icon' => site_url(array('image',$row->icon))));
         }
         return $options;
     }
 
     private function getFilters()
-    {   
+    {
         $filters = array();
         foreach ($this->tableFilterList as $table)
         {
@@ -158,9 +161,9 @@ class FitparkClubsController extends FitparkBaseController {
             $this->order = $how;
         }
     }
-    
+
     private function prepareOrder()
-    {   
+    {
         if($this->session->userdata('order'))
             $this->order = $this->session->userdata('order');
         return $this->order;
@@ -171,7 +174,7 @@ class FitparkClubsController extends FitparkBaseController {
         $this->setFilter();
         $this->index();
     }
-    
+
     public function clear()
     {
         $this->session->unset_userdata('filter');
@@ -265,7 +268,7 @@ class FitparkClubsController extends FitparkBaseController {
 
         return $filterArray;
     }
-    
+
     public function row($onPage)
     {
         if(in_array($onPage, $this->rowOnPageList))
@@ -283,7 +286,7 @@ class FitparkClubsController extends FitparkBaseController {
     private function preparePaging()
     {
         $this->load->library('pagination');
-        $pars = $this->uri->segment_array(); 
+        $pars = $this->uri->segment_array();
 
         $config['full_tag_open'] = '<ul class="type-sort" style="float:right;"> <li class="title-type-sort">Страница: </li>';
         $config['full_tag_close'] = '</ul>';
@@ -303,19 +306,19 @@ class FitparkClubsController extends FitparkBaseController {
         $config['first_link'] = 'В начало';
         $config['first_tag_open'] = '<li class="item-type-sort">';
         $config['first_tag_close'] = '</li>';
-        
+
         $config['base_url'] = site_url(array('clubs','page'));
         $config['uri_segment'] = count($pars);
         $config['total_rows'] = $this->rowCount;
         $config['per_page'] = $this->showRecOnPage;
         $config['cur_page'] = $this->pageNumber;
-        
-        $this->pagination->initialize($config); 
+
+        $this->pagination->initialize($config);
 
         return $this->pagination->create_links();
     }
 
-    private function searchMode() 
+    private function searchMode()
     {
         $this->searchQuery = $this->session->userdata('search');
         if(!empty($this->searchQuery))
@@ -329,6 +332,6 @@ class FitparkClubsController extends FitparkBaseController {
         );
         }
     }
-    
+
 }
 ?>

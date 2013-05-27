@@ -93,7 +93,7 @@
                         <table cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <!--<td class="empty-tab"></td>-->
-                                <td class="tab <? if(!$isComment == 1) {?>active-tab<?}?>" selector="#description-club">
+                                <td class="tab <? if(!$isComment) {?>active-tab<?}?>" selector="#description-club">
                                     <div ><a href="#">Описание</a></div>
                                 </td>
                                 <td class="spacer"></td>
@@ -101,14 +101,14 @@
                                     <div ><a href="#">Фотографии</a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="tab <? if($isComment == 1) {?>active-tab<?}?>" selector="#review-club">
+                                <td class="tab <? if($isComment) {?>active-tab<?}?>" selector="#review-club">
                                     <div ><a href="#"><a href="#">Отзывы</a></a></div>
                                 </td>
                                 <td class="spacer"></td>
                                 <td class="empty-back-item"></td>
                             </tr>
                         </table>
-                        <section id="description-club" class="full-card-description tabs-content <? if($isComment == 1) {?>hideClass<?}?>">
+                        <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">
 
                                     <div class="club-info"><div class="desc-text">
                                         <div class="icon-home card-img-home"></div> <div class="text-card-club"><?= $base['address']; ?></div>
@@ -253,7 +253,7 @@
                                 <tr>
                                 <? } ?>
                                 <td align="center">
-                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" height="134" />
+                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" style="max-width: 310px; max-height: 130px" />
                                     <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
                                     <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub['id'];?>">
                                         <ul>
@@ -278,7 +278,7 @@
                 </section>
 
                 <div style="clear: both;"></div>
-                
+
             </div>
 <script type="text/javascript" src="/js/club.js"></script>
 

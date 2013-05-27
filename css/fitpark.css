@@ -80,6 +80,10 @@ section section {
     float: left;
 }
 
+section.decription-club>section {
+    float: none;
+}
+
 #left-side, #right-side {
     width: auto;
 }

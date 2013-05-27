@@ -58,17 +58,17 @@ class Fitpark_model extends CI_Model {
     {
         $this->db->order_by("viewCount","desc");
     }
-    
+
     private function sortBy_ratingasc()
     {
         $this->db->order_by("rating","asc");
     }
-    
+
     private function sortBy_ratingdesc()
     {
         $this->db->order_by("rating","desc");
     }
-    
+
     /**
      * Сортировка по цене
      * @param string $ord порядок соритровки
@@ -166,7 +166,7 @@ class Fitpark_model extends CI_Model {
         $priceTop = 0;
         $priceBot = 0;
         foreach (array_keys($filter) as $filterId)
-        {           
+        {
             if(key_exists($filterId, $this->filterIdToType))
             {
                 $type = $this->filterIdToType[$filterId];
@@ -180,13 +180,13 @@ class Fitpark_model extends CI_Model {
                 if($type === 'subscribe')
                     $this->filterForSubscribe($filter[$filterId]);
             }
-            
+
              if($filterId === 'rangeF')
             {
                 $priceBot = $filter[$filterId];
                 continue;
             }
-            
+
             if($filterId === 'rangeT')
             {
                 $priceTop = $filter[$filterId];
@@ -195,13 +195,13 @@ class Fitpark_model extends CI_Model {
         }
         $this->filterForPriceRange($priceBot[0], $priceTop[0]);
     }
-    
+
     function filterForPriceRange($l, $r)
     {
         $this->db->where('sub1 >=', $l);
         $this->db->where('sub1 <=', $r);
     }
-    
+
 
     private function filterForSubscribe($set)
     {

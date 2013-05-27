@@ -17,7 +17,9 @@ class FitparkClubController extends FitparkBaseController {
 
     public function club($clubId, $isComment = 0)
     {
-        $this->m_clubId = $clubId;
+        // Временная заплатка - проблемы с роутингом
+        $arr = $this->uri->segment_array();
+        $this->m_clubId = $arr[2];
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
         $this->view      = 'club/club';
@@ -86,9 +88,9 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     public function addReview($clubId) {
-        
+
         $this->fitpark_club_model->trans_start();
-        
+
         $this->fitpark_club_model->addReview($clubId,
                                          $this->input->post("text"),
                                          $this->input->post("name"),
@@ -97,7 +99,7 @@ class FitparkClubController extends FitparkBaseController {
         $val = $this->input->post('score');
         $reviewID = $this->fitpark_club_model->lastInsertedId();
         $this->fitpark_club_model->addVote($clubId, $reviewID, $val);
-        
+
         $this->fitpark_club_model->trans_commit();
         redirect(site_url(array('club',$clubId,'1')));
     }
@@ -140,7 +142,7 @@ class FitparkClubController extends FitparkBaseController {
         $i = 0;
         foreach ($this->viewData['images'] as &$currentImage) {
             if(!$currentImage["min_photo"]) {
-
+                $currentImage["photo"] = 'image/club/'.$currentImage["photo"];
                 $config['image_library'] = 'gd2';
                 $config['source_image'] = $currentImage["photo"];
                 $config['create_thumb'] = TRUE;
