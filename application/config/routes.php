@@ -39,7 +39,7 @@
 */
 
 $route['default_controller']      = "main";
-$route['404_override']            = '';
+$route['404_override']            = 'errors/err404';
 
 $route['clubs']                   = 'FitparkClubsController/clubs';
 $route['clubs/search:any']        = 'FitparkClubsController/search';

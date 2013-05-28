@@ -1165,4 +1165,12 @@ footer {
 .like-bar>td {
     padding: 20px 0;
 }
+
+.error404-img{
+    background: url("/image/404.png") no-repeat;
+    background-position: center;
+    height: 450px;
+    margin: 20px;
+}
+
 /*END SLIDER*/
