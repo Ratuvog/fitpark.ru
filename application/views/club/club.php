@@ -1,16 +1,27 @@
                 <section class="card-clubs">
-                    <header>
-                        <section class="main-img-club">
-                            <table width="280px" height="100%" class="head-image">
-                                <tr>
-                                    <td align="center">
-                                        <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
-                                            <img style="max-width: 280px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-
+                    <section>
+                        <section>
+                            <div class="main-img-club">
+                                <table width="280px" height="100%" class="head-image">
+                                    <tr>
+                                        <td align="center" valign="middle">
+                                            <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
+                                                <img style="max-width: 280px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="rating club-big"
+                                 title="Ваша оценка: <?=round($base['rating'],2);?>"
+                                 data-score="<?=$base['rating'];?>"
+                                 data-vote-id="<?=$base['id'];?>"
+                                 ro="<?if(isset($base['rating']))
+                                            echo 'true'; 
+                                       else 
+                                            echo 'false';?>">
+                            </div>
+                            <div colspan="2" class="rating-vote-answer"><?if(!isset($base['rating'])) echo 'Оцените клуб'; else echo "Ваша оценка: ".round($base['rating'],2);?></div>
                         </section>
                         <section class="short-description-card">
                             <header class="card-name-club">
@@ -100,12 +111,12 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                 <? } ?>
                             </table>
                         </section>
-                    </header>
+                    </section>
                     <section class="tab-set">
                         <table cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <!--<td class="empty-tab"></td>-->
-                                <td class="tab <? if(!$isComment) {?>active-tab<?}?>" selector="#description-club">
+                                <td class="tab <? if(!$isComment == 1) {?>active-tab<?}?>" selector="#description-club">
                                     <div ><a href="#">Описание</a></div>
                                 </td>
                                 <td class="spacer"></td>
@@ -113,14 +124,14 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                     <div ><a href="#">Фотографии</a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="tab <? if($isComment) {?>active-tab<?}?>" selector="#review-club">
+                                <td class="tab <? if($isComment == 1) {?>active-tab<?}?>" selector="#review-club">
                                     <div ><a href="#"><a href="#">Отзывы</a></a></div>
                                 </td>
                                 <td class="spacer"></td>
                                 <td class="empty-back-item"></td>
                             </tr>
                         </table>
-                        <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">
+                        <section id="description-club" class="full-card-description tabs-content <? if($isComment == 1) {?>hideClass<?}?>">
 
                                     <div class="club-info"><div class="desc-text">
                                         <div class="icon-home card-img-home"></div> <div class="text-card-club"><?= $base['address']; ?></div>
@@ -164,11 +175,6 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                         </section>
                         <div id="review-club" class="full-card-description tabs-content <? if(!$isComment) {?>hideClass<?}?> ">
                             <section class="add-review">
-                                <div class="rating-club-passive" title="Средняя оценка клуба: <?=round($base['rating'],2);?>">
-                                    <input type="hidden" name="val" value="<?=$base['rating'];?>"/>
-                                    <input type="hidden" name="votes" value="<?=$base['votes'];?>"/>
-                                    <input type="hidden" name="vote-id" value="<?=$base['id'];?>"/>
-                                </div>
                                 <div class="button-guest button-club action-button add-review-button" selector="#get-review" href="/club/addReview/<?=$base['id']?>">
                                     <ul>
                                         <li>
@@ -187,12 +193,13 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                     <tr>
                                         <td class="description-review">
                                             <h4><?= $review['sender']; ?></h4>
-                                            <span><?= $review['outdate']; ?></span>
-                                            <div class="rating-club-passive-mini" title="Оценил на: <?=round($review['rating'],2);?>">
-                                                <input type="hidden" name="val" value="<?=$review['rating'];?>"/>
-                                                <input type="hidden" name="votes" value="1"/>
-                                                <input type="hidden" name="vote-id" value="<?=$base['id'];?>"/>
-                                            </div>
+                                            <span><?= $review['outdate']; ?></span>           
+                                            <? if(isset($review['rating'])) { ?>
+                                                <div class="rating club-mini" 
+                                                    title="Оценил клуб на: <?=round($review['rating'],2);?>"
+                                                    data-score="<?=round($review['rating'],2);?>">
+                                                </div>
+                                            <? } ?>
                                         </td>
                                         <td class="content-review">
                                                     <? if ($review['text']) { ?>
@@ -265,7 +272,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                 <tr>
                                 <? } ?>
                                 <td align="center">
-                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" style="max-width: 310px; max-height: 130px" />
+                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" height="134" />
                                     <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
                                     <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub['id'];?>">
                                         <ul>
@@ -290,7 +297,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                 </section>
 
                 <div style="clear: both;"></div>
-
+                
             </div>
 <script type="text/javascript" src="/js/club.js"></script>
 
@@ -326,16 +333,6 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                     <td>
                         <textarea class="search review-text" name="minus" isReq="false" id="" cols="30" rows="10"  text="минусы" validator="blank"></textarea>
                     </td>
-                </tr>
-                <tr>
-                    <td>
-                        Оценка
-                    </td>
-                    <td>
-                        <div class="rating-club-active" title="Оцени клуб">
-                            <input type="hidden" name="vote-id" value="<?=$base['id'];?>"/>
-                        </div>
-                    <td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">

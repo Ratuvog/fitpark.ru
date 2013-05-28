@@ -61,8 +61,7 @@ padding: 0;}
 
 .head-image {
     margin-right: 10px;
-    width: 280px;
-    height: 270px;
+    height: 218px;
 }
 
 .analog-foto {
@@ -563,6 +562,8 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 
 .main-img-club {
     float: left;
+    margin-top: 60px;
+    height: 100%;
 }
 
 .short-description-card {
@@ -631,11 +632,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 .button-guest {
     width: 217px;
 }
-main-img-club {
-    margin-right: 45px;
-    width: 350px;
-}
-
+ 
 .variation-abonements {
     margin-bottom: 20px;
 }
