@@ -122,7 +122,7 @@
                                         <? } ?>
                                         <? if ($base['site']) { ?>
                                         <div class="desc-text">
-                                            <a href=http://<?= $base['site']; ?>><div class="icon-hand-up card-img-hand-up"></div> <div><?= $base['site']; ?></div></a>
+                                            <a href=http://<?= $base['site']; ?> target="_blank"><div class="icon-hand-up card-img-hand-up"></div> <div><?= $base['site']; ?></div></a>
                                             <div style="clear: both;"></div>
                                         </div>
                                         <? } ?>
