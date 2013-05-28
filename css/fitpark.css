@@ -1164,4 +1164,8 @@ footer {
     height: 28px;
     background: url("/image/phone.png") no-repeat;
 }
+
+.like-bar>td {
+    padding: 20px 0;
+}
 /*END SLIDER*/

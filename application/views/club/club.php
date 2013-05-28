@@ -83,6 +83,18 @@
                                         </div>
                                     </td>
                                     <td >
+
+                                    </td>
+                                </tr>
+                                <tr class="like-bar">
+                                    <td>
+                                                                              <div id="vk_like"></div>
+<script type="text/javascript">
+VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
+</script>
+                                    </td>
+                                    <td colspan="3">
+                                        <div class="fb-like" data-href="<?=$clubUrl;?>" data-send="true" data-width="450" data-show-faces="true"></div>
                                     </td>
                                 </tr>
                                 <? } ?>

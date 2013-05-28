@@ -19,11 +19,12 @@ class FitparkClubController extends FitparkBaseController {
     {
         // Временная заплатка - проблемы с роутингом
         $arr = $this->uri->segment_array();
-        $this->m_clubId = $arr[2];
+        $this->m_clubId = (int)$arr[2];
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
         $this->view      = 'club/club';
         $this->viewData["isComment"] = $this->getIsCommentsParams();
+        $this->viewData["clubUrl"] = site_url(array('club',$clubId));
         /* Get full info about club */
         $this->getBaseInfo();
         $this->getRates();
@@ -88,7 +89,7 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     public function addReview($clubId) {
-        
+
         $this->fitpark_club_model->addReview($clubId, $_SERVER['REMOTE_ADDR'],
                                          $this->input->post("text"),
                                          $this->input->post("name"),
@@ -181,13 +182,13 @@ class FitparkClubController extends FitparkBaseController {
             return 0;
         return $arr[count($arr)-1];
     }
-    
+
     public function vote()
     {
         $ok = array('status'=>'OK','msg'=>'Спасибо! Ваша оценка учтена.');
         $err = array('status'=>'ERR','msg'=>'Вы уже оценивали этот клуб.');
         $servErr = array('status'=>'ERR','msg'=>'Извините, произошла ошибка на сервере.');
-        
+
         $val = $this->input->post('score');
         $clubId = $this->input->post('vote-id');
 
@@ -196,14 +197,14 @@ class FitparkClubController extends FitparkBaseController {
             echo json_encode ($servErr);
             return;
         }
-        
+
         $senderID = $_SERVER['REMOTE_ADDR'];
         if($this->fitpark_club_model->addVote($clubId, $senderID, $val))
             echo json_encode($ok);
         else
             echo json_encode($err);
         return;
-            
+
     }
 }
 

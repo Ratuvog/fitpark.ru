@@ -23,9 +23,22 @@
         <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
         <script type="text/javascript" src="/js/validator_helper.js"></script>
         <script type="text/javascript" src="/js/raty-2.5.2/jquery.raty.js"></script>
+ <script type="text/javascript" src="//vk.com/js/api/openapi.js?96"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 3677727, onlyWidgets: true});
+</script>
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
-    <body>
+    <body><div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
         <div class="main">
         <header id="title">
             <div id="title-menu">
@@ -43,7 +56,7 @@
                         <img src="<?=site_url(array('image','logo.png'))?>"></img>
                     </a>
                 </div>
-                
+
                 <div class="header-content">
                     <form action="<?=site_url(array('clubs','search'))?>" method="post">
                         <input type="text" class="search not-empty" name="search" id="search" place="Что ищем?"/>
@@ -218,7 +231,7 @@
                         </table>
                     </form>
                 </div>
-            </div>       
+            </div>
 
             <section id="menu">
                 <ul>
