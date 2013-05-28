@@ -43,6 +43,7 @@ class FitparkClubsController extends FitparkBaseController {
     public function clubs()
     {
         $this->session->unset_userdata('search');
+		$this->session->unset_userdata('search');
         $this->session->unset_userdata('filter');
         $this->session->unset_userdata('activeFilter');
         $this->filterEnabled = false;
@@ -197,15 +198,16 @@ class FitparkClubsController extends FitparkBaseController {
             $filters = array();
             foreach (array_keys($this->activeFilters) as $option)
             {
-                if($this->input->post($option))
-                {
-                    $value = $this->input->post($option);
-                    if($option === 'rangeF' || $option === 'rangeT')
+$value = $this->input->post($option);
+if($option === 'rangeF' || $option === 'rangeT')
                     {
                         $filters = $this->setPriceRangeFilter($filters, $option);
                         $this->activeFilters[$option] = $value;
                     }
-                    else
+                 if($this->input->post($option))
+                 {
+
+                    if($option !== 'rangeF' && $option !== 'rangeT')
                     {
                         $filters = $this->setFilterValue($filters, $option);
                         $this->activeFilters[$option] = true;
@@ -227,6 +229,7 @@ class FitparkClubsController extends FitparkBaseController {
             }
             return array();
         }
+
     }
 
     private function setFilterValue($filterArray, $option)

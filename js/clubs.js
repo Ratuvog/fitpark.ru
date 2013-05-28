@@ -17,7 +17,7 @@ $(function(){
             max: parseInt(self.attr("to")),
             values: [ parseInt(leftInput), parseInt(rightInput) ],
             slide: function( event, ui ) {
-                self.next(".slider-input").find('[name="rangeF"]').val(ui.values[0]);
+                self.next(".slider-input").find('[name="rangeF"]').val(ui.values[0] ? ui.values[0] : 0);
                 self.next(".slider-input").find('[name="rangeT"]').val(ui.values[1]);
             }
         });
