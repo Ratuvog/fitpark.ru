@@ -17,8 +17,8 @@
                                  data-score="<?=$base['rating'];?>"
                                  data-vote-id="<?=$base['id'];?>"
                                  ro="<?if(isset($base['rating']))
-                                            echo 'true'; 
-                                       else 
+                                            echo 'true';
+                                       else
                                             echo 'false';?>">
                             </div>
                             <div colspan="2" class="rating-vote-answer"><?if(!isset($base['rating'])) echo 'Оцените клуб'; else echo "Ваша оценка: ".round($base['rating'],2);?></div>
@@ -193,9 +193,9 @@ VK.Widgets.Like("vk_like", {type: "button"},<?=$clubUrl;?>);
                                     <tr>
                                         <td class="description-review">
                                             <h4><?= $review['sender']; ?></h4>
-                                            <span><?= $review['outdate']; ?></span>           
+                                            <span><?= $review['outdate']; ?></span>
                                             <? if(isset($review['rating'])) { ?>
-                                                <div class="rating club-mini" 
+                                                <div class="rating club-mini"
                                                     title="Оценил клуб на: <?=round($review['rating'],2);?>"
                                                     data-score="<?=round($review['rating'],2);?>">
                                                 </div>
@@ -272,7 +272,7 @@ VK.Widgets.Like("vk_like", {type: "button"},<?=$clubUrl;?>);
                                 <tr>
                                 <? } ?>
                                 <td align="center">
-                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" height="134" />
+                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" style="max-width: 160px;" />
                                     <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
                                     <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub['id'];?>">
                                         <ul>
@@ -297,7 +297,7 @@ VK.Widgets.Like("vk_like", {type: "button"},<?=$clubUrl;?>);
                 </section>
 
                 <div style="clear: both;"></div>
-                
+
             </div>
 <script type="text/javascript" src="/js/club.js"></script>
 
