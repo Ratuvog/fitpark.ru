@@ -10,6 +10,7 @@
         <script type="text/javascript" src="/js/slider/jquery.bxslider.js"></script>
         <!--<link rel="stylesheet" href="/js/slider/jquery.bxslider.css" />-->
         <script type="text/javascript" src="/js/main.js"> </script>
+        <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
         <meta name='yandex-verification' content='781c2dd8ae286aca' />
         <meta name="google-site-verification" content="LPcTvq9lj7flD6_bLTq3HL-vJF9SFxRaLNq0eWIYGLs" />
