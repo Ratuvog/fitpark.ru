@@ -27,6 +27,7 @@ class FitparkClubController extends FitparkBaseController {
         $this->viewData["clubUrl"] = crc32("Club".$clubId);
         /* Get full info about club */
         $this->getBaseInfo();
+        $this->getDescriptions();
         $this->getRates();
         $this->getReviews();
         $this->getImages();
@@ -205,6 +206,11 @@ class FitparkClubController extends FitparkBaseController {
             echo json_encode($err);
         return;
 
+    }
+    
+    private function getDescriptions()
+    {
+        $this->viewData['descript'] = $this->fitpark_club_model->descriptions($this->m_clubId);
     }
 }
 

@@ -182,6 +182,14 @@ class Fitpark_club_model extends CI_Model {
         $this->db->insert("fitnesclub_review",$insertData);
     }
     
+    function descriptions($clubId)
+    {
+        $this->db->select("*")->from('fitnesclub_description')
+                 ->where(array('clubid'=>$clubId));
+        return $this->db->get()->result_array();
+    }
+            
+    
     function addVote($clubId, $sender, $val)
     {
         $query = $this->db->select("*")

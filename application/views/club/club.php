@@ -172,7 +172,9 @@ VK.Widgets.Like("vk_like", {type: "button"},<?=$clubUrl;?>);
                                         </li>
                                     <? } ?>
                                 </ul>-->
-                                <?=$base['description'];?>
+                                <? foreach($descript as $text) {
+                                    echo $text['text'];
+                                } ?>
                             </p>
                         </section>
                         <div id="review-club" class="full-card-description tabs-content <? if(!$isComment) {?>hideClass<?}?> ">
