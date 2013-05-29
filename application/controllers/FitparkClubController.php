@@ -22,6 +22,7 @@ class FitparkClubController extends FitparkBaseController {
         $this->m_clubId = (int)$arr[2];
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
+        
         $this->view      = 'club/club';
         $this->viewData["isComment"] = $this->getIsCommentsParams();
         $this->viewData["clubUrl"] = crc32("Club".$clubId);
@@ -34,6 +35,8 @@ class FitparkClubController extends FitparkBaseController {
         $this->getAnalogs();
         $this->getUserVote();
 
+        if(!empty($this->viewData['base']))
+            $this->headerData = array('titleText'=>"ФитПарк. ".$this->viewData['base']['name']." фитнес-клуб Самары. Стоимость, отзывы, фотографии, рейтинг, акции.");
 
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),

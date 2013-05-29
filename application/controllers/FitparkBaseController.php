@@ -11,7 +11,8 @@ class FitparkBaseController extends CI_Controller {
     
     // Name header view and data
     protected $header = 'header';
-    protected $headerData = array();
+    protected $headerData = array('titleText'=>"ФитПарк. Фитнес клубы Самары, тренажерные залы,
+            фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
 
     // BreadCrumbs view and data
     protected $breadCrumbs = 'breadcrumbs';

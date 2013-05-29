@@ -52,7 +52,8 @@ class FitparkClubsController extends FitparkBaseController {
 
     private function initHeaderData()
     {
-        $data = array();
+        $data = array('titleText'=>"ФитПарк. Фитнес клубы Самары, тренажерные залы,
+            фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
         return $data;
     }
 
