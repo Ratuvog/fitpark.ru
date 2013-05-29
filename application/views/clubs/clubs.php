@@ -115,7 +115,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <div class="rating clubs-mini" 
+                                    <div class="rating clubs-mini"
                                          title="Средняя оценка клуба: <?=round($row->rating,2);?>. Оценок: <?=round($row->votes,2);?>"
                                          data-score="<?=$row->rating;?>">
                                     </div>
@@ -146,7 +146,7 @@
                                         <div style="clear: both;"></div>
                                     </section>
                                     <section class="level-club">
-                                        Фитнес-клуб <?=$row->segment;?>
+                                        Фитнес-клуб в Самаре <?=$row->segment;?>
                                     </section>
                                     <section class="text-description-club">
                                         <p>
