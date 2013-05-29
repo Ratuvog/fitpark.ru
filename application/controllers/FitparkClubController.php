@@ -24,7 +24,7 @@ class FitparkClubController extends FitparkBaseController {
         $this->titlePage = 'Фитнес-клуб';
         $this->view      = 'club/club';
         $this->viewData["isComment"] = $this->getIsCommentsParams();
-        $this->viewData["clubUrl"] = site_url(array('club',$clubId));
+        $this->viewData["clubUrl"] = crc32("Club".$clubId);
         /* Get full info about club */
         $this->getBaseInfo();
         $this->getRates();

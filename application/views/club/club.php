@@ -101,7 +101,7 @@
                                     <td>
                                                                               <div id="vk_like"></div>
 <script type="text/javascript">
-VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
+VK.Widgets.Like("vk_like", {type: "button"},<?=$clubUrl;?>);
 </script>
                                     </td>
                                     <td colspan="3">
