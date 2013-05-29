@@ -48,11 +48,13 @@
                                     </td>
                                 </tr>
                                 <? foreach ($base['rates'] as $currentRate){ ?>
+                                <? if($currentRate['price']>1) {?>
                                 <tr>
                                     <td><?=$currentRate['period'];?></td>
                                     <td class="price-club-price"><h4><?=$currentRate['price'];?></h4></td>
                                     <td></td>
                                 </tr>
+                                <? } ?>
                                 <? } ?>
 
                                 <tr>
