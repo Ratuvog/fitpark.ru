@@ -71,7 +71,7 @@ class Fitpark_club_model extends CI_Model {
                  ->from("fitnesclub_review f")
                  ->join("fitnesclub_rating r", "f.senderIP = r.sender", 'left')
                  ->where(array("f.fitnesclubid"=>$clubId))
-                 ->group_by("f.fitnesclubid")
+                 ->group_by("f.id")
                  ->order_by("f.id", "desc");
         return $this->db->get()->result_array();
     }
