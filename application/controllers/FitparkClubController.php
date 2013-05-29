@@ -32,6 +32,7 @@ class FitparkClubController extends FitparkBaseController {
         $this->getReviews();
         $this->getImages();
         $this->getAnalogs();
+        $this->getUserVote();
 
 
         $this->breadCrumbsData[] = array(
@@ -211,6 +212,11 @@ class FitparkClubController extends FitparkBaseController {
     private function getDescriptions()
     {
         $this->viewData['descript'] = $this->fitpark_club_model->descriptions($this->m_clubId);
+    }
+    
+    private function getUserVote()
+    {
+        $this->viewData['userVote'] = $this->fitpark_club_model->userVote($this->m_clubId, $_SERVER['REMOTE_ADDR']);
     }
 }
 

@@ -23,7 +23,7 @@ class Fitpark_club_model extends CI_Model {
         $this->db->select("fitnesclub.*, AVG(r.value) as rating, COUNT(r.clubId) as votes")
             ->from("fitnesclub")
             ->join("fitnesclub_rating as r", "fitnesclub.id = r.clubId", 'left')
-            ->group_by("r.clubId")
+            ->group_by("fitnesclub.id")
             ->where(array('fitnesclub.id'=>$clubId));
         return $this->db->get()->result_array();
     }
@@ -71,6 +71,7 @@ class Fitpark_club_model extends CI_Model {
                  ->from("fitnesclub_review f")
                  ->join("fitnesclub_rating r", "f.senderIP = r.sender", 'left')
                  ->where(array("f.fitnesclubid"=>$clubId))
+                 ->group_by("f.fitnesclubid")
                  ->order_by("f.id", "desc");
         return $this->db->get()->result_array();
     }
@@ -189,7 +190,14 @@ class Fitpark_club_model extends CI_Model {
         return $this->db->get()->result_array();
     }
             
-    
+    function userVote($clubId, $sender)
+    {
+        $this->db->select("value as vote")
+                 ->from("fitnesclub_rating")
+                 ->where(array("clubId"=>$clubId, "sender"=>$sender));
+        return $this->db->get()->result_array();
+    }
+            
     function addVote($clubId, $sender, $val)
     {
         $query = $this->db->select("*")

@@ -13,15 +13,26 @@
                                 </table>
                             </div>
                             <div class="rating club-big"
-                                 title="Ваша оценка: <?=round($base['rating'],2);?>"
-                                 data-score="<?=$base['rating'];?>"
                                  data-vote-id="<?=$base['id'];?>"
-                                 ro="<?if(isset($base['rating']))
+                                 title="Ваша оценка: <? $userRating = 0; if(!empty($userVote)) $userRating = $userVote[0]['vote']; echo $userRating;?>"
+                                 data-score="<?if($userRating != 0)
+                                                echo $base['rating'];
+                                            else
+                                                echo 0;?>"                                          
+                                 ro="<?if($userRating != 0)
                                             echo 'true';
                                        else
                                             echo 'false';?>">
                             </div>
-                            <div colspan="2" class="rating-vote-answer"><?if(!isset($base['rating'])) echo 'Оцените клуб'; else echo "Ваша оценка: ".round($base['rating'],2);?></div>
+                            <div colspan="2" class="rating-vote-answer">
+                                <?if($userRating == 0) {
+                                    echo 'Оцените клуб'; 
+                                } else {
+                                      echo "Ваша оценка: ".$userRating;
+                                      echo "<br>";
+                                      echo "Средняя оценка: ".round($base['rating'],2);
+                                }?>
+                            </div>
                         </section>
                         <section class="short-description-card">
                             <header class="card-name-club">
