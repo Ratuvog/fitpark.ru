@@ -176,6 +176,12 @@
                                             <td class="price-club-price"><h4>от <?=$row->sub6;?> рублей</h4></td>
                                         </tr>
                                         <?}?>
+                                        <?if($row->sub12 > 0){?>
+                                        <tr>
+                                            <td class="price-club-date">1 год</td>
+                                            <td class="price-club-price"><h4>от <?=$row->sub12;?> рублей</h4></td>
+                                        </tr>
+                                        <?}?>
                                         <tr>
                                             <td colspan="2">
                                                 <div class="button-get-discount button-club action-button" selector="#get-answer" href="/club/getQuestion/<?=$row->id;?>">
