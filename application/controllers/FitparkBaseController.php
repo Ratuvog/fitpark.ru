@@ -4,11 +4,11 @@ class FitparkBaseController extends CI_Controller {
 
     protected $allowedPages = array();
     protected $privateAllowedPages = array();
-    
+
     // Name default view *.php
     protected $defaultPage = 'clubs/clubs';
     protected $titlePage = 'nothing';
-    
+
     // Name header view and data
     protected $header = 'header';
     protected $headerData = array('titleText'=>"ФитПарк. Фитнес клубы Самары, тренажерные залы,
@@ -103,6 +103,11 @@ class FitparkBaseController extends CI_Controller {
     protected function toDefaultPage()
     {
         $this->renderScene($this->defaultPage);
+    }
+
+    protected function customRedirect($url)
+    {
+        $this->load->view("customRedirect", array("redirectUrl"=>$url));
     }
 
     // Before render scene check view-data variable for initialization

@@ -100,7 +100,7 @@ class FitparkClubController extends FitparkBaseController {
                                          $this->input->post("name"),
                                          $this->input->post("plus"),
                                          $this->input->post("minus"));
-        redirect(site_url(array('club',$clubId,'1')));
+        $this->customRedirect(site_url(array('club',$clubId,'1')));
     }
 
     public function init()
