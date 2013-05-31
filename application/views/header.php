@@ -10,10 +10,10 @@
         <link rel="stylesheet" href="/js/fancybox/jquery.fancybox.css" />
         <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-buttons.css" />
         <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-thumbs.css" />
-        
+
         <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon"> 
-        
+        <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
+
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/cb/jquery.colorbox.js"></script>
@@ -48,7 +48,6 @@
                 <ul>
                     <li class="name-section"><a href="<?=base_url();?>" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="<?=site_url(array('clubs'));?>" class="my-link">Фитнес-клубы</li>
-                    <li class="name-section"><a href="<?=site_url(array('#'));?>" class="my-link">О ФитПарке</a></li>
                 </ul>
             </div>
         </header>

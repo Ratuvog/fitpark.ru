@@ -18,7 +18,7 @@
                                  data-score="<?if($userRating != 0)
                                                 echo $base['rating'];
                                             else
-                                                echo 0;?>"                                          
+                                                echo 0;?>"
                                  ro="<?if($userRating != 0)
                                             echo 'true';
                                        else
@@ -26,7 +26,7 @@
                             </div>
                             <div colspan="2" class="rating-vote-answer">
                                 <?if($userRating == 0) {
-                                    echo 'Оцените клуб'; 
+                                    echo 'Оцените клуб';
                                 } else {
                                       echo "Ваша оценка: ".$userRating;
                                       echo "<br>";
@@ -141,7 +141,9 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                     <div ><a href="#"><a href="#">Отзывы</a></a></div>
                                 </td>
                                 <td class="spacer"></td>
-                                <td class="empty-back-item"></td>
+                                <td class="empty-back-item">
+                                    <div></div>
+                                </td>
                             </tr>
                         </table>
                         <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">

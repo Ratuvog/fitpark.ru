@@ -623,14 +623,14 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .spacer {
-    width: 10px;
+    min-width: 10px;
     border-bottom: 1px solid #a1a1a1;
 }
 
 .button-guest {
     width: 217px;
 }
- 
+
 .variation-abonements {
     margin-bottom: 20px;
 }
@@ -654,7 +654,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     border-right: 0;
     border-left: 0;
     border-collapse:collapse;
-    width: 150px;
+    min-width: 150px;
     text-align: center;
 }
 
@@ -665,6 +665,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     border-style: solid;
     border-color: #a1a1a1;
     padding: 15px 15px 10px 15px;
+    min-width: 130px;
 
 }
 
@@ -862,8 +863,12 @@ text-overflow: ellipsis;
 }
 .empty-back-item {
     /*float: left;*/
-    /*width: 100%;*/
+    width: 100%;
     border-bottom: 1px solid #a1a1a1;
+}
+
+.empty-back-item div {
+    width: 100%;
 }
 
 .image-set {

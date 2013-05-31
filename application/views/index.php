@@ -22,7 +22,6 @@
                 <ul>
                     <li class="name-section"><a href="#" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</li>
-                    <li class="name-section"><a href="#" class="my-link">О ФитПарке</a></li>
                 </ul>
             </div>
         </header>
