@@ -2,22 +2,22 @@
 class Fitpark_club_model extends CI_Model {
     private $defaultUser = "Неизвестный";
     /* Get base info club */
-    
+
     function trans_start()
     {
         $this->db->trans_start();
     }
-    
+
     function  trans_commit()
     {
         $this->db->trans_complete();
     }
-    
+
     function lastInsertedId()
     {
         return $this->db->insert_id();
     }
-            
+
     function getBaseInfoClub($clubId)
     {
         $this->db->select("fitnesclub.*, AVG(r.value) as rating, COUNT(r.clubId) as votes")
@@ -86,7 +86,7 @@ class Fitpark_club_model extends CI_Model {
         );
         $this->db->update("fitnesclub_photo",$data,array("id"=>$id));
     }
-    
+
     function getAnalogs($clubId) {
         $query = "SELECT f1 . *
                 FROM fitnesclub f1, fitnesclub f2
@@ -182,14 +182,14 @@ class Fitpark_club_model extends CI_Model {
         );
         $this->db->insert("fitnesclub_review",$insertData);
     }
-    
+
     function descriptions($clubId)
     {
         $this->db->select("*")->from('fitnesclub_description')
                  ->where(array('clubid'=>$clubId));
         return $this->db->get()->result_array();
     }
-            
+
     function userVote($clubId, $sender)
     {
         $this->db->select("value as vote")
@@ -197,17 +197,17 @@ class Fitpark_club_model extends CI_Model {
                  ->where(array("clubId"=>$clubId, "sender"=>$sender));
         return $this->db->get()->result_array();
     }
-            
+
     function addVote($clubId, $sender, $val)
     {
         $query = $this->db->select("*")
                  ->from('fitnesclub_rating')
                  ->where(array('sender'=>$sender, 'clubId'=>$clubId))
                  ->get()->result_array();
-        
+
         if(count($query) != 0)
             return false;
-        
+
         $data = array(
                'clubId' => $clubId,
                'sender' => $sender,

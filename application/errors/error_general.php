@@ -54,6 +54,9 @@ p {
 </style>
 </head>
 <body>
+<script type="text/javascript">
+    document.location.href = "clubs"
+</script>
 	<div id="container">
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>

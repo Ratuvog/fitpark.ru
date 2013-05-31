@@ -22,12 +22,16 @@ class FitparkClubController extends FitparkBaseController {
         $this->m_clubId = (int)$arr[2];
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
-        
+
         $this->view      = 'club/club';
         $this->viewData["isComment"] = $this->getIsCommentsParams();
         $this->viewData["clubUrl"] = crc32("Club".$clubId);
         /* Get full info about club */
+        $this->viewData['base'] = array();
         $this->getBaseInfo();
+        if(empty($this->viewData['base'])) {
+            $this->show404();
+        }
         $this->getDescriptions();
         $this->getRates();
         $this->getReviews();
@@ -35,9 +39,7 @@ class FitparkClubController extends FitparkBaseController {
         $this->getAnalogs();
         $this->getUserVote();
 
-        if(!empty($this->viewData['base']))
-            $this->headerData = array('titleText'=>"ФитПарк. ".$this->viewData['base']['name']." фитнес-клуб Самары. Стоимость, отзывы, фотографии, рейтинг, акции.");
-
+        $this->headerData = array('titleText'=>"ФитПарк. ".$this->viewData['base']['name']." фитнес-клуб Самары. Стоимость, отзывы, фотографии, рейтинг, акции.");
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),
             'title' => $this->viewData['base']['name']
@@ -116,9 +118,11 @@ class FitparkClubController extends FitparkBaseController {
     protected function getBaseInfo()
     {
         $infoArray = $this->setEmptyPhoto($this->fitpark_club_model->getBaseInfoClub($this->m_clubId));
-        $this->viewData['base'] = $infoArray[0];
-//        $this->viewData['base']["head_picture"] = site_url($this->viewData['base']["head_picture"]);
-        $this->headerData['order'] = $this->order;
+        if(count($infoArray)) {
+            $this->viewData['base'] = $infoArray[0];
+    //        $this->viewData['base']["head_picture"] = site_url($this->viewData['base']["head_picture"]);
+            $this->headerData['order'] = $this->order;
+        }
     }
 
     protected function getRates()
@@ -210,12 +214,12 @@ class FitparkClubController extends FitparkBaseController {
         return;
 
     }
-    
+
     private function getDescriptions()
     {
         $this->viewData['descript'] = $this->fitpark_club_model->descriptions($this->m_clubId);
     }
-    
+
     private function getUserVote()
     {
         $this->viewData['userVote'] = $this->fitpark_club_model->userVote($this->m_clubId, $_SERVER['REMOTE_ADDR']);

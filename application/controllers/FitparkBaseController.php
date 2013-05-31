@@ -94,6 +94,12 @@ class FitparkBaseController extends CI_Controller {
 //        }
     }
 
+    public function show404()
+    {
+        $this->output->set_status_header('404');
+        $this->customRedirect('override_404');
+    }
+
     public function index()
     {
         $this->init();
