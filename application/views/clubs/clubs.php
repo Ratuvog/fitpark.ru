@@ -146,7 +146,7 @@
                                         <div style="clear: both;"></div>
                                     </section>
                                     <section class="level-club">
-                                        Фитнес-клуб в Самаре <?=$row->segment;?>
+                                        <?=$row->segment;?>
                                     </section>
                                     <section class="text-description-club">
                                         <p>
