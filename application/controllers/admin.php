@@ -10,6 +10,7 @@ class Admin extends CI_Controller {
         'cities' => array('Города','city'),
         'districts' => array('Районы','district'),
         'clubs' => array('Фитнес-клубы','fitnesclub'),
+        'orders' => array('Порядок вывода клубов', 'orders'),
         'services' => array('Услуги клуба','fitnesclub_services'),
         'subscribes' => array('Абонементы','fitnesclub_subscribe'),
         'reviews' => array('Отзывы','fitnesclub_review'),
@@ -289,7 +290,21 @@ class Admin extends CI_Controller {
                 $output = $crud->render();
                 $this->render($output);
         }
-            
+        
+        function orders()
+        {
+                $this->setCurentState('orders');
+                $crud = new grocery_CRUD();
+                $crud->set_table($this->currentTable);
+                $crud->set_relation_n_n('Fitnesclubs', 'order_list',
+                        'fitnesclub','orderId',
+                        'clubId','name','priority');
+                $crud->fields("name", "active", "Fitnesclubs");
+                
+                $output = $crud->render();
+                $this->render($output);
+        }
+                
         function index()
 	{
             redirect('admin/clubs');
