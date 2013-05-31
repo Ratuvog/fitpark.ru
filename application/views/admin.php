@@ -34,7 +34,7 @@ a:hover
 </head>
 <body>
         <div>
-            <a href="<?php echo site_url('admin/logout')?>">Выйти</a>
+            <a href="<?php echo site_url('Hfnedjuhfnedju/logout')?>">Выйти</a>
         </div>
 
         <div style="margin-left:50%;">
@@ -42,16 +42,16 @@ a:hover
         </div>
     
 	<div style="float:left; width: 15%;" class="menu">
-            <a href='<?php echo site_url('admin/filters')?>'>Фильтры</a> </br>
-            <a href='<?php echo site_url('admin/cities')?>'>Города</a> </br>
-            <a href='<?php echo site_url('admin/districts')?>'>Районы</a> </br>
-            <a href='<?php echo site_url('admin/clubs')?>'>Фитнес-клубы</a> </br>
-            <a href='<?php echo site_url('admin/orders')?>'>Порядок вывода клубов</a> </br>
-            <a href='<?php echo site_url('admin/services')?>'>Услуги клубов</a> </br>
-            <a href='<?php echo site_url('admin/subscribes')?>'>Абонементы</a> </br>
-            <a href='<?php echo site_url('admin/reviews')?>'>Отзывы</a> </br>
-            <a href='<?php echo site_url('admin/descriptions')?>'>Описания</a> </br>
-            <a href='<?php echo site_url('admin/photos')?>'>Фото</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/filters')?>'>Фильтры</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/cities')?>'>Города</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/districts')?>'>Районы</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/clubs')?>'>Фитнес-клубы</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/orders')?>'>Порядок вывода клубов</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/services')?>'>Услуги клубов</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/subscribes')?>'>Абонементы</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/reviews')?>'>Отзывы</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/descriptions')?>'>Описания</a> </br>
+            <a href='<?php echo site_url('Hfnedjuhfnedju/photos')?>'>Фото</a> </br>
 	</div>
     
         <div>

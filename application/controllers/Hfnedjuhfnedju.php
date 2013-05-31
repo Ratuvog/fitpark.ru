@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Hfnedjuhfnedju extends CI_Controller {
 	    
     private $baseModel = 0;
     private $currentTable = 'auth';
@@ -81,7 +81,7 @@ class Admin extends CI_Controller {
         {
             $this->load->helper('form');
             
-            $output = form_open('admin/login');
+            $output = form_open('Hfnedjuhfnedju/login');
             $userData = array('name' => 'username','placeholder' => 'Имя пользователя');
             $output .= form_input($userData);
             $passData = array('name' => 'password','placeholder' => 'Пароль');
@@ -307,7 +307,7 @@ class Admin extends CI_Controller {
                 
         function index()
 	{
-            redirect('admin/clubs');
+            redirect('Hfnedjuhfnedju/clubs');
 	}		
 }
 ?>
