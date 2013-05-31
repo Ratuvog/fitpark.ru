@@ -46,6 +46,7 @@ a:hover
             <a href='<?php echo site_url('admin/cities')?>'>Города</a> </br>
             <a href='<?php echo site_url('admin/districts')?>'>Районы</a> </br>
             <a href='<?php echo site_url('admin/clubs')?>'>Фитнес-клубы</a> </br>
+            <a href='<?php echo site_url('admin/orders')?>'>Порядок вывода клубов</a> </br>
             <a href='<?php echo site_url('admin/services')?>'>Услуги клубов</a> </br>
             <a href='<?php echo site_url('admin/subscribes')?>'>Абонементы</a> </br>
             <a href='<?php echo site_url('admin/reviews')?>'>Отзывы</a> </br>

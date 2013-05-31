@@ -42,10 +42,10 @@ class Fitpark_model extends CI_Model {
          $this->db->select("*, fitnesclub.id, (sub3)/3 as avg3, (sub6)/6 as avg6, (sub12)/12 as avg12, AVG(r.value) as rating, COUNT(r.clubId) as votes")
             ->from("fitnesclub")
             ->join("fitnesclub_rating as r", "fitnesclub.id = r.clubId", 'left')
+            ->join("order_list as ol", "fitnesclub.id = ol.clubId")
             ->group_by("fitnesclub.id")
             ->limit($limit,$offset);
     }
-
 
     /**
      * Стратегии сортировки данных
@@ -56,7 +56,7 @@ class Fitpark_model extends CI_Model {
      */
     private function sortBy_popularity()
     {
-        $this->db->order_by("viewCount","desc");
+        $this->db->order_by("ol.priority","asc");
     }
 
     private function sortBy_ratingasc()
