@@ -28,7 +28,7 @@ $(function(){
         score: function() {
             return $(this).attr('data-score');
         }, 
-        path : location.origin+'/js/raty-2.5.2/img/',
+        path : 'http://'+location.hostname+'/js/raty-2.5.2/img/',
         hints : ['', '', '', '', ''],
         starHalf : 'star-half-big.png',
         starOff  : 'star-off-big.png',
@@ -42,7 +42,7 @@ $(function(){
         },
         click: function(score, evt) {
               $.ajax({
-                    url: location.origin+'/club/vote/',
+                    url: 'http://'+location.hostname+'/club/vote/',
                     type: 'post',
                     data: {
                         'score' : score,
@@ -69,7 +69,7 @@ $(function(){
         score: function() {
             return $(this).attr('data-score');
         }, 
-        path : location.origin+'/js/raty-2.5.2/img/',
+        path : 'http://'+location.hostname+'/js/raty-2.5.2/img/',
         readOnly : true,
         noRatedMsg: function() {
             return $(this).attr('title');

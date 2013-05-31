@@ -41,7 +41,7 @@ $(function(){
         score: function() {
             return $(this).attr('data-score');
         }, 
-        path : location.origin+'/js/raty-2.5.2/img/',
+        path : 'http://'+location.hostname+'/js/raty-2.5.2/img/',
         readOnly : true,
         noRatedMsg: function() {
             return $(this).attr('title');
