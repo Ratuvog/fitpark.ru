@@ -39,5 +39,9 @@ $(function(){
             inline: true
         });
     })
+
+    $(".submit").click(function(){
+        $(this).parents('form').first().submit();
+    })
 })
 
