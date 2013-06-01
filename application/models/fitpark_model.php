@@ -223,7 +223,11 @@ class Fitpark_model extends CI_Model {
                 ->order_by("fitnesclub_rel_services.priority","asc");
 
         return $this->db->get()->result();
+    }
 
+    function getServices()
+    {
+        return $this->db->query("select * from fitnesclub_services where icon<>\"\"")->result();
     }
 
     function getFitnesClubFilter($table)

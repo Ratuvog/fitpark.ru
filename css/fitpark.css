@@ -896,7 +896,7 @@ text-overflow: ellipsis;
 .main-button {
     width: 491px;
     height: 73px;
-    background: url('/image/main-button.png') no-repeat;
+    background: url('/image/main-button2.png') no-repeat;
     cursor: pointer;
     margin-bottom: 30px;
 }
@@ -1076,8 +1076,11 @@ footer {
 
 #main-content {
     position: relative;
-
     padding: 30px;
+}
+
+#main-content p {
+    line-height: 2.0em;
 }
 
 #main-content h2 {
@@ -1147,6 +1150,13 @@ footer {
     background: url("/image/help.png") no-repeat;
 }
 
+.icon-small-sprinter {
+    width: 27px;
+    height: 20px;
+    background: url('/image/sprinter.png') no-repeat;
+}
+
+
 .icon-small-calendar {
     width: 28px;
     height: 28px;
@@ -1176,12 +1186,140 @@ footer {
     margin: 20px;
 }
 
+#main-banner {
+    width: 100%;
+}
+
+/* main-baner-header */
+.main-banner-header {
+    width: 100%;
+    background-color: #f9f5f2;
+    box-shadow: 1px 4px 7px 0px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 1px 4px 7px 0px rgba(0, 0, 0, 0.49);
+    -webkit-box-shadow: 1px 4px 7px 0px rgba(0, 0, 0, 0.49);
+}
+
+.main-banner-image {
+    height: 100%;
+    background-color: #f9f5f2;
+}
+
+.main-banner-content {
+    min-height: 320px;
+    padding-left: 10px;
+    background-color: #f9f5f2;
+}
+
+.main-baner-content-img {
+    padding-right: 5px;
+}
+
+.main-banner-content-item h1 {
+    padding-bottom: 7px;
+}
+
+.main-banner-content-item>div {
+    padding-left: 50px;
+    padding-bottom: 30px;
+}
+
+.main-banner-content-item-last>div {
+    padding-bottom: 0px !important;
+}
+
+.main-baner-h1 {
+    font-weight: 600;
+    font-size: 1.6em;
+}
+
+.main-banner-content-item {
+    padding-bottom: 20px;
+}
+
+.main-banner-logo {
+    padding-bottom: 20px;
+}
+
+.main-banner-toolbar {
+    padding: 30px;
+    width: 100%;
+}
+
+.main-baner-tb-service li{
+    list-style-type: none;
+}
+
+.main-baner-tb-service a {
+    text-decoration: none;
+}
+
+.main-baner-tb-service-item {
+    margin-left: 5px;
+    position: relative;
+    top: -10px;
+}
+
+.main-baner-tb-service img.main-banner-services-icons {
+    width: 30px;
+    height: 30px;
+}
+
+.main-banner-toolbar-content {
+    padding-top: 35px;
+    max-width: 220px;
+}
+
+.main-banner-toolbar-h3 {
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.main-baner-tb-service {
+    margin-top: 15px;
+}
+
+.main-banner-tb-full-list {
+    color: #333333;
+}
+
+.main-banner-tb-fulllist-wrap {
+    padding: 20px;
+}
+
+.main-banner-tb-full-list {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.main-banner-tb-full-list .full-list-text {
+    width: 85%;
+}
+
+.main-banner-tb-full-list .full-list-text span {
+    width: 100%;
+    text-align: center;
+}
+
+.main-banner-tb-full-list .icon-small-sprinter {
+    position: relative;
+    top: 2px;
+}
+
+ul.main-baner-tb-clubs img {
+    max-width: 50px;
+    max-height: 25px;
+}
+
+.main-baner-tb-clubs td{
+    height:  35px;
+}
+
 .submit-filter .button.submit{
     float: left;
-    
+
     border-right: none;
     min-width: 130px;
-    
+
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     border-top-left-radius: 8px;
@@ -1193,13 +1331,13 @@ footer {
     background-image: url('/image/close.png');
     background-repeat: no-repeat;
     background-position: center;
-    
+
     height: 28px;
     width: 30px;
-    
+
     border: 1px solid #3af83a;
     border-left: none;
-    
+
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 0px;
@@ -1211,5 +1349,4 @@ footer {
     -webkit-box-shadow: -2px 0px 2px rgba(0,0,0,0.5); /* Для Safari и Chrome */
     box-shadow: -2px 0px 2px rgba(0,0,0,0.5); /* Параметры тени */
 }
-
 /*END SLIDER*/

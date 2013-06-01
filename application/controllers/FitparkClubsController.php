@@ -177,6 +177,17 @@ class FitparkClubsController extends FitparkBaseController {
         $this->index();
     }
 
+    public function getByService($service)
+    {
+        $arr = $this->uri->segment_array();
+        $service = (int)$arr[3];
+        $_POST["rangeF"] = 0;
+        $_POST["rangeT"] = 10000;
+        $_POST["option1-".$service] = "on";
+        $this->activeFilters["option1-".$service] = 1;
+        $this->filter();
+    }
+
     public function clear()
     {
         $this->session->unset_userdata('filter');
@@ -193,18 +204,19 @@ class FitparkClubsController extends FitparkBaseController {
 
     private function  generateFilter()
     {
+
         if($this->filterEnabled)
         {
             // User push on button "Filter"
             $filters = array();
             foreach (array_keys($this->activeFilters) as $option)
             {
-$value = $this->input->post($option);
-if($option === 'rangeF' || $option === 'rangeT')
-                    {
-                        $filters = $this->setPriceRangeFilter($filters, $option);
-                        $this->activeFilters[$option] = $value;
-                    }
+                $value = $this->input->post($option);
+                if($option === 'rangeF' || $option === 'rangeT')
+                {
+                    $filters = $this->setPriceRangeFilter($filters, $option);
+                    $this->activeFilters[$option] = $value;
+                }
                  if($this->input->post($option))
                  {
 
