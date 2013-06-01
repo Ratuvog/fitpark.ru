@@ -190,7 +190,7 @@
                                                             <div class="icon-small-help"></div>
                                                         </li>
                                                         <li>
-                                                            <span class="button-text">Задать вопрос менеджеру</span>
+                                                            <span class="button-text">Вопрос менеджеру клуба</span>
                                                         </li>
                                                     </ul>
                                                 </div>
