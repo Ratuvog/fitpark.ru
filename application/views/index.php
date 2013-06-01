@@ -21,7 +21,7 @@
             <div id="title-menu">
                 <ul>
                     <li class="name-section"><a href="#" class="my-link">Главная</a></li>
-                    <li class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</li>
+                    <li class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></li>
                 </ul>
             </div>
         </header>
@@ -43,7 +43,7 @@
                             </div>
             <!--                        </div>-->
                             <div style="clear: both;"></div>
-                            <div class="main-button"></div>
+                            <a href="clubs"><div class="main-button"></div></a>
                         </td>
                     </tr>
                 </table>
