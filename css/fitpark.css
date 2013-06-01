@@ -1176,4 +1176,40 @@ footer {
     margin: 20px;
 }
 
+.submit-filter .button.submit{
+    float: left;
+    
+    border-right: none;
+    min-width: 130px;
+    
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.submit-filter .clear-filter{
+    float: left;
+    background-image: url('/image/close.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    height: 28px;
+    width: 30px;
+    
+    border: 1px solid #3af83a;
+    border-left: none;
+    
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.submit-filter .clear-filter:hover{
+    -moz-box-shadow: -2px 0px 2px rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: -2px 0px 2px rgba(0,0,0,0.5); /* Для Safari и Chrome */
+    box-shadow: -2px 0px 2px rgba(0,0,0,0.5); /* Параметры тени */
+}
+
 /*END SLIDER*/

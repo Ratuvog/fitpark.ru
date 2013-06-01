@@ -44,7 +44,10 @@
                     </div>
                 </section>
                 <section class="option">
-                    <div class="button submit">Принять</div>
+                    <div class="submit-filter">
+                        <a class="button submit">Принять</a>
+                        <a class="clear-filter" href="<?=site_url(array('clubs','clear'));?>" title="Очистить"></a>
+                    </div>
                 </section>
             </form>
         </td>
