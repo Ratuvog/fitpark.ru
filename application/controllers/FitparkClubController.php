@@ -136,6 +136,9 @@ class FitparkClubController extends FitparkBaseController {
     protected function getReviews()
     {
         $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->m_clubId, $_SERVER['REMOTE_ADDR']);
+        foreach ($this->viewData['reviews'] as &$value) {
+            $value['id'] = crc32("r".$value['id']);
+        }
     }
 
     protected function getImages()

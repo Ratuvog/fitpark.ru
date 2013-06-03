@@ -48,7 +48,7 @@
                                                 </h1>
                                             </header>
                                             <div>
-                                                Читай чужие о пиши свои. Оцени свой клуб
+                                                Читай чужие и пиши свои. Оцени свой клуб
                                             </div>
                                         </td>
                                     </tr>
@@ -78,7 +78,7 @@
                                                 </h1>
                                             </header>
                                             <div>
-                                                Используй фильтры для сортировки по интересным услугам
+                                                Используй фильтр для сортировки по интересующим услугам
                                             </div>
                                         </td>
                                     </tr>
@@ -99,19 +99,19 @@
                         </tr>
                         <tr>
                             <td class="main-banner-toolbar-content">
-                                <h3 class="main-banner-toolbar-h3">Показать фитнес-клубы, имеющие:</h3>
+                                <h3 class="main-banner-toolbar-h3">Показать фитнес-клубы:</h3>
                                 <ul class="main-baner-tb-service">
                                 <? foreach ($services as $service) {?>
                                     <li>
+                                        <img src="<?=$service->icon;?>" alt="" class="main-banner-services-icons" />
                                         <a href="<?=site_url(array("clubs","getByService",$service->id));?>">
-                                            <img src="<?=$service->icon;?>" alt="" class="main-banner-services-icons" />
-                                            <span class="main-baner-tb-service-item"><?=$service->name;?></span>
+                                            <span class="main-baner-tb-service-item"><?=$service->other_form;?></span>
                                         </a>
                                     </li>
                                 <? } ?>
                                 </ul>
                             </td>
-                            <td valign="middle" align="center" class="main-banner-tb-fulllist-wrap">
+                            <td valign="middle" align="center" class="main-banner-tb-fulllist-wrap" align="center">
                                 <a href="/clubs">
                                     <div class="button-club main-banner-tb-full-list">
                                         <ul>
@@ -151,8 +151,7 @@
                     </table>
                 </section>
                 <section id="main-content">
-                    <h2>Удобно</h2>
-            <p>Выбирайте фитнес клубы Самары легко</p>
+                    <h2>Выбирайте фитнес клубы Самары легко</h2>
             <p>С каждым годом все актуальнее становится держать себя в хорошей форме. И легче всего это сделать с помощью фитнес центров или тренажерных залов.</p>
             <p>Но предложений огромное количество и выбрать наиболее подходящий клуб не так просто. Ведь необходимо посетить значительное количество сайтов, позвонить для уточнения цены на фитнес, сравнить предложения сетей и местных организаций, изучить акции и скидки.</p>
             <p>С ФитПарком это легко. У нас есть информация по всем фитнес организациям города.</p>

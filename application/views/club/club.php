@@ -242,6 +242,14 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                                     <? } ?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <div id="<?="review".$review['id'];?>"></div>
+                                            <script type="text/javascript">
+                                                VK.Widgets.Like("<?="review".$review['id'];?>", {type: "mini"},<?=$review['id'];?>);
+                                            </script>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                             <? }?>

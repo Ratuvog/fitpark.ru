@@ -67,7 +67,7 @@ class Fitpark_club_model extends CI_Model {
 
     /* Get reviews about club */
     function getReviewsClub($clubId) {
-        $this->db->select("DATE_FORMAT(date, '%d.%m.%Y') outdate, text, f.sender, positive, negative, r.value as rating", FALSE)
+        $this->db->select("f.id id, DATE_FORMAT(date, '%d.%m.%Y') outdate, text, f.sender, positive, negative, r.value as rating", FALSE)
                  ->from("fitnesclub_review f")
                  ->join("fitnesclub_rating r", "f.senderIP = r.sender", 'left')
                  ->where(array("f.fitnesclubid"=>$clubId))

@@ -1251,6 +1251,11 @@ footer {
 
 .main-baner-tb-service a {
     text-decoration: none;
+    color: #333333;
+}
+
+.main-baner-tb-service a:hover {
+    text-decoration: underline;
 }
 
 .main-baner-tb-service-item {
@@ -1280,10 +1285,11 @@ footer {
 
 .main-banner-tb-full-list {
     color: #333333;
+    width: 400px;
 }
 
 .main-banner-tb-fulllist-wrap {
-    padding: 20px;
+    /*padding: 100px;*/
 }
 
 .main-banner-tb-full-list {
