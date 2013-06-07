@@ -9,6 +9,11 @@
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="/js/slider/jquery.bxslider.js"></script>
         <script type="text/javascript" src="/js/common.js"></script>
+        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-media.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
         <!--<link rel="stylesheet" href="/js/slider/jquery.bxslider.css" />-->
         <script type="text/javascript" src="/js/main.js"> </script>
         <link rel="icon" href="/image/favicon.ico" type="image/x-icon">

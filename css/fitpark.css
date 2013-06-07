@@ -245,6 +245,7 @@ header-content>* {
     border: 1px solid #a1a1a1;
     border-left: none;
     background: url('/image/search1.png') no-repeat;
+    background-position: center, center;
     cursor: pointer;
 }
 
