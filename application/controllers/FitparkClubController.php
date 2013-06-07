@@ -12,7 +12,6 @@ class FitparkClubController extends FitparkBaseController {
     {
         parent::__construct();
         $this->init();
-
     }
 
     public function club($clubId, $isComment = 0)

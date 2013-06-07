@@ -8,6 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="/js/slider/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>
         <!--<link rel="stylesheet" href="/js/slider/jquery.bxslider.css" />-->
         <script type="text/javascript" src="/js/main.js"> </script>
         <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
@@ -129,7 +130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 <? } ?>
                                 </ul>
                             </td>
-                            <td valign="middle" align="center" class="main-banner-tb-fulllist-wrap" align="center">
+                            <td align="center" valign="top" class="main-banner-tb-fulllist-wrap" align="center">
                                 <a href="/clubs">
                                     <div class="button-club main-banner-tb-full-list">
                                         <ul>
@@ -142,6 +143,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                         </ul>
                                     </div>
                                 </a>
+                                <div class="search-home-page-wrap">
+                                    <? include_once("search_form.php"); ?>
+                                </div>
                             </td>
                             <td class="main-banner-toolbar-content">
                                 <h3 class="main-banner-toolbar-h3 ">Популярные клубы города:</h3>
