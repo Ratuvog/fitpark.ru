@@ -1285,7 +1285,7 @@ footer {
 
 .main-banner-tb-full-list {
     color: #333333;
-    width: 400px;
+    width: 350px;
 }
 
 .main-banner-tb-fulllist-wrap {
@@ -1311,6 +1311,12 @@ footer {
     top: 2px;
 }
 
+.icon-small-clublist {
+    background-image: url('/image/clublist.png');
+    width: 28px;
+    height: 28px;
+}
+
 ul.main-baner-tb-clubs img {
     max-width: 50px;
     max-height: 25px;
@@ -1318,6 +1324,14 @@ ul.main-baner-tb-clubs img {
 
 .main-baner-tb-clubs td{
     height:  35px;
+}
+.invert-href{
+    color: #333333;
+    text-decoration: none;
+}
+
+.invert-href:hover {
+    text-decoration: underline;
 }
 
 .submit-filter .button.submit{

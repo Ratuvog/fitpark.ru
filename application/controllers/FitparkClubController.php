@@ -137,7 +137,7 @@ class FitparkClubController extends FitparkBaseController {
     {
         $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->m_clubId, $_SERVER['REMOTE_ADDR']);
         foreach ($this->viewData['reviews'] as &$value) {
-            $value['id'] = crc32("r".$value['id']);
+            $value['fake_id'] = $value['id']+1e6;
         }
     }
 

@@ -16,6 +16,18 @@
         <meta name="google-site-verification" content="LPcTvq9lj7flD6_bLTq3HL-vJF9SFxRaLNq0eWIYGLs" />
     </head>
     <body>
+        <script>
+dataLayer = [];
+</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-3WQD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-3WQD');</script>
+<!-- End Google Tag Manager -->
         <div class="main">
         <header id="title">
             <div id="title-menu">
@@ -43,9 +55,11 @@
                                         </td>
                                         <td class="main-banner-content-item" valign="top">
                                             <header>
-                                                <h1 class="main-baner-h1">
-                                                    Отзывы клиентов фитнес-клубов
-                                                </h1>
+                                                <a href="/clubs" class="invert-href">
+                                                    <h1 class="main-baner-h1">
+                                                        Отзывы клиентов фитнес-клубов
+                                                    </h1>
+                                                </a>
                                             </header>
                                             <div>
                                                 Читай чужие и пиши свои. Оцени свой клуб
@@ -58,9 +72,11 @@
                                         </td>
                                         <td class="main-banner-content-item" valign="top">
                                             <header>
-                                                <h1 class="main-baner-h1">
-                                                    Фотографии фитнес-центров
-                                                </h1>
+                                                <a href="/clubs" class="invert-href">
+                                                    <h1 class="main-baner-h1">
+                                                        Фотографии фитнес-центров
+                                                    </h1>
+                                                </a>
                                             </header>
                                             <div>
                                                 Изучи любой фитнес-клуб по подробным фотографиям
@@ -73,9 +89,11 @@
                                         </td>
                                         <td class="main-banner-content-item main-banner-content-item-last" valign="top">
                                             <header>
-                                                <h1 class="main-baner-h1">
-                                                    Подбор по параметрам
-                                                </h1>
+                                                <a href="/clubs" class="invert-href">
+                                                    <h1 class="main-baner-h1">
+                                                        Подбор по параметрам
+                                                    </h1>
+                                                </a>
                                             </header>
                                             <div>
                                                 Используй фильтр для сортировки по интересующим услугам
@@ -116,7 +134,7 @@
                                     <div class="button-club main-banner-tb-full-list">
                                         <ul>
                                             <li>
-                                                <div class="icon-small-sprinter"></div>
+                                                <div class="icon-small-clublist"></div>
                                             </li>
                                             <li class="full-list-text">
                                                 <span class="button-text">Перейти к полному списку фитнес-клубов</span>
