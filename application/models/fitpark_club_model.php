@@ -88,24 +88,27 @@ class Fitpark_club_model extends CI_Model {
     }
 
     function getAnalogs($clubId) {
+        $cityid = $this->session->userdata("city");
         $query = "SELECT f1 . *
                 FROM fitnesclub f1, fitnesclub f2
                 WHERE
                     f1.id != f2.id
                     AND (  ( (f1.sub3 > f2.sub3)  AND (f1.sub3 - f2.sub3) <=500)
                         OR ( (f1.sub3 <= f2.sub3) AND (f2.sub3 - f1.sub3) <=500))
+                    AND
+                      f1.cityid = $cityid
                     AND f2.id = ? LIMIT 0,3";
         $q = $this->db->query($query,array($clubId));
         return $q->result_array();
     }
 
-    function getClubList($limit, $offset)
+  /*  function getClubList($limit, $offset)
     {
         $this->db->select("*")
                 ->from("fitnesclub")
                 ->limit($limit, $offset);
         return $this->db->get()->result();
-    }
+    }*/
 
     function getGuest($clubId, $name, $tel, $email, $date)
     {

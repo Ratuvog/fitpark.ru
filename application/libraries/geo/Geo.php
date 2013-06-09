@@ -1,5 +1,5 @@
-<?php
-	class CI_Geo
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+    class Geo
     {
         public function __construct($options = null) {
             
@@ -8,7 +8,7 @@
             // ip
             if(!isset($options['ip']) OR !$this->is_valid_ip($options['ip']))
                 $this->ip = $this->get_ip(); 
-            elseif($this->is_valid_ip($options['ip']))          
+            elseif($this->is_valid_ip($options['ip']))
                 $this->ip = $options['ip'];
             // кодировка
             if(isset($options['charset']) && $options['charset'] && $options['charset']!='windows-1251')
@@ -40,7 +40,7 @@
             {
                 $data = $this->get_geobase_data();
                 setcookie('geobase', serialize($data), time()+3600*24*7); //устанавливаем куки на неделю
-            }            
+            }
             if($key)
                 return $data[$key]; // если указан ключ, возвращаем строку с нужными данными
             else
@@ -68,7 +68,6 @@
                 $string = iconv('windows-1251', $this->charset, $string);
                        
             $data = $this->parse_string($string);
-                
             return $data;
         }
         

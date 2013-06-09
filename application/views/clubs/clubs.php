@@ -128,7 +128,7 @@
                                 <section class="decription-club">
                                     <header class="name-club">
                                         <h3>
-                                            <a href="<?=$baseUrlClub.$row->id;?>" target="_blank"><?=$row->name;?></a>
+                                            <a href="<?=site_url(array('club',$row->id));?>" target="_blank"><?=$row->name;?></a>
                                         </h3>
                                         <div style="color: #aaa;">
                                             <?=$row->address;?>
@@ -201,7 +201,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <a href="<?=$baseUrlClub.$row->id;?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
+                                                <a href="<?=site_url(array('club',$row->id));?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                             </td>
                                         </tr>
                                     </table>

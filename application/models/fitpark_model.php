@@ -45,6 +45,7 @@ class Fitpark_model extends CI_Model {
             ->join("order_list as ol", "fitnesclub.id = ol.clubId")
             ->group_by("fitnesclub.id")
             ->limit($limit,$offset);
+        $this->setCity();
     }
 
     /**
@@ -221,7 +222,7 @@ class Fitpark_model extends CI_Model {
                 ->join("fitnesclub", "fitnesclub.id = fitnesclub_rel_services.clubId")
                 ->order_by("fitnesclub_rel_services.clubId","asc")
                 ->order_by("fitnesclub_rel_services.priority","asc");
-
+        $this->setCity();
         return $this->db->get()->result();
     }
 
@@ -232,9 +233,9 @@ class Fitpark_model extends CI_Model {
 
     function getFitnesClubFilter($table)
     {
-            $this->db->select("varTable.*, filter.name as filterName")
-                    ->from($table." as varTable")
-                    ->join("fitnesclub_filter as filter", "varTable.filterId = filter.id");
+        $this->db->select("varTable.*, filter.name as filterName")
+                ->from($table." as varTable")
+                ->join("fitnesclub_filter as filter", "varTable.filterId = filter.id");
 
         return $this->db->get()->result();
     }
@@ -245,6 +246,7 @@ class Fitpark_model extends CI_Model {
                 ->from("fitnesclub")
                 ->join("fitnesclub_rating as rating", "fitnesclub.id = rating.clubId")
                 ->group_by("fitnesclub.id");
+        $this->setCity();
         return $this->db->get()->result();
 
     }
@@ -253,9 +255,17 @@ class Fitpark_model extends CI_Model {
      * Получение инфорции о городе по его имени
      */
     function getCity($cityName) {
-        $this->db->get_where("city", mb_convert_case($cityName,MB_CASE_TITLE))
-                 ->or_where("english_city", mb_convert_case($cityName,MB_CASE_TITLE));
-        return $this->db->get()->row();
+        $this->db->select("*")->from("city")->where('name',mb_convert_case($cityName,MB_CASE_TITLE))
+                 ->or_where("english_name",mb_convert_case($cityName,MB_CASE_TITLE));
+        $result = $this->db->get()->result();
+        if(!count($result)) {
+            $this->db->
+                      select("*")->
+                      from("city")->
+                      where("name","Самара")->result();
+            $result = $this->db->get()->result();
+        }
+        return $result[0];
     }
 
     /*
@@ -265,6 +275,11 @@ class Fitpark_model extends CI_Model {
         return $this->db->get("city")->result();
     }
 
+    private function setCity() {
+
+        $cityId = $this->session->userdata("city");
+        $this->db->where("cityid",$cityId);
+    }
 }
 
 ?>

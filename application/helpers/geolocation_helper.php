@@ -15,7 +15,12 @@ function getCityFromIp($ipAddress) {
     $currentSettings = array();
     $currentSettings['charset'] = 'utf-8';
     $currentSettings['ip']      = $ipAddress;
-    $geo = new Geo($currentSettings);
-    return $geo->get_value('city');
+    $CI = &get_instance();
+    $CI->load->add_package_path(APPPATH.'library/geo/');
+    $CI->load->library("geo", $currentSettings);
+    @$city = $CI->geo->get_value('city');
+    if(!$city)
+        $city = "Самара";
+    return $city;
 }
 ?>

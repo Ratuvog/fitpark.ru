@@ -1,54 +1,46 @@
 <?php
-class Main extends CI_Controller {
-    function getCity()
-    {
-        $this->load->helper("geolocation");
-        $host = $_SERVER["HTTP_HOST"];
-        $hostArray = explode($host,'.');
-        if(count($hostArray)!=3) {
-            return getCityFromIp($this->input->ip_address());
-        } else {
-            return $hostArray[0];
-        }
-    }
+require_once(APPPATH.'controllers/FitparkBaseController.php');
+class Main extends FitparkBaseController {
 
+    function __construct() {
+        parent::__construct();
+    }
     function index(){
         $this->load->database();
-        $this->load->helper('url');
-        $this->load->model("fitpark_model");
-        $this->load->library("session");
+        $this->viewData = array();
+        /**
+         * обнуляем все ненужные view, оставляя только view для контента
+         */
+        $this->header      = FALSE;
+        $this->breadCrumbs = FALSE;
+        $this->footer      = FALSE;
+
+        $this->viewData["currentCity"] = $this->headerData['currentCity'];
         $availableServices = $this->fitpark_model->getServices();
         $data = array();
         $numbers = array();
         for($i = 0; $i < count($availableServices) ; $i++) {
             array_push($numbers, $i);
         }
-        $data["services"] = array();
+        $this->viewData["services"] = array();
         for($i = 0; $i<3 ; $i++) {
             $index = rand(0, count($numbers)-1);
             $currentItem = $numbers[$index];
             $availableServices[$currentItem]->icon = site_url(array("image",$availableServices[$currentItem]->icon));
-            $data["services"][] = $availableServices[$currentItem];
+            $this->viewData["services"][] = $availableServices[$currentItem];
             array_splice($numbers, $index, 1);
         }
 
-        $data["clubs"] = $this->fitpark_model->getClubList("popularity",3,0,array());
-        foreach ($data["clubs"] as &$value) {
+        $this->viewData["clubs"] = $this->fitpark_model->getClubList("popularity",3,0,array());
+        foreach ($this->viewData["clubs"] as &$value) {
             $value->head_picture = site_url(array("image", "club",$value->head_picture));
         }
-
-//        print_r($data["clubs"]);
-
-        /*
-         * Текущий город
-         */
-        $data['currentCity'] = $this->fitpark_model->getCity($this->getCity());
 
         /*
          * Доступные города
          */
-        $data['availableCity'] = $this->fitpark_model->getAvailableCity();
-        $this->load->view("index",$data);
+        $this->viewData['availableCity'] = $this->fitpark_model->getAvailableCity();
+        $this->renderScene("index");
     }
 }
 ?>

@@ -58,6 +58,29 @@ class FitparkBaseController extends CI_Controller {
             'href'  =>  site_url(array('clubs')),
             'title' => 'Список клубов'
         );
+        /*
+         * Текущий город
+         */
+        $this->headerData['currentCity'] = $this->fitpark_model->getCity($this->getCity());
+        /*
+         * В данном случае сессии использованы только лишь в качестве этакого менеджера настроек
+         * который доступен во все приложении
+         */
+        $this->session->set_userdata("city",$this->headerData['currentCity']->id);
+        if($_SERVER["HTTP_HOST"]!=$this->headerData['currentCity']->url)
+            $this->customRedirect(prep_url($this->headerData['currentCity']->url));
+    }
+
+    private function getCity()
+    {
+        $this->load->helper("geolocation");
+        $host = $_SERVER["HTTP_HOST"];
+        $hostArray = explode('.', $host);
+        if(count($hostArray)!=3) {
+            return getCityFromIp($this->input->ip_address());
+        } else {
+            return $hostArray[0];
+        }
     }
 
     function init(){
@@ -122,11 +145,14 @@ class FitparkBaseController extends CI_Controller {
     {
         if($view == null)
             $view = $this->view;
-
-        $this->load->view($this->header, $this->headerData);
-        $this->load->view($this->breadCrumbs, array("stack" => $this->breadCrumbsData) );
-        $this->load->view($view, $this->viewData);
-        $this->load->view($this->footer, $this->footerData);
+        if($this->header)
+            $this->load->view($this->header, $this->headerData);
+        if($this->breadCrumbs)
+            $this->load->view($this->breadCrumbs, array("stack" => $this->breadCrumbsData) );
+        if($view)
+            $this->load->view($view, $this->viewData);
+        if($this->footer)
+            $this->load->view($this->footer, $this->footerData);
     }
 
     protected function initBreadCrumbs()

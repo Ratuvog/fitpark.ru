@@ -1,1 +1,5 @@
 /*.php
+error_404.php
+error_db.php
+error_general.php
+error_php.php
