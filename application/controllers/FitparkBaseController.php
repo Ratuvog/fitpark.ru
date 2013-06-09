@@ -72,6 +72,7 @@ class FitparkBaseController extends CI_Controller {
             unset($pars[$i]);
         }
         call_user_func_array(array($this, $method), $pars);
+
 //        $isPublicPage = in_array($method, $this->allowedPages);
 //        $isPrivatePage = in_array($method, $this->privateAllowedPages);
 //        $isLoggedIn = $this->session->userdata('logged_in') === true;

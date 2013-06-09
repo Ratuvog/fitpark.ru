@@ -249,6 +249,22 @@ class Fitpark_model extends CI_Model {
 
     }
 
+    /*
+     * Получение инфорции о городе по его имени
+     */
+    function getCity($cityName) {
+        $this->db->get_where("city", mb_convert_case($cityName,MB_CASE_TITLE))
+                 ->or_where("english_city", mb_convert_case($cityName,MB_CASE_TITLE));
+        return $this->db->get()->row();
+    }
+
+    /*
+     * Получение списка доступных городов
+     */
+    function getAvailableCity() {
+        return $this->db->get("city")->result();
+    }
+
 }
 
 ?>
