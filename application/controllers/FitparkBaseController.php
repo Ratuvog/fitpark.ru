@@ -67,6 +67,12 @@ class FitparkBaseController extends CI_Controller {
          * который доступен во все приложении
          */
         $this->session->set_userdata("city",$this->headerData['currentCity']->id);
+
+        /*
+        * Доступные города
+        */
+        $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
+
         if($_SERVER["HTTP_HOST"]!=$this->headerData['currentCity']->url)
             $this->customRedirect(prep_url($this->headerData['currentCity']->url));
     }

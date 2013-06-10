@@ -37,7 +37,10 @@ class FitparkClubsController extends FitparkBaseController {
         if($this->session->userdata('rowOnPage'))
         $this->showRecOnPage = $this->session->userdata('rowOnPage');
         $this->viewData   = $this->initViewData();
-        $this->headerData = $this->initHeaderData();
+        $headerData = $this->initHeaderData();
+        foreach ($headerData as $key=>$value) {
+            $this->headerData[$key] =  $value;
+        }
     }
 
     public function clubs()

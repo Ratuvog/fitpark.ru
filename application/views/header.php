@@ -26,17 +26,18 @@
         <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
         <script type="text/javascript" src="/js/validator_helper.js"></script>
         <script type="text/javascript" src="/js/raty-2.5.2/jquery.raty.js"></script>
-<script type="text/javascript" src="//vk.com/js/api/openapi.js?96"></script>
+        <script type="text/javascript" src="//vk.com/js/api/openapi.js?96"></script>
+        <script type="text/javascript" src="/js/header.js"></script>
 
 <!--<script type="text/javascript">
   VK.init({apiId: 3689827, onlyWidgets: true});
 </script>-->
-<script type="text/javascript">
-  VK.init({apiId: 3677727, onlyWidgets: true});
-</script>
         <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     </head>
-    <body><div id="fb-root"></div>
+    <body>
+
+<!--    facebook.com-->
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -47,6 +48,14 @@
 <script>
 dataLayer = [];
 </script>
+<!--    end facebook.com-->
+
+<!--    vk.com    -->
+<script type="text/javascript">
+  VK.init({apiId: 3677727, onlyWidgets: true});
+</script>
+<!--    end vk.com-->
+
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-3WQD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -56,12 +65,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-3WQD');</script>
 <!-- End Google Tag Manager -->
+
         <div class="main">
         <header id="title">
             <div id="title-menu">
                 <ul>
                     <li class="name-section"><a href="<?=base_url();?>" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="<?=site_url(array('clubs'));?>" class="my-link">Фитнес-клубы</li>
+                </ul>
+                <ul class="title-section-right">
+                    <li class="name-section">
+                        <span></span>
+                        <a class="my-link" href="#" id="city-changed"><?=$currentCity->name;?></a>
+                    </li>
                 </ul>
             </div>
         </header>
@@ -82,6 +98,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </header>
 
+            <!--            Выбор города-->
+            <div class="dnone">
+                <div class="message-dialog" id="change-city-window">
+                    <header>
+                        Выберите город
+                    </header>
+                    <ul class="city-list">
+                        <? foreach($availableCity as $city) {?>
+                            <li>
+                                <div class="active-city">
+                                    <a href="<?=prep_url($city->url);?>"><?=$city->name;?></a>
+                                </div>
+                            </li>
+                        <? } ?>
+                    </ul>
+                </div>
+            </div>
+            <!--                конец Выбор города-->
             <!--окошко-->
 
             <div class="dnone">

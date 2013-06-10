@@ -233,10 +233,15 @@ class Fitpark_model extends CI_Model {
 
     function getFitnesClubFilter($table)
     {
+        $cityDepends = array(
+            "district"
+        );
         $this->db->select("varTable.*, filter.name as filterName")
                 ->from($table." as varTable")
                 ->join("fitnesclub_filter as filter", "varTable.filterId = filter.id");
-
+        if(in_array($table,$cityDepends)) {
+            $this->setCity();
+        }
         return $this->db->get()->result();
     }
 

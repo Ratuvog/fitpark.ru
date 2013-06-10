@@ -14,6 +14,9 @@
         <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-media.js"></script>
         <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
         <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="/js/header.js"></script>
+        <script type="text/javascript" src="/js/cb/jquery.colorbox-min.js"></script>
+        <script type="text/javascript" src="/js/cb/colorbox.jquery.json"></script>
         <!--<link rel="stylesheet" href="/js/slider/jquery.bxslider.css" />-->
         <script type="text/javascript" src="/js/main.js"> </script>
         <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
@@ -41,9 +44,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <li class="name-section"><a href="#" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></li>
                 </ul>
+                <ul class="title-section-right">
+                    <li class="name-section">
+                        <span></span>
+                        <a class="my-link" href="#" id="city-changed"><?=$currentCity->name;?></a>
+                    </li>
+                </ul>
             </div>
         </header>
             <section id="content">
+                <!--            Выбор города-->
+                <div class="dnone">
+                    <div class="message-dialog" id="change-city-window">
+                        <header>
+                            Выберите город
+                        </header>
+                        <ul class="city-list">
+                            <? foreach($availableCity as $city) {?>
+                            <li>
+                                <div class="active-city">
+                                    <a href="<?=prep_url($city->url);?>"><?=$city->name;?></a>
+                                </div>
+                            </li>
+                            <? } ?>
+                        </ul>
+                    </div>
+                </div>
+<!--                конец Выбор города-->
+
                 <section id="main-banner">
                     <table class="main-banner-header" cellspacing="0">
                         <tr>

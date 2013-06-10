@@ -15,7 +15,7 @@ class Main extends FitparkBaseController {
         $this->breadCrumbs = FALSE;
         $this->footer      = FALSE;
 
-        $this->viewData["currentCity"] = $this->headerData['currentCity'];
+        $this->viewData = $this->headerData;
         $availableServices = $this->fitpark_model->getServices();
         $data = array();
         $numbers = array();
@@ -36,10 +36,6 @@ class Main extends FitparkBaseController {
             $value->head_picture = site_url(array("image", "club",$value->head_picture));
         }
 
-        /*
-         * Доступные города
-         */
-        $this->viewData['availableCity'] = $this->fitpark_model->getAvailableCity();
         $this->renderScene("index");
     }
 }

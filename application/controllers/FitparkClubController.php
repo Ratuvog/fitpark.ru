@@ -38,7 +38,10 @@ class FitparkClubController extends FitparkBaseController {
         $this->getAnalogs();
         $this->getUserVote();
 
-        $this->headerData = array('titleText'=>"ФитПарк. ".$this->viewData['base']['name']." фитнес-клуб Самары. Стоимость, отзывы, фотографии, рейтинг, акции.");
+        $headerInfo = array('titleText'=>"ФитПарк. ".$this->viewData['base']['name']." фитнес-клуб Самары. Стоимость, отзывы, фотографии, рейтинг, акции.");
+        foreach ($headerInfo as $key=>$value) {
+            $this->headerData[$key] = $value;
+        }
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),
             'title' => $this->viewData['base']['name']

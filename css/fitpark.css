@@ -966,6 +966,7 @@ text-overflow: ellipsis;
     width: 180px;
 }
 
+
 .dnone {display:none;}
 .message-dialog {padding: 10px; padding-top: 15px; }
 
@@ -1385,4 +1386,40 @@ ul.main-baner-tb-clubs img {
     -webkit-box-shadow: -2px 0px 2px rgba(0,0,0,0.5); /* Для Safari и Chrome */
     box-shadow: -2px 0px 2px rgba(0,0,0,0.5); /* Параметры тени */
 }
+
+/*club-list*/
+
+.city-list li {
+    list-style-type: none;
+    float: left;
+}
+
+.city-list div {
+    border-bottom: 4px;
+    min-width: 30px;
+    padding: 2px;
+    border-bottom: 4px;
+}
+
+.city-list .active-city {
+    border-color: #33cc00;
+}
+
+.city-list .inactive-city {
+    border-color: rgb(128,128,128);
+}
+
+.city-changed {
+    float: right;
+}
+
+.city-changed a {
+    text-decoration: dotted;
+}
+
+.title-section-right {
+    float: right;
+}
+/*end club-list*/
+
 /*END SLIDER*/
