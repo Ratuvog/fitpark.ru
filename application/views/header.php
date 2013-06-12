@@ -65,6 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-3WQD');</script>
 <!-- End Google Tag Manager -->
+<?=$currentCity->header_scripts;?>
 
         <div class="main">
         <header id="title">

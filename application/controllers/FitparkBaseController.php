@@ -41,7 +41,7 @@ class FitparkBaseController extends CI_Controller {
 
         $this->load->library('grocery_CRUD');
         $this->load->library('session');
-
+        $this->load->library('idna_convert');
         $ci = &get_instance();
         $ci->load->model('grocery_CRUD_Model');
         $ci->load->model('my_model');
@@ -73,14 +73,14 @@ class FitparkBaseController extends CI_Controller {
         */
         $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
 
-        if($_SERVER["HTTP_HOST"]!=$this->headerData['currentCity']->url)
+        if($this->idna_convert->decode($_SERVER["HTTP_HOST"])!=$this->headerData['currentCity']->url)
             $this->customRedirect(prep_url($this->headerData['currentCity']->url));
     }
 
     private function getCity()
     {
         $this->load->helper("geolocation");
-        $host = $_SERVER["HTTP_HOST"];
+        $host = $this->idna_convert->decode($_SERVER["HTTP_HOST"]);
         $hostArray = explode('.', $host);
         if(count($hostArray)!=3) {
             return getCityFromIp($this->input->ip_address());
@@ -101,27 +101,6 @@ class FitparkBaseController extends CI_Controller {
             unset($pars[$i]);
         }
         call_user_func_array(array($this, $method), $pars);
-
-//        $isPublicPage = in_array($method, $this->allowedPages);
-//        $isPrivatePage = in_array($method, $this->privateAllowedPages);
-//        $isLoggedIn = $this->session->userdata('logged_in') === true;
-//
-//        if ($method != null)
-//        {
-//            if(($isLoggedIn && $isPrivatePage) || $isPublicPage)
-//            {
-//
-//            }
-//            else
-//            {
-//                echo 'HER!!!!!';
-////                $this->auth();
-//            }
-//        }
-//        else
-//        {
-//            $this->toDefaultPage();
-//        }
     }
 
     public function show404()
