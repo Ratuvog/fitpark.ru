@@ -11,7 +11,7 @@ class FitparkBaseController extends CI_Controller {
 
     // Name header view and data
     protected $header = 'header';
-    protected $headerData = array('titleText'=>"ФитПарк. Фитнес клубы Самары, тренажерные залы,
+    protected $headerData = array('titleText'=>"ФитПарк. %s Тренажерные залы,
             фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
 
     // BreadCrumbs view and data
@@ -41,6 +41,7 @@ class FitparkBaseController extends CI_Controller {
 
         $this->load->library('grocery_CRUD');
         $this->load->library('session');
+        $this->load->helper('language');
         $this->load->library('idna_convert');
         $ci = &get_instance();
         $ci->load->model('grocery_CRUD_Model');
@@ -61,12 +62,18 @@ class FitparkBaseController extends CI_Controller {
         /*
          * Текущий город
          */
-        $this->headerData['currentCity'] = $this->fitpark_model->getCity($this->getCity());
+        $city = $this->getCity();
+        $this->headerData['currentCity'] = $this->fitpark_model->getCity($city);
+
+        $this->lang->load(mb_convert_case($city, MB_CASE_LOWER),mb_convert_case($city, MB_CASE_LOWER));
+        $this->headerData['titleText'] = sprintf($this->headerData['titleText'],
+                                                 lang('title'));
         /*
          * В данном случае сессии использованы только лишь в качестве этакого менеджера настроек
          * который доступен во все приложении
          */
         $this->session->set_userdata("city",$this->headerData['currentCity']->id);
+
 
         /*
         * Доступные города

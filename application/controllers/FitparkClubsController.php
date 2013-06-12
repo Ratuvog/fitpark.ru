@@ -55,9 +55,10 @@ class FitparkClubsController extends FitparkBaseController {
 
     private function initHeaderData()
     {
-        $data = array('titleText'=>"ФитПарк. Фитнес клубы Самары, тренажерные залы,
+        $data = array('titleText'=>"ФитПарк. %s, тренажерные залы,
             фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
-        return $data;
+        $data["titleText"] = sprintf($data["titleText"], lang("title"));
+        return  $data;
     }
 
     private function initViewData()

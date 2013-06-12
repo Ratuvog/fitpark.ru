@@ -38,7 +38,10 @@ class FitparkClubController extends FitparkBaseController {
         $this->getAnalogs();
         $this->getUserVote();
 
-        $headerInfo = array('titleText'=>"ФитПарк. ".$this->viewData['base']['name']." фитнес-клуб Самары. Стоимость, отзывы, фотографии, рейтинг, акции.");
+        $headerInfo = array('titleText'=>"ФитПарк. %s %s. Стоимость, отзывы, фотографии, рейтинг, акции.");
+        $headerInfo["titleText"] = sprintf($headerInfo["titleText"],
+                                           $this->viewData['base']['name'],
+                                           lang("current_club_title"));
         foreach ($headerInfo as $key=>$value) {
             $this->headerData[$key] = $value;
         }

@@ -13,7 +13,10 @@
 
 
 function site_url($url = '') {
-    return "http://".$_SERVER["HTTP_HOST"]."/".implode("/",$url);
+    if(count($url)>1)
+        return "http://".$_SERVER["HTTP_HOST"]."/".implode("/",$url);
+    else
+        return prep_url($_SERVER["HTTP_HOST"]."/$url[0]");
 }
 
 function base_url() {
