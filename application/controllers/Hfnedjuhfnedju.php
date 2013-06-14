@@ -83,7 +83,7 @@ class Hfnedjuhfnedju extends CI_Controller {
         {
             $this->load->helper('form');
             
-            $output = form_open('Hfnedjuhfnedju/login');
+            $output = form_open(site_url('Hfnedjuhfnedju/login'));
             $userData = array('name' => 'username','placeholder' => 'Имя пользователя');
             $output .= form_input($userData);
             $passData = array('name' => 'password','placeholder' => 'Пароль');
