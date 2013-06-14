@@ -1,0 +1,44 @@
+/* 
+    Document   : admin
+    Created on : 13.06.2013, 22:46:16
+    Author     : Ratuvog
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+	font-family: Arial;
+	font-size: 14px;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+    font-size: 16px;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.menu a {
+    
+}
+
+img {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.output .login-button {
+    margin-bottom: 10px;
+}
+
+.output input {
+    margin-left: 10px;
+}
+
+
