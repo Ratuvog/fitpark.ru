@@ -294,6 +294,7 @@ class Hfnedjuhfnedju extends CI_Controller {
                 $image_crud->set_primary_key_field('id');
                 $image_crud->set_url_field('photo');
                 $image_crud->set_image_path('image/club/');
+                $image_crud->set_title_field('title');
                 $image_crud->set_relation_field('fitnesclubid');
                 $output = $image_crud->render();
                 $this->render($output);
