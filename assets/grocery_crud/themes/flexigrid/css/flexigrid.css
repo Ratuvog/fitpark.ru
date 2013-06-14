@@ -181,10 +181,11 @@ table th
 }
 .flexigrid div.btnseparator {
 	float:left;
-	height:22px;
+	height:30px;
 	border-left:1px solid #ccc;
 	border-right:1px solid #fff;
 	margin:1px;
+        overflow: hidden;
 }
 .flexigrid div.fbutton {
 	float:left;

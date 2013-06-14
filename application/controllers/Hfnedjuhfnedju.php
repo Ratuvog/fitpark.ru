@@ -29,6 +29,8 @@ class Hfnedjuhfnedju extends CI_Controller {
 		$this->load->library('grocery_CRUD');
                 $this->load->library('PHPExcel');
                 $this->load->library('session');
+                $this->load->library('image_CRUD');
+                $this->load->library('image_Moo');
                 
                 $ci = &get_instance();
                 $ci->load->model('grocery_CRUD_Model');
@@ -86,7 +88,7 @@ class Hfnedjuhfnedju extends CI_Controller {
             $output .= form_input($userData);
             $passData = array('name' => 'password','placeholder' => 'Пароль');
             $output .= form_input($passData);
-            $output .= form_submit('my_submit', 'Войти');
+            $output .= form_submit('my_submit', 'Войти', 'class="btn btn-primary login-button"');
             
             $this->render((object)array('output' => $output, 'js_files' => array(), 'css_files' => array()));
         }
@@ -237,6 +239,9 @@ class Hfnedjuhfnedju extends CI_Controller {
                 
                 $crud->set_relation('districtId', 'district', 'name');
                 
+                $crud->add_action("Добавить фото", site_url('image/png/glyphicons_011_camera.png'),
+                                  site_url('Hfnedjuhfnedju/photos/'), '');
+                
                 $output = $crud->render();
                 $this->render($output);
         }
@@ -282,12 +287,15 @@ class Hfnedjuhfnedju extends CI_Controller {
         
         function photos()
         {
+                $image_crud = new image_CRUD();
                 $this->setCurentState('photos');
-                $crud = new grocery_CRUD();
-                $crud->set_table($this->currentTable);
-                $crud->set_relation('fitnesclubid','fitnesclub','name');
-                $crud->set_field_upload('photo','image/club');
-                $output = $crud->render();
+                $image_crud->set_table($this->currentTable);
+
+                $image_crud->set_primary_key_field('id');
+                $image_crud->set_url_field('photo');
+                $image_crud->set_image_path('image/club/');
+                $image_crud->set_relation_field('fitnesclubid');
+                $output = $image_crud->render();
                 $this->render($output);
         }
         

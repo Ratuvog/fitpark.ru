@@ -30,7 +30,7 @@ if($success_message !== null){?>
 	<p><?php echo $success_message; ?></p>
 <?php }
 ?></div>	
-<div class="flexigrid" style='width: 85%;'>
+<div class="flexigrid">
 	<div class="mDiv">
 		<div class="ftitle">
 			&nbsp;
@@ -84,7 +84,7 @@ if($success_message !== null){?>
                         </div>  
                             <div class="fbutton">
                                 <div>
-                                    <input class="import import-anchor"
+                                    <input class="btn btn-primary"
                                            type="submit" 
                                            value="<?php echo $this->l('list_import');?>"
                                            data-url="<?php echo $import_url; ?>"/>

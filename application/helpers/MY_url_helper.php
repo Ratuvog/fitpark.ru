@@ -12,15 +12,20 @@
 
 
 
-function site_url($url = '') {
-    if(count($url)>1)
-        return "http://".$_SERVER["HTTP_HOST"]."/".implode("/",$url);
-    else
-        return prep_url($_SERVER["HTTP_HOST"]."/$url[0]");
+function site_url($url = array()) {
+    
+    $tail = '';
+    
+    if(is_array($url))
+        $tail = join('/', $url);
+    else if(is_string($url))
+        $tail = $url;
+    
+    return prep_url($_SERVER["HTTP_HOST"].'/'.$tail);
 }
 
 function base_url() {
-    return prep_url($_SERVER["HTTP_HOST"]);
+    return prep_url($_SERVER["HTTP_HOST"].'/');
 }
 
 ?>

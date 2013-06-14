@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.2.1
+ * Bootstrap Responsive v2.3.1
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -38,6 +38,10 @@
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+@-ms-viewport {
+  width: device-width;
 }
 
 .hidden {
@@ -91,9 +95,22 @@
   }
 }
 
+.visible-print {
+  display: none !important;
+}
+
+@media print {
+  .visible-print {
+    display: inherit !important;
+  }
+  .hidden-print {
+    display: none !important;
+  }
+}
+
 @media (min-width: 1200px) {
   .row {
-    margin-left: -10px;
+    margin-left: -30px;
     *zoom: 1;
   }
   .row:before,
@@ -108,9 +125,7 @@
   [class*="span"] {
     float: left;
     min-height: 1px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    margin-right: 20px;
+    margin-left: 30px;
   }
   .container,
   .navbar-static-top .container,
@@ -119,7 +134,7 @@
     width: 1170px;
   }
   .span12 {
-    width: 90%;
+    width: 1170px;
   }
   .span11 {
     width: 1070px;
@@ -137,13 +152,13 @@
     width: 670px;
   }
   .span6 {
-    width: 45%;
+    width: 570px;
   }
   .span5 {
     width: 470px;
   }
   .span4 {
-    width: 30%px;
+    width: 370px;
   }
   .span3 {
     width: 270px;
@@ -179,10 +194,10 @@
     margin-left: 530px;
   }
   .offset4 {
-    margin-left: 400px;
+    margin-left: 430px;
   }
   .offset3 {
-    margin-left: 290px;
+    margin-left: 330px;
   }
   .offset2 {
     margin-left: 230px;
@@ -867,7 +882,7 @@
     margin-left: 0;
   }
   .modal {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     left: 20px;
@@ -940,11 +955,10 @@
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom {
-    
+    position: static;
   }
   .navbar-fixed-top {
-    position: static;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
   .navbar-fixed-bottom {
     margin-top: 20px;
@@ -1002,7 +1016,9 @@
     margin-bottom: 2px;
   }
   .nav-collapse .nav > li > a:hover,
-  .nav-collapse .dropdown-menu a:hover {
+  .nav-collapse .nav > li > a:focus,
+  .nav-collapse .dropdown-menu a:hover,
+  .nav-collapse .dropdown-menu a:focus {
     background-color: #f2f2f2;
   }
   .navbar-inverse .nav-collapse .nav > li > a,
@@ -1010,7 +1026,9 @@
     color: #999999;
   }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
-  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
+  .navbar-inverse .nav-collapse .nav > li > a:focus,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:focus {
     background-color: #111111;
   }
   .nav-collapse.in .btn-group {

@@ -152,7 +152,7 @@ class FitparkClubController extends FitparkBaseController {
         $this->viewData['images']           = $this->fitpark_club_model->getImages($this->m_clubId);
         $i = 0;
         foreach ($this->viewData['images'] as &$currentImage) {
-            $currentImage["photo"] = "image/".$currentImage["photo"];
+            $currentImage["photo"] = "image/club/".$currentImage["photo"];
             if(!$currentImage["min_photo"]) {
                 $config['image_library'] = 'gd2';
                 $config['source_image'] = $currentImage["photo"];
