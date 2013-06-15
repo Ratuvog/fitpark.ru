@@ -1433,4 +1433,11 @@ ul.main-baner-tb-clubs img {
 }
 /*end club-list*/
 
+.neg-review {
+    color: red;
+}
+
+.pos-review {
+    color: #03b003;
+}
 /*END SLIDER*/

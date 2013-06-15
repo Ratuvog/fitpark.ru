@@ -209,7 +209,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                 <table>
                                     <tr>
                                         <td class="description-review">
-                                            <h4><?= $review['sender']; ?></h4>
+                                            <h4 class="<?=($review["type"]==1 ? "pos-review" : "neg-review");?>"><?= $review['sender']; ?></h4>
                                             <span><?= $review['outdate']; ?></span>
                                             <? if(isset($review['rating'])) { ?>
                                                 <div class="rating club-mini"
@@ -357,6 +357,17 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                     <td>Минусы</td>
                     <td>
                         <textarea class="search review-text" name="minus" isReq="false" id="" cols="30" rows="10"  text="минусы" validator="blank"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Оценка отзыва
+                    </td>
+                    <td>
+                        <select name="type-rewiew" id="">
+                            <option value="1" selected="selected">Положительно</option>
+                            <option value="2">Отрицательно</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>

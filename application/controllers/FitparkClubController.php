@@ -112,12 +112,16 @@ class FitparkClubController extends FitparkBaseController {
     }
 
     public function addReview($clubId) {
-
-        $this->fitpark_club_model->addReview($clubId, $_SERVER['REMOTE_ADDR'],
-                                         $this->input->post("text"),
-                                         $this->input->post("name"),
-                                         $this->input->post("plus"),
-                                         $this->input->post("minus"));
+        $insertedData = array(
+            "clubId" => $clubId,
+            "ip"     => $_SERVER["REMOTE_ADDR"],
+            "text"   => $this->input->post("text"),
+            "user"   => $this->input->post("name"),
+            "plus"   => $this->input->post("plus"),
+            "minus"  => $this->input->post("minus"),
+            "type"   => $this->input->post("type")
+        );
+        $this->fitpark_club_model->addReview($insertedData);
         $this->customRedirect(site_url(array('club',$clubId,'1')));
     }
 

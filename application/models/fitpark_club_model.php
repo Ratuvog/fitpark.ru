@@ -67,7 +67,7 @@ class Fitpark_club_model extends CI_Model {
 
     /* Get reviews about club */
     function getReviewsClub($clubId) {
-        $this->db->select("f.id id, DATE_FORMAT(date, '%d.%m.%Y') outdate, text, f.sender, positive, negative, r.value as rating", FALSE)
+        $this->db->select("f.id id, DATE_FORMAT(date, '%d.%m.%Y') outdate, text, f.sender, positive, negative, r.value as rating, type", FALSE)
                  ->from("fitnesclub_review f")
                  ->join("fitnesclub_rating r", "f.senderIP = r.sender", 'left')
                  ->where(array("f.fitnesclubid"=>$clubId))
@@ -170,18 +170,20 @@ class Fitpark_club_model extends CI_Model {
         $this->db->update('fitnesclub', $data);
     }
 
-    function addReview($clubid, $senderIP, $text, $sender, $positive, $negatie)
+//    function addReview($clubid, $senderIP, $text, $sender, $positive, $negatie)
+    function addReview($insertedData)
     {
-        if(!$sender) {
+        if(!$insertedData["user"]) {
             $sender = $this->defaultUser;
         }
         $insertData = array(
-            "fitnesclubid"=>$clubid,
-            "text"        =>$text,
-            "sender"      =>$sender,
-            "positive"    =>$positive,
-            "negative"    =>$negatie,
-            "senderIP"    =>$senderIP
+            "fitnesclubid"=>$insertedData["clubId"],
+            "text"        =>$insertedData["text"],
+            "sender"      =>$insertedData["user"],
+            "positive"    =>$insertedData["plus"],
+            "negative"    =>$insertedData["minus"],
+            "senderIP"    =>$insertedData["ip"],
+            "type"        =>$insertedData["type"]
         );
         $this->db->insert("fitnesclub_review",$insertData);
     }
