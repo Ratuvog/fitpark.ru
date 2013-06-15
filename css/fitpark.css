@@ -204,6 +204,17 @@ body {
 }
 
 .search {
+    border-radius: 9px;
+    border: 1px solid #a1a1a1;
+    padding: 5px;
+    float: left;
+    display: block;
+    height: 25px;
+    outline: none;
+    /*width: 230px;*/
+}
+
+.main-search {
     border-radius: 9px 0 0 9px;
     border: 1px solid #a1a1a1;
     padding: 5px;

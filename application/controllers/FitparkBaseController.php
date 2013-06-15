@@ -64,10 +64,16 @@ class FitparkBaseController extends CI_Controller {
          */
         $city = $this->getCity();
         $this->headerData['currentCity'] = $this->fitpark_model->getCity($city);
-
-        $this->lang->load(mb_convert_case($city, MB_CASE_LOWER),mb_convert_case($city, MB_CASE_LOWER));
+        $english_name = $this->headerData["currentCity"]->english_name;
+        $this->lang->load(mb_convert_case($english_name, MB_CASE_LOWER),mb_convert_case($english_name, MB_CASE_LOWER));
         $this->headerData['titleText'] = sprintf($this->headerData['titleText'],
                                                  lang('title'));
+
+        $this->headerData['keywords'] = "%s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
+        $this->headerData["keywords"] = sprintf($this->headerData["keywords"],lang("common_keys"));
+
+        $this->headerData["desc"] = "%s. Отзывы, рейтинг, фотографии, цены, описание.";
+        $this->headerData["desc"] = sprintf($this->headerData["desc"],lang("common_desc"));
         /*
          * В данном случае сессии использованы только лишь в качестве этакого менеджера настроек
          * который доступен во все приложении

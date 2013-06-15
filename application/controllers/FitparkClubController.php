@@ -42,6 +42,17 @@ class FitparkClubController extends FitparkBaseController {
         $headerInfo["titleText"] = sprintf($headerInfo["titleText"],
                                            $this->viewData['base']['name'],
                                            lang("current_club_title"));
+
+        $headerInfo["keywords"] = "%s. %s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
+        $headerInfo["keywords"] = sprintf($headerInfo["keywords"],
+                                          $this->viewData['base']['name'],
+                                          lang("common_keys"));
+
+        $headerInfo["desc"] = "%s %s. Отзывы, рейтинг, фотографии, цены, описание.";
+        $headerInfo["desc"] = sprintf($headerInfo["desc"],
+                                      $this->viewData['base']['name'],
+                                      lang("club_desc"));
+
         foreach ($headerInfo as $key=>$value) {
             $this->headerData[$key] = $value;
         }
