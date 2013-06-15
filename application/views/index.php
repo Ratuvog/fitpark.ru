@@ -263,7 +263,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <div class="centerSpan">
                 <p>Проводник в мир фитнеса «ФитПарк». Фитнес клубы, расписание тренировок, цены абонементов, отзывы.</p>
-                <p>Самара</p>
+                <p>Информация на сайте не является публичной офертой</p>
                 <p>
                    «ФитПарк» 2012-2013. Все права защищены.
                 </p>
@@ -310,7 +310,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <noscript><div><img src="//mc.yandex.ru/watch/20271514" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-<!--<!-- Rating@Mail.ru counter -->-->
+<!--<!-- Rating@Mail.ru counter -->
 <!--<script type="text/javascript">//<![CDATA[-->
 <!--var _tmr = _tmr || [];-->
 <!--_tmr.push({id: '2360902', type: 'pageView', start: (new Date()).getTime()});-->

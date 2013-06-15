@@ -12,7 +12,7 @@
             </div>
             <div class="centerSpan">
                 <p>Проводник в мир фитнеса «ФитПарк». Фитнес клубы, расписание тренировок, цены абонементов, отзывы.</p>
-                <p>Самара фитнес.</p>
+                <p>Информация на сайте не является публичной офертой</p>
                 <p>
                    «ФитПарк» 2012-2013. Все права защищены.
                 </p>
@@ -63,7 +63,7 @@
 <noscript><div><img src="//mc.yandex.ru/watch/20271514" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<!--<!-- Rating@Mail.ru counter -->-->
+<!--<!-- Rating@Mail.ru counter -->
 <!--<script type="text/javascript">//<![CDATA[-->
 <!--var _tmr = _tmr || [];-->
 <!--_tmr.push({id: '2360902', type: 'pageView', start: (new Date()).getTime()});-->
@@ -76,7 +76,7 @@
 <!--//]]></script><noscript><div style="position:absolute;left:-10000px;">-->
 <!--<img src="//top-fwz1.mail.ru/counter?id=2360902;js=na" style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" />-->
 <!--</div></noscript>-->
-<!--<!-- //Rating@Mail.ru counter -->-->
+<!--<!-- //Rating@Mail.ru counter -->
 <script type="text/javascript">
     var reformalOptions = {
         project_id: 105039,
