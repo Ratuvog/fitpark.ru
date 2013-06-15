@@ -244,7 +244,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                     </tr>
                                     <tr>
                                         <td align="center">
-                                            <div id="<?="review".$review['id'];?>"></div>
+                                            <div id="<?="review".$review['fake_id'];?>"></div>
                                             <script type="text/javascript">
                                                 VK.Widgets.Like("<?="review".$review['fake_id'];?>", {type: "mini"},<?=$review['fake_id'];?>);
                                             </script>
