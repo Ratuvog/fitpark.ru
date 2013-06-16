@@ -29,18 +29,26 @@ class FitparkClubsController extends FitparkBaseController {
         $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес клубы';
         $this->view = 'clubs/clubs';
+        
+        $this->breadCrumbsData[] = array(
+            'href'  =>  site_url(array('clubs')),
+            'title' => 'Список клубов'
+        );
     }
 
     public function init()
     {
         $this->searchMode();
+        
         if($this->session->userdata('rowOnPage'))
-        $this->showRecOnPage = $this->session->userdata('rowOnPage');
+            $this->showRecOnPage = $this->session->userdata('rowOnPage');
+        
         $this->viewData   = $this->initViewData();
         $headerData = $this->initHeaderData();
-        foreach ($headerData as $key=>$value) {
+        
+        foreach ($headerData as $key=>$value)
             $this->headerData[$key] =  $value;
-        }
+
     }
 
     public function clubs()
@@ -346,6 +354,7 @@ class FitparkClubsController extends FitparkBaseController {
             $this->titlePage = "Поиск фитнес клубов: ".$this->searchQuery;
             $this->functionGetList = 'getClubsByString';
             $this->functionRowCount = 'getRowCountByString';
+            
             $this->breadCrumbsData[] = array(
                 'href'  => current_url(),
                 'title' => 'Поиск клубов'

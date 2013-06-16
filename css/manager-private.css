@@ -1,0 +1,178 @@
+/* 
+    Document   : manager-private
+    Created on : 15.06.2013, 15:40:21
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.lclear {
+    clear: left;
+}
+
+
+.navbar {
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.nav {
+    padding: 5px;
+    list-style: none;
+}
+
+.nav li {
+    float: left;
+    margin-right: 10px;
+}
+
+.nav li:last-child {
+    float: none;
+}
+
+.auth-block {
+    float: left;
+    width: 320px;
+    padding: 10px 0px;
+    display: inline-table;
+}
+
+.auth-block .box {
+    min-height: 200px;
+}
+
+.auth-block .save {
+    margin-top: 40px;
+}
+
+.info-block {
+    float: left;
+    width: 45%;
+    min-height: 300px;
+    padding: 10px 20px;
+}
+
+.title {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.box {
+    border: 1px solid #aaa;
+    min-height: 250px;
+    padding: 15px;
+    margin: auto auto;
+    box-shadow: 1px 1px 3px #555;
+}
+
+.user-input {
+    display: inline;
+    margin-bottom: 10px;
+    float:left;
+    width: 100%;
+}
+
+.user-input input {
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 5px;
+    min-width: 300px;
+}
+
+.user-input input[type="text"] {
+    float: right;
+}
+
+.user-input .caption {
+    padding-top: 5px;  
+    margin-bottom: 2px;
+    float:left;
+    
+}
+
+.user-input input:focus {
+    border-color: rgba(0, 216, 0, 0.8);
+    outline: 0;
+    outline: thin dotted 9;
+    
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
+    
+}
+
+.save {
+    background: #fff;
+    width: 120px;
+    height: 30px;
+    border: 1px solid #009900;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.save:hover {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
+}
+
+.result {
+    color: #009900;
+    font-size: 12px;
+}
+
+.error {
+    color: #BB0000;
+    font-size: 12px;
+}
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -36px;
+    padding: 0;
+    /* support: IE7 */
+    *height: 1.7em;
+    *top: 0.1em;
+    background: none;
+    border: none;
+}
+
+.custom-combobox-toggle:hover {
+    background: none;
+    border: none;
+    outline: 0;
+}
+.custom-combobox-input {
+    margin: 0;
+    padding: 0.3em;
+    background: none;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+.status-cell {
+    width: 300px;
+}
+
+.font-succes {
+    color: #009900;
+    font-size: 14px;
+}
+
+.font-error {
+    color: #BB0000;
+    font-size: 14px;
+}
+

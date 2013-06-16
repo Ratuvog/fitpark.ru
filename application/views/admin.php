@@ -12,6 +12,7 @@ foreach($css_files as $file): ?>
 <link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','admin.css'));?>" />
 <link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','bootstrap.css'));?>" />
 <script src="<?php echo site_url(array('js','bootstrap.js'));?>"></script>
+
 </head>
 <body>
 <div>
@@ -21,7 +22,7 @@ foreach($css_files as $file): ?>
 <div style="margin-left:50%;">
     <h2><?php echo $categoryName; ?></h2>
 </div>
-    
+
 <div class="navbar">
     <div class="navbar-inner">
     <ul class="nav">
@@ -40,9 +41,6 @@ foreach($css_files as $file): ?>
 <div class="output">
    <?php echo $output; ?>
 </div>
-
-<div style='height:20px;'></div>  
-
 <input type="hidden" id="tbl" name="table" value="<?php echo $currentTable;?>" />
 </body>
 </html>

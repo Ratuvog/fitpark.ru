@@ -73,6 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ul>
                     <li class="name-section"><a href="<?=base_url();?>" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="<?=site_url(array('clubs'));?>" class="my-link">Фитнес-клубы</li>
+                    <li class="name-section"><a href="<?=site_url(array('ManagerPrivate'));?>" class="my-link">Менеджерам</li>
                 </ul>
                 <ul class="title-section-right">
                     <li class="name-section">

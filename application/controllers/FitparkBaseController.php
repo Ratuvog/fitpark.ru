@@ -58,10 +58,7 @@ class FitparkBaseController extends CI_Controller {
             'href'  => base_url(),
             'title' => 'Главная'
         );
-        $this->breadCrumbsData[] = array(
-            'href'  =>  site_url(array('clubs')),
-            'title' => 'Список клубов'
-        );
+
         /*
          * Текущий город
          */
@@ -158,12 +155,16 @@ class FitparkBaseController extends CI_Controller {
     {
         if($view == null)
             $view = $this->view;
+        
         if($this->header)
             $this->load->view($this->header, $this->headerData);
+        
         if($this->breadCrumbs)
             $this->load->view($this->breadCrumbs, array("stack" => $this->breadCrumbsData) );
+        
         if($view)
             $this->load->view($view, $this->viewData);
+        
         if($this->footer)
             $this->load->view($this->footer, $this->footerData);
     }

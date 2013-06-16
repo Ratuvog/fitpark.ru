@@ -15,7 +15,7 @@ body, html {
 }
 
 .main {
-    min-height: 100%;
+    min-height: 85%;
 }
 
 * {margin: 0;
@@ -654,7 +654,6 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 
 .spacer {
     min-width: 10px;
-    border-bottom: 1px solid #a1a1a1;
 }
 
 .button-guest {

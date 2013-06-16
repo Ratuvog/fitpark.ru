@@ -56,6 +56,12 @@ class FitparkClubController extends FitparkBaseController {
         foreach ($headerInfo as $key=>$value) {
             $this->headerData[$key] = $value;
         }
+        
+        $this->breadCrumbsData[] = array(
+            'href'  =>  site_url(array('clubs')),
+            'title' => 'Список клубов'
+        );
+        
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),
             'title' => $this->viewData['base']['name']

@@ -238,6 +238,7 @@ class Hfnedjuhfnedju extends CI_Controller {
                 'serviceId', 'name', 'priority');
                 
                 $crud->set_relation('districtId', 'district', 'name');
+                $crud->set_relation('cityid', 'city', 'name');
                 
                 $crud->add_action("Добавить фото", site_url('image/png/glyphicons_011_camera.png'),
                                   site_url('Hfnedjuhfnedju/photos/'), '');
