@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <header class="header">
                 <div class="logo">
                     <a href="<?=base_url();?>">
-                        <img src="<?=site_url(array('image','logo.png'))?>"></img>
+                        <img src="<?=site_url(array('image','new_logo.png'))?>"></img>
                     </a>
                 </div>
 

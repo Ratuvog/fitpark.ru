@@ -189,12 +189,16 @@ body {
     height: 60px;
     margin-left: 10px;
     float: left;
-    margin-right: 20px;
+    margin-right: 60px;
+}
+
+.main-banner-content img{
+    max-height: 72px;
 }
 
 .logo img{
-    width: 200px;
-    height: 60px;
+    width: 220px;
+    padding-top: 5px;
 }
 
 .header-content {

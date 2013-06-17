@@ -83,7 +83,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <td class="main-banner-content">
                                 <table>
                                     <tr>
-                                        <td colspan="2"><img src="/image/logo3.png" alt="" valign="middle" class="main-banner-logo" /></td>
+                                        <td colspan="2"><img src="/image/new_logo.png" alt="" valign="middle" class="main-banner-logo" /></td>
                                     </tr>
                                     <tr>
                                         <td align="center" valign="top" class="main-baner-content-img">
