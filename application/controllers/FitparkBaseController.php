@@ -36,6 +36,9 @@ class FitparkBaseController extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+//        $this->load->spark('Twiggy/0.8.5');
+//        $this->twiggy->set('user','dima')->template('_layouts/index')->display();
+//        exit;
         $this->load->database();
         $this->load->helper('url');
 
