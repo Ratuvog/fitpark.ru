@@ -105,15 +105,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <header>
                         Выберите город
                     </header>
-                    <ul class="city-list">
-                        <? foreach($availableCity as $city) {?>
-                            <li>
-                                <div class="active-city">
-                                    <a href="<?=prep_url($city->url);?>"><?=$city->name;?></a>
-                                </div>
-                            </li>
-                        <? } ?>
-                    </ul>
+                    <table class="center_table">
+                        <tr>
+                            <td align="center" valign="middle">
+                                <ul class="city-list">
+                                    <? foreach($availableCity as $city) {?>
+                                        <li>
+                                            <div class="active-city">
+                                                <a href="<?=prep_url($city->url);?>">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="<?=$city->symbol_path;?>" alt=""/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" class="change-city-name">
+                                                                <?=$city->name;?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <!--                                        <img src="dsmnfs" alt=""/>-->
+
+                                                </a>
+                                            </div>
+                                        </li>
+                                    <? } ?>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
                 </div>
             </div>
             <!--                конец Выбор города-->

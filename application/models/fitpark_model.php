@@ -267,7 +267,7 @@ class Fitpark_model extends CI_Model {
             $this->db->
                       select("*")->
                       from("city")->
-                      where("name","Самара")->result();
+                      where("name","Самара");
             $result = $this->db->get()->result();
         }
         return $result[0];

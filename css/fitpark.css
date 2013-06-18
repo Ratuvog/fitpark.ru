@@ -1409,10 +1409,14 @@ ul.main-baner-tb-clubs img {
     float: left;
 }
 
+.city-list img{
+    height: 150px;
+}
+
 .city-list div {
     border-bottom: 4px;
     min-width: 30px;
-    padding: 2px;
+    padding: 20px;
     border-bottom: 4px;
 }
 
@@ -1422,6 +1426,22 @@ ul.main-baner-tb-clubs img {
 
 .city-list .inactive-city {
     border-color: rgb(128,128,128);
+}
+
+.city-list a {
+    color: #333333;
+}
+
+.active-city td.change-city-name {
+    border-bottom: 4px solid #ffffff;
+}
+
+.active-city:hover td.change-city-name {
+    border-bottom: 4px solid #3af83a;
+}
+
+.city-list {
+    margin: 0 20px;
 }
 
 .city-changed {
@@ -1443,5 +1463,13 @@ ul.main-baner-tb-clubs img {
 
 .pos-review {
     color: #03b003;
+}
+
+.center_table {
+    width: 100%;
+}
+
+.center_table>tbody>tr>td{
+    width: 100%;
 }
 /*END SLIDER*/

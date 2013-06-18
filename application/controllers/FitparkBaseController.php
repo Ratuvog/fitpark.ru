@@ -64,6 +64,8 @@ class FitparkBaseController extends CI_Controller {
          */
         $city = $this->getCity();
         $this->headerData['currentCity'] = $this->fitpark_model->getCity($city);
+//        print_r($this->headerData['currentCity']->symbol_path);
+//        exit;
         $english_name = $this->headerData["currentCity"]->english_name;
         $this->lang->load(mb_convert_case($english_name, MB_CASE_LOWER),mb_convert_case($english_name, MB_CASE_LOWER));
         $this->headerData['titleText'] = sprintf($this->headerData['titleText'],
@@ -85,6 +87,16 @@ class FitparkBaseController extends CI_Controller {
         * Доступные города
         */
         $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
+        foreach($this->headerData['availableCity'] as $value) {
+            $value->symbol_path = site_url(
+                array(
+                    "image",
+                    "blazons",
+                    $value->english_name.".jpg"
+                )
+            );
+        }
+
 
         if($this->idna_convert->decode($_SERVER["HTTP_HOST"])!=$this->headerData['currentCity']->url)
             $this->customRedirect(prep_url($this->headerData['currentCity']->url));
