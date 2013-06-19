@@ -200,3 +200,7 @@
 .underline-box {
     border-bottom: 1px solid #aaa;
 }
+
+.cke_path {
+    display : none;
+}
