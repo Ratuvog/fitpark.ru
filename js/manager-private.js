@@ -332,10 +332,6 @@
 
     storeFormState($('#common-save').parents(".save-form").first());
 
-
-    CKEDITOR.replace( 'textarea_id', {
-    uiColor: '#14B8C4'
-    });
-        
+    CKEDITOR.replace("descript", { customConfig : './mini-desc-ta.config.js'});
 });
      

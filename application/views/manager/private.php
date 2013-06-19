@@ -69,9 +69,6 @@
             </div>
         </div>
         <div class="user-input">
-            <form>
-            <label class="caption">Краткое описание</label>
-            <div class="lclear"></div>
             <textarea name="descript"></textarea>
         </div>
     </div>
