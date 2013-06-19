@@ -192,3 +192,6 @@
     z-index: 10000;
 }
 
+.underline-box {
+    border-bottom: 1px solid #aaa;
+}

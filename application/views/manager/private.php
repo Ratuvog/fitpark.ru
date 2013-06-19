@@ -59,7 +59,7 @@
 <div class="info-block">
     <div class="title">Краткое описание</div>
     <div class="box">
-        <div class="user-input">
+        <div class="user-input underline-box">
             <label class="caption">Логотип</label>
             <div class="lclear"></div>
             <div class="club-logo-input">
