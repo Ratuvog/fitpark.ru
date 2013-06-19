@@ -77,7 +77,14 @@ class Manager_private extends CI_Model {
         if($this->db->update('buf_club', $data, array('id' => $club)))
             return 'OK';
         return 'ERR';
-        
+    }
+    
+    function lastTimeUpdate($club)
+    {
+        $rec = $this->db->get_where('buf_club', array('id' => $club))->row();
+        if($rec)
+            return array('status' => 'OK', 'msg' => $rec->last_update);
+        return array('status' => 'ERR');
     }
 }
 ?>

@@ -186,6 +186,11 @@
     font-size: 14px;
 }
 
+.font-hint {
+    color: #aaa;
+    font-size: 12px;
+}
+
 .ajax-loader {
     background-image: url("/image/ajax-loader.gif");
     background-repeat: no-repeat;

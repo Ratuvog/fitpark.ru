@@ -1,7 +1,9 @@
 <link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','manager-private.css'));?>"/>
 <script type="text/javascript" src="<?php echo site_url(array('js','manager-private.js'));?>"></script>
+<script type="text/javascript" src="<?php echo site_url(array('js','ckeditor','ckeditor.js'));?>"></script>
 <div>
-    <h2><?php echo $categoryName; ?></h2>
+    <h2><?php echo $categoryName;?></h2><div class="font-hint"> последнее изменение <span id="last-update"><?=$club->last_update;?></span></div>
+    <input id="clubid" value="<?=$club->id;?>" type="hidden" />
 </div>
 
 <div class="navbar">
@@ -51,7 +53,6 @@
             <label class="caption">Адрес</label>
             <input name="address" type="text" placeholder="Адрес" value="<?=$club->address;?>" validator="empty"/>
         </div>
-        <input name="clubid" value="<?=$club->id;?>" type="hidden" />
         <input id="common-save" class="save" type="button" value="Сохранить" />
     </div>
 </div>
@@ -70,7 +71,7 @@
         <div class="user-input">
             <label class="caption">Краткое описание</label>
             <div class="lclear"></div>
-            <textarea class="texteditor" name="description" placeholder="Описание..." /></textarea>
+            <textarea name="description" placeholder="Описание..." /></textarea>
         </div>
     </div>
 </div>

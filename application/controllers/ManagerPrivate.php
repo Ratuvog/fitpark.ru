@@ -168,5 +168,10 @@ class ManagerPrivate extends FitparkBaseController {
         echo json_encode(array('status' => $this->manager_private->updateCommon($saveData, $this->input->post('clubid'))));
     }
     
+    function lastTimeUpdate()
+    {
+        echo json_encode($this->manager_private->lastTimeUpdate($this->input->post('clubid')));
+    }
+    
 }
 ?>

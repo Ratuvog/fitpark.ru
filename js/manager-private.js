@@ -226,6 +226,7 @@
                if($(this).attr('type') != 'button')
                    formData[$(this).attr('name')] = $(this).val();
             });
+            formData['clubid'] = $('#clubid').val();
             $.ajax({
                 url: 'http://'+location.hostname+'/ManagerPrivate/saveCommon/',
                 type: 'post',
@@ -239,6 +240,7 @@
                             mes.addClass('font-error').append("При обновлении произошла ошибка");
                         showResultMessage(form, mes);
                         storeFormState(form);
+                        updateLastTimeUpdate();
                 },
                 beforeSend: function(){
                     var loading = $("<div>").addClass('ajax-loader');
@@ -303,19 +305,37 @@
         return hasChanges;
     }
    
-    $(document).ready(function(){ 
-        createCityCombobox();
-        $( "#toggle" ).click(function() {
-            $( "#city-combobox" ).toggle();
-        });
+    updateLastTimeUpdate = function () {
+        $.ajax({
+            url: 'http://'+location.hostname+'/ManagerPrivate/lastTimeUpdate',
+            type: 'post',
+            dataType: 'json',
+            data: { clubid: $('#clubid').val() },
+            success: function(data){           
+                if(data.status === 'OK'){
+                    $('#last-update').empty();
+                    $('#last-update').append(data.msg);
+                }
+            }
+        });     
+    }
+   
+    createCityCombobox();
+    $( "#toggle" ).click(function() {
+        $( "#city-combobox" ).toggle();
+    });
+
+    createDistrictCombobox();
+    $( "#toggle" ).click(function() {
+      $( "#district-combobox" ).toggle();
+    });
+
+    storeFormState($('#common-save').parents(".save-form").first());
+
+
+    CKEDITOR.replace( 'textarea_id', {
+    uiColor: '#14B8C4'
+    });
         
-        createDistrictCombobox();
-        $( "#toggle" ).click(function() {
-          $( "#district-combobox" ).toggle();
-        });
-        
-        storeFormState($('#common-save').parents(".save-form").first());
-        
-   });
+});
      
-  });
