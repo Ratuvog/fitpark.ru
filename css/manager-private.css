@@ -88,6 +88,10 @@
     float: right;
 }
 
+.user-input input[type="file"] {
+    min-width: 200px;
+}
+
 .user-input .caption {
     padding-top: 5px;  
     margin-bottom: 2px;
@@ -104,6 +108,12 @@
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
     
+}
+
+.user-input .club-logo {
+    max-width: 160px;
+    float: left;
+    margin-right: 20px;
 }
 
 .save {
@@ -174,5 +184,11 @@
 .font-error {
     color: #BB0000;
     font-size: 14px;
+}
+
+.ajax-loader {
+    background-image: url("/image/ajax-loader.gif");
+    background-repeat: no-repeat;
+    z-index: 10000;
 }
 

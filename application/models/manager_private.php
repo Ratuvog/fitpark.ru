@@ -29,14 +29,15 @@ class Manager_private extends CI_Model {
      */
     function club($club)
     {
-        $buf = $this->db->get_where("buf_club", array('id'=>$club))->result();
-        if(!count($buf))
+        $buf = $this->db->get_where("buf_club", array('id'=>$club))->first_row();
+        if(!$buf)
         {
             $fClub = $this->db->get_where("fitnesclub", array('id'=>$club))->result_array();
             if(count($fClub))
                 $this->db->insert("buf_club", $fClub[0]);
-            $buf = $this->db->get_where("buf_club", array('id'=>$club))->result();
+            $buf = $this->db->get_where("buf_club", array('id'=>$club))->first_row();
         }
+        $buf->head_picture = site_url(array('image', 'club', $buf->head_picture));
         return $buf;
     }
     
@@ -54,11 +55,7 @@ class Manager_private extends CI_Model {
                 $this->db->insert("buf_club", $fClub); 
         }
         
-        $buf = $this->db->get_where("buf_club", array('managerId' => $manager))->result();
-        if(count($origin) != count($buf))
-        {
-            
-        }
+        return $this->db->get_where("buf_club", array('managerId' => $manager))->result();
     }
     
     function owner($club)
@@ -72,6 +69,15 @@ class Manager_private extends CI_Model {
     function manager($login)
     {
         return $this->db->get_where('manager', array('login'=>$login))->first_row();
+    }
+    
+    function updateCommon($data, $club)
+    {
+        $data['state'] = 1;
+        if($this->db->update('buf_club', $data, array('id' => $club)))
+            return 'OK';
+        return 'ERR';
+        
     }
 }
 ?>

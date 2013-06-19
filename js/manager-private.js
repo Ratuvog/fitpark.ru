@@ -26,6 +26,7 @@
           .val( value )
           .attr( "title", "" )
           .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+          .attr('validator', "empty")
           .autocomplete({
             delay: 0,
             minLength: 0,
@@ -134,21 +135,22 @@
         this.element.show();
       }
     });
-  })( jQuery );
+})( jQuery );
  
-  $(function() {
+  createCityCombobox = function() {
     $( "#city-combobox" ).combobox({
         title: 'Показать все города',
         noMatch: 'Такого города нет в базе',
         afterSelect: function () {
-            
+
             var distrBox = $('#district-combobox');
             var cityBox = $('#city-combobox');
-            
+
             distrBox.find('option').each(function(){
                 this.remove();
             });
-            
+            distrBox.parent().find('input').val('');
+
             var city = cityBox.find('option:selected').val();
             $.ajax({
                 url: 'http://'+location.hostname+'/ManagerPrivate/districts/',
@@ -160,7 +162,6 @@
                 success: function(data){
                     if(data.status === 'OK')
                     {
-                        distrBox.find('input').attr('value','');
                         var options = data.msg;
                         for (var i = 0; i < options.length; i++)
                         {
@@ -170,24 +171,151 @@
                     }  
                 }
             });
-            
-            
+
+
         }
     });
-    
-  $( "#toggle" ).click(function() {
-      $( "#city-combobox" ).toggle();
-    });
-  });
-  
-  $(function() {
+  }
+   
+  createDistrictCombobox = function() {
     $( "#district-combobox" ).combobox({
         title: 'Показать все районы',
         noMatch: 'Такого района нет в базе',
   });
-    
-  $( "#toggle" ).click(function() {
-      $( "#district-combobox" ).toggle();
-    });
-  });
+  }
+  
+  $(function() {
+    $("#common-save").click(function() {
 
+        var form = $(this).parents(".save-form").first();
+        
+        if(!formHasChanges(form)) {
+            var info = $('<label>').addClass("font-error").empty();
+            info.append("Изменений нет");
+            showResultMessage(form, info);
+            return;
+        }
+        
+        var errorPull = [];
+        form.find('input,textarea').each(function()
+        {
+            var type = $(this).attr("type");
+            if(type !== "hidden" && type != "button" && type != "submit")
+            {
+                var error = validateInput($(this));
+                if(error !== "OK")
+                    errorPull.push(error);
+            }
+        });
+        
+        if (errorPull.length === 0)
+        {
+            sendToSave(form);
+            return;
+        }
+        
+        var error = $('<label>').addClass("font-error").empty();
+        error.append("Некоторые поля заполнены с ошибками");
+        showResultMessage(form, error);
+        errorPull = [];
+     });
+     
+     sendToSave = function(form){
+            var formData = {};
+            $(form).find('input,select').each(function (){
+               if($(this).attr('type') != 'button')
+                   formData[$(this).attr('name')] = $(this).val();
+            });
+            $.ajax({
+                url: 'http://'+location.hostname+'/ManagerPrivate/saveCommon/',
+                type: 'post',
+                dataType: 'json',
+                data: formData,
+                success: function(data){           
+                        var mes = $('<label>');
+                        if(data.status === 'OK')
+                            mes.addClass('font-succes').append("Изменения добавлены на обработку");
+                        else
+                            mes.addClass('font-error').append("При обновлении произошла ошибка");
+                        showResultMessage(form, mes);
+                        storeFormState(form);
+                },
+                beforeSend: function(){
+                    var loading = $("<div>").addClass('ajax-loader');
+                    form.append(loading);
+                },
+                complete: function() {
+                    form.find(".ajax-loader").remove();
+                }
+            });      
+     }
+     
+    validateInput = function (input) {
+        var validator = input.attr("validator");
+        var textField = input.attr("placeholder");
+
+        if(input.attr("isReq") === "false")
+            return "OK";
+
+        if (!validate[validator].func(input.val()) ) {
+            input.css("border-color", "red");
+            return validate[validator].errorPattern(textField);
+        }
+        input.css("border-color", "#aaa");
+        return "OK";
+    }
+     
+    showResultMessage = function(form, result) {
+            $(form).find('.font-error').remove();
+            $(form).find('.font-succes').remove();
+            var save = $(form).find('.save');
+            save.parent().append(result);
+    } 
+    
+    var formStorage = {};
+    
+    storeFormState = function (form) {
+        var inputStorage = {}
+        $(form).find('input,select').each(function()
+        {
+            var type = $(this).attr("type");
+            if(type !== "hidden" && type != "button" && type != "submit")
+            {
+                if($(this).attr('name'))
+                    inputStorage[$(this).attr('name')] = $(this).val();
+            }
+        });
+        formStorage[form] = inputStorage;
+    }
+    
+    formHasChanges = function (form) {
+        var inputStorage = formStorage[form];
+        var hasChanges = false;
+        $(form).find('input,select').each(function()
+        {
+            var type = $(this).attr("type");
+            if(type !== "hidden" && type != "button" && type != "submit")
+            {
+                if($(this).attr('name') && inputStorage[$(this).attr('name')] != $(this).val())
+                    hasChanges = true;
+            }
+        });
+        return hasChanges;
+    }
+   
+    $(document).ready(function(){ 
+        createCityCombobox();
+        $( "#toggle" ).click(function() {
+            $( "#city-combobox" ).toggle();
+        });
+        
+        createDistrictCombobox();
+        $( "#toggle" ).click(function() {
+          $( "#district-combobox" ).toggle();
+        });
+        
+        storeFormState($('#common-save').parents(".save-form").first());
+        
+   });
+     
+  });

@@ -114,10 +114,10 @@ class ManagerPrivate extends FitparkBaseController {
         $this->viewData['club'] = $this->manager_private->club($clubId);
         $this->viewData['cities'] = $this->manager_private->cities();
         
-        $cityId = $this->viewData['club'][0]->cityid;
-        $this->viewData['ditricts'] = $this->manager_private->districts($cityId);
+        $cityId = $this->viewData['club']->cityid;
+        $this->viewData['districts'] = $this->manager_private->districts($cityId);
 
-        $this->categoryName = $this->viewData['club'][0]->name;
+        $this->categoryName = $this->viewData['club']->name;
         $this->viewData['categoryName'] = $this->categoryName;
         $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
         $this->breadCrumbsData[] = array(
@@ -157,6 +157,15 @@ class ManagerPrivate extends FitparkBaseController {
             return json_encode(array('status'=>'ERR'));
         
         echo json_encode(array('status' => 'OK', 'msg' => $this->manager_private->districts($cityId)));
+    }
+    
+    function saveCommon()
+    {
+        $keys = array('name', 'site', 'phone', 'cityid', 'districtId', 'address');
+        $saveData = array();
+        foreach ($keys as $k)
+            $saveData[$k] = $this->input->post($k);
+        echo json_encode(array('status' => $this->manager_private->updateCommon($saveData, $this->input->post('clubid'))));
     }
     
 }

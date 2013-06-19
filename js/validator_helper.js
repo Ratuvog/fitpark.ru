@@ -38,7 +38,14 @@ validate = {
         errorPattern: function(fieldValue) {
             return "Поле '" + fieldValue + "' должно содержать только цифры"
         }
+    },
+    empty: {
+        func: function(value){
+            return true;
+        },
+        errorPattern : ''
     }
+    
 };
 
 /* метод, позволяющий осуществлять валидацию */
