@@ -35,6 +35,14 @@
                 <td class="mini-card-club-part status-cell">
                     <section class="decription-club">
                         <header class="name-club">
+                            <h4>Последнее изменение:</h4>
+                                <?=$row->last_update;?>
+                        </header>
+                    </section>
+                </td>
+                <td class="mini-card-club-part status-cell">
+                    <section class="decription-club">
+                        <header class="name-club">
                             <h4>Статус:</h4>
                             <?  switch ($row->state) {
                                 case 0:
