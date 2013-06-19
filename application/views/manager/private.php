@@ -1,6 +1,6 @@
-<link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','manager-private.css'));?>"/>
-<script type="text/javascript" src="<?php echo site_url(array('js','manager-private.js'));?>"></script>
 <script type="text/javascript" src="<?php echo site_url(array('js','ckeditor','ckeditor.js'));?>"></script>
+<script type="text/javascript" src="<?php echo site_url(array('js','manager-private.js'));?>"></script>
+<link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','manager-private.css'));?>"/>
 <div>
     <h2><?php echo $categoryName;?></h2><div class="font-hint"> последнее изменение <span id="last-update"><?=$club->last_update;?></span></div>
     <input id="clubid" value="<?=$club->id;?>" type="hidden" />
@@ -69,9 +69,10 @@
             </div>
         </div>
         <div class="user-input">
+            <form>
             <label class="caption">Краткое описание</label>
             <div class="lclear"></div>
-            <textarea name="description" placeholder="Описание..." /></textarea>
+            <textarea name="descript"></textarea>
         </div>
     </div>
 </div>
