@@ -3,11 +3,13 @@ require_once(APPPATH.'controllers/FitparkBaseController.php');
 class FitparkClubController extends FitparkBaseController {
 
     /* Current club id */
-    protected $m_clubId = 0;
+    protected $clubId = 0;
     protected $m_countImagesOnRow  = 5;
     protected $m_countAnalogsOnRow = 4;
+    
     private   $order = "rating";
     private   $currency = " руб.";
+    
     function __construct()
     {
         parent::__construct();
@@ -18,54 +20,16 @@ class FitparkClubController extends FitparkBaseController {
     {
         // Временная заплатка - проблемы с роутингом
         $arr = $this->uri->segment_array();
-        $this->m_clubId = (int)$arr[2];
+        $this->clubId = (int)$arr[2];
         /* Перенес инициализацию вьюшек в конкретную страницу*/
         $this->titlePage = 'Фитнес-клуб';
 
         $this->view      = 'club/club';
-        $this->viewData["isComment"] = $this->getIsCommentsParams();
         $this->viewData["clubUrl"] = crc32("Club".$clubId);
-        /* Get full info about club */
-        $this->viewData['base'] = array();
-        $this->getBaseInfo();
-        if(empty($this->viewData['base'])) {
-            $this->show404();
-        }
-        $this->getDescriptions();
-        $this->getRates();
-        $this->getReviews();
-        $this->getImages();
-        $this->getAnalogs();
-        $this->getUserVote();
-
-        $headerInfo = array('titleText'=>"ФитПарк. %s %s. Стоимость, отзывы, фотографии, рейтинг, акции.");
-        $headerInfo["titleText"] = sprintf($headerInfo["titleText"],
-                                           $this->viewData['base']['name'],
-                                           lang("current_club_title"));
-
-        $headerInfo["keywords"] = "%s. %s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
-        $headerInfo["keywords"] = sprintf($headerInfo["keywords"],
-                                          $this->viewData['base']['name'],
-                                          lang("common_keys"));
-
-        $headerInfo["desc"] = "%s %s. Отзывы, рейтинг, фотографии, цены, описание.";
-        $headerInfo["desc"] = sprintf($headerInfo["desc"],
-                                      $this->viewData['base']['name'],
-                                      lang("club_desc"));
-
-        foreach ($headerInfo as $key=>$value) {
-            $this->headerData[$key] = $value;
-        }
+        $this->initViewData();
         
-        $this->breadCrumbsData[] = array(
-            'href'  =>  site_url(array('clubs')),
-            'title' => 'Список клубов'
-        );
+        $this->initHeaderData();
         
-        $this->breadCrumbsData[] = array(
-            'href'  => current_url(),
-            'title' => $this->viewData['base']['name']
-        );
         /* Output in view */
         $this->renderScene();
     }
@@ -134,16 +98,15 @@ class FitparkClubController extends FitparkBaseController {
     public function init()
     {
         /* init all data variables */
-        $this->allowedPages = array('index','club','club/getDiscount', 'getGuest','getDiscount','addReview');
-        $this->privateAllowedPages = array();
         $this->headerData['order'] = $this->order;
+        
         /* Load model */
         $this->load->model('fitpark_club_model');
     }
 
     protected function getBaseInfo()
     {
-        $infoArray = $this->setEmptyPhoto($this->fitpark_club_model->getBaseInfoClub($this->m_clubId));
+        $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->clubId);
         if(count($infoArray)) {
             $this->viewData['base'] = $infoArray[0];
     //        $this->viewData['base']["head_picture"] = site_url($this->viewData['base']["head_picture"]);
@@ -153,7 +116,7 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getRates()
     {
-        $this->viewData['base']['rates'] = $this->fitpark_club_model->getRatesClub($this->m_clubId);
+        $this->viewData['base']['rates'] = $this->fitpark_club_model->getRatesClub($this->clubId);
         foreach ($this->viewData['base']['rates'] as &$currentRate) {
             $currentRate['price'] = substr($currentRate['price'], 0, strpos($currentRate['price'], ".")).$this->currency;
         }
@@ -161,7 +124,7 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getReviews()
     {
-        $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->m_clubId, $_SERVER['REMOTE_ADDR']);
+        $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->clubId, $_SERVER['REMOTE_ADDR']);
         foreach ($this->viewData['reviews'] as &$value) {
             $value['fake_id'] = $value['id']+1e6;
         }
@@ -170,7 +133,7 @@ class FitparkClubController extends FitparkBaseController {
     protected function getImages()
     {
         $ADDITIONAL = "_min";
-        $this->viewData['images']           = $this->fitpark_club_model->getImages($this->m_clubId);
+        $this->viewData['images'] = $this->fitpark_club_model->getImages($this->clubId);
         $i = 0;
         foreach ($this->viewData['images'] as &$currentImage) {
             $currentImage["photo"] = "image/club/".$currentImage["photo"];
@@ -209,7 +172,7 @@ class FitparkClubController extends FitparkBaseController {
 
     protected function getAnalogs()
     {
-        $this->viewData['analogs']           = $this->setEmptyPhoto($this->fitpark_club_model->getAnalogs($this->m_clubId));
+        $this->viewData['analogs']           = $this->fitpark_club_model->getAnalogs($this->clubId);
         $this->viewData['countAnalogsOnRow'] = $this->m_countAnalogsOnRow;
     }
 
@@ -247,12 +210,66 @@ class FitparkClubController extends FitparkBaseController {
 
     private function getDescriptions()
     {
-        $this->viewData['descript'] = $this->fitpark_club_model->descriptions($this->m_clubId);
+        $this->viewData['descript'] = $this->fitpark_club_model->descriptions($this->clubId);
     }
 
     private function getUserVote()
     {
-        $this->viewData['userVote'] = $this->fitpark_club_model->userVote($this->m_clubId, $_SERVER['REMOTE_ADDR']);
+        $this->viewData['userVote'] = $this->fitpark_club_model->userVote($this->clubId, $_SERVER['REMOTE_ADDR']);
+    }
+
+    private function initViewData() 
+    {
+        $this->viewData["isComment"] = $this->getIsCommentsParams();
+        
+        /* Get full info about club */
+        $this->viewData['base'] = array();
+        $this->getBaseInfo();
+        if(empty($this->viewData['base'])) {
+            $this->show404();
+        }
+        
+        $this->getDescriptions();
+        $this->getRates();
+        $this->getReviews();
+        $this->getImages();
+        $this->getAnalogs();
+        $this->getUserVote();
+    }
+
+    private function initHeaderData() 
+    {
+        $headerInfo = array('titleText'=>"ФитПарк. %s %s. Стоимость, отзывы, фотографии, рейтинг, акции.");
+        $headerInfo["titleText"] = sprintf($headerInfo["titleText"],
+                                           $this->viewData['base']['name'],
+                                           lang("current_club_title"));
+
+        $headerInfo["keywords"] = "%s. %s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
+        $headerInfo["keywords"] = sprintf($headerInfo["keywords"],
+                                          $this->viewData['base']['name'],
+                                          lang("common_keys"));
+
+        $headerInfo["desc"] = "%s %s. Отзывы, рейтинг, фотографии, цены, описание.";
+        $headerInfo["desc"] = sprintf($headerInfo["desc"],
+                                      $this->viewData['base']['name'],
+                                      lang("club_desc"));
+
+        foreach ($headerInfo as $key=>$value) {
+            $this->headerData[$key] = $value;
+        }
+        
+        $this->breadCrumbsData[] = array(
+            'href'  =>  site_url(array('clubs')),
+            'title' => 'Список клубов'
+        );
+        
+        $this->breadCrumbsData[] = array(
+            'href'  => current_url(),
+            'title' => $this->viewData['base']['name']
+        );
+        
+        $this->append_js(array("/js/club.js"));
+        
     }
 }
 

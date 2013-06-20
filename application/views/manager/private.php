@@ -1,6 +1,3 @@
-<script type="text/javascript" src="<?php echo site_url(array('js','ckeditor','ckeditor.js'));?>"></script>
-<script type="text/javascript" src="<?php echo site_url(array('js','manager-private.js'));?>"></script>
-<link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','manager-private.css'));?>"/>
 <div>
     <h2><?php echo $categoryName;?></h2><div class="font-hint"> последнее изменение <span id="last-update"><?=$club->last_update;?></span></div>
     <input id="clubid" value="<?=$club->id;?>" type="hidden" />
@@ -9,7 +6,7 @@
 <div class="navbar">
     <div class="navbar-inner">
         <ul class="nav">
-            <li><a href=''>О Клубе</a></li>
+            <li><a href=''>Общая информация</a></li>
             <li><a href=''>Описание</a><li>
             <li><a href=''>Фотографии</a></li>
         </ul>
@@ -60,17 +57,20 @@
 <div class="info-block">
     <div class="title">Краткое описание</div>
     <div class="box">
-        <div class="user-input underline-box">
-            <label class="caption">Логотип</label>
-            <div class="lclear"></div>
+        <div class="user-input">
             <div class="club-logo-input">
-                <img class="club-logo" src="<?=$club->head_picture?>"></img>
-                <input name="head_picture" type="file" placeholder="Логотип" />
+                <span class="btn btn-success fileinput-button">
+                    <i class="icon-plus icon-white"></i>
+                    <span>Add files...</span>
+                    <input id="fileupload" type="file" name="files[]" multiple>
+                </span>
+                <div id="files" class="files"></div>
             </div>
         </div>
         <div class="user-input">
-            <textarea name="descript"></textarea>
+            <textarea name="descript" placeholder="Краткое описание..."><?=$club->description;?></textarea>
         </div>
+        <input id="descript-save" class="save" type="button" value="Сохранить" />
     </div>
 </div>
 

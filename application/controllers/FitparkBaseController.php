@@ -25,84 +25,55 @@ class FitparkBaseController extends CI_Controller {
     // Name main view and data
     protected $view = '';
     protected $viewData = array();
-
-    // DataBase model
-    protected $baseModel;
-    protected $addModel;
-
-    // Название пустого фото
-    protected $emptyPhoto = "no-foto.jpg";
-
+   
+    protected $localCity = 'samara';
+    
+    protected $js_files = array();
+    protected $css_files = array();
+            
     function __construct()
     {
         parent::__construct();
 //        $this->load->spark('Twiggy/0.8.5');
 //        $this->twiggy->set('user','dima')->template('_layouts/index')->display();
 //        exit;
+        $this->config->load('global_const');
+        
         $this->load->database();
         $this->load->helper('url');
-
-        $this->load->library('grocery_CRUD');
-        $this->load->library('session');
         $this->load->helper('language');
-        $this->load->library('idna_convert');
-        $ci = &get_instance();
-        $ci->load->model('grocery_CRUD_Model');
-        $ci->load->model('my_model');
-        $ci->load->model('fitpark_model');
+        $this->load->helper('mutator_helper');
 
-        $this->baseModel = $ci->grocery_CRUD_Model;
-        $this->addModel = $ci->my_model;
+        $this->load->library('session');
+        $this->load->library('idna_convert');
+
+        $this->load->model('fitpark_model');
 
         $this->breadCrumbsData[] = array(
             'href'  => base_url(),
             'title' => 'Главная'
         );
+        
+        // Definition the city on IP-address of the user
+        $this->initGeographicalData();
 
-        /*
-         * Текущий город
-         */
-        $city = $this->getCity();
-        $this->headerData['currentCity'] = $this->fitpark_model->getCity($city);
-//        print_r($this->headerData['currentCity']->symbol_path);
-//        exit;
-        $english_name = $this->headerData["currentCity"]->english_name;
-        $this->lang->load(mb_convert_case($english_name, MB_CASE_LOWER),mb_convert_case($english_name, MB_CASE_LOWER));
-        $this->headerData['titleText'] = sprintf($this->headerData['titleText'],
-                                                 lang('title'));
-
-        $this->headerData['keywords'] = "%s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
-        $this->headerData["keywords"] = sprintf($this->headerData["keywords"],lang("common_keys"));
-
-        $this->headerData["desc"] = "%s. Отзывы, рейтинг, фотографии, цены, описание.";
-        $this->headerData["desc"] = sprintf($this->headerData["desc"],lang("common_desc"));
+        // install localization file according to local city name
+        $this->lang->load(mb_convert_case($this->localCity, MB_CASE_LOWER), 
+                          mb_convert_case($this->localCity, MB_CASE_LOWER));
+              
         /*
          * В данном случае сессии использованы только лишь в качестве этакого менеджера настроек
          * который доступен во все приложении
          */
-        $this->session->set_userdata("city",$this->headerData['currentCity']->id);
+        $this->session->set_userdata("city", $this->headerData['currentCity']->id);
 
+        $this->initListAvaibleCity();
 
-        /*
-        * Доступные города
-        */
-        $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
-        foreach($this->headerData['availableCity'] as $value) {
-            $value->symbol_path = site_url(
-                array(
-                    "image",
-                    "blazons",
-                    $value->english_name.".jpg"
-                )
-            );
-        }
-
-
-        if($this->idna_convert->decode($_SERVER["HTTP_HOST"])!=$this->headerData['currentCity']->url)
+        if($this->idna_convert->decode($_SERVER["HTTP_HOST"]) != $this->headerData['currentCity']->url)
             $this->customRedirect(prep_url($this->headerData['currentCity']->url));
     }
 
-    private function getCity()
+    private function cityByIP()
     {
         $this->load->helper("geolocation");
         $host = $this->idna_convert->decode($_SERVER["HTTP_HOST"]);
@@ -114,17 +85,15 @@ class FitparkBaseController extends CI_Controller {
         }
     }
 
-    function init(){
-    }
+    function init(){}
 
     function _remap($method, $param)
     {
         $pars = $this->uri->segment_array();    //unsetting uri last segments
         $cnt = count($pars);
         for($i = 1; $i < $cnt; $i++)
-        {
             unset($pars[$i]);
-        }
+
         call_user_func_array(array($this, $method), $pars);
     }
 
@@ -153,6 +122,10 @@ class FitparkBaseController extends CI_Controller {
     // Before render scene check view-data variable for initialization
     protected function renderScene($view = null)
     {
+        $this->initMetaData();
+        $this->initCssData();
+        $this->initJSData();
+        
         if($view == null)
             $view = $this->view;
 
@@ -169,38 +142,6 @@ class FitparkBaseController extends CI_Controller {
             $this->load->view($this->footer, $this->footerData);
     }
 
-    protected function initBreadCrumbs()
-    {
-        $stack = (array)$this->session->userdata('breadcrumbs');
-        $newstack = array();
-        foreach ($stack as $item)
-        {
-            if($item === $this->titlePage)
-                break;
-
-            if($item != 0)
-                array_push($newstack, $item);
-        }
-
-        array_push($newstack, $this->titlePage);
-        $this->session->set_userdata('breadcrumbs', $newstack);
-        return array('stack' => $newstack);
-    }
-
-    protected function setEmptyPhoto($inData) {
-        foreach ($inData as &$data) {
-            foreach ($data as $key=>$value) {
-                if($key=="head_picture") {
-                    if(!$data[$key])
-                        $data[$key] = site_url(array("image",  $this->emptyPhoto));
-                    else
-                        $data[$key] = site_url(array("image", "club", $data[$key]));
-                }
-            }
-        }
-        return $inData;
-    }
-
     protected function setEmptyPhotoObject($inData) {
         foreach ($inData as &$data) {
             foreach ($data as $key=>$value) {
@@ -213,6 +154,102 @@ class FitparkBaseController extends CI_Controller {
             }
         }
         return $inData;
+    }
+
+    private function initGeographicalData()
+    {
+        /*
+         * Текущий город
+         */
+        $city = $this->cityByIP();
+        $this->headerData['currentCity'] = $this->fitpark_model->getCity($city);
+//        print_r($this->headerData['currentCity']->symbol_path);
+//        exit;
+        $this->localCity = $this->headerData["currentCity"]->english_name;
+    }
+    
+    protected function initMetaData()
+    {
+        $this->headerData['titleText'] = sprintf($this->headerData['titleText'], lang('title'));
+
+        $this->headerData['keywords'] = "%s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
+        $this->headerData["keywords"] = sprintf($this->headerData["keywords"],lang("common_keys"));
+
+        $this->headerData["desc"] = "%s. Отзывы, рейтинг, фотографии, цены, описание.";
+        $this->headerData["desc"] = sprintf($this->headerData["desc"],lang("common_desc"));
+        
+        $this->headerData['favicon'] = $this->config->item('favicon');
+    }
+
+    private function initListAvaibleCity()  
+    {
+        /*
+        * Доступные города
+        */
+        //TODO: Гербы грузить через админку; добавить в city соотв. поле
+        $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
+        foreach($this->headerData['availableCity'] as $city) {
+            $city->symbol_path = site_url(
+                array(
+                    "image",
+                    "blazons",
+                    $city->english_name.".jpg"
+                )
+            );
+        }
+    }
+
+    public function initCssData()
+    {
+        $css_files = array( 
+            "/css/common/fitpark.css",
+            "/js/fancybox/jquery.fancybox.css",
+            "/js/fancybox/helpers/jquery.fancybox-buttons.css",
+            "/js/fancybox/helpers/jquery.fancybox-thumbs.css",
+        );
+        
+        if($this->css_files)
+            $css_files = array_merge($this->css_files, $css_files);
+        
+        foreach($css_files as $css)
+            $css = site_url($css);
+        $this->headerData['css_files'] = $css_files;    
+    }
+
+    public function initJSData()
+    {
+        $js_files = array( 
+            "/js/header.js",
+            "/js/common.js",
+            "/js/cb/jquery.colorbox.js",
+            "/js/cb/colorbox.jquery.json",
+            "/js/jquery.form.validation.js",
+            "/js/fancybox/jquery.fancybox.pack.js",
+            "/js/fancybox/helpers/jquery.fancybox-buttons.js",
+            "/js/fancybox/helpers/jquery.fancybox-media.js",
+            "/js/fancybox/helpers/jquery.fancybox-thumbs.js",
+            "/js/fancybox/jquery.fancybox.pack.js",
+            "/js/validator_helper.js",
+            "/js/raty-2.5.2/jquery.raty.js",
+            "/js/slider/jquery.bxslider.js",
+        );
+        
+        if($this->js_files)
+            $js_files = array_merge($this->js_files, $js_files);
+        
+        foreach($js_files as $js)
+            $js = site_url($js);
+        $this->headerData['js_files'] = $js_files;   
+    }
+    
+    function append_js($files)
+    {
+        $this->js_files += $files;
+    }
+    
+    function append_css($files)
+    {
+        $this->css_files += $files;
     }
 
 }

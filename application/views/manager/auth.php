@@ -1,10 +1,8 @@
-<link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','manager-private.css'));?>"/>
-<script type="text/javascript" src="<?php echo site_url(array('js','manager-private.js'));?>"></script>
 <div>
     <h2><?php echo $categoryName; ?></h2>
 </div>
 
-<form method="post" action="<?=site_url('ManagerPrivate/login');?>" class="auth-block">
+<form method="post" action="<?=site_url('Manager/login');?>" class="auth-block">
     <div class="box">
         <div class="user-input">
             <label class="caption">Логин</label>

@@ -2,33 +2,33 @@
 <html>
     <head>
         <title><?=$titleText;?></title>
+        
+        <!--META-->
         <meta name="description" content="<?=$desc;?>">
         <meta name="keywords" content="<?=$keywords;?>">
-        <link rel="stylesheet" href="/css/fitpark.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-        <link rel="stylesheet" href="/js/fancybox/jquery.fancybox.css" />
-        <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-buttons.css" />
-        <link rel="stylesheet" href="/js/fancybox/helpers/jquery.fancybox-thumbs.css" />
 
-        <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
-
+        <link rel="icon" href="<?=$favicon;?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?=$favicon;?>" type="image/x-icon">
+        
+        <!--CSS-->
+    <? foreach($css_files as $css){ ?>
+        <link rel='stylesheet' href='<?=$css;?>' />
+    <?}?>
+            
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-        <script type="text/javascript" src="/js/cb/jquery.colorbox.js"></script>
-        <script type="text/javascript" src="/js/common.js"></script>
-        <script type="text/javascript" src="/js/jquery.form.validation.js"></script>
-        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
-        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
-        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-media.js"></script>
-        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
-        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
-        <script type="text/javascript" src="/js/validator_helper.js"></script>
-        <script type="text/javascript" src="/js/raty-2.5.2/jquery.raty.js"></script>
-        <script type="text/javascript" src="//vk.com/js/api/openapi.js?96"></script>
-        <script type="text/javascript" src="/js/header.js"></script>
-
+        <script src="//vk.com/js/api/openapi.js?96"></script>
+        
+        <!--JS-->
+    <? foreach($js_files as $js){ ?>
+        <script type='text/javascript' src='<?=$js;?>'></script>
+    <?}?>
+        
+        
+        
+        
+        
 <!--<script type="text/javascript">
   VK.init({apiId: 3689827, onlyWidgets: true});
 </script>-->
@@ -73,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ul>
                     <li class="name-section"><a href="<?=base_url();?>" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="<?=site_url(array('clubs'));?>" class="my-link">Фитнес-клубы</li>
-                    <li class="name-section"><a href="<?=site_url(array('ManagerPrivate'));?>" class="my-link">Менеджерам</li>
+                    <li class="name-section"><a href="<?=site_url(array('Manager'));?>" class="my-link">Менеджерам</li>
                 </ul>
                 <ul class="title-section-right">
                     <li class="name-section">

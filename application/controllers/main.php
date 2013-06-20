@@ -7,6 +7,7 @@ class Main extends FitparkBaseController {
     }
     function index(){
         $this->load->database();
+        
         $this->viewData = array();
         /**
          * обнуляем все ненужные view, оставляя только view для контента
@@ -15,6 +16,9 @@ class Main extends FitparkBaseController {
         $this->breadCrumbs = FALSE;
         $this->footer      = FALSE;
 
+        $this->initMetaData();
+        $this->initCssData();
+        $this->initJSData();
         $this->viewData = $this->headerData;
         $availableServices = $this->fitpark_model->getServices();
         $data = array();
@@ -33,7 +37,7 @@ class Main extends FitparkBaseController {
 
         $this->viewData["clubs"] = $this->fitpark_model->getClubList("popularity",3,0,array());
         foreach ($this->viewData["clubs"] as &$value) {
-            $value->head_picture = site_url(array("image", "club",$value->head_picture));
+            $value['head_picture'] = site_url(array("image", "club", $value['head_picture']));
         }
 
         $this->renderScene("index");

@@ -324,7 +324,6 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                 <div style="clear: both;"></div>
 
             </div>
-<script type="text/javascript" src="/js/club.js"></script>
 
 <div class="dnone">
     <div id="get-review" class="message-dialog">

@@ -112,7 +112,7 @@ class Fitpark_model extends CI_Model {
      */
     private function searchByName($name)
     {
-        $this->db->like("fitnesclub.name",$name, 'both');
+        $this->db->like("fitnesclub.name", $name, 'both');
     }
 
     /**
@@ -140,7 +140,9 @@ class Fitpark_model extends CI_Model {
         $this->initListClubs($limit, $offset);
         $this->getSortStrategyByName($ord);
         $this->installFilter($filter);
-        return $this->db->get()->result();
+        $clubs = $this->db->get()->result_array();
+        mutator_clubs_null_field($clubs, "head_picture", $this->config->item('empty_photo'));
+        return $clubs;
     }
 
     /**

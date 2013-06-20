@@ -4,25 +4,22 @@
         <title><?=$titleText;?></title>
         <meta name="description" content="<?=$desc;?>">
         <meta name="keywords" content="<?=$keywords;?>">
-        <link rel="stylesheet" href="/css/fitpark.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script type="text/javascript" src="/js/slider/jquery.bxslider.js"></script>
-        <script type="text/javascript" src="/js/common.js"></script>
-        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
-        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
-        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-media.js"></script>
-        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
-        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
-        <script type="text/javascript" src="/js/header.js"></script>
-        <script type="text/javascript" src="/js/cb/jquery.colorbox-min.js"></script>
-        <script type="text/javascript" src="/js/cb/colorbox.jquery.json"></script>
-        <!--<link rel="stylesheet" href="/js/slider/jquery.bxslider.css" />-->
-        <script type="text/javascript" src="/js/main.js"> </script>
-        <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
         <meta name='yandex-verification' content='781c2dd8ae286aca' />
         <meta name="google-site-verification" content="LPcTvq9lj7flD6_bLTq3HL-vJF9SFxRaLNq0eWIYGLs" />
+        
+        <link rel="icon" href="<?=$favicon;?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?=$favicon;?>" type="image/x-icon">
+        
+        <!--CSS-->
+        <? foreach($css_files as $css)
+            echo "<link rel='stylesheet' href='".$css."' />"; ?>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <!--JS-->
+        <? foreach($js_files as $js)
+            echo "<script type='text/javascript' src='".$js."'></script>"; ?>
+
     </head>
     <body>
         <script>
@@ -45,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ul>
                     <li class="name-section"><a href="#" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></li>
-                    <li class="name-section"><a href="ManagerPrivate" class="my-link">Менеджерам</li>
+                    <li class="name-section"><a href="Manager" class="my-link">Менеджерам</li>
                 </ul>
                 <ul class="title-section-right">
                     <li class="name-section">
@@ -202,7 +199,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     </div>
                                 </a>
                                 <div class="search-home-page-wrap">
-                                    <? include_once("search_form.php"); ?>
+                                    <? $this->load->view("search_form"); ?>
                                 </div>
                             </td>
                             <td class="main-banner-toolbar-content">
@@ -212,13 +209,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                         <? foreach ($clubs as $club) { ?>
                                         <tr>
                                             <td valign="middle">
-                                                <a href="<?=site_url(array("club",$club->id));?>">
-                                                    <img src="<?=$club->head_picture;?>" alt="" />
+                                                <a href="<?=site_url(array("club",$club['id']));?>">
+                                                    <img src="<?=$club['head_picture'];?>" alt="" />
                                                 </a>
                                             </td>
                                             <td valign="middle" style="padding-left: 10px;">
-                                                <a href="<?=site_url(array("club",$club->id));?>">
-                                                    <?=$club->name;?>
+                                                <a href="<?=site_url(array("club",$club['id']));?>">
+                                                    <?=$club['name'];?>
 <!--                                                    <span class="main-baner-tb-service-item"></span>-->
                                                 </a>
                                             </td>
@@ -349,4 +346,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!--<!-- //Rating@Mail.ru counter —>-->
     </body>
 </html>
-

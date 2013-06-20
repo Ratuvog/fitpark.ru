@@ -1,5 +1,3 @@
-<link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','manager-private.css'));?>"/>
-<script type="text/javascript" src="<?php echo site_url(array('js','manager-private.js'));?>"></script>
 <div>
     <h2><?php echo $categoryName; ?></h2>
 </div>
@@ -24,7 +22,7 @@
                     <section class="decription-club">
                         <header class="name-club">
                             <h3>
-                                <a href="<?=site_url(array('ManagerPrivate','club',$row->id));?>" target="_blank"><?=$row->name;?></a>
+                                <a href="<?=site_url(array('Manager','club',$row->id));?>" target="_blank"><?=$row->name;?></a>
                             </h3>
                             <div style="color: #aaa;">
                                 <?=$row->address;?>

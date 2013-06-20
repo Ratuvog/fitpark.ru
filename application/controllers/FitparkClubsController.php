@@ -63,9 +63,12 @@ class FitparkClubsController extends FitparkBaseController {
 
     private function initHeaderData()
     {
+        $this->append_js(array("js/clubs.js"));
+        
         $data = array('titleText'=>"ФитПарк. %s, тренажерные залы,
             фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
         $data["titleText"] = sprintf($data["titleText"], lang("title"));
+               
         return  $data;
     }
 
@@ -87,7 +90,7 @@ class FitparkClubsController extends FitparkBaseController {
 
     private function prapareClubList()
     {
-        $list = $this->setEmptyPhotoObject(call_user_func(array($this, $this->functionGetList)));
+        $list = call_user_func(array($this, $this->functionGetList));
         $this->rowCount = call_user_func(array($this, $this->functionRowCount));
         return $list;
     }

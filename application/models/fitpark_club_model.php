@@ -1,18 +1,8 @@
 <?php
 class Fitpark_club_model extends CI_Model {
     private $defaultUser = "Неизвестный";
+    
     /* Get base info club */
-
-    function trans_start()
-    {
-        $this->db->trans_start();
-    }
-
-    function  trans_commit()
-    {
-        $this->db->trans_complete();
-    }
-
     function lastInsertedId()
     {
         return $this->db->insert_id();
@@ -25,7 +15,10 @@ class Fitpark_club_model extends CI_Model {
             ->join("fitnesclub_rating as r", "fitnesclub.id = r.clubId", 'left')
             ->group_by("fitnesclub.id")
             ->where(array('fitnesclub.id'=>$clubId));
-        return $this->db->get()->result_array();
+        
+        $clubs = $this->db->get()->result_array();
+        mutator_clubs_null_field($clubs, "head_picture", $this->config->item('empty_photo'));
+        return $clubs;
     }
 
     /* Get rate club */
@@ -98,8 +91,10 @@ class Fitpark_club_model extends CI_Model {
                     AND
                       f1.cityid = $cityid
                     AND f2.id = ? LIMIT 0,3";
-        $q = $this->db->query($query,array($clubId));
-        return $q->result_array();
+        
+        $analogs = $this->db->query($query,array($clubId))->result_array();
+        mutator_clubs_null_field($analogs, "head_picture", $this->config->item('emptyPhoto'));
+        return $analogs;
     }
 
   /*  function getClubList($limit, $offset)
@@ -242,7 +237,6 @@ class Fitpark_club_model extends CI_Model {
         );
         $this->db->insert('fitnesclub_checkout',$insertData);
     }
-
 }
 
 ?>
