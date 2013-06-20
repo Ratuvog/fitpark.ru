@@ -147,7 +147,7 @@ class FitparkBaseController extends CI_Controller {
 
     protected function customRedirect($url)
     {
-        $this->load->view("customRedirect", array("redirectUrl"=>$url));
+        redirect($this->idna_convert->encode($url));
     }
 
     // Before render scene check view-data variable for initialization
@@ -155,16 +155,16 @@ class FitparkBaseController extends CI_Controller {
     {
         if($view == null)
             $view = $this->view;
-        
+
         if($this->header)
             $this->load->view($this->header, $this->headerData);
-        
+
         if($this->breadCrumbs)
             $this->load->view($this->breadCrumbs, array("stack" => $this->breadCrumbsData) );
-        
+
         if($view)
             $this->load->view($view, $this->viewData);
-        
+
         if($this->footer)
             $this->load->view($this->footer, $this->footerData);
     }
