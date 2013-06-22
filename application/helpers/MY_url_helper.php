@@ -13,7 +13,6 @@
 
 
 function site_url($url = array()) {
-    
     $tail = '';
     
     if(is_array($url))

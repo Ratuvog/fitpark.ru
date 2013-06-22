@@ -16,20 +16,18 @@ class FitparkQAController extends FitparkBaseController {
     {
         parent::__construct();
         $this->load->model('fitpark_qa_model');
-
+        $this->view = "QA/qa";
         $this->allowedPages = array('getQuestion',"addQuestion");
         $this->privateAllowedPages = array();
         $this->init();
     }
 
-    function getQuestion($theme = 0) {
+    function getQuestion($theme = 1) {
 //        Breadcrumbs
         $this->breadCrumbsData[] = array(
             'href'  => prep_url($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']),
             'title' => "Вопросы и ответы"
         );
-
-        $this->view = "QA/qa";
 
         $questions = $this->fitpark_qa_model->getAnsweredQuestions($theme);
         $themes    = $this->fitpark_qa_model->getAvailableThemes();
@@ -40,10 +38,12 @@ class FitparkQAController extends FitparkBaseController {
         $this->viewData["questions"]   = $questions;
         $this->viewData['activeTheme'] = $theme;
         $this->viewData["themes"] = $themes;
+//        print_r($this->viewData["themes"]);
+//        exit;
         foreach($this->viewData["themes"] as &$currentTheme) {
-            $currentTheme->url = site_url(array('qa',$currentTheme->id));
+            $currentTheme["url"] = site_url(array('question',$currentTheme["id"]));
         }
-
+//
         $this->renderScene();
     }
 
@@ -56,6 +56,7 @@ class FitparkQAController extends FitparkBaseController {
         );
 
         $this->fitpark_qa_model->addQuestion($insertData);
+        $this->customRedirect(site_url(array('question')));
     }
 }
 

@@ -311,5 +311,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <section id="menu">
                 <ul>
                     <li><a href="/clubs">Клубы</a></li>
+                    <li><a href="/question">Вопрос и ответ</a></li>
                 </ul>
             </section>

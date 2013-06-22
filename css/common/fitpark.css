@@ -1474,11 +1474,46 @@ ul.main-baner-tb-clubs img {
 
 /* QA */
 
+.body-qa {
+    margin-top: 20px;
+}
+
 .qa-list-table {
     width: 100%;
 }
 
+.button-get-question {
+    margin-bottom: 25px;
+}
 
+.user-qa {
+    font-weight: bold;
+}
+
+.qa-answer-expert-avatar {
+    max-height: 100px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.qa-list-table>tbody>tr>td {
+    padding-top: 20px;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 20px;
+}
+
+.qa-list-table>tbody>tr:last-child>td {
+    border-bottom: none;
+}
+
+.qa-answer {
+    padding-left: 50px;
+}
+
+.qa-answer {
+    width: 60%;
+}
 
 /* end QA */
 /*END SLIDER*/

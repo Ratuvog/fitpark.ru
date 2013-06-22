@@ -87,15 +87,7 @@ class FitparkBaseController extends CI_Controller {
 
     function init(){}
 
-    function _remap($method, $param)
-    {
-        $pars = $this->uri->segment_array();    //unsetting uri last segments
-        $cnt = count($pars);
-        for($i = 1; $i < $cnt; $i++)
-            unset($pars[$i]);
 
-        call_user_func_array(array($this, $method), $pars);
-    }
 
     public function show404()
     {

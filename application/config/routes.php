@@ -43,6 +43,7 @@ $route['404_override']            = 'errors/err404';
 
 $route['question']                      = 'FitparkQAController/getQuestion';
 $route["question/(:num)"]               = 'FitparkQAController/getQuestion/$1';
+$route["question/addQuestion"]          = 'FitparkQAController/addQuestion';
 
 $route['clubs']                   = 'FitparkClubsController/clubs';
 $route['clubs/search:any']        = 'FitparkClubsController/search';

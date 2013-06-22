@@ -8,13 +8,13 @@
  */
 
 class Fitpark_qa_model extends CI_Model {
-    function getAnsweredQuestions($theme = 0) {
+    function getAnsweredQuestions($theme = 1) {
         $this->db->select("qa.*, e.name ename, e.avatar avatar")
                  ->from("QA qa")
                  ->join("experts e", "e.id = qa.expertid")
                  ->join("qatheme t", "t.id = qa.qathemeid")
                  ->where(array("qa.expertid !="=>-1,"qa.qathemeid !="=>-1));
-        if($theme != 0) {
+        if($theme != 1) {
             $this->db->where("qa.qathemeid",$theme);
         }
         return $this->db->get()->result();
@@ -32,6 +32,7 @@ class Fitpark_qa_model extends CI_Model {
             'question' => $data['question']
         );
         $this->db->insert("QA",$prepData);
+
     }
 }
 
