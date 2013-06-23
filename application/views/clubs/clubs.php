@@ -1,5 +1,6 @@
 <table style="width: 100%">
     <tr>
+
         <td class="options" valign="top">
             <form action="<?=site_url(array('clubs','filter'));?>" method="post" id="filter">
             <? foreach ($filters as $filter) { ?>
@@ -216,5 +217,3 @@
         </td>
     </tr>
 </table>
-<div style="clear: both;"></div>
-</div>

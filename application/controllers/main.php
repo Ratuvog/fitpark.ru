@@ -37,10 +37,20 @@ class Main extends FitparkBaseController {
 
         $this->viewData["clubs"] = $this->fitpark_model->getClubList("popularity",3,0,array());
         foreach ($this->viewData["clubs"] as &$value) {
-            $value['head_picture'] = site_url(array("image", "club", $value['head_picture']));
+            $value['url']          = prep_url(site_url(array('club',$value['id'])));
         }
+//        print_r($this->viewData);
+//        exit ;
+//        $this->renderScene("index");
+        $this->initMeta();
+        $this->twiggy->set($this->viewData)->template("main")->display();
+    }
 
-        $this->renderScene("index");
+    function initMeta()
+    {
+        $this->twiggy->title($this->headerData["titleText"]);
+        $this->twiggy->meta("keywords", $this->headerData["keywords"]);
+        $this->twiggy->meta("description", $this->headerData["desc"]);
     }
 }
 ?>

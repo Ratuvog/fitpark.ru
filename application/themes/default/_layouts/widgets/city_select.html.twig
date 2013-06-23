@@ -1,0 +1,37 @@
+<!--            Выбор города-->
+<div class="dnone">
+    <div class="message-dialog" id="change-city-window">
+        <header>
+            Выберите город
+        </header>
+        <table class="center_table">
+            <tr>
+                <td align="center" valign="middle">
+                    <ul class="city-list">
+                        {% for city in availableCity %}
+                            <li>
+                                <div class="active-city">
+                                    <a href="{{ city.url }}">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <img src="{{ city.symbol_path }}" alt=""/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="change-city-name">
+                                                    {{ city.name }}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!--                конец Выбор города-->

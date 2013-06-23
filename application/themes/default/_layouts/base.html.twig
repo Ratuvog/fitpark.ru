@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "_layouts/common/meta.html.twig" %}
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    {% block css %}
+        {% include "_layouts/common/css.html.twig" %}
+    {% endblock %}
+
+    {% block javascript %}
+        {% include "_layouts/common/js.html.twig" %}
+    {% endblock %}
+
+    <!--<script type="text/javascript">
+      VK.init({apiId: 3689827, onlyWidgets: true});
+    </script>-->
+</head>
+<body>
+    {% block include_header_js %}
+        {% include "_layouts/common/include_header_js.html.twig" %}
+    {% endblock %}
+
+    <div class="main">
+        <header id="title">
+            <div id="title-menu">
+                <ul>
+                    {% for item in navigation %}
+                        <li class="name-section"><a href="{{ item.url }}" class="my-link">{{ item.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <ul class="title-section-right">
+                    <li class="name-section">
+                        <span></span>
+                        <a class="my-link" href="#" id="city-changed">{{ currentCity.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section id="content">
+            {% block content %}{% endblock %}
+        </section>
+        <div style="clear: both;"></div>
+        <div class="spacer">
+        </div>
+    </div>
+    <footer>
+        <div class="centerSpan">
+            <div class="share42init"></div>
+            <script type="text/javascript" src="/js/share42/share42.js"></script>
+            <script type="text/javascript">share42('http://фитпарк.рф/js/share42/')</script>
+            <hr/>
+        </div>
+        <div class="centerSpan">
+            <p>Проводник в мир фитнеса «ФитПарк». Фитнес клубы, расписание тренировок, цены абонементов, отзывы.</p>
+            <p>
+                «ФитПарк» 2012-2013. Все права защищены.
+            </p>
+        </div>
+    </footer>
+    {% block include_footer_js %}
+        {% include "_layouts/common/include_footer_js.html.twig" %}
+    {% endblock %}
+</body>
+</html>

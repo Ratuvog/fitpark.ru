@@ -34,11 +34,10 @@ class FitparkBaseController extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-//        $this->load->spark('Twiggy/0.8.5');
 //        $this->twiggy->set('user','dima')->template('_layouts/index')->display();
 //        exit;
         $this->config->load('global_const');
-        
+
         $this->load->database();
         $this->load->helper('url');
         $this->load->helper('language');
@@ -49,6 +48,9 @@ class FitparkBaseController extends CI_Controller {
 
         $this->load->model('fitpark_model');
 
+        $this->initTwiggy();
+        $this->initNavigation();
+        $this->initSearchWidget();
         $this->breadCrumbsData[] = array(
             'href'  => base_url(),
             'title' => 'Главная'
@@ -71,6 +73,35 @@ class FitparkBaseController extends CI_Controller {
 
         if($this->idna_convert->decode($_SERVER["HTTP_HOST"]) != $this->headerData['currentCity']->url)
             $this->customRedirect(prep_url($this->headerData['currentCity']->url));
+    }
+
+    function initTwiggy()
+    {
+        $this->load->spark('Twiggy/0.8.5');
+        $this->twiggy->register_function('lang');
+    }
+
+    function initNavigation()
+    {
+        $navigation = array(
+            array(
+                'name' => 'Главная',
+                'url'  => base_url()
+            ),
+            array(
+                'name' => 'Список клубов',
+                'url'  => site_url(array('clubs'))
+            ),
+            array(
+                'name' => 'Менеджерам',
+                'url'  => site_url(array('Manager'))
+            )
+        );
+        $this->headerData['navigation'] = $navigation;
+    }
+
+    function initSearchWidget() {
+        $this->headerData["searchUrl"] = site_url(array("clubs","search"));
     }
 
     private function cityByIP()
@@ -155,6 +186,7 @@ class FitparkBaseController extends CI_Controller {
          */
         $city = $this->cityByIP();
         $this->headerData['currentCity'] = $this->fitpark_model->getCity($city);
+
 //        print_r($this->headerData['currentCity']->symbol_path);
 //        exit;
         $this->localCity = $this->headerData["currentCity"]->english_name;
@@ -181,6 +213,7 @@ class FitparkBaseController extends CI_Controller {
         //TODO: Гербы грузить через админку; добавить в city соотв. поле
         $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
         foreach($this->headerData['availableCity'] as $city) {
+            $city->url = prep_url($city->url);
             $city->symbol_path = site_url(
                 array(
                     "image",
