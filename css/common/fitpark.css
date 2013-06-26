@@ -202,7 +202,6 @@ body {
 }
 
 .header-content {
-    height: 100%;
     padding-top: 20px;
     margin-left: 20px;
 }
@@ -230,7 +229,7 @@ body {
 }
 
 .search-header-wrapper input {
-    width: 230px;
+    width: 350px;
 }
 
 .search-home-page-wrap input {
@@ -246,6 +245,11 @@ body {
 
 .header {
     height: 75px;
+}
+
+.header-content {
+    float:left;
+    padding-left: 50px;
 }
 
 header-content>* {
