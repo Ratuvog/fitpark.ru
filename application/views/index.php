@@ -7,18 +7,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name='yandex-verification' content='781c2dd8ae286aca' />
         <meta name="google-site-verification" content="LPcTvq9lj7flD6_bLTq3HL-vJF9SFxRaLNq0eWIYGLs" />
-        
+        <link rel="stylesheet" type="text/css" href="/css/common/fitpark.css"/>
+        <link rel="stylesheet" type="text/css" href="/js/fancybox/jquery.fancybox.css"/>
+        <link rel="stylesheet" type="text/css" href="/js/fancybox/helpers/jquery.fancybox-buttons.css"/>
+        <link rel="stylesheet" type="text/css" href="/js/fancybox/helpers/jquery.fancybox-thumbs.css"/>
+
         <link rel="icon" href="<?=$favicon;?>" type="image/x-icon">
         <link rel="shortcut icon" href="<?=$favicon;?>" type="image/x-icon">
-        
-        <!--CSS-->
-        <? foreach($css_files as $css)
-            echo "<link rel='stylesheet' href='".$css."' />"; ?>
-        
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <!--JS-->
-        <? foreach($js_files as $js)
-            echo "<script type='text/javascript' src='".$js."'></script>"; ?>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        <script src="//vk.com/js/api/openapi.js?96"></script>
+        <script type="text/javascript" src="/js/header.js"></script>
+        <script type="text/javascript" src="/js/common.js"></script>
+        <script type="text/javascript" src="/js/cb/jquery.colorbox.js"></script>
+        <script type="text/javascript" src="/js/cb/colorbox.jquery.json"></script>
+        <script type="text/javascript" src="/js/jquery.form.validation.js"></script>
+        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-media.js"></script>
+        <script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+        <script type="text/javascript" src="/js/fancybox/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="/js/validator_helper.js"></script>
+        <script type="text/javascript" src="/js/raty-2.5.2/jquery.raty.js"></script>
+        <script type="text/javascript" src="/js/slider/jquery.bxslider.js"></script>
 
     </head>
     <body>
@@ -329,6 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(document, window, "yandex_metrika_callbacks");
 </script>
 <noscript><div><img src="//mc.yandex.ru/watch/20271514" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <?=$currentCity->footerScripts;?>
 <!-- /Yandex.Metrika counter -->
 <!--<!-- Rating@Mail.ru counter -->
 <!--<script type="text/javascript">//<![CDATA[-->

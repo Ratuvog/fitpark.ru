@@ -656,6 +656,10 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
     min-width: 10px;
 }
 
+td.spacer {
+    border-bottom: 1px solid #a1a1a1;
+}
+
 .button-guest {
     width: 217px;
 }

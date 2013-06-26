@@ -41,7 +41,9 @@
 <section xmlns="http://www.w3.org/1999/html">
     <header>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium culpa dolore dolores, eaque excepturi fugit iure laboriosam laborum minima, minus perspiciatis porro quod sint sit tenetur? Ab accusamus adipisci amet, atque aut corporis culpa debitis doloremque eos, ex expedita ipsam itaque iure laboriosam laborum libero necessitatibus neque perspiciatis praesentium quas ratione repudiandae, sed suscipit unde voluptatum. Beatae consectetur ea est facilis laboriosam libero maxime neque placeat possimus repellendus, saepe sed ut voluptatibus. Ab animi atque blanditiis consequatur cumque dignissimos doloribus earum, eligendi eos esse facere fugiat ipsam libero magnam minima natus nemo nihil quis sapiente similique tempora voluptate voluptatem?
+            У многих возникают вопросы о том, как правильно заниматься в фитнес-клубе, на что стоит обратить внимание, какие есть особенности у того или иного упражнения, сколько подходов делать, сколько повторений и другие затруднения, ответы на которые помогли бы тренироваться более эффективно.
+            ФитПарк специально для своих пользователей предоставляет сервис, где можно спросить о наболевшем у профессионального фитнес-инструктора и оперативно получить развернутый ответ. Также у нас можно найти ответы на вопросы других людей, которые столкнулись с определенными затруднениями.
+            Милости просим - спрашивайте, читайте, пользуйтесь.
         </p>
     </header>
     <div class="body-qa">

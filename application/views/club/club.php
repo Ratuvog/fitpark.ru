@@ -42,7 +42,11 @@
                                 <? if($base['rates']){ ?>
                                 <tr>
                                     <td colspan="2">
-                                        <h4 class="variation-abonements">Варианты абонементов</h4>
+                                        <? if ($base['isEmptyPrice']) { ?>
+                                            <h4 class="variation-abonements">Варианты абонементов</h4>
+                                        <? } else {?>
+                                        <h4 class="variation-abonement">Данный клуб не предоставил информации о ценах</h4>
+                                        <? } ?>
                                     </td>
                                     <td>
                                         <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-feedback" href="/club/getFeedback/<?= $base['id']; ?>">
@@ -62,7 +66,7 @@
                                 <? if($currentRate['price']>1) {?>
                                 <tr>
                                     <td><?=$currentRate['period'];?></td>
-                                    <td class="price-club-price"><h4><?=$currentRate['price'];?></h4></td>
+                                    <td class="price-club-price"><h4>от <?=$currentRate['price'];?></h4></td>
                                     <td></td>
                                 </tr>
                                 <? } ?>

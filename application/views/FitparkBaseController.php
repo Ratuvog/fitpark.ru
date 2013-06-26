@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class FitparkBaseController extends CI_Controller {
 
@@ -48,16 +48,16 @@ class FitparkBaseController extends CI_Controller {
 
         $this->load->model('fitpark_model');
         $this->initTwiggy();
+
         $this->initNavigation();
         $this->initSearchWidget();
         $this->breadCrumbsData[] = array(
             'href'  => base_url(),
             'title' => 'Главная'
         );
-        
+
         // Definition the city on IP-address of the user
         $this->initGeographicalData();
-
         // install localization file according to local city name
         $this->lang->load(mb_convert_case($this->localCity, MB_CASE_LOWER),
                           mb_convert_case($this->localCity, MB_CASE_LOWER));
@@ -76,8 +76,12 @@ class FitparkBaseController extends CI_Controller {
 
     function initTwiggy()
     {
+
         $this->load->spark('Twiggy/0.8.5');
-        $this->twiggy->register_function('lang');
+var_dump($this->Twiggy);
+exit;
+        $this->Twiggy->register_function('lang');
+
     }
 
     function initNavigation()

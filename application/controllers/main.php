@@ -39,11 +39,11 @@ class Main extends FitparkBaseController {
         foreach ($this->viewData["clubs"] as &$value) {
             $value['url']          = prep_url(site_url(array('club',$value['id'])));
         }
-//        print_r($this->viewData);
-//        exit ;
-//        $this->renderScene("index");
-        $this->initMeta();
-        $this->twiggy->set($this->viewData)->template("main")->display();
+
+        $this->view = "index";
+        $this->renderScene();
+        //$this->initMeta();
+      //  $this->twiggy->set($this->viewData)->template("main")->display();
     }
 
     function initMeta()

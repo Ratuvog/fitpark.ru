@@ -107,9 +107,17 @@ class FitparkClubController extends FitparkBaseController {
     protected function getBaseInfo()
     {
         $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->clubId);
+//        print_r($infoArray[0]);
+//        exit;
         if(count($infoArray)) {
+            $infoArray[0]["isEmptyPrice"] = FALSE;
+            foreach ($infoArray[0]['price'] as $key=>$value) {
+                if(substr($key,0,3) == "sub" && $value) {
+                    $infoArray[0]["isEmptyPrice"] |= TRUE;
+                    break;
+                }
+            }
             $this->viewData['base'] = $infoArray[0];
-    //        $this->viewData['base']["head_picture"] = site_url($this->viewData['base']["head_picture"]);
             $this->headerData['order'] = $this->order;
         }
     }
@@ -267,7 +275,7 @@ class FitparkClubController extends FitparkBaseController {
             'href'  => current_url(),
             'title' => $this->viewData['base']['name']
         );
-        
+
         $this->append_js(array("/js/club.js"));
         
     }
