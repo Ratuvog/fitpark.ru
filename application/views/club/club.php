@@ -52,7 +52,7 @@
                                         <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-feedback" href="/club/getFeedback/<?= $base['id']; ?>">
                                                     <ul>
                                                         <li>
-                                                            <div class="icon-small-help"></div>
+                                                            <div class="icon-small-phone"></div>
                                                         </li>
                                                         <li>
                                                             <span class="button-text">Заказать звонок из клуба</span>
@@ -199,7 +199,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                 <div class="button-guest button-club action-button add-review-button" selector="#get-review" href="/club/addReview/<?=$base['id']?>">
                                     <ul>
                                         <li>
-                                            <div class="icon-small-help"></div>
+                                            <div class="icon-small-pencil"></div>
                                         </li>
                                         <li>
                                             <span class="button-text">Оставить отзыв</span>

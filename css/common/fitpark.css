@@ -1210,6 +1210,12 @@ footer {
     background: url("/image/phone.png") no-repeat;
 }
 
+.icon-small-pencil {
+    width: 28px;
+    height: 28px;
+    background: url("/image/pencil.png") no-repeat;
+}
+
 .like-bar>td {
     padding: 20px 0;
 }
