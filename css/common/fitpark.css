@@ -24,11 +24,16 @@ padding: 0;}
 /* Style Buttons */
 
 .button {
-    border: 1px solid #3af83a;
+    border: 1px solid #38f538;
     background: #03b003;
-    background: -webkit-gradient(linear, left top, left bottom, from(#00ff33), to(#00cd01));
-    background: -moz-linear-gradient(top, #00ff33, #00cd01);
-    background: -o-linear-gradient(top, #00ff33, #00cd01);
+    background: #04b204; /* Old browsers */
+    background: -moz-linear-gradient(top, #04b204 0%, #38f538 100%, #04b204 100%, #5bd533 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#04b204), color-stop(100%,#38f538), color-stop(100%,#04b204), color-stop(100%,#5bd533)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #04b204 0%,#38f538 100%,#04b204 100%,#5bd533 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #04b204 0%,#38f538 100%,#04b204 100%,#5bd533 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #04b204 0%,#38f538 100%,#04b204 100%,#5bd533 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #04b204 0%,#38f538 100%,#04b204 100%,#5bd533 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04b204', endColorstr='#5bd533',GradientType=0 ); /* IE6-9 */
     padding: 4px 5px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -45,6 +50,7 @@ padding: 0;}
     cursor: pointer;
     min-width: 150px;
     text-align: center;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .no-decoration {
@@ -54,9 +60,14 @@ padding: 0;}
 .button:hover {
     color: #ffffff;
     background: #3af83a;
-    background: -webkit-gradient(linear, left top, left bottom, from(#00cd01), to(#00ff33));
-    background: -moz-linear-gradient(top, #00cd01, #00ff33);
-    background: -o-linear-gradient(top, #00cd01, #00ff33);
+    background: #38f538; /* Old browsers */
+    background: -moz-linear-gradient(top, #38f538 0%, #04b204 100%, #38f538 100%, #04b204 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#38f538), color-stop(100%,#04b204), color-stop(100%,#38f538), color-stop(100%,#04b204)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #38f538 0%,#04b204 100%,#38f538 100%,#04b204 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #38f538 0%,#04b204 100%,#38f538 100%,#04b204 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #38f538 0%,#04b204 100%,#38f538 100%,#04b204 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #38f538 0%,#04b204 100%,#38f538 100%,#04b204 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#38f538', endColorstr='#04b204',GradientType=0 ); /* IE6-9 */
 }
 
 .head-image {
@@ -121,10 +132,25 @@ body {
   content: "";
 }
 
+/*#title {*/
+    /*height: 35px;*/
+
+    /*background: url('/image/header-bkgrnd.png');*/
+    /*box-shadow: 0 2px 5px #5d5d5d;*/
+
+    /*margin-bottom: 10px;*/
+/*}*/
+
 #title {
     height: 35px;
-
-    background: url('/image/header-bkgrnd.png');
+    background: #34ae33; /* Old browsers */
+    background: -moz-linear-gradient(top, #34ae33 0%, #5bd533 100%, #2989d8 100%, #207cca 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#34ae33), color-stop(100%,#5bd533), color-stop(100%,#2989d8), color-stop(100%,#207cca)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #34ae33 0%,#5bd533 100%,#2989d8 100%,#207cca 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #34ae33 0%,#5bd533 100%,#2989d8 100%,#207cca 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #34ae33 0%,#5bd533 100%,#2989d8 100%,#207cca 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #34ae33 0%,#5bd533 100%,#2989d8 100%,#207cca 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34ae33', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
     box-shadow: 0 2px 5px #5d5d5d;
 
     margin-bottom: 10px;
@@ -491,7 +517,7 @@ input[type=checkbox].green-checkbox:checked + label.green-checkbox-label {
 }
 
 .type-sort li a:hover {
-    color: #03b003;
+    color: #34ae33;
     text-shadow: 1px 1px 1px #000;
 }
 
@@ -1168,7 +1194,7 @@ footer {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    border: 1px solid #03b003;
+    border: 1px solid #00cc00;
     cursor: pointer;
 }
 
