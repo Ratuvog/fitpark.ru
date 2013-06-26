@@ -25,7 +25,8 @@ class FitparkClubController extends FitparkBaseController {
         $this->titlePage = 'Фитнес-клуб';
 
         $this->view      = 'club/club';
-        $this->viewData["clubUrl"] = crc32("Club".$clubId);
+        $this->viewData["clubUrl"] = $clubId
+        ;
         $this->initViewData();
         
         $this->initHeaderData();
@@ -89,8 +90,9 @@ class FitparkClubController extends FitparkBaseController {
             "user"   => $this->input->post("name"),
             "plus"   => $this->input->post("plus"),
             "minus"  => $this->input->post("minus"),
-            "type"   => $this->input->post("type")
+            "type"   => $this->input->post("type-rewiew")
         );
+
         $this->fitpark_club_model->addReview($insertedData);
         $this->customRedirect(site_url(array('club',$clubId,'1')));
     }

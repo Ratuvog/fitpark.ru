@@ -213,7 +213,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                 <table>
                                     <tr>
                                         <td class="description-review">
-                                            <h4 class="<?=($review["type"]==1 ? "pos-review" : "neg-review");?>"><?= $review['sender']; ?></h4>
+                                            <h4 class="<?=($review["type"]=="1" ? "pos-review" : "neg-review");?>"><?= $review['sender']; ?></h4>
                                             <span><?= $review['outdate']; ?></span>
                                             <? if(isset($review['rating'])) { ?>
                                                 <div class="rating club-mini"
