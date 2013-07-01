@@ -175,136 +175,44 @@
 
         }
     });
+    $( "#toggle" ).click(function() {
+        $( "#city-combobox" ).toggle();
+    });
   }
    
   createDistrictCombobox = function() {
     $( "#district-combobox" ).combobox({
         title: 'Показать все районы',
-        noMatch: 'Такого района нет в базе',
-  });
-  }
+        noMatch: 'Такого района нет в базе'
+    });
+    $( "#toggle" ).click(function() {
+      $( "#district-combobox" ).toggle();
+    });
+  };
   
   $(function() {
-    $("#common-save").click(function() {
+               
+    createCityCombobox();
+    createDistrictCombobox();
 
-        var form = $(this).parents(".save-form").first();
-        
-        if(!formHasChanges(form)) {
-            var info = $('<label>').addClass("font-error").empty();
-            info.append("Изменений нет");
-            showResultMessage(form, info);
-            return;
-        }
-        
-        var errorPull = [];
-        form.find('input,textarea').each(function()
-        {
-            var type = $(this).attr("type");
-            if(type !== "hidden" && type != "button" && type != "submit")
-            {
-                var error = validateInput($(this));
-                if(error !== "OK")
-                    errorPull.push(error);
-            }
-        });
-        
-        if (errorPull.length === 0)
-        {
-            sendToSave(form);
-            return;
-        }
-        
-        var error = $('<label>').addClass("font-error").empty();
-        error.append("Некоторые поля заполнены с ошибками");
-        showResultMessage(form, error);
-        errorPull = [];
-     });
-     
-     sendToSave = function(form){
-            var formData = {};
-            $(form).find('input,select').each(function (){
-               if($(this).attr('type') != 'button')
-                   formData[$(this).attr('name')] = $(this).val();
-            });
-            formData['clubid'] = $('#clubid').val();
-            $.ajax({
-                url: 'http://'+location.hostname+'/Manager/saveCommon/',
-                type: 'post',
-                dataType: 'json',
-                data: formData,
-                success: function(data){           
-                        var mes = $('<label>');
-                        if(data.status === 'OK')
-                            mes.addClass('font-succes').append("Изменения добавлены на обработку");
-                        else
-                            mes.addClass('font-error').append("При обновлении произошла ошибка");
-                        showResultMessage(form, mes);
-                        storeFormState(form);
-                        updateLastTimeUpdate();
-                },
-                beforeSend: function(){
-                    var loading = $("<div>").addClass('ajax-loader');
-                    form.append(loading);
-                },
-                complete: function() {
-                    form.find(".ajax-loader").remove();
-                }
-            });      
-     }
-     
-    validateInput = function (input) {
-        var validator = input.attr("validator");
-        var textField = input.attr("placeholder");
+    FormSaver.storeFormState();
 
-        if(input.attr("isReq") === "false")
-            return "OK";
-
-        if (!validate[validator].func(input.val()) ) {
-            input.css("border-color", "red");
-            return validate[validator].errorPattern(textField);
-        }
-        input.css("border-color", "#aaa");
-        return "OK";
-    }
+    $("#common-save").click(function (){
+        FormSaver.saveClicked($(this), 'Manager/saveCommon');
+    });
+        
+    $("#prices-save").click(function (){
+        FormSaver.saveClicked($(this), 'Manager/savePrices');
+    }); 
+    
+    $("#descript-save").click(function (){
+        FormSaver.saveClicked($(this), 'Manager/saveDescription');
+    });
+    
+    $("#service-save").click(function (){
+        FormSaver.saveClicked($(this), 'Manager/saveServices');
+    });
      
-    showResultMessage = function(form, result) {
-            $(form).find('.font-error').remove();
-            $(form).find('.font-succes').remove();
-            var save = $(form).find('.save');
-            save.parent().append(result);
-    } 
-    
-    var formStorage = {};
-    
-    storeFormState = function (form) {
-        var inputStorage = {}
-        $(form).find('input,select').each(function()
-        {
-            var type = $(this).attr("type");
-            if(type !== "hidden" && type != "button" && type != "submit")
-            {
-                if($(this).attr('name'))
-                    inputStorage[$(this).attr('name')] = $(this).val();
-            }
-        });
-        formStorage[form] = inputStorage;
-    }
-    
-    formHasChanges = function (form) {
-        var inputStorage = formStorage[form];
-        var hasChanges = false;
-        $(form).find('input,select').each(function()
-        {
-            var type = $(this).attr("type");
-            if(type !== "hidden" && type != "button" && type != "submit")
-            {
-                if($(this).attr('name') && inputStorage[$(this).attr('name')] != $(this).val())
-                    hasChanges = true;
-            }
-        });
-        return hasChanges;
-    }
-   
     updateLastTimeUpdate = function () {
         $.ajax({
             url: 'http://'+location.hostname+'/Manager/lastTimeUpdate',
@@ -318,21 +226,33 @@
                 }
             }
         });     
-    }
-   
-    createCityCombobox();
-    $( "#toggle" ).click(function() {
-        $( "#city-combobox" ).toggle();
+    };
+
+    CKEDITOR.on('instanceCreated', function (e) {
+        e.editor.on('change', function (ev) {
+            $('textarea[name="descript"]').val(ev.editor.getData());
+        });
     });
-
-    createDistrictCombobox();
-    $( "#toggle" ).click(function() {
-      $( "#district-combobox" ).toggle();
-    });
-
-    storeFormState($('#common-save').parents(".save-form").first());
-
     CKEDITOR.replace("descript", { customConfig : './mini-desc-ta.config.js'});
+
+    var uploadButton = $('<button/>')
+            .addClass('btn')
+            .prop('disabled', true)
+            .text('Processing...')
+            .on('click', function () {
+                var $this = $(this),
+                    data = $this.data();
+                $this
+                    .off('click')
+                    .text('Abort')
+                    .on('click', function () {
+                        $this.remove();
+                        data.abort();
+                    });
+                data.submit().always(function () {
+                    $this.remove();
+                });
+            });
     
     $('#fileupload').fileupload({
         url: 'http://'+location.hostname+'/Manager/logoUpload/',
@@ -400,7 +320,5 @@
                 .append(error);
         });
     });
-    
-    
 });
      

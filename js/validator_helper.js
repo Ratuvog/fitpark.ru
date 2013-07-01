@@ -17,7 +17,7 @@ validate = {
     },
     blank: {
         func: function(value) {
-            return value.length != 0;
+            return value.length !== 0;
         },
         errorPattern: function(fieldName) {
             return "Поле '" + fieldName + "' должно быть непустым";
@@ -33,7 +33,8 @@ validate = {
     },
     number: {
         func: function(value) {
-            var pattern = new RegExp("/\d+/")
+            var pattern = new RegExp(/^[0-9]+\.{0,1}[0-9]{0,2}$/);
+            return pattern.test(value);
         },
         errorPattern: function(fieldValue) {
             return "Поле '" + fieldValue + "' должно содержать только цифры"

@@ -28,9 +28,19 @@ class Manager extends FitparkBaseController {
             'title' => 'Личный кабинет'
         );
         
-        $this->append_css(array('/css/manager/manager-private.css'));
-        $this->append_js(array('/js/manager-private.js',
-                               '/js/ckeditor/ckeditor.js'));
+        $this->append_css(array(
+            '/css/manager/manager-private.css',
+            '/assets/fileupload/css/jquery.fileupload-ui.css'));
+        $this->append_js(array(
+            '/js/manager/manager-private.js',
+            '/js/manager/formSaver.js',
+            '/js/ckeditor/ckeditor.js',
+            '/assets/fileupload/js/jquery.fileupload.js',
+            '/assets/fileupload/js/jquery.fileupload-ui.js',
+            '/assets/fileupload/js/jquery.iframe-transport.js',
+            '/assets/fileupload/js/jquery.fileupload-process.js',
+            '/assets/fileupload/js/jquery.fileupload-image.js',
+            '/assets/fileupload/js/jquery.fileupload-validate.js'));
     }
             
     function _remap($method, $param) 
@@ -120,9 +130,12 @@ class Manager extends FitparkBaseController {
         
         $cityId = $this->viewData['club']->cityid;
         $this->viewData['districts'] = $this->manager_private->districts($cityId);
+        $this->viewData['services'] = $this->manager_private->services($clubId);
 
         $this->categoryName = $this->viewData['club']->name;
         $this->viewData['categoryName'] = $this->categoryName;
+
+        
         $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
         $this->breadCrumbsData[] = array(
             'href'  =>  site_url(array($this->controllerName, 'club', $clubId)),
@@ -170,6 +183,35 @@ class Manager extends FitparkBaseController {
         foreach ($keys as $k)
             $saveData[$k] = $this->input->post($k);
         echo json_encode(array('status' => $this->manager_private->updateCommon($saveData, $this->input->post('clubid'))));
+    }
+    
+    function savePrices()
+    {
+        $keys = array('singlePrice', 'sub1', 'sub3', 'sub6', 'sub12');
+        $saveData = array();
+        foreach ($keys as $k)
+            $saveData[$k] = $this->input->post($k);
+        echo json_encode(array('status' => $this->manager_private->updateCommon($saveData, $this->input->post('clubid'))));
+    }
+    
+    function saveDescription()
+    {
+        $saveData['description'] = $this->input->post('descript');
+        echo json_encode(array('status' => $this->manager_private->updateCommon($saveData, $this->input->post('clubid'))));
+    }
+    
+    function saveServices()
+    {
+        $services = array();
+        foreach(array_keys($_POST) as $key)
+        {
+            if(strpos($key, 'serv'))
+            {
+                $services += $_POST[substr($key, 4)];
+                echo substr($key, 4);
+            }
+        }
+        echo json_encode(array('status' => $this->manager_private->updateServices($saveData, $this->input->post('clubid'))));
     }
     
     function lastTimeUpdate()

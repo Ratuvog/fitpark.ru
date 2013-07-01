@@ -1,7 +1,7 @@
 CKEDITOR.plugins.setLang('wordcount', 'ru', {
     WordCount: 'Слов:',
     CharCount: 'Символов:',
-    limit: 'Осталось:',
+    limit: 'Доступно:',
     title: 'Статистика'
 });
 

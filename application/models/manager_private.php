@@ -80,12 +80,38 @@ class Manager_private extends CI_Model {
         return 'ERR';
     }
     
+    function updateServices($data, $club)
+    {
+        $data['state'] = 1;
+        if($this->db->i('buf_club', $data, array('id' => $club)))
+            return 'OK';
+        return 'ERR';
+    }
+    
     function lastTimeUpdate($club)
     {
         $rec = $this->db->get_where('buf_club', array('id' => $club))->row();
         if($rec)
             return array('status' => 'OK', 'msg' => $rec->last_update);
         return array('status' => 'ERR');
+    }
+    
+    function services($clubId)
+    {
+        $buf = $this->db->get_where('buf_club_services', array('clubId'=>$clubId))->result();
+        if(!count($buf))
+        {
+            $origin = $this->db->get_where('fitnesclub_rel_services', array('clubId'=>$clubId))->result();
+            foreach ($origin as $rec)
+                $this->db->insert('buf_club_services', $rec);
+        }
+        return $this->db->select('fs.*, bcs.serviceId as active')
+                        ->from('fitnesclub_services fs')
+                        ->join('buf_club_services bcs', 'fs.id = bcs.serviceId','left')
+                        ->where(array('bcs.clubId' => $clubId))
+                        ->or_where(array('bcs.clubId' => NULL))
+                        ->get()->result();
+        
     }
 }
 ?>

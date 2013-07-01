@@ -138,7 +138,7 @@ class FitparkBaseController extends CI_Controller {
 
     protected function customRedirect($url)
     {
-        redirect($this->idna_convert->encode($url));
+        //redirect($this->idna_convert->encode($url));
     }
 
     // Before render scene check view-data variable for initialization
@@ -256,7 +256,7 @@ class FitparkBaseController extends CI_Controller {
             "/js/fancybox/jquery.fancybox.pack.js",
             "/js/validator_helper.js",
             "/js/raty-2.5.2/jquery.raty.js",
-            "/js/slider/jquery.bxslider.js",
+            "/js/slider/jquery.bxslider.js"
         );
         
         if($this->js_files)

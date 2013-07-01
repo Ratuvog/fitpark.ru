@@ -1,17 +1,18 @@
 CKEDITOR.editorConfig = function( config ) {
  
     config.toolbarGroups = [
+        { name: 'tools' },
         { name: 'undo' },
         { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-        { name: 'colors' },
+        { name: 'colors' }
     ];
-    
+    config.autoUpdateElement = true;
     config.language = 'ru';
     config.uiColor = '#009900';
-    config.height = '120px';
+    config.height = '200px';
     config.resize_enabled = false;
     config.removePlugins = '';
-    config.extraPlugins = 'wordcount'; // add plugin
+    config.extraPlugins = 'wordcount,onchange'; // add plugin
     config.wordcount = {
         showWordCount: false,
         showCharCount: true,

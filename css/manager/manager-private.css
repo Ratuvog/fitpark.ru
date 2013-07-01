@@ -50,52 +50,67 @@
 
 .info-block {
     float: left;
-    width: 45%;
     min-height: 300px;
-    padding: 10px 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .title {
-    font-size: 20px;
-    color: #555;
+    font-size: 24px;
+    color: #333;
     margin-bottom: 10px;
     padding-left: 10px;
 }
 
 .box {
-    border: 1px solid #aaa;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
     min-height: 250px;
     padding: 15px;
-    margin: auto auto;
-    box-shadow: 1px 1px 3px #555;
+    padding-bottom: 10px;
 }
 
-.user-input {
-    display: inline;
-    margin-bottom: 10px;
-    float:left;
+.box:hover {
+    border: 1px solid #009900;
+    box-shadow: 2px 2px 5px #555;
+}
+
+table[class='user-input'] {
     width: 100%;
+    border-spacing: 10px;
+}
+
+.user-input td:first-child {
+    width: 25%;
 }
 
 .user-input input {
     border-radius: 5px;
     border: 1px solid #aaa;
     padding: 5px;
-    min-width: 300px;
+    width: 98%;
+
 }
 
 .user-input input[type="text"] {
-    float: right;
+
 }
 
 .user-input input[type="file"] {
     min-width: 200px;
 }
 
+.user-input input[type="button"] {
+    width: 160px;
+    border-color: #009900;
+}
+
 .user-input .caption {
     padding-top: 5px;  
     margin-bottom: 2px;
     float:left;
+    font-size: 18px;
+    color: #555;
     
 }
 
@@ -141,11 +156,6 @@
     font-size: 12px;
 }
 
-.custom-combobox {
-    position: relative;
-    display: inline-block;
-    float: right;
-}
 .custom-combobox-toggle {
     position: absolute;
     top: 0;
@@ -176,14 +186,16 @@
     width: 300px;
 }
 
-.font-succes {
+.save-succes {
     color: #009900;
     font-size: 14px;
+    margin-left: 20px;
 }
 
-.font-error {
+.save-error {
     color: #BB0000;
     font-size: 14px;
+    margin-left: 20px;
 }
 
 .font-hint {
@@ -201,6 +213,42 @@
     border-bottom: 1px solid #aaa;
 }
 
+.cke_bottom  {
+    background-image: none !important;
+    background: none !important;
+    border-color: #eee !important;
+}
+
 .cke_path {
     display : none;
+}
+
+.img-placeholder {
+    width: 160px;
+    height: 160px;
+    border: 2px dashed #CC0000;
+    border-radius: 5px;
+    background-color: #eee;
+    display: table-cell;    
+    vertical-align: middle;
+    text-align: center;
+}
+
+.left-block {
+    display: inline-block;
+    width: 200px;
+    float: left;
+    padding: 10px 20px;
+}
+
+.right-block {
+    width: 760px;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+.MainHeader {
+    font-size: 32px;
+    margin-bottom: 5px;
+    margin-top: 15px;
 }
