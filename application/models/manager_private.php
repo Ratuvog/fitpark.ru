@@ -83,7 +83,7 @@ class Manager_private extends CI_Model {
     function updateServices($data, $club)
     {
         $data['state'] = 1;
-        if($this->db->i('buf_club', $data, array('id' => $club)))
+        if($this->db->insert('buf_club', $data, array('id' => $club)))
             return 'OK';
         return 'ERR';
     }
