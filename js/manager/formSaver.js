@@ -2,7 +2,8 @@ Status = {
         saveSuccess : $('<label>').addClass('save-succes').append("Изменения добавлены на обработку"),
         saveError : $('<label>').addClass('save-error').append("При обновлении произошла ошибка"),
         validateError : $('<label>').addClass('save-error').append("Некоторые поля заполнены с ошибками"),
-        hasNotChanges : $('<label>').addClass('save-error').append("Изменений нет")
+        hasNotChanges : $('<label>').addClass('save-error').append("Изменений нет"),
+        hasNotActiveCheckBox : $('<label>').addClass('save-error').append("Хотя бы один пункт должен быть активен")
 };
 
 FormSaver = {
@@ -106,11 +107,32 @@ FormSaver = {
         });
         return hasChanges;
     },
+    hasActiveCheckBox: function (form) {
+        var count = 0;
+        var hasCB = false;
+        $(form).find('input').each(function()
+        {
+            var type = $(this).attr("type");
+            if(type === "checkbox") {
+                hasCB = true;
+                if(this.checked === true)
+                    count++;
+            }
+                   
+        });
+        if(hasCB)
+            return count;
+        return true;
+    },
     saveClicked : function(button, funcName) {
         var self = this;
         var form = button.parents(".save-form").first();
         if(!this.formHasChanges(form)) {
             this.showResultMessage(form, Status.hasNotChanges);
+            return;
+        }
+        if(!this.hasActiveCheckBox(form)) {
+            this.showResultMessage(form, Status.hasNotActiveCheckBox);
             return;
         }
         var errorPull = [];

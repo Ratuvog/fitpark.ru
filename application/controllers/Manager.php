@@ -53,7 +53,7 @@ class Manager extends FitparkBaseController {
             call_user_func_array(array($this, $method), $pars);
         else
             $this->auth();
-    }
+        }
     
     function auth()
     {
@@ -205,13 +205,11 @@ class Manager extends FitparkBaseController {
         $services = array();
         foreach(array_keys($_POST) as $key)
         {
-            if(strpos($key, 'serv'))
-            {
-                $services += $_POST[substr($key, 4)];
-                echo substr($key, 4);
-            }
+            $pos = stripos($key, "serv");
+            if($pos !== false)
+                $services[substr($key, 4)] = $_POST[$key];
         }
-        echo json_encode(array('status' => $this->manager_private->updateServices($saveData, $this->input->post('clubid'))));
+        echo json_encode(array('status' => $this->manager_private->updateServices($services, $this->input->post('clubid'))));
     }
     
     function lastTimeUpdate()

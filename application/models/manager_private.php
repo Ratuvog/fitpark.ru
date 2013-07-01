@@ -82,10 +82,19 @@ class Manager_private extends CI_Model {
     
     function updateServices($data, $club)
     {
-        $data['state'] = 1;
-        if($this->db->insert('buf_club', $data, array('id' => $club)))
-            return 'OK';
-        return 'ERR';
+        if(!$this->db->delete('buf_club_services', array('clubId'=>$club)))
+            return "ERR";
+        
+        foreach(array_keys($data) as $key)
+        {
+            if($data[$key] === "true")
+            {
+                $insertSet = array('clubId' => $club, 'serviceId' => $key);
+                if(!$this->db->insert('buf_club_services', $insertSet))
+                    return "ERR";
+            }
+        }
+        return "OK";
     }
     
     function lastTimeUpdate($club)
@@ -99,19 +108,14 @@ class Manager_private extends CI_Model {
     function services($clubId)
     {
         $buf = $this->db->get_where('buf_club_services', array('clubId'=>$clubId))->result();
+        $table = 'buf_club_services';
         if(!count($buf))
-        {
-            $origin = $this->db->get_where('fitnesclub_rel_services', array('clubId'=>$clubId))->result();
-            foreach ($origin as $rec)
-                $this->db->insert('buf_club_services', $rec);
-        }
+            $table = 'fitnesclub_rel_services';
+
         return $this->db->select('fs.*, bcs.serviceId as active')
                         ->from('fitnesclub_services fs')
-                        ->join('buf_club_services bcs', 'fs.id = bcs.serviceId','left')
-                        ->where(array('bcs.clubId' => $clubId))
-                        ->or_where(array('bcs.clubId' => NULL))
+                        ->join("$table bcs", "fs.id = bcs.serviceId and bcs.clubId=$clubId",'left')
                         ->get()->result();
-        
     }
 }
 ?>
