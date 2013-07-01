@@ -114,14 +114,14 @@ class Manager extends FitparkBaseController {
     function club($clubId)
     {
         if(!$clubId)
-            $this->clubs();
+            return $this->clubs();
         
         $userId = $this->session->userdata('userid');
-        if(!$userId)
-            return $this->auth();
+        if(!$this->session->userdata('userid'))
+            return $this->logut();
         
         if($this->manager_private->owner($clubId) != $userId)
-            $this->clubs();
+            return $this->clubs();
         
         $this->view = 'manager/private';
         
