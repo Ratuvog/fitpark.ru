@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/FitparkBaseController.php');
-class FitparkClubController extends FitparkBaseController {
+require_once(APPPATH.'controllers/Base.php');
+class Club extends Base {
 
     /* Current club id */
     protected $clubId = 0;
@@ -109,9 +109,8 @@ class FitparkClubController extends FitparkBaseController {
     protected function getBaseInfo()
     {
         $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->clubId);
-//        print_r($infoArray[0]);
-//        exit;
-        if(count($infoArray)) {
+        if(count($infoArray))
+        {
             $infoArray[0]["isEmptyPrice"] = FALSE;
             foreach ($infoArray[0]['price'] as $key=>$value) {
                 if(substr($key,0,3) == "sub" && $value) {

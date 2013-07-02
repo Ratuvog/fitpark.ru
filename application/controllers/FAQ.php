@@ -8,9 +8,9 @@
  */
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/FitparkBaseController.php');
+require_once(APPPATH.'controllers/Base.php');
 
-class FitparkQAController extends FitparkBaseController {
+class FAQ extends Base {
 
     function __construct()
     {

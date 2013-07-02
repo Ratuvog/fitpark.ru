@@ -1,6 +1,6 @@
 <?php
-require_once(APPPATH.'controllers/FitparkBaseController.php');
-class Main extends FitparkBaseController {
+require_once(APPPATH.'controllers/Base.php');
+class Main extends Base {
 
     function __construct() {
         parent::__construct();

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/FitparkBaseController.php');
-class Manager extends FitparkBaseController {
+require_once(APPPATH.'controllers/Base.php');
+class Manager extends Base {
 
     protected $clubId = 0;
     private $categoryName = 'Личный кабинет';
@@ -95,6 +95,7 @@ class Manager extends FitparkBaseController {
         }
         else
         {
+            $this->authError = 'Введен неправильный логин или пароль';
             $this->auth();
         }
     }
