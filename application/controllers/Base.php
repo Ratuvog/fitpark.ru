@@ -236,8 +236,8 @@ class Base extends CI_Controller {
         if($this->css_files)
             $css_files = array_merge($this->css_files, $css_files);
         
-        foreach($css_files as $css)
-            $css = site_url($css);
+        foreach(array_keys($css_files) as $key)
+            $css_files[$key] = site_url($css_files[$key]);
         $this->headerData['css_files'] = $css_files;    
     }
 
@@ -247,7 +247,6 @@ class Base extends CI_Controller {
             "/js/header.js",
             "/js/common.js",
             "/js/cb/jquery.colorbox.js",
-            "/js/cb/colorbox.jquery.json",
             "/js/jquery.form.validation.js",
             "/js/fancybox/jquery.fancybox.pack.js",
             "/js/fancybox/helpers/jquery.fancybox-buttons.js",
@@ -256,14 +255,17 @@ class Base extends CI_Controller {
             "/js/fancybox/jquery.fancybox.pack.js",
             "/js/validator_helper.js",
             "/js/raty-2.5.2/jquery.raty.js",
-            "/js/slider/jquery.bxslider.js"
+            "/js/slider/jquery.bxslider.js",
+            "/js/noty/jquery.noty.js",
+            "/js/noty/layouts/topRight.js",
+            "js/noty/themes/default.js"
         );
         
         if($this->js_files)
             $js_files = array_merge($this->js_files, $js_files);
         
-        foreach($js_files as $js)
-            $js = site_url($js);
+        foreach(array_keys($js_files) as $key)
+            $js_files[$key] = site_url($js_files[$key]);
         $this->headerData['js_files'] = $js_files;   
     }
     

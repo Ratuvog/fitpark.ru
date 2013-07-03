@@ -112,7 +112,7 @@ class Club extends Base {
         if(count($infoArray))
         {
             $infoArray[0]["isEmptyPrice"] = FALSE;
-            foreach ($infoArray[0]['price'] as $key=>$value) {
+            foreach ($infoArray[0] as $key=>$value) {
                 if(substr($key,0,3) == "sub" && $value) {
                     $infoArray[0]["isEmptyPrice"] |= TRUE;
                     break;

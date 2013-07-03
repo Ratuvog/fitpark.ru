@@ -16,10 +16,10 @@
         <link rel='stylesheet' href='<?=$css;?>' />
     <?}?>
             
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-        <script src="http://blueimp.github.io/JavaScript-Load-Image/load-image.min.js"></script>
-        <script src="//vk.com/js/api/openapi.js?96"></script>
+        <script type='text/javascript' src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type='text/javascript' src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        <script type='text/javascript' src="http://blueimp.github.io/JavaScript-Load-Image/load-image.min.js"></script>
+        <script type='text/javascript' src="//vk.com/js/api/openapi.js?96"></script>
         
         <!--JS-->
     <? foreach($js_files as $js){ ?>

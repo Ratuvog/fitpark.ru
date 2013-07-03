@@ -1,9 +1,24 @@
 Status = {
-        saveSuccess : $('<label>').addClass('save-succes').append("Изменения добавлены на обработку"),
-        saveError : $('<label>').addClass('save-error').append("При обновлении произошла ошибка"),
-        validateError : $('<label>').addClass('save-error').append("Некоторые поля заполнены с ошибками"),
-        hasNotChanges : $('<label>').addClass('save-error').append("Изменений нет"),
-        hasNotActiveCheckBox : $('<label>').addClass('save-error').append("Хотя бы один пункт должен быть активен")
+        saveSuccess : {
+            text: "Изменения добавлены на обработку",
+            type: "success"
+        },
+        saveError : {
+            text: "При обновлении произошла ошибка",
+            type: "error"
+        },
+        validateError : {
+            text: "Некоторые поля заполнены с ошибками",
+            type: "error"
+        },
+        hasNotChanges : {
+            text: "Изменений нет",
+            type: "information"
+        },
+        hasNotActiveCheckBox : {
+            text: "Хотя бы один пункт должен быть активен",
+            type: "error"
+        }
 };
 
 FormSaver = {
@@ -26,9 +41,9 @@ FormSaver = {
             data: formData,
             success: function(data){           
                     if(data.status === 'OK')
-                        self.showResultMessage(form, Status.saveSuccess);
+                        self.showResultMessage(Status.saveSuccess);
                     else
-                        self.showResultMessage(form, Status.saveError);
+                        self.showResultMessage(Status.saveError);
                     self.storeFormState(form);
                     updateLastTimeUpdate();
             },
@@ -58,15 +73,13 @@ FormSaver = {
         input.css("border-color", "#aaa");
         return "OK";
     },
-    showResultMessage : function(form, status) {
-        $(form).find('.save-error').each(function(){
-            $(this).remove();
+    showResultMessage : function(status) {
+        var n = noty({
+            layout: 'topRight',
+            timeout: 3000,
+            text : status.text,
+            type : status.type
         });
-        $(form).find('.save-succes').each(function(){
-            $(this).remove();
-        });
-        var save = $(form).find('.save');
-        save.parent().append(status);
     },  
     formStorage : {},
     storeFormState : function () {
@@ -128,11 +141,11 @@ FormSaver = {
         var self = this;
         var form = button.parents(".save-form").first();
         if(!this.formHasChanges(form)) {
-            this.showResultMessage(form, Status.hasNotChanges);
+            this.showResultMessage(Status.hasNotChanges);
             return;
         }
         if(!this.hasActiveCheckBox(form)) {
-            this.showResultMessage(form, Status.hasNotActiveCheckBox);
+            this.showResultMessage(Status.hasNotActiveCheckBox);
             return;
         }
         var errorPull = [];
@@ -153,7 +166,7 @@ FormSaver = {
             return;
         }
         
-        self.showResultMessage(form, $('<label>').addClass('save-error').append(errorPull[0]));
+        self.showResultMessage({text:errorPull[0], type: "error"});
         errorPull = [];
     }
 };
