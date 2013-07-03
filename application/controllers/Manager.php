@@ -32,15 +32,18 @@ class Manager extends Base {
             '/css/manager/manager-private.css',
             '/assets/fileupload/css/jquery.fileupload-ui.css'));
         $this->append_js(array(
-            '/js/manager/manager-private.js',
-            '/js/manager/formSaver.js',
             '/js/ckeditor/ckeditor.js',
+            '/assets/fileupload/js/vendor/jquery.ui.widget.js',
+            '/assets/fileupload/js/jquery.iframe-transport.js',
             '/assets/fileupload/js/jquery.fileupload.js',
             '/assets/fileupload/js/jquery.fileupload-ui.js',
             '/assets/fileupload/js/jquery.iframe-transport.js',
             '/assets/fileupload/js/jquery.fileupload-process.js',
             '/assets/fileupload/js/jquery.fileupload-image.js',
-            '/assets/fileupload/js/jquery.fileupload-validate.js'));
+            '/assets/fileupload/js/jquery.fileupload-validate.js',
+            '/js/manager/manager-private.js',
+            '/js/manager/formSaver.js'
+       ));
     }
             
     function _remap($method, $param) 
@@ -216,6 +219,17 @@ class Manager extends Base {
     function lastTimeUpdate()
     {
         echo json_encode($this->manager_private->lastTimeUpdate($this->input->post('clubid')));
+    }
+
+    function logoUpload() {
+        $uploadPath =$_SERVER["DOCUMENT_ROOT"]."/image/club/".$_FILES['files']['name'][0];
+        if(move_uploaded_file($_FILES['files']['tmp_name'][0],$uploadPath)) {
+            $clubId = $this->input->post("clubId");
+            $this->manager_private->updateHeadImage($clubId,$_FILES['files']['name'][0]);
+            echo json_encode(array("success" => true));
+        } else {
+            echo json_encode(array("success" => false));
+        }
     }
     
 }

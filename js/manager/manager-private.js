@@ -253,72 +253,54 @@
                     $this.remove();
                 });
             });
-    
+
     $('#fileupload').fileupload({
         url: 'http://'+location.hostname+'/Manager/logoUpload/',
         dataType: 'json',
-        autoUpload: true,
+        autoUpload: false,
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-        maxFileSize: 100000, // 100kb
+        maxFileSize: 1000000, // 100kb
         disableImageResize: /Android(?!.*Chrome)|Opera/
             .test(window.navigator && navigator.userAgent),
         previewMaxWidth: 160,
         previewMaxHeight: 160,
         previewCrop: true,
-        imageMaxWidth: 160,
-        imageMaxHeight: 160
+        imageMaxWidth: 800,
+        imageMaxHeight: 600
     }).on('fileuploadadd', function (e, data) {
         data.context = $('<div/>').appendTo('#files');
         $.each(data.files, function (index, file) {
             var node = $('<p/>')
                     .append($('<span/>').text(file.name));
-            if (!index) {
-                node
-                    .append('<br>')
-                    .append(uploadButton.clone(true).data(data));
-            }
-            node.appendTo(data.context);
+            data.context = $("div.img-placeholder")
+            $("#logo-save")
+                .data(data)
+                .off("click")
+                .on("click", function(){
+                    var $this = $(this),
+                        currentData  = $this.data();
+                    currentData.formData = {clubId: $this.attr("clubId")};
+                    $this.off("click")
+                    currentData.submit().always(function () {
+                        $this.prop("disable", true);
+                    });
+                })
+
+            $("div.img-placeholder").empty().appendTo(data.context);
         });
     }).on('fileuploadprocessalways', function (e, data) {
         var index = data.index,
             file = data.files[index],
-            node = $(data.context.children()[index]);
+            node = $(data.context);
         if (file.preview) {
             node
-                .prepend('<br>')
-                .prepend(file.preview);
+                .html(file.preview);
         }
-        if (file.error) {
-            node
-                .append('<br>')
-                .append(file.error);
-        }
-        if (index + 1 === data.files.length) {
-            data.context.find('button')
-                .text('Upload')
-                .prop('disabled', !!data.files.error);
-        }
-    }).on('fileuploadprogressall', function (e, data) {
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('#progress .bar').css(
-            'width',
-            progress + '%'
-        );
     }).on('fileuploaddone', function (e, data) {
-        $.each(data.result.files, function (index, file) {
-            var link = $('<a>')
-                .attr('target', '_blank')
-                .prop('href', file.url);
-            $(data.context.children()[index])
-                .wrap(link);
-        });
+        alert("Success")
     }).on('fileuploadfail', function (e, data) {
-        $.each(data.result.files, function (index, file) {
-            var error = $('<span/>').text(file.error);
-            $(data.context.children()[index])
-                .append('<br>')
-                .append(error);
-        });
+        alert("Error")
     });
-});
+
+  });
      

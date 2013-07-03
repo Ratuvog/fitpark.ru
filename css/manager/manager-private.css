@@ -252,3 +252,7 @@ table[class='user-input'] {
     margin-bottom: 5px;
     margin-top: 15px;
 }
+
+.img-placeholder img {
+    width: 160px;
+}

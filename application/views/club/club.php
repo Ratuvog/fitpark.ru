@@ -366,6 +366,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                     <td>
                         Оценка отзыва
                     </td>
+
                     <td>
                         <select name="type-rewiew" id="">
                             <option value="1" selected="selected">Положительно</option>

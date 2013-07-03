@@ -21,15 +21,19 @@
         <div class="box">
              <div class="">
                 <div class="club-logo-input">
-                    <div class="img-placeholder">Место для логотипа</div>
+                    <? if($club->head_picture) {?>
+                        <div class="img-placeholder"><img src="<?=$club->head_picture;?>" alt=""/></div>
+                    <?} else { ?>
+                        <div class="img-placeholder">Место для логотипа</div>
+                    <? }?>
                     <span class="btn btn-success fileinput-button">
-                        <span>Add files...</span>
+                        <span>Загрузить логотип</span>
                         <input id="fileupload" type="file" name="files[]" multiple>
                     </span>
                     <div id="files" class="files"></div>
                 </div>
             </div>
-            <input id="logo-save" class="save" type="button" value="Сохранить" />
+            <input id="logo-save" class="save" type="button" value="Сохранить" clubId = "<?=$club->id;?>" />
         </div>
     </div>
     <div class="info-block">
