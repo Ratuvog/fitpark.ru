@@ -115,31 +115,62 @@ class Manager extends Base {
         $this->clubs();
     }
     
-    function club($clubId)
+    function club($clubId, $tab = "base")
     {
         if(!$clubId)
             return $this->clubs();
-        
+
         $userId = $this->session->userdata('userid');
         if(!$this->session->userdata('userid'))
             return $this->logut();
-        
+
         if($this->manager_private->owner($clubId) != $userId)
             return $this->clubs();
-        
+
         $this->view = 'manager/private';
-        
+
         $this->viewData['club'] = $this->manager_private->club($clubId);
         $this->viewData['cities'] = $this->manager_private->cities();
-        
+
         $cityId = $this->viewData['club']->cityid;
         $this->viewData['districts'] = $this->manager_private->districts($cityId);
         $this->viewData['services'] = $this->manager_private->services($clubId);
 
         $this->categoryName = $this->viewData['club']->name;
         $this->viewData['categoryName'] = $this->categoryName;
+        $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
+        $this->breadCrumbsData[] = array(
+            'href'  =>  site_url(array($this->controllerName, 'club', $clubId)),
+            'title' =>  $this->categoryName
+        );
+        if(isset($tab) && $tab == "photo") {
+            $this->renderPhoto($clubId);
+        } else {
+            $this->renderBaseInfo($clubId);
+        }
+    }
 
-        
+    private function renderPhoto() {
+
+        $this->view = "manager/photos";
+        $image_crud = new image_CRUD();
+
+        $image_crud->set_table("buf_club_photo");
+        $image_crud->set_primary_key_field('id');
+        $image_crud->set_url_field('photo');
+        $image_crud->set_image_path('image/club/');
+        $image_crud->set_title_field('title');
+        $image_crud->set_relation_field('fitnesclubid');
+        $output = $image_crud->render();
+
+        $this->viewData["photos"] = $output;
+        print_r($output);
+        exit;
+        $this->renderScene();
+    }
+
+    private function renderBaseInfo($clubId) {
+
         $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
         $this->breadCrumbsData[] = array(
             'href'  =>  site_url(array($this->controllerName, 'club', $clubId)),
@@ -148,7 +179,7 @@ class Manager extends Base {
 
         $this->renderScene();
     }
-    
+
     function clubs()
     {
         $userId = $this->session->userdata('userid');

@@ -37,7 +37,7 @@ class Manager_private extends CI_Model {
                 $this->db->insert("buf_club", $fClub[0]);
             $buf = $this->db->get_where("buf_club", array('id'=>$club))->first_row();
         }
-        
+
         $buf->head_picture = site_url(array('image', 'club', $buf->head_picture));
         return $buf;
     }
