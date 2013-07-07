@@ -43,7 +43,9 @@ class Base extends CI_Controller {
         $this->load->helper('mutator_helper');
 
         $this->load->library('session');
+
         $this->load->library('idna_convert');
+        $this->load->helper("geolocation");
 
         $this->load->model('fitpark_model');
         $this->initTwiggy();
@@ -71,13 +73,32 @@ class Base extends CI_Controller {
 	    $this->initListAvaibleCity();
 
         if($this->idna_convert->decode($_SERVER["HTTP_HOST"]) != $this->headerData['currentCity']->url)
-            $this->customRedirect(prep_url($this->headerData['currentCity']->url));
+            $this->customRedirect($this->prepareUrl($this->headerData['currentCity']->url));
     }
 
     function initTwiggy()
     {
         $this->load->spark('Twiggy/0.8.5');
         $this->twiggy->register_function('lang');
+    }
+
+    private function prepareUrl($host) {
+        $url = $host;
+        if($_SERVER["PHP_SELF"]) {
+            $path = explode("/", $_SERVER["PHP_SELF"]);
+            $index = array_search("index.php",$path);
+            if($index === FALSE) {
+                $url.=$_SERVER["PHP_SELF"];
+            } else {
+                unset($path[$index]);
+                $url.=implode("/",$path);
+            }
+        }
+
+        if($_SERVER["QUERY_STRING"]) {
+            $url.="?".$_SERVER["QUERY_STRING"];
+        }
+        return prep_url($url);
     }
 
     function initNavigation()
@@ -105,7 +126,6 @@ class Base extends CI_Controller {
 
     private function cityByIP()
     {
-        $this->load->helper("geolocation");
         $host = $this->idna_convert->decode($_SERVER["HTTP_HOST"]);
         $hostArray = explode('.', $host);
         if(count($hostArray)!=3) {
@@ -138,7 +158,7 @@ class Base extends CI_Controller {
 
     protected function customRedirect($url)
     {
-        //redirect($this->idna_convert->encode($url));
+        redirect($this->idna_convert->encode($url));
     }
 
     // Before render scene check view-data variable for initialization
