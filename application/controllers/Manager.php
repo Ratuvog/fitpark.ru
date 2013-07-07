@@ -174,7 +174,7 @@ class Manager extends Base {
         $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
         $this->breadCrumbsData[] = array(
             'href'  =>  site_url(array($this->controllerName, 'club', $clubId)),
-            'title' =>  $this->categoryName
+            'title' =>  'Общая информация'
         );
 
         $this->renderScene();
@@ -201,6 +201,40 @@ class Manager extends Base {
         $this->renderScene();
     }
     
+    function photo($clubId)
+    {
+        $userId = $this->session->userdata('userid');
+        if(!$userId)
+            return $this->auth();
+        
+        if($this->manager_private->owner($clubId) != $userId)
+            return $this->clubs();
+        
+        $image_crud_cur = new image_CRUD();
+        $image_crud_cur->set_table('fitnesclub_photo');
+        $image_crud_cur->set_primary_key_field('id');
+        $image_crud_cur->set_url_field('photo');
+        $image_crud_cur->set_image_path('image/club/');
+        $image_crud_cur->set_relation_field('fitnesclubid');
+        
+        $this->viewData['cur_photos'] = $image_crud_cur->render();
+        
+        $this->view = 'manager/photos';
+        
+        $this->viewData['club'] = $this->manager_private->club($clubId);
+
+        $this->categoryName = $this->viewData['club']->name;
+        $this->viewData['categoryName'] = $this->categoryName;
+        $this->headerData['titleText'] = "ФитПарк. Личный кабинет.";
+        
+        $this->breadCrumbsData[] = array(
+            'href'  => site_url(array($this->controllerName, 'photo', $clubId)),
+            'title' => 'Фотографии'
+        );
+        
+        $this->renderScene();
+    }
+
     /*Ajax functions*/
     function districts()
     {

@@ -103,7 +103,7 @@ class Hfnedjuhfnedju extends CI_Controller {
         {
             $output->currentTable = $this->currentTable;
             $output->categoryName = $this->categoryName;
-            $this->load->view('admin.php',$output);	
+            $this->load->view('admin/admin',$output);	
 	}
 	
         function import()

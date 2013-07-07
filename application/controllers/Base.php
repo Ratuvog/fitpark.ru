@@ -34,8 +34,7 @@ class Base extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-//        $this->twiggy->set('user','dima')->template('_layouts/index')->display();
-//        exit;
+
         $this->config->load('global_const');
 
         $this->load->database();
@@ -50,6 +49,7 @@ class Base extends CI_Controller {
         $this->initTwiggy();
         $this->initNavigation();
         $this->initSearchWidget();
+        
         $this->breadCrumbsData[] = array(
             'href'  => base_url(),
             'title' => 'Главная'
