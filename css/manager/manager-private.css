@@ -167,6 +167,7 @@ table[class='user-input'] {
     *top: 0.1em;
     background: none;
     border: none;
+
 }
 
 .custom-combobox-toggle:hover {
@@ -174,12 +175,14 @@ table[class='user-input'] {
     border: none;
     outline: 0;
 }
-.custom-combobox-input {
+input.custom-combobox-input {
     margin: 0;
     padding: 0.3em;
     background: none;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 13px;
+    color: #000000;
+    font-weight: normal;
 }
 
 .status-cell {

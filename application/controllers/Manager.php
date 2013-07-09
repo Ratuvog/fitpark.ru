@@ -29,6 +29,7 @@ class Manager extends Base {
         );
         
         $this->append_css(array(
+            'css/common/jquery-ui-1.10.3.custom.min.css',
             'css/manager/manager-private.css',
             'assets/fileupload/css/jquery.fileupload-ui.css'));
         $this->append_js(array(
@@ -42,7 +43,8 @@ class Manager extends Base {
             'assets/fileupload/js/jquery.fileupload-image.js',
             'assets/fileupload/js/jquery.fileupload-validate.js',
             'js/manager/manager-private.js',
-            'js/manager/formSaver.js'
+            'js/manager/formSaver.js',
+            'js/bootstrap.js'
        ));
     }
             
