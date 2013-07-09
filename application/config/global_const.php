@@ -2,4 +2,5 @@
 
 $config['empty_photo'] = "no-foto.jpg";
 $config['favicon'] = "image/favicon.ico";
+$config['images_club_path'] = "image/club/";
 ?>

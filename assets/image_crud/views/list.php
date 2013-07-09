@@ -24,25 +24,28 @@ function loadColorbox()
 	});
 }
 function loadPhotoGallery(){
-	$.ajax({
-		url: '<?php echo $ajax_list_url?>',
-		cache: false,
-		dataType: 'text',
-		beforeSend: function()
-		{
-			$('.file-upload-messages-container:first').show();
-			$('.file-upload-message').html("<?php echo $this->l('loading');?>");
-		},
-		complete: function()
-		{
-			$('.file-upload-messages-container').hide();
-			$('.file-upload-message').html('');
-		},
-		success: function(data){
-			$('#ajax-list').html(data);
-			loadColorbox();
-		}
-	});
+    /* Сделано, чтоб не морочиться с ajax-запросом на обновление */
+    location.reload();
+
+    <!--	$.ajax({-->
+<!--		url: '--><?php //echo $ajax_list_url?><!--',-->
+<!--		cache: false,-->
+<!--		dataType: 'text',-->
+<!--		beforeSend: function()-->
+<!--		{-->
+<!--			$('.file-upload-messages-container:first').show();-->
+<!--			$('.file-upload-message').html("--><?php //echo $this->l('loading');?><!--");-->
+<!--		},-->
+<!--		complete: function()-->
+<!--		{-->
+<!--			$('.file-upload-messages-container').hide();-->
+<!--			$('.file-upload-message').html('');-->
+<!--		},-->
+<!--		success: function(data){-->
+<!--			$('#ajax-list').html(data);-->
+<!--			loadColorbox();-->
+<!--		}-->
+<!--	});-->
 }
 
 function createUploader() {

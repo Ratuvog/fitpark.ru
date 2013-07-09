@@ -29,20 +29,20 @@ class Manager extends Base {
         );
         
         $this->append_css(array(
-            '/css/manager/manager-private.css',
-            '/assets/fileupload/css/jquery.fileupload-ui.css'));
+            'css/manager/manager-private.css',
+            'assets/fileupload/css/jquery.fileupload-ui.css'));
         $this->append_js(array(
-            '/js/ckeditor/ckeditor.js',
-            '/assets/fileupload/js/vendor/jquery.ui.widget.js',
-            '/assets/fileupload/js/jquery.iframe-transport.js',
-            '/assets/fileupload/js/jquery.fileupload.js',
-            '/assets/fileupload/js/jquery.fileupload-ui.js',
-            '/assets/fileupload/js/jquery.iframe-transport.js',
-            '/assets/fileupload/js/jquery.fileupload-process.js',
-            '/assets/fileupload/js/jquery.fileupload-image.js',
-            '/assets/fileupload/js/jquery.fileupload-validate.js',
-            '/js/manager/manager-private.js',
-            '/js/manager/formSaver.js'
+            'js/ckeditor/ckeditor.js',
+            'assets/fileupload/js/vendor/jquery.ui.widget.js',
+            'assets/fileupload/js/jquery.iframe-transport.js',
+            'assets/fileupload/js/jquery.fileupload.js',
+            'assets/fileupload/js/jquery.fileupload-ui.js',
+            'assets/fileupload/js/jquery.iframe-transport.js',
+            'assets/fileupload/js/jquery.fileupload-process.js',
+            'assets/fileupload/js/jquery.fileupload-image.js',
+            'assets/fileupload/js/jquery.fileupload-validate.js',
+            'js/manager/manager-private.js',
+            'js/manager/formSaver.js'
        ));
     }
             
@@ -114,9 +114,34 @@ class Manager extends Base {
     {
         $this->clubs();
     }
-    
-    function club($clubId, $tab = "base")
+
+    protected function deleteImage($id) {
+        $this->manager_private->deleteImage($id);
+        $this->customRedirect(site_url(array("Manager","getClub", $club->id, "photo")));
+        echo json_encode(array("success"=>TRUE));
+    }
+
+    protected function uploadFile($clubId)
     {
+        $uploadPath = $_SERVER["DOCUMENT_ROOT"]."/".$this->config->item("images_club_path").
+                      $_FILES['qqfile']['name'];
+        if(move_uploaded_file($_FILES['qqfile']['tmp_name'],$uploadPath)) {
+            $this->manager_private->insertImage($_FILES['qqfile']['name'], $clubId);
+            echo json_encode(array("success" => true));
+        } else {
+            echo json_encode(array("success" => false));
+        }
+    }
+    
+    function getClub($clubId = 0 , $tab = "base")
+    {
+        if($clubId == "delete_file") {
+            return $this->deleteImage($tab);
+        }
+
+        if($clubId =="upload_file" ) {
+            return $this->uploadFile($tab);
+        }
         if(!$clubId)
             return $this->clubs();
 
@@ -150,22 +175,26 @@ class Manager extends Base {
         }
     }
 
-    private function renderPhoto() {
+    private function renderPhoto($clubId) {
 
         $this->view = "manager/photos";
-        $image_crud = new image_CRUD();
+        $images = $this->manager_private->getPhotosObject($clubId);
+        $output = $images->render();
+        foreach ($output->css_files as $file) {
+            $fileArray = explode("/",$file);
 
-        $image_crud->set_table("buf_club_photo");
-        $image_crud->set_primary_key_field('id');
-        $image_crud->set_url_field('photo');
-        $image_crud->set_image_path('image/club/');
-        $image_crud->set_title_field('title');
-        $image_crud->set_relation_field('fitnesclubid');
-        $output = $image_crud->render();
+            array_splice($fileArray, 0,3);
 
-        $this->viewData["photos"] = $output;
-        print_r($output);
-        exit;
+            $this->css_files[] = implode("/",$fileArray);
+        }
+
+        foreach ($output->js_files as $file) {
+            $fileArray = explode("/",$file);
+            array_splice($fileArray, 0,3);
+            $this->js_files[] = implode("/",$fileArray);
+        }
+
+        $this->viewData["output"] = $output;
         $this->renderScene();
     }
 
@@ -191,7 +220,7 @@ class Manager extends Base {
         $this->categoryName = 'Cписок клубов';
         $this->viewData['categoryName'] = $this->categoryName;
         $this->headerData['titleText'] = "ФитПарк. Личный кабинет.";
-        
+
         $this->breadCrumbsData[] = array(
             'href'  => site_url(array($this->controllerName, 'clubs')),
             'title' => $this->categoryName
@@ -206,7 +235,7 @@ class Manager extends Base {
         $userId = $this->session->userdata('userid');
         if(!$userId)
             return $this->auth();
-        
+
         if($this->manager_private->owner($clubId) != $userId)
             return $this->clubs();
         
@@ -287,7 +316,8 @@ class Manager extends Base {
     }
 
     function logoUpload() {
-        $uploadPath =$_SERVER["DOCUMENT_ROOT"]."/image/club/".$_FILES['files']['name'][0];
+        $uploadPath =$_SERVER["DOCUMENT_ROOT"]."/".
+                     $this->config->item("images_club_path").$_FILES['files']['name'][0];
         if(move_uploaded_file($_FILES['files']['tmp_name'][0],$uploadPath)) {
             $clubId = $this->input->post("clubId");
             $this->manager_private->updateHeadImage($clubId,$_FILES['files']['name'][0]);

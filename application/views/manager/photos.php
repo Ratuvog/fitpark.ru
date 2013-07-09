@@ -2,6 +2,6 @@
 <div class="info-block">
     <div class="title">Фотографии</div>
     <div class="save-form box">
-        <?=$photos;?>
+        <?=$output->output;?>
     </div>
 </div>

@@ -12,7 +12,7 @@
                         <table class="image-wrapper">
                             <tr>
                                 <td align="center" valign="middle" >
-                                    <img style="max-width: 160px" src="<?=  site_url(array('image','club',$row->head_picture));?>" alt=""/>
+                                    <img style="max-width: 160px" src="<?=  site_url(array('image',"club", $row->head_picture));?>" alt=""/>
                                 </td>
                             </tr>
                         </table>
@@ -22,7 +22,7 @@
                     <section class="decription-club">
                         <header class="name-club">
                             <h3>
-                                <a href="<?=site_url(array('Manager','club',$row->id));?>" target="_blank"><?=$row->name;?></a>
+                                <a href="<?=site_url(array('Manager','getClub', $row->id, "base"));?>" target="_blank"><?=$row->name;?></a>
                             </h3>
                             <div style="color: #aaa;">
                                 <?=$row->address;?>

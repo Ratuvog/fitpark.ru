@@ -2,7 +2,6 @@
 <html>
     <head>
         <title><?=$titleText;?></title>
-        
         <!--META-->
         <meta name="description" content="<?=$desc;?>">
         <meta name="keywords" content="<?=$keywords;?>">
@@ -21,10 +20,10 @@
         <script src="http://blueimp.github.io/JavaScript-Load-Image/load-image.min.js"></script>
         <script src="//vk.com/js/api/openapi.js?96"></script>
 
-        <script type="text/javascript" src="/js/noty/jquery.noty.js"></script>
-        <script type="text/javascript" src="/js/noty/layouts/topRight.js"></script>
-        <script type="text/javascript" src="/js/noty/themes/default.js"></script>
-        <script type="text/javascript" src="/js/alerts.js"></script>
+<!--        <script type="text/javascript" src="/js/noty/jquery.noty.js"></script>-->
+<!--        <script type="text/javascript" src="/js/noty/layouts/topRight.js"></script>-->
+<!--        <script type="text/javascript" src="/js/noty/themes/default.js"></script>-->
+<!--        <script type="text/javascript" src="/js/alerts.js"></script>-->
 
         <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
         <!-- You can add more layouts if you want -->

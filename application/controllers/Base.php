@@ -138,7 +138,6 @@ class Base extends CI_Controller {
     function init(){}
 
 
-
     public function show404()
     {
         $this->output->set_status_header('404');
@@ -167,7 +166,6 @@ class Base extends CI_Controller {
         $this->initMetaData();
         $this->initCssData();
         $this->initJSData();
-        
         if($view == null)
             $view = $this->view;
 
@@ -247,10 +245,10 @@ class Base extends CI_Controller {
     public function initCssData()
     {
         $css_files = array( 
-            "/css/common/fitpark.css",
-            "/js/fancybox/jquery.fancybox.css",
-            "/js/fancybox/helpers/jquery.fancybox-buttons.css",
-            "/js/fancybox/helpers/jquery.fancybox-thumbs.css",
+            "css/common/fitpark.css",
+            "js/fancybox/jquery.fancybox.css",
+            "js/fancybox/helpers/jquery.fancybox-buttons.css",
+            "js/fancybox/helpers/jquery.fancybox-thumbs.css",
         );
         
         if($this->css_files)
@@ -264,21 +262,21 @@ class Base extends CI_Controller {
     public function initJSData()
     {
         $js_files = array( 
-            "/js/header.js",
-            "/js/common.js",
-            "/js/cb/jquery.colorbox.js",
-            "/js/jquery.form.validation.js",
-            "/js/fancybox/jquery.fancybox.pack.js",
-            "/js/fancybox/helpers/jquery.fancybox-buttons.js",
-            "/js/fancybox/helpers/jquery.fancybox-media.js",
-            "/js/fancybox/helpers/jquery.fancybox-thumbs.js",
-            "/js/fancybox/jquery.fancybox.pack.js",
-            "/js/validator_helper.js",
-            "/js/raty-2.5.2/jquery.raty.js",
-            "/js/slider/jquery.bxslider.js",
-            "/js/noty/jquery.noty.js",
-            "/js/noty/layouts/topRight.js",
-            "js/noty/themes/default.js"
+            "js/header.js",
+            "js/common.js",
+            "js/cb/jquery.colorbox.js",
+            "js/jquery.form.validation.js",
+            "js/fancybox/jquery.fancybox.pack.js",
+            "js/fancybox/helpers/jquery.fancybox-buttons.js",
+            "js/fancybox/helpers/jquery.fancybox-media.js",
+            "js/fancybox/helpers/jquery.fancybox-thumbs.js",
+            "js/fancybox/jquery.fancybox.pack.js",
+            "js/validator_helper.js",
+            "js/raty-2.5.2/jquery.raty.js",
+            "js/slider/jquery.bxslider.js"
+//            "js/noty/jquery.noty.js",
+//            "js/noty/layouts/topRight.js",
+//            "js/noty/themes/default.js"
         );
         
         if($this->js_files)

@@ -34,6 +34,7 @@ class image_CRUD {
 	protected $views_as_string = '';
 	protected $css_files = array();
 	protected $js_files = array();
+    protected $custom_query = null;
 	
 	/* Unsetters */
 	protected $unset_delete = false;
@@ -147,6 +148,11 @@ class image_CRUD {
 	{
 		$this->js_files[sha1($js_file)] = base_url().$js_file;
 	}
+
+    public function set_custom_query($query)
+    {
+        $this->custom_query = $query;
+    }
 
 	protected function _library_view($view, $vars = array(), $return = FALSE)
 	{
@@ -349,17 +355,34 @@ class image_CRUD {
     	return site_url($rsegments_array[1].'/'.$rsegments_array[2].'/delete_file/'.$value);
     }
 
+    protected function _get_photos_from_table($relation_value = null)
+    {
+        if(!empty($this->priority_field))
+        {
+            $this->ci->db->order_by($this->priority_field);
+        }
+        if(!empty($relation_value))
+        {
+            $this->ci->db->where($this->relation_field, $relation_value);
+        }
+        return $this->ci->db->get($this->table_name)->result();
+    }
+
+    protected function _get_photos_from_query()
+    {
+        return $this->ci->db->query($this->custom_query)->result();
+    }
+
     protected function _get_photos($relation_value = null)
     {
-    	if(!empty($this->priority_field))
-    	{
-    		$this->ci->db->order_by($this->priority_field);
-    	}
-    	if(!empty($relation_value))
-    	{
-    		$this->ci->db->where($this->relation_field, $relation_value);
-    	}
-    	$results = $this->ci->db->get($this->table_name)->result();
+        $results = array();
+        if($this->custom_query === null) {
+            $results = $this->_get_photos_from_table($relation_value);
+        }
+        else
+        {
+            $results = $this->_get_photos_from_query();
+        }
 
     	$thumbnail_url = !empty($this->thumbnail_path) ? $this->thumbnail_path : $this->image_path;
 

@@ -112,5 +112,34 @@ class Manager_private extends CI_Model {
     function updateHeadImage($clubId, $picture) {
         $this->db->update("buf_club", array("head_picture" => $picture), array("id"=>$clubId));
     }
+
+    /**
+     * Возвращает объект фотографий конкретного клуба
+     * @param $id id клуба
+     * @return image_CRUD объект
+     */
+    function getPhotosObject($id) {
+        $image_crud = new image_CRUD();
+
+        $image_crud->set_table("fitnesclub_photo");
+        $image_crud->set_primary_key_field('id');
+        $image_crud->set_url_field('photo');
+        $image_crud->set_thumbnail_prefix("");
+        $image_crud->set_image_path('image');
+        $image_crud->set_relation_field('fitnesclubid');;
+        return $image_crud;
+    }
+
+    function deleteImage($id) {
+        $this->db->delete("fitnesclub_photo", "id = $id");
+    }
+
+    function insertImage($nameImage, $clubId) {
+        $this->db->insert("fitnesclub_photo", array(
+            "photo"       => "club/".$nameImage,
+            "fitnesclubid"=> $clubId,
+            "state"       => 1
+        ));
+    }
 }
 ?>

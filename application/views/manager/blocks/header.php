@@ -6,8 +6,8 @@
 <div class="navbar">
     <div class="navbar-inner">
         <ul class="nav">
-            <li><a href='<?=site_url(array("Manager","club",$club->id));?>'>Общая информация</a></li>
-            <li><a href='<?=site_url(array("Manager","club",$club->id,"photo"));?>'>Фотографии</a></li>
+            <li><a href='<?=site_url(array("Manager","getClub", $club->id, "base"));?>'>Общая информация</a></li>
+            <li><a href='<?=site_url(array("Manager","getClub", $club->id, "photo"));?>'>Фотографии</a></li>
         </ul>
     </div>
 </div>
