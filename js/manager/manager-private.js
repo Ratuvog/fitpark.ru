@@ -253,7 +253,13 @@
                     $this.remove();
                 });
             });
-
+    $("#logo-save").click(function(){
+        var status = {
+            text: "Изменений нет",
+            type: "information"
+        }
+        FormSaver.showResultMessage(status);
+    })
     $('#fileupload').fileupload({
         url: 'http://'+location.hostname+'/Manager/logoUpload/',
         dataType: 'json',
@@ -280,7 +286,13 @@
                     var $this = $(this),
                         currentData  = $this.data();
                     currentData.formData = {clubId: $this.attr("clubId")};
-                    $this.off("click")
+                    $this.off("click").on("click", function(){
+                        var status = {
+                            text: "Изменений нет",
+                            type: "information"
+                        }
+                        FormSaver.showResultMessage(status);
+                    })
                     currentData.submit().always(function () {
                         $this.prop("disable", true);
                     });
@@ -297,9 +309,17 @@
                 .html(file.preview);
         }
     }).on('fileuploaddone', function (e, data) {
-        alert("Success")
+        var status = {
+            text: "Обновление логотипа прошло успешно",
+            type: "success"
+        }
+        FormSaver.showResultMessage(status);
     }).on('fileuploadfail', function (e, data) {
-        alert("Error")
+        var status = {
+            text: "Обновление логотипа завершилось с ошибкой",
+            type: "error"
+        }
+        FormSaver.showResultMessage(status);
     });
 
   });
