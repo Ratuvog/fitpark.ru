@@ -167,7 +167,7 @@ class Manager extends Base {
         $this->viewData['categoryName'] = $this->categoryName;
         $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
         $this->breadCrumbsData[] = array(
-            'href'  =>  site_url(array($this->controllerName, 'club', $clubId)),
+            'href'  =>  site_url(array($this->controllerName, 'getClub', $clubId)),
             'title' =>  $this->categoryName
         );
         if(isset($tab) && $tab == "photo") {
@@ -197,6 +197,10 @@ class Manager extends Base {
         }
 
         $this->viewData["output"] = $output;
+        $this->breadCrumbsData[] = array(
+            'href'  =>  site_url(array($this->controllerName, 'getClub', $clubId, "photo")),
+            'title' =>  "Фотографии клуба"
+        );
         $this->renderScene();
     }
 
