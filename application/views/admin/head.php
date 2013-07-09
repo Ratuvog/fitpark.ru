@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="cp-1251" />
+    <link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','admin','admin.css'));?>" />
+    <link type="text/css" rel="stylesheet" href="<?php echo site_url(array('css','bootstrap','bootstrap.css'));?>" />
+    <script src="<?php echo site_url(array('js','bootstrap.js'));?>"></script>
+</head>
+<body style="padding: 20px;">
+<div>
+    <a href="<?php echo site_url('Hfnedjuhfnedju/logout')?>">Выйти</a>
+</div>
+
+<div style="text-align: center;">
+    <h2><?php echo $categoryName; ?></h2>
+</div>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <ul class="nav">
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/cities')?>'>Города (<?=$counters->city;?>)</a></li>
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/districts')?>'>Районы (<?=$counters->district;?>)</a></li>
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/clubs')?>'>Фитнес-клубы (<?=$counters->fitnesclub;?>)</a></li>
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/services')?>'>Услуги клубов (<?=$counters->fitnesclub_services;?>)</a></li>
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/orders')?>'>Порядок вывода клубов</a></li>
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/descriptions')?>'>Описания</a></li>
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/filters')?>'>Фильтры</a></li>
+        <li><a href='<?php echo site_url('Hfnedjuhfnedju/order_list_active')?>'>Заявки на изменения (<?=$changeOrderCount;?>)</a></li>
+    </ul>
+    </div>
+</div>

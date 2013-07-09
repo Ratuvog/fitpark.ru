@@ -2,6 +2,7 @@
 <html>
     <head>
         <title><?=$titleText;?></title>
+        
         <!--META-->
         <meta name="description" content="<?=$desc;?>">
         <meta name="keywords" content="<?=$keywords;?>">
@@ -17,13 +18,12 @@
             
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-        <script src="http://blueimp.github.io/JavaScript-Load-Image/load-image.min.js"></script>
+        <!--<script src="http://blueimp.github.io/JavaScript-Load-Image/load-image.min.js"></script> -->
         <script src="//vk.com/js/api/openapi.js?96"></script>
 
-<!--        <script type="text/javascript" src="/js/noty/jquery.noty.js"></script>-->
-<!--        <script type="text/javascript" src="/js/noty/layouts/topRight.js"></script>-->
-<!--        <script type="text/javascript" src="/js/noty/themes/default.js"></script>-->
-<!--        <script type="text/javascript" src="/js/alerts.js"></script>-->
+        <script type="text/javascript" src="/js/noty/jquery.noty.js"></script>
+        <script type="text/javascript" src="/js/noty/layouts/topRight.js"></script>
+        <script type="text/javascript" src="/js/noty/themes/default.js"></script>
 
         <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
         <!-- You can add more layouts if you want -->
@@ -168,8 +168,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </td>
                             </tr>
                             <tr>
-                                <td class="window-name-options">Имя</td>
-                                <td><input type="text" class="checkout-input search" text="Имя" validator="blank" name="name"/></td>
+                                <td class="window-name-options">�?мя</td>
+                                <td><input type="text" class="checkout-input search" text="�?мя" validator="blank" name="name"/></td>
                             </tr>
                             <tr>
                                 <td class="window-name-options">Телефон</td>
@@ -209,8 +209,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </td>
                             </tr>
                             <tr>
-                                <td class="window-name-options">Имя</td>
-                                <td><input type="text" class="checkout-input search" text="Имя" validator="blank" name="name"/></td>
+                                <td class="window-name-options">�?мя</td>
+                                <td><input type="text" class="checkout-input search" text="�?мя" validator="blank" name="name"/></td>
                             </tr>
                             <tr>
                                 <td class="window-name-options">E-mail</td>
@@ -248,8 +248,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </td>
                             </tr>
                             <tr>
-                                <td class="window-name-options">Имя</td>
-                                <td><input type="text" class="checkout-input search" text="Имя" validator="blank" name="name"/></td>
+                                <td class="window-name-options">�?мя</td>
+                                <td><input type="text" class="checkout-input search" text="�?мя" validator="blank" name="name"/></td>
                             </tr>
                             <tr>
                                 <td class="window-name-options">Телефон</td>
@@ -281,8 +281,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </td>
                             </tr>
                             <tr>
-                                <td class="window-name-options">Имя</td>
-                                <td><input type="text" class="checkout-input search" text="Имя" validator="blank" name="name"/></td>
+                                <td class="window-name-options">�?мя</td>
+                                <td><input type="text" class="checkout-input search" text="�?мя" validator="blank" name="name"/></td>
                             </tr>
                             <tr>
                                 <td class="window-name-options">Фамилия</td>

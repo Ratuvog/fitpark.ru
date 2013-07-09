@@ -15,7 +15,9 @@ class Hfnedjuhfnedju extends CI_Controller {
         'subscribes' => array('Абонементы','fitnesclub_subscribe'),
         'reviews' => array('Отзывы','fitnesclub_review'),
         'descriptions' => array('Описания','fitnesclub_description'),
-        'photos' => array('Фотографии','fitnesclub_photo')
+        'photos' => array('Фотографии','fitnesclub_photo'),
+        'order_list_active' => array('Заявки на изменение', ''),
+        'club_changes' => array('Модерация изменений клуба', '')
     );
     private $categoryName = 'Авторизация';
     
@@ -35,7 +37,6 @@ class Hfnedjuhfnedju extends CI_Controller {
                 $ci = &get_instance();
                 $ci->load->model('grocery_CRUD_Model');
                 $this->baseModel = $ci->grocery_CRUD_Model;
-            
 	}
         
         function _remap($method, $param)
@@ -99,11 +100,23 @@ class Hfnedjuhfnedju extends CI_Controller {
             $this->currentTable = $this->state[$stateNum][1];
         }
 	
-	function render($output = null)
+	function render($output = null, $view = 'admin/admin', $hasJsCss = true)
         {
+            if(!$hasJsCss) {
+                $output->css_files = array();
+                $output->js_files = array();
+            }
+            
+            $this->load->model('counters');
+            $output->counters = $this->counters->get(array('city','fitnesclub','district','fitnesclub_services'));
+            
+            $this->load->model('buffer_club');
+            $output->changeOrderCount = count($this->buffer_club->get('active'));
+            
             $output->currentTable = $this->currentTable;
             $output->categoryName = $this->categoryName;
-            $this->load->view('admin/admin',$output);	
+            
+            $this->load->view($view, $output);	
 	}
 	
         function import()
@@ -168,27 +181,7 @@ class Hfnedjuhfnedju extends CI_Controller {
             $pa = "<script> document.location.href = '".$_SERVER['HTTP_REFERER']."' </script>";
             echo $pa;
         }
-        
-	/*function categories()
-	{
-                $this->setCurentState('category');
-                $crud = new grocery_CRUD();
-                $crud->set_table($this->currentTable);
-		$crud->set_field_upload('icon','assets/uploads/files');
-                
-                $crud->set_relation_n_n('Фильтры', '',
-                    $this->currentTable, 'categoryid', 
-                    'optionid', 'name', 'priority');
-                
-                $crud->set_relation_n_n('item', 'ref_category_item',
-                'fitnesclub', 'categoryid', 
-                'itemid', 'name', 'priority');
-                
-                $output = $crud->render();
-		$this->render($output);
-                
-	} */
-        
+               
         function filters()
 	{
                 $this->setCurentState('filters');
@@ -313,6 +306,43 @@ class Hfnedjuhfnedju extends CI_Controller {
                 
                 $output = $crud->render();
                 $this->render($output);
+        }
+        
+        function order_list_active()
+        {
+            $this->setCurentState('order_list_active');
+            
+            $this->load->model('buffer_club');
+            $output->changes = $this->buffer_club->get('active');
+            $output->states = $this->buffer_club->states();
+            
+            $this->load->model('city');
+            $output->cities = $this->city->map();
+            
+            $this->load->model('manager');
+            $output->manager = $this->manager->map();
+
+            $this->render($output, 'admin/change_list', false);
+        }
+        
+        function club_changes($club)
+        {
+            $this->setCurentState('club_changes');
+            
+            $this->load->model('buffer_club');
+            $this->load->helper('image');
+            $output->club = $this->buffer_club->byId($club);
+            
+            $this->load->model('city');
+            $output->cities = $this->city->map();
+            
+            $this->load->model('district');
+            $output->districts = $this->district->map();
+            
+            $this->load->model('manager');
+            $output->manager = $this->manager->map();
+
+            $this->render($output, 'admin/club_changes', false);
         }
                 
         function index()

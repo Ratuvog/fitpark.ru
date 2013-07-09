@@ -93,7 +93,7 @@
 </div>
 
 <div class="info-block">
-    <div class="title">Краткое описание</div>
+    <div class="title">Описание</div>
     <div class="box save-form">
         <table class="user-input">
             <tr>

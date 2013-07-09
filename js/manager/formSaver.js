@@ -14,10 +14,12 @@ Status = {
         hasNotChanges : {
             text: "Изменений нет",
             type: "information"
+        },
+        hasNotActiveCheckBox : {
+            text: "Хотя бы один пункт должен быть активен",
+            type: "error"
         }
 };
-
-
 
 FormSaver = {
     sendToSave : function(form, funcName){
@@ -37,11 +39,11 @@ FormSaver = {
             type: 'post',
             dataType: 'json',
             data: formData,
-            success: function(data){
+            success: function(data){           
                     if(data.status === 'OK')
-                        self.showResultMessage( Status.saveSuccess);
+                        self.showResultMessage(Status.saveSuccess);
                     else
-                        self.showResultMessage( Status.saveError);
+                        self.showResultMessage(Status.saveError);
                     self.storeFormState(form);
                     updateLastTimeUpdate();
             },
@@ -52,7 +54,7 @@ FormSaver = {
             complete: function() {
                 form.find(".ajax-loader").remove();
             }
-        });
+        });      
     },
     validateInput : function (input) {
         var validator = input.attr("validator");
@@ -72,37 +74,13 @@ FormSaver = {
         return "OK";
     },
     showResultMessage : function(status) {
-//        $.noty.defaults = {
-//            layout: 'top',
-//            theme: 'defaultTheme',
-//            dismissQueue: true, // If you want to use queue feature set this true
-//            template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
-//            animation: {
-//                open: {height: 'toggle'},
-//                close: {height: 'toggle'},
-//                easing: 'swing',
-//                speed: 500 // opening & closing animation speed
-//            },
-//            timeout: false, // delay for closing event. Set false for sticky notifications
-//            force: false, // adds notification to the beginning of queue when set to true
-//            modal: false,
-//            closeWith: ['click'], // ['click', 'button', 'hover']
-//            callback: {
-//                onShow: function() {},
-//                afterShow: function() {},
-//                onClose: function() {},
-//                afterClose: function() {}
-//            },
-//            buttons: false // an array of buttons
-//        };
-        alertInfo(status.text);
-//        var mes = noty({
-//            type: status.type,
-//            text: status.text,
-//            layout: 'topRight',
-//            timeout: 2500
-//        });
-    },
+        var n = noty({
+            layout: 'topRight',
+            timeout: 3000,
+            text : status.text,
+            type : status.type
+        });
+    },  
     formStorage : {},
     storeFormState : function () {
         var forms = $('.save-form');
@@ -113,7 +91,7 @@ FormSaver = {
                 var type = $(this).attr("type");
                 if(type === "hidden" && type === "button" && type === "submit")
                     return;
-
+               
                 if($(this).attr('name')) {
                     if(type === "checkbox")
                         inputStorage[$(this).attr('name')] = this.checked;
@@ -132,7 +110,7 @@ FormSaver = {
             var type = $(this).attr("type");
             if(type === "hidden" && type === "button" && type === "submit")
                 return;
-
+        
             if($(this).attr('name')) {
                 if(type === "checkbox")
                     hasChanges = hasChanges || (inputStorage[$(this).attr('name')] !== this.checked);
@@ -142,11 +120,32 @@ FormSaver = {
         });
         return hasChanges;
     },
+    hasActiveCheckBox: function (form) {
+        var count = 0;
+        var hasCB = false;
+        $(form).find('input').each(function()
+        {
+            var type = $(this).attr("type");
+            if(type === "checkbox") {
+                hasCB = true;
+                if(this.checked === true)
+                    count++;
+            }
+                   
+        });
+        if(hasCB)
+            return count;
+        return true;
+    },
     saveClicked : function(button, funcName) {
         var self = this;
         var form = button.parents(".save-form").first();
         if(!this.formHasChanges(form)) {
-            this.showResultMessage(form, Status.hasNotChanges);
+            this.showResultMessage(Status.hasNotChanges);
+            return;
+        }
+        if(!this.hasActiveCheckBox(form)) {
+            this.showResultMessage(Status.hasNotActiveCheckBox);
             return;
         }
         var errorPull = [];
@@ -160,14 +159,14 @@ FormSaver = {
                     errorPull.push(error);
             }
         });
-
+        
         if (errorPull.length === 0)
         {
             self.sendToSave(form, funcName);
             return;
         }
-
-        self.showResultMessage(form, $('<label>').addClass('save-error').append(errorPull[0]));
+        
+        self.showResultMessage({text:errorPull[0], type: "error"});
         errorPull = [];
     }
 };

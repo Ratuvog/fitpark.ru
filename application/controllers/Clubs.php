@@ -53,7 +53,6 @@ class Clubs extends Base {
     public function clubs()
     {
         $this->session->unset_userdata('search');
-        $this->session->unset_userdata('search');
         $this->session->unset_userdata('filter');
         $this->session->unset_userdata('activeFilter');
         $this->filterEnabled = false;
