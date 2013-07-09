@@ -82,9 +82,18 @@ class Manager_private extends CI_Model {
     
     function updateServices($data, $club)
     {
-        $data['state'] = 1;
-        if($this->db->insert('buf_club', $data, array('id' => $club)))
-            return 'OK';
+        if(!$this->db->delete('buf_club_services', array('clubId'=>$club)))
+            return "ERR";
+        
+        foreach(array_keys($data) as $key)
+        {
+            if($data[$key] === "true")
+            {
+                $insertSet = array('clubId' => $club, 'serviceId' => $key);
+                if(!$this->db->insert('buf_club_services', $insertSet))
+                    return "ERR";
+            }
+        }
         return "OK";
     }
     
@@ -105,7 +114,7 @@ class Manager_private extends CI_Model {
 
         return $this->db->select('fs.*, bcs.serviceId as active')
                         ->from('fitnesclub_services fs')
-                        ->join('buf_club_services bcs', "fs.id = bcs.serviceId and bcs.clubId = $clubId",'left')
+                        ->join("$table bcs", "fs.id = bcs.serviceId and bcs.clubId=$clubId",'left')
                         ->get()->result();
     }
 
