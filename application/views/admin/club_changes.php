@@ -37,6 +37,10 @@
                     <td><?=$club->phone;?><td>
                 </tr>
                 <tr>
+                    <th style="width: 15%;">Режим работы</th>
+                    <td><?=$club->work_hours;?><td>
+                </tr>
+                <tr>
                     <th style="width: 15%;">Город</th>
                     <td><?=$cities[$club->cityid];?><td>
                 </tr>

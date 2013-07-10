@@ -59,6 +59,10 @@
                 <td><input name="phone" type="text" placeholder="Телефон" value="<?=$club->phone;?>" validator="empty"/></td>
             </tr>
             <tr>
+                <td><label class="caption">Режим работы</label></td>
+                <td><input name="work_hours" type="text" placeholder="Режим работы" value="<?=$club->work_hours;?>" validator="empty"/></td>
+            </tr>
+            <tr>
                 <td><label class="caption">Город</label></td>
                 <td>
                     <select name="cityid" id="city-combobox">

@@ -282,7 +282,7 @@ class Manager extends Base {
     
     function saveCommon()
     {
-        $keys = array('name', 'site', 'phone', 'cityid', 'districtId', 'address');
+        $keys = array('name', 'site', 'phone', 'cityid', 'districtId', 'address', 'work_hours');
         $saveData = array();
         foreach ($keys as $k)
             $saveData[$k] = $this->input->post($k);
