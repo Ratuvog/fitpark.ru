@@ -220,13 +220,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                         <? foreach ($clubs as $club) { ?>
                                         <tr>
                                             <td valign="middle">
-                                                <a href="<?=site_url(array("club",$club['id']));?>">
-                                                    <img src="<?=$club['head_picture'];?>" alt="" />
+                                                <a href="<?=site_url(array("club",$club->id));?>">
+                                                    <img src="<?=$club->head_picture;?>" alt="" />
                                                 </a>
                                             </td>
                                             <td valign="middle" style="padding-left: 10px;">
-                                                <a href="<?=site_url(array("club",$club['id']));?>">
-                                                    <?=$club['name'];?>
+                                                <a href="<?=site_url(array("club",$club->id));?>">
+                                                    <?=$club->name;?>
 <!--                                                    <span class="main-baner-tb-service-item"></span>-->
                                                 </a>
                                             </td>
@@ -340,7 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(document, window, "yandex_metrika_callbacks");
 </script>
 <noscript><div><img src="//mc.yandex.ru/watch/20271514" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-        <?=$currentCity->footerScripts;?>
+        <?=$currentCity->footer_scripts;?>
 <!-- /Yandex.Metrika counter -->
 <!--<!-- Rating@Mail.ru counter -->
 <!--<script type="text/javascript">//<![CDATA[-->

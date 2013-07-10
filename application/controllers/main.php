@@ -37,7 +37,7 @@ class Main extends Base {
 
         $this->viewData["clubs"] = $this->fitpark_model->getClubList("popularity",3,0,array());
         foreach ($this->viewData["clubs"] as &$value) {
-            $value['url']          = prep_url(site_url(array('club',$value['id'])));
+            $value->url = prep_url(site_url(array('club',$value->id)));
         }
 
         $this->view = "index";
