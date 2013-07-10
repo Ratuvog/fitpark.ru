@@ -143,7 +143,7 @@ class Club extends Base {
     protected function getImages()
     {
         $ADDITIONAL = "_min";
-        $this->viewData['images'] = $this->fitpark_club_model->getImages($this->clubId);
+        $this->viewData['images'] = $this->fitpark_club_model->getImages($this->clubId, 0);
         $i = 0;
         foreach ($this->viewData['images'] as &$currentImage) {
             $currentImage["photo"] = "image/club/".$currentImage["photo"];

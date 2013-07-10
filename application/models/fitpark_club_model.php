@@ -69,8 +69,9 @@ class Fitpark_club_model extends CI_Model {
         return $this->db->get()->result_array();
     }
 
-    function getImages($clubId) {
-        return $this->getInfon("fitnesclub_photo", "fitnesclubid", $clubId);
+    function getImages($clubId, $state = 0) {
+        $where = array("fitnesclubid" => $clubId, 'state' => $state);
+        return $this->db->get_where("fitnesclub_photo", $where)->result_array();
     }
 
     function updateThumb($id, $src) {
