@@ -5,18 +5,18 @@
                                 <table width="280px" height="100%" class="head-image">
                                     <tr>
                                         <td align="center" valign="middle">
-                                            <a href="<?=$base['head_picture'];?>" rel="group" class="fancybox">
-                                                <img style="max-width: 280px;" src="<?=$base['head_picture'];?>" alt="<?=$base['name'];?>" />
+                                            <a href="<?=$base->head_picture;?>" rel="group" class="fancybox">
+                                                <img style="max-width: 280px;" src="<?=$base->head_picture;?>" alt="<?=$base->name;?>" />
                                             </a>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="rating club-big"
-                                 data-vote-id="<?=$base['id'];?>"
+                                 data-vote-id="<?=$base->id;?>"
                                  title="Ваша оценка: <? $userRating = 0; if(!empty($userVote)) $userRating = $userVote[0]['vote']; echo $userRating;?>"
                                  data-score="<?if($userRating != 0)
-                                                echo $base['rating'];
+                                                echo $base->rating;
                                             else
                                                 echo 0;?>"
                                  ro="<?if($userRating != 0)
@@ -30,26 +30,26 @@
                                 } else {
                                       echo "Ваша оценка: ".$userRating;
                                       echo "<br>";
-                                      echo "Средняя оценка: ".round($base['rating'],2);
+                                      echo "Средняя оценка: ".round($base->rating,2);
                                 }?>
                             </div>
                         </section>
                         <section class="short-description-card">
                             <header class="card-name-club">
-                                <h3><?=$base['name'];?></h3>
+                                <h3><?=$base->name;?></h3>
                             </header>
                             <table>
-                                <? if($base['rates']){ ?>
+                                <? if($base->rates){ ?>
                                 <tr>
                                     <td colspan="2">
-                                        <? if ($base['isEmptyPrice']) { ?>
+                                        <? if ($base->isEmptyPrice) { ?>
                                             <h4 class="variation-abonements">Варианты абонементов</h4>
                                         <? } else {?>
                                         <h4 class="variation-abonement">Данный клуб не предоставил информации о ценах</h4>
                                         <? } ?>
                                     </td>
                                     <td>
-                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-feedback" href="/club/getFeedback/<?= $base['id']; ?>">
+                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-feedback" href="/club/getFeedback/<?=$base->id; ?>">
                                                     <ul>
                                                         <li>
                                                             <div class="icon-small-phone"></div>
@@ -62,7 +62,7 @@
                                                 </div>
                                     </td>
                                 </tr>
-                                <? foreach ($base['rates'] as $currentRate){ ?>
+                                <? foreach ($base->rates as $currentRate){ ?>
                                 <? if($currentRate['price']>1) {?>
                                 <tr>
                                     <td><?=$currentRate['period'];?></td>
@@ -74,7 +74,7 @@
 
                                 <tr>
                                     <td>
-                                        <div class="button-get-discount button-club card-action-button action-button" selector="#get-abon" href="/club/getAbonement/<?=$base['id'];?>">
+                                        <div class="button-get-discount button-club card-action-button action-button" selector="#get-abon" href="/club/getAbonement/<?=$base->id;?>">
                                             <ul>
                                                 <li>
                                                     <div class="icon-small-buy"></div>
@@ -86,7 +86,7 @@
                                         </div>
                                     </td>
                                     <td >
-                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-guest" href="/club/getGuest/<?=$base['id'];?>">
+                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-guest" href="/club/getGuest/<?=$base->id;?>">
                                             <ul>
                                                 <li>
                                                     <div class="icon-small-calendar"></div>
@@ -99,7 +99,7 @@
 
                                     </td>
                                     <td >
-                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-answer" href="/club/getQuestion/<?=$base['id'];?>">
+                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-answer" href="/club/getQuestion/<?=$base->id;?>">
                                             <ul>
                                                 <li>
                                                     <div class="icon-small-help"></div>
@@ -153,18 +153,18 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                         <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">
 
                                     <div class="club-info"><div class="desc-text">
-                                        <div class="icon-home card-img-home"></div> <div class="text-card-club"><?= $base['address']; ?></div>
+                                        <div class="icon-home card-img-home"></div> <div class="text-card-club"><?= $base->address; ?></div>
                                             <div style="clear: both;"></div>
                                         </div>
-                                        <? if ($base['phone']) { ?>
+                                        <? if ($base->phone) { ?>
                                         <div class="desc-text">
-                                            <div class="icon-phone card-img-phone"></div> <div><?= $base['phone']; ?></div>
+                                            <div class="icon-phone card-img-phone"></div> <div><?= $base->phone; ?></div>
                                             <div style="clear: both;"></div>
                                         </div>
                                         <? } ?>
-                                        <? if ($base['site']) { ?>
+                                        <? if ($base->site) { ?>
                                         <div class="desc-text">
-                                            <a href=http://<?= $base['site']; ?> target="_blank"><div class="icon-hand-up card-img-hand-up"></div> <div><?= $base['site']; ?></div></a>
+                                            <a href=http://<?= $base->site; ?> target="_blank"><div class="icon-hand-up card-img-hand-up"></div> <div><?= $base->site; ?></div></a>
                                             <div style="clear: both;"></div>
                                         </div>
                                         <? } ?>
@@ -174,21 +174,6 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
 
                             <p>
 
-<!--                                <ul class="clubs-contacts">
-                                    <li>
-
-                                    </li>
-                                    <? if ($base['site']) { ?>
-                                        <li>
-                                            <a href="<?= $base['site']; ?>"><div class="icon-hand-up card-img-hand-up"></div> <?= $base['site']; ?></a>
-                                        </li>
-                                    <? } ?>
-                                    <? if ($base['phone']) { ?>
-                                        <li>
-                                            <div class="icon-phone card-img-phone"></div> <?= $base['phone']; ?>
-                                        </li>
-                                    <? } ?>
-                                </ul>-->
                                 <? foreach($descript as $text) {
                                     echo $text['text'];
                                 } ?>
@@ -196,7 +181,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                         </section>
                         <div id="review-club" class="full-card-description tabs-content <? if(!$isComment) {?>hideClass<?}?> ">
                             <section class="add-review">
-                                <div class="button-guest button-club action-button add-review-button" selector="#get-review" href="/club/addReview/<?=$base['id']?>">
+                                <div class="button-guest button-club action-button add-review-button" selector="#get-review" href="/club/addReview/<?=$base->id?>">
                                     <ul>
                                         <li>
                                             <div class="icon-small-pencil"></div>
@@ -287,7 +272,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                     </section>
                 </section>
                 <section class="analogs">
-                    <? if($analogs && !$base['isHideAnalogs']) {?>
+                    <? if($analogs && !$base->isHideAnalogs) {?>
                     <header class="title-analogs-section">
                         <h2>
                             Похожие фитнес-клубы
@@ -301,9 +286,9 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                 <tr>
                                 <? } ?>
                                 <td align="center">
-                                    <img src="<?=$currentClub['head_picture'];?>" class="analog-foto" alt="<?=$currentClub['name'];?>" style="max-width: 160px;" />
-                                    <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub['id'];?>"><?=$currentClub['name'];?></a></div>
-                                    <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub['id'];?>">
+                                    <img src="<?=$currentClub->head_picture;?>" class="analog-foto" alt="<?=$currentClub->name;?>" style="max-width: 160px;" />
+                                    <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub->id;?>"><?=$currentClub->name;?></a></div>
+                                    <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub->id;?>">
                                         <ul>
                                             <li>
                                                 <div class="icon-small-help"></div>
@@ -313,7 +298,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="/club/<?=$currentClub['id'];?>"  target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
+                                    <a href="/club/<?=$currentClub->id;?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                 </td>
                                 <? if($countClubs%($countAnalogsOnRow-1)==0) {?>
                                 </tr>
@@ -332,7 +317,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
 <div class="dnone">
     <div id="get-review" class="message-dialog">
         <form action="" method="post">
-            <h4> Мой отзыв о <?=$base['name'];?> </h4>
+            <h4> Мой отзыв о <?=$base->name;?> </h4>
             <table width="100%" class="window">
                 <tr>
                     <td colspan="2" class="error-text">

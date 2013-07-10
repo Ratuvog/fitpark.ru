@@ -16,7 +16,7 @@ class Fitpark_club_model extends CI_Model {
             ->group_by("fitnesclub.id")
             ->where(array('fitnesclub.id'=>$clubId));
         
-        $clubs = $this->db->get()->result_array();
+        $clubs = $this->db->get()->result();
         mutator_clubs_null_field($clubs, "head_picture", $this->config->item('empty_photo'));
         return $clubs;
     }
@@ -92,7 +92,7 @@ class Fitpark_club_model extends CI_Model {
                       f1.cityid = $cityid
                     AND f2.id = ? LIMIT 0,3";
         
-        $analogs = $this->db->query($query,array($clubId))->result_array();
+        $analogs = $this->db->query($query,array($clubId))->result();
         mutator_clubs_null_field($analogs, "head_picture", $this->config->item('emptyPhoto'));
         return $analogs;
     }

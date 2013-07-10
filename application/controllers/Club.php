@@ -108,25 +108,26 @@ class Club extends Base {
 
     protected function getBaseInfo()
     {
-        $infoArray = $this->fitpark_club_model->getBaseInfoClub($this->clubId);
+        $infoAll = $this->fitpark_club_model->getBaseInfoClub($this->clubId);
+        $infoArray = $infoAll[0];
         if(count($infoArray))
         {
-            $infoArray[0]["isEmptyPrice"] = FALSE;
-            foreach ($infoArray[0] as $key=>$value) {
+            $infoArray->isEmptyPrice = FALSE;
+            foreach ($infoArray as $key=>$value) {
                 if(substr($key,0,3) == "sub" && $value) {
-                    $infoArray[0]["isEmptyPrice"] |= TRUE;
+                    $infoArray->isEmptyPrice |= TRUE;
                     break;
                 }
             }
-            $this->viewData['base'] = $infoArray[0];
+            $this->viewData['base'] = $infoArray;
             $this->headerData['order'] = $this->order;
         }
     }
 
     protected function getRates()
     {
-        $this->viewData['base']['rates'] = $this->fitpark_club_model->getRatesClub($this->clubId);
-        foreach ($this->viewData['base']['rates'] as &$currentRate) {
+        $this->viewData['base']->rates = $this->fitpark_club_model->getRatesClub($this->clubId);
+        foreach ($this->viewData['base']->rates as &$currentRate) {
             $currentRate['price'] = substr($currentRate['price'], 0, strpos($currentRate['price'], ".")).$this->currency;
         }
     }
@@ -250,17 +251,17 @@ class Club extends Base {
     {
         $headerInfo = array('titleText'=>"ФитПарк. %s %s. Стоимость, отзывы, фотографии, рейтинг, акции.");
         $headerInfo["titleText"] = sprintf($headerInfo["titleText"],
-                                           $this->viewData['base']['name'],
+                                           $this->viewData['base']->name,
                                            lang("current_club_title"));
 
         $headerInfo["keywords"] = "%s. %s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
         $headerInfo["keywords"] = sprintf($headerInfo["keywords"],
-                                          $this->viewData['base']['name'],
+                                          $this->viewData['base']->name,
                                           lang("common_keys"));
 
         $headerInfo["desc"] = "%s %s. Отзывы, рейтинг, фотографии, цены, описание.";
         $headerInfo["desc"] = sprintf($headerInfo["desc"],
-                                      $this->viewData['base']['name'],
+                                      $this->viewData['base']->name,
                                       lang("club_desc"));
 
         foreach ($headerInfo as $key=>$value) {
@@ -274,7 +275,7 @@ class Club extends Base {
         
         $this->breadCrumbsData[] = array(
             'href'  => current_url(),
-            'title' => $this->viewData['base']['name']
+            'title' => $this->viewData['base']->name
         );
 
         $this->append_js(array("/js/club.js"));

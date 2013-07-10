@@ -48,7 +48,6 @@ class Base extends CI_Controller {
         $this->load->helper("geolocation");
 
         $this->load->model('fitpark_model');
-        $this->initTwiggy();
         $this->initNavigation();
         $this->initSearchWidget();
         
@@ -75,12 +74,6 @@ class Base extends CI_Controller {
         if($this->idna_convert->decode($_SERVER["HTTP_HOST"]) != $this->headerData['currentCity']->url)
             $this->customRedirect($this->prepareUrl($this->headerData['currentCity']->url));
         }
-
-    function initTwiggy()
-    {
-        $this->load->spark('Twiggy/0.8.5');
-        $this->twiggy->register_function('lang');
-    }
 
     private function prepareUrl($host) {
         $url = $host;
