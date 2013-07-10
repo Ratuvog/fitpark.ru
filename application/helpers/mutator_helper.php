@@ -11,10 +11,10 @@ function mutator_clubs_null_field(&$clubs, $field, $mutator_value)
         {
             if($key == $field)
             {
-                if(!$club[$key])
-                    $club[$key] = site_url(array("image",  $mutator_value));
+                if(!$club->$key)
+                    $club->$key = site_url(array("image",  $mutator_value));
                 else
-                    $club[$key] = site_url(array("image", "club", $club[$key]));
+                    $club->$key = site_url(array("image", "club", $club->$key));
             }
         }
     }

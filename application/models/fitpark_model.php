@@ -140,7 +140,7 @@ class Fitpark_model extends CI_Model {
         $this->initListClubs($limit, $offset);
         $this->getSortStrategyByName($ord);
         $this->installFilter($filter);
-        $clubs = $this->db->get()->result_array();
+        $clubs = $this->db->get()->result();
         mutator_clubs_null_field($clubs, "head_picture", $this->config->item('empty_photo'));
         return $clubs;
     }
@@ -159,7 +159,9 @@ class Fitpark_model extends CI_Model {
         $this->getSortStrategyByName($ord);
         $this->getSearchStrategyByName('Name', $name);
         $this->installFilter($filter);
-        return $this->db->get()->result();
+        $clubs = $this->db->get()->result();
+        mutator_clubs_null_field($clubs, "head_picture", $this->config->item('empty_photo'));
+        return $clubs;
     }
 
     private function installFilter($filter)

@@ -28,7 +28,7 @@ class Clubs extends Base {
         $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес клубы';
         $this->view = 'clubs/clubs';
-        
+        $this->load->helper("mutator");
         $this->breadCrumbsData[] = array(
             'href'  =>  site_url(array('clubs')),
             'title' => 'Список клубов'
@@ -306,7 +306,7 @@ class Clubs extends Base {
         redirect(site_url(array('clubs','page')));
     }
 
-    public function page($offset)
+    public function page($offset = 0)
     {
         $this->pageNumber = (int)$offset;
         $this->index();

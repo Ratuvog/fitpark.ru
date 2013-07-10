@@ -115,13 +115,13 @@
                                     <table class="image-wrapper">
                                         <tr>
                                             <td align="center" valign="middle" >
-                                                <img style="max-width: 160px" src="<?=$row['head_picture'];?>" alt=""/>
+                                                <img style="max-width: 160px" src="<?=$row->head_picture;?>" alt=""/>
                                             </td>
                                         </tr>
                                     </table>
                                     <div class="rating clubs-mini"
-                                         title="Средняя оценка клуба: <?=round($row['rating'],2);?>. Оценок: <?=round($row['votes'],2);?>"
-                                         data-score="<?=$row['rating'];?>">
+                                         title="Средняя оценка клуба: <?=round($row->rating,2);?>. Оценок: <?=round($row->votes,2);?>"
+                                         data-score="<?=$row->rating;?>">
                                     </div>
                                 </section>
                             </td>
@@ -129,19 +129,19 @@
                                 <section class="decription-club">
                                     <header class="name-club">
                                         <h3>
-                                            <a href="<?=site_url(array('club',$row['id']));?>" target="_blank"><?=$row['name'];?></a>
+                                            <a href="<?=site_url(array('club',$row->id));?>" target="_blank"><?=$row->name;?></a>
                                         </h3>
                                         <div style="color: #aaa;">
-                                            <?=$row['address'];?>
+                                            <?=$row->address;?>
                                         </div>
                                     </header>
                                     <section class="services-club">
                                         <ul class="icons-services">
-                                            <?if(key_exists($row['id'], $services)) {
-                                                foreach ($services[$row['id']] as $opt) {
+                                            <?if(key_exists($row->id, $services)) {
+                                                foreach ($services[$row->id] as $opt) {
                                                     if(!empty($opt['icon'])) {?>
                                                 <li>
-                                                    <img src="<?=$opt['icon'];?>" title="<?=$opt['name'];?>"></img>
+                                                    <img src="<?=$opt["icon"];?>" title="<?=$opt["name"];?>"></img>
                                                 </li>
                                                   <?}
                                                 }
@@ -150,11 +150,11 @@
                                         <div style="clear: both;"></div>
                                     </section>
                                     <section class="level-club">
-                                        <?=$row['segment'];?>
+                                        <?=$row->segment;?>
                                     </section>
                                     <section class="text-description-club">
                                         <p>
-                                            <?=$row['description'];?>
+                                            <?=$row->description;?>
                                         </p>
                                     </section>
                                 </section>
@@ -162,33 +162,33 @@
                             <td valign="top" class="mini-card-club-part mini-card-club-price">
                                 <section class="price-club">
                                     <table>
-                                        <?if($row['sub1'] > 0){?>
+                                        <?if($row->sub1 > 0){?>
                                         <tr>
                                             <td class="price-club-date">1 месяц</td>
-                                            <td class="price-club-price"><h4>от <?=$row['sub1'];?> рублей</h4></td>
+                                            <td class="price-club-price"><h4>от <?=$row->sub1;?> рублей</h4></td>
                                         </tr>
                                         <?}?>
-                                        <?if($row['sub3'] > 0){?>
+                                        <?if($row->sub3 > 0){?>
                                         <tr>
                                             <td class="price-club-date">3 месяца</td>
-                                            <td class="price-club-price"><h4>от <?=$row['sub3'];?> рублей</h4></td>
+                                            <td class="price-club-price"><h4>от <?=$row->sub3;?> рублей</h4></td>
                                         </tr>
                                         <?}?>
-                                        <?if($row['sub6'] > 0){?>
+                                        <?if($row->sub6 > 0){?>
                                         <tr>
                                             <td class="price-club-date">6 месяцев</td>
-                                            <td class="price-club-price"><h4>от <?=$row['sub6'];?> рублей</h4></td>
+                                            <td class="price-club-price"><h4>от <?=$row->sub6;?> рублей</h4></td>
                                         </tr>
                                         <?}?>
-                                        <?if($row['sub12'] > 0){?>
+                                        <?if($row->sub12 > 0){?>
                                         <tr>
                                             <td class="price-club-date">1 год</td>
-                                            <td class="price-club-price"><h4>от <?=$row['sub12'];?> рублей</h4></td>
+                                            <td class="price-club-price"><h4>от <?=$row->sub12;?> рублей</h4></td>
                                         </tr>
                                         <?}?>
                                         <tr>
                                             <td colspan="2">
-                                                <div class="button-get-discount button-club action-button" selector="#get-answer" href="/club/getQuestion/<?=$row['id'];?>">
+                                                <div class="button-get-discount button-club action-button" selector="#get-answer" href="/club/getQuestion/<?=$row->id;?>">
                                                     <ul>
                                                         <li>
                                                             <div class="icon-small-help"></div>
@@ -202,7 +202,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <a href="<?=site_url(array('club',$row['id']));?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
+                                                <a href="<?=site_url(array('club',$row->id));?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                             </td>
                                         </tr>
                                     </table>
