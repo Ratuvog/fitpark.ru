@@ -22,18 +22,28 @@ class Buffer_club extends CI_Model {
 
     function get($state = 'all')
     {
+        $this->db->select("*")->
+                   from($this->table)->
+                   order_by('last_update', 'desc');
+   
         if($state === 'all')
-            return $this->db->get($this->table)->result();
-        return $this->db->get_where($this->table, array('state'=>$this->states[$state]))->result();
+            return $this->db->get()->result();
+
+        return $this->db->where(array('state'=>$this->states[$state]))->get()->result();
     }
     
     
-    function byId($club)
+    function byId($club, $replacePhoto = true)
     {
         $result = $this->db->get_where('buf_club', array('id'=>$club))->row();
-        if($result)
+        if($result && $replacePhoto)
             $result->head_picture = ImageHelper::replace_path($result->head_picture, $this->config->item('empty_photo'));
         return $result;
+    }
+    
+    function setData($id, $data)
+    {
+        $this->db->update($this->table, $data, array('id' => $id));
     }
     
 }

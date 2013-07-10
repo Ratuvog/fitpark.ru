@@ -72,9 +72,9 @@ class Base extends CI_Controller {
 
 	    $this->initListAvaibleCity();
 
-        if($this->idna_convert->decode($_SERVER["HTTP_HOST"]) != $this->headerData['currentCity']->url)
-            $this->customRedirect($this->prepareUrl($this->headerData['currentCity']->url));
-    }
+        /*if($this->idna_convert->decode($_SERVER["HTTP_HOST"]) != $this->headerData['currentCity']->url)
+            $this->customRedirect($this->prepareUrl($this->headerData['currentCity']->url));*/
+        }
 
     function initTwiggy()
     {

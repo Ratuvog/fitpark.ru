@@ -53,7 +53,8 @@
                                     ?><div class="font-succes">Изменения приняты</div><?
                                     break;
                                 case 3:
-                                    ?><div class="font-error">Изменения отвергнуты</div><?
+                                    ?><div class="font-error">Изменения отклонены</div>
+                                      Комментарий: <? echo $row->comment;
                                     break;
                             } ?>
                         </header>

@@ -27,7 +27,8 @@ class Hfnedjuhfnedju extends CI_Controller {
 		
 		$this->load->database();
 		$this->load->helper('url');
-		
+                $this->load->helper('image');
+                
 		$this->load->library('grocery_CRUD');
                 $this->load->library('PHPExcel');
                 $this->load->library('session');
@@ -314,6 +315,9 @@ class Hfnedjuhfnedju extends CI_Controller {
             
             $this->load->model('buffer_club');
             $output->changes = $this->buffer_club->get('active');
+            $output->changes_rejected = $this->buffer_club->get('reject');
+            $output->changes_aproved = $this->buffer_club->get('aprove');
+            
             $output->states = $this->buffer_club->states();
             
             $this->load->model('city');
@@ -325,12 +329,29 @@ class Hfnedjuhfnedju extends CI_Controller {
             $this->render($output, 'admin/change_list', false);
         }
         
+        function order_list_all()
+        {
+            $this->setCurentState('order_list_active');
+            
+            $this->load->model('buffer_club');
+            $output->changes = $this->buffer_club->get();
+            
+            $output->states = $this->buffer_club->states();
+            
+            $this->load->model('city');
+            $output->cities = $this->city->map();
+            
+            $this->load->model('manager');
+            $output->manager = $this->manager->map();
+
+            $this->render($output, 'admin/change_list_all', false);
+        }
+        
         function club_changes($club)
         {
             $this->setCurentState('club_changes');
             
             $this->load->model('buffer_club');
-            $this->load->helper('image');
             $output->club = $this->buffer_club->byId($club);
             
             $this->load->model('city');
@@ -339,10 +360,95 @@ class Hfnedjuhfnedju extends CI_Controller {
             $this->load->model('district');
             $output->districts = $this->district->map();
             
+            $this->load->model('buf_club_service');
+            $output->club_services = $this->buf_club_service->byClub($club);
+            
+            $this->load->model('service');
+            $output->services = $this->service->map();
+            
+            $output->images = $this->getImages($club);
+            
             $this->load->model('manager');
             $output->manager = $this->manager->map();
 
             $this->render($output, 'admin/club_changes', false);
+        }
+          
+        
+        private function getImages($club)
+        {
+            $ADDITIONAL = "_min";
+            $this->load->model('photo');
+            $images = $this->photo->byClub($club, 1);
+            
+            $i = 0;
+            foreach ($images as &$currentImage) {
+                $currentImage->photo = "image/club/".$currentImage->photo;
+                if(!$currentImage->min_photo)
+                {
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = $currentImage->photo;
+                    $config['create_thumb'] = TRUE;
+                    $config['maintain_ratio'] = TRUE;
+                    $config['width'] = 300;
+                    $config['height'] = 150;
+                    $config['thumb_marker'] = $ADDITIONAL;
+
+                    $this->load->library("image_lib");
+                    $this->image_lib->initialize($config);
+                    if(!$this->image_lib->resize())
+                    {
+                        echo $i."<br>";
+                        echo $this->image_lib->display_errors();
+                        exit;
+                    }
+                    $i++;
+                    
+                    $fileParts = explode('.', $currentImage->photo);
+                    $extension = $fileParts[count($fileParts)-1];
+                    array_pop($fileParts);
+                    $fileName = implode('.', $fileParts);
+
+                    $resultFileName = $fileName.$ADDITIONAL.'.'.$extension;
+                    $this->photo->setData($currentImage->id, 'min_photo', $resultFileName);
+                    $currentImage->min_photo = $resultFileName;
+                    $this->image_lib->clear();
+                }
+                $currentImage->photo     = site_url($currentImage->photo);
+                $currentImage->min_photo = site_url($currentImage->min_photo);
+            }
+            return $images;
+        }
+        
+        function changes_aproved($club)
+        {
+            $this->load->model('buffer_club');
+            $buf = $this->buffer_club->byId($club, false);
+            
+            $this->load->model('club');
+            $this->club->updateFromBuffer($buf);
+            
+            $this->load->model('buf_club_service');
+            $buf_services = $this->buf_club_service->byClub($club);
+            
+            $this->load->model('service');
+            $this->service->updateFromBuffer($buf_services, $club);
+            
+            $this->load->model('photo');
+            $this->photo->updateFromBuffer($club);
+            
+            $status = array('state' => 2, 'comment' => '');
+            $this->buffer_club->setData($club, $status);
+            redirect(site_url('Hfnedjuhfnedju/order_list_active'));          
+        }
+        
+        function changes_rejected($club)
+        {
+            $this->load->model('buffer_club');
+            $status = array('state' => 3, 'comment' => $this->input->post('comment'));
+            $this->buffer_club->setData($club, $status);
+
+            redirect(site_url('Hfnedjuhfnedju/order_list_active'));          
         }
                 
         function index()
