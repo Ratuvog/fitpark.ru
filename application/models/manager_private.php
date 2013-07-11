@@ -134,7 +134,7 @@ class Manager_private extends CI_Model {
         $image_crud->set_primary_key_field('id');
         $image_crud->set_url_field('photo');
         $image_crud->set_thumbnail_prefix("");
-        $image_crud->set_image_path('image');
+        $image_crud->set_image_path('image/club');
         $image_crud->set_relation_field('fitnesclubid');;
         return $image_crud;
     }
@@ -145,7 +145,7 @@ class Manager_private extends CI_Model {
 
     function insertImage($nameImage, $clubId) {
         $this->db->insert("fitnesclub_photo", array(
-            "photo"       => "club/".$nameImage,
+            "photo"       => $nameImage,
             "fitnesclubid"=> $clubId,
             "state"       => 1
         ));
