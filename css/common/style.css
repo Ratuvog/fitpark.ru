@@ -465,9 +465,19 @@ div.item{
     background: url(/image/stars.png) no-repeat top 0px center;
 }
 
-.item-result-image img{
-    width: 177px;
-    height: 95px;
+.item-result-image img {
+    max-width: 160px;
+    max-height: 160px; 
+}
+
+.item-result-image * {
+    margin: 0;
+    padding: 0;
+}
+
+.item-result-image table {
+    width: 160px;
+    height: 160px; 
 }
 
 .main-result-block{
@@ -483,7 +493,11 @@ div.item{
 }
 
 .item-result-name h2{
+    width: 180px;
     margin: 10px 0;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .item-result-info{
@@ -491,12 +505,21 @@ div.item{
     text-align: left;
 }
 
-.item-result-info p{
+.item-result-info p {
     margin: 10px 0;
 }
 
-.item-result-info span{
+.item-result-info img {
+    float: left;
+}
+
+.item-result-info span {
     padding-left: 10px;
+    width: 130px;
+    display: block;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .item-result-bottom{
@@ -543,6 +566,8 @@ div.item{
 
 .item-result{
     margin: 0 4px;
+    max-width: 184px;
+    min-height: 305px;
 }
 
 #search-results{

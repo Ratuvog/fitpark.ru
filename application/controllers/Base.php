@@ -44,6 +44,7 @@ class Base extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('language');
         $this->load->helper('mutator_helper');
+        $this->load->helper('image');
 
         $this->load->library('session');
 

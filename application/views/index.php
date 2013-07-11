@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
     <head>
         <title><?=$titleText;?></title>
-        <meta name="description" content="<?=$desc;?>">
-        <meta name="keywords" content="<?=$keywords;?>">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="<?=$desc;?>"/>
+        <meta name="keywords" content="<?=$keywords;?>"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name='yandex-verification' content='781c2dd8ae286aca' />
         <meta name="google-site-verification" content="LPcTvq9lj7flD6_bLTq3HL-vJF9SFxRaLNq0eWIYGLs" />
+
+        <link rel="icon" href="<?=$favicon;?>" type="image/vnd.microsoft.icon"/>
+        <link rel="shortcut icon" href="<?=$favicon;?>" type="image/x-icon"/>
+
+        <link rel="stylesheet" type="text/css" href="styles/style.css" media="all"/>   
+        <!--[if IE]><link rel="stylesheet" type="text/css" href="styles/ie.css"/><![endif]-->
         <link rel="stylesheet" type="text/css" href="/css/common/fitpark.css"/>
         <link rel="stylesheet" type="text/css" href="/js/fancybox/jquery.fancybox.css"/>
         <link rel="stylesheet" type="text/css" href="/js/fancybox/helpers/jquery.fancybox-buttons.css"/>
         <link rel="stylesheet" type="text/css" href="/js/fancybox/helpers/jquery.fancybox-thumbs.css"/>
 
-        <link rel="icon" href="<?=$favicon;?>" type="image/x-icon">
-        <link rel="shortcut icon" href="<?=$favicon;?>" type="image/x-icon">
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <script src="//vk.com/js/api/openapi.js?96"></script>
@@ -30,21 +34,9 @@
         <script type="text/javascript" src="/js/validator_helper.js"></script>
         <script type="text/javascript" src="/js/raty-2.5.2/jquery.raty.js"></script>
         <script type="text/javascript" src="/js/slider/jquery.bxslider.js"></script>
+</head>
+<body>
 
-    </head>
-    <body>
-        <script>
-dataLayer = [];
-</script>
-<!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-3WQD"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-3WQD');</script>
-<!-- End Google Tag Manager -->
 
         <?=$currentCity->header_scripts;?>
         <div class="main">

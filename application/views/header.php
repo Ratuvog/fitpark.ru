@@ -29,9 +29,8 @@
                                     <div id="city-block-inner">
                                         <span class="inline">Ваш город: </span>
                                         <div id="city-title" class="inline">
-                                            <h4>Самара
+                                            <h4><?=$currentCity->name;?>
                                             <img src="<?=site_url(array('image/city_arrow_select.png'));?>" class="inline"/></h4>
-
                                         </div>
                                     </div>
                                 </div><!--#city-block[END]-->
@@ -48,7 +47,7 @@
                             </div><!--#logo-wrap[END]-->
                             <div id="logo-city-block" class="inline">
                                 <div id="logo-city-block-inner" >
-                                    <h2>все фитнес клубы <span>самары</span><img src="<?=site_url(array('image/city_arrow_select_2.png'));?>"/></h2>
+                                    <h2>все фитнес клубы <span><?=$currentCity->name_2;?></span><img src="<?=site_url(array('image/city_arrow_select_2.png'));?>"/></h2>
                                 </div>
                             </div><!--#logo-city-block[END]-->
                             <div id="picture" class="inline">
