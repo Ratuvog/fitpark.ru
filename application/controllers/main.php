@@ -24,7 +24,7 @@ class Main extends Base {
 
         $numbers = array();
         for($i = 0; $i < count($availableServices) ; $i++)
-            $numbers += $i;
+            array_push ($numbers, $i);
         
         $this->viewData["services"] = array();
         
