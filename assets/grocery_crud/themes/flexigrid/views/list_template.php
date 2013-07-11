@@ -75,16 +75,16 @@ if($success_message !== null){?>
 					</div>
 				</div>
             </a>
-			<div class="btnseparator"></div>
+			<div class="btnseparator "></div>
 			<?php }?>
                         <div class="btnseparator">
-                            <?php echo form_open_multipart('admin/import');?>
+                            <?php echo form_open_multipart(site_url('Hfnedjuhfnedju/import'));?>
                             <input type="file" name="userfile" size="20" />
                             <input type="hidden" id="importArg" name="table"/>
                         </div>  
                             <div class="fbutton">
                                 <div>
-                                    <input class="btn btn-primary"
+                                    <input class="btn btn-primary import-anchor"
                                            type="submit" 
                                            value="<?php echo $this->l('list_import');?>"
                                            data-url="<?php echo $import_url; ?>"/>
