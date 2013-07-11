@@ -21,24 +21,28 @@ class Main extends Base {
         $this->initJSData();
         $this->viewData = $this->headerData;
         $availableServices = $this->fitpark_model->getServices();
-        $data = array();
+
         $numbers = array();
-        for($i = 0; $i < count($availableServices) ; $i++) {
-            array_push($numbers, $i);
-        }
+        for($i = 0; $i < count($availableServices) ; $i++)
+            $numbers += $i;
+        
         $this->viewData["services"] = array();
-        for($i = 0; $i<3 ; $i++) {
-            $index = rand(0, count($numbers)-1);
-            $currentItem = $numbers[$index];
-            $availableServices[$currentItem]->icon = site_url(array("image",$availableServices[$currentItem]->icon));
-            $this->viewData["services"][] = $availableServices[$currentItem];
-            array_splice($numbers, $index, 1);
+        
+        if(!empty($numbers))
+        {
+            for($i = 0; $i<3 ; $i++)
+            {
+                $index = rand(0, count($numbers)-1);
+                $currentItem = $numbers[$index];
+                $availableServices[$currentItem]->icon = site_url(array("image",$availableServices[$currentItem]->icon));
+                $this->viewData["services"][] = $availableServices[$currentItem];
+                array_splice($numbers, $index, 1);
+            }
         }
 
         $this->viewData["clubs"] = $this->fitpark_model->getClubList("popularity",3,0,array());
-        foreach ($this->viewData["clubs"] as &$value) {
+        foreach ($this->viewData["clubs"] as &$value)
             $value->url = prep_url(site_url(array('club',$value->id)));
-        }
 
         $this->view = "index";
         $this->renderScene();

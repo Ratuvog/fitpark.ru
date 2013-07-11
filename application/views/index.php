@@ -184,7 +184,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </tr>
                         <tr>
                             <td class="main-banner-toolbar-content">
-                                <h3 class="main-banner-toolbar-h3">Показать фитнес-клубы:</h3>
+                                <?if(!empty($services)) {?>
+                                    <h3 class="main-banner-toolbar-h3">Показать фитнес-клубы:</h3>
+                                <? } else { ?>
+                                    <h3 class="main-banner-toolbar-h3">Воспользуйтесь поиском:</h3>
+                                <? }?>
                                 <ul class="main-baner-tb-service">
                                 <? foreach ($services as $service) {?>
                                     <li>
