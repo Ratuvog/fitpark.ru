@@ -9,10 +9,13 @@ class Base extends CI_Controller {
     protected $defaultPage = 'clubs/clubs';
     protected $titlePage = 'nothing';
 
+    protected $head = 'head';
+    protected $headData = array('titleText'=>"ФитПарк. %s Тренажерные залы,
+            фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
+
     // Name header view and data
     protected $header = 'header';
-    protected $headerData = array('titleText'=>"ФитПарк. %s Тренажерные залы,
-            фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
+    protected $headerData = array();
 
     // BreadCrumbs view and data
     protected $breadCrumbs = 'breadcrumbs';
@@ -48,14 +51,15 @@ class Base extends CI_Controller {
         $this->load->helper("geolocation");
 
         $this->load->model('fitpark_model');
-        $this->initNavigation();
-        $this->initSearchWidget();
         
         $this->breadCrumbsData[] = array(
             'href'  => base_url(),
             'title' => 'Главная'
         );
         
+        $this->initNavigation();
+        $this->initSearchWidget();
+
         // Definition the city on IP-address of the user
         $this->initGeographicalData();
 
@@ -69,11 +73,11 @@ class Base extends CI_Controller {
          */
         $this->session->set_userdata("city", $this->headerData['currentCity']->id);
 
-	    $this->initListAvaibleCity();
+        $this->initListAvaibleCity();
 
         if($this->idna_convert->decode($_SERVER["HTTP_HOST"]) != $this->headerData['currentCity']->url)
             $this->customRedirect($this->prepareUrl($this->headerData['currentCity']->url));
-        }
+    }
 
     private function prepareUrl($host) {
         $url = $host;
@@ -162,6 +166,9 @@ class Base extends CI_Controller {
         if($view == null)
             $view = $this->view;
 
+        if($this->head)
+            $this->load->view($this->head, $this->headData);   
+        
         if($this->header)
             $this->load->view($this->header, $this->headerData);
 
@@ -191,36 +198,29 @@ class Base extends CI_Controller {
 
     private function initGeographicalData()
     {
-        /*
-         * Текущий город
-         */
         $city = $this->cityByIP();
-        $this->headerData['currentCity'] = $this->fitpark_model->getCity($city);
-        $this->footerData['currentCity'] = $this->headerData["currentCity"];
+        $this->headData['currentCity'] = $this->fitpark_model->getCity($city);
+        $this->headerData['currentCity'] = $this->headData['currentCity'];
+        $this->footerData['currentCity'] = $this->headData['currentCity'];
 
-//        print_r($this->headerData['currentCity']->symbol_path);
-//        exit;
         $this->localCity = $this->headerData["currentCity"]->english_name;
     }
     
     protected function initMetaData()
     {
-        $this->headerData['titleText'] = sprintf($this->headerData['titleText'], lang('title'));
+        $this->headData['titleText'] = sprintf($this->headData['titleText'], lang('title'));
 
-        $this->headerData['keywords'] = "%s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
-        $this->headerData["keywords"] = sprintf($this->headerData["keywords"],lang("common_keys"));
+        $this->headData['keywords'] = "%s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.";
+        $this->headData["keywords"] = sprintf($this->headData["keywords"],lang("common_keys"));
 
-        $this->headerData["desc"] = "%s. Отзывы, рейтинг, фотографии, цены, описание.";
-        $this->headerData["desc"] = sprintf($this->headerData["desc"],lang("common_desc"));
+        $this->headData["desc"] = "%s. Отзывы, рейтинг, фотографии, цены, описание.";
+        $this->headData["desc"] = sprintf($this->headData["desc"],lang("common_desc"));
         
-        $this->headerData['favicon'] = $this->config->item('favicon');
+        $this->headData['favicon'] = $this->config->item('favicon');
     }
 
     private function initListAvaibleCity()  
     {
-        /*
-        * Доступные города
-        */
         //TODO: Гербы грузить через админку; добавить в city соотв. поле
         $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
         foreach($this->headerData['availableCity'] as $city) {
@@ -249,7 +249,7 @@ class Base extends CI_Controller {
         
         foreach(array_keys($css_files) as $key)
             $css_files[$key] = site_url($css_files[$key]);
-        $this->headerData['css_files'] = $css_files;    
+        $this->headData['css_files'] = $css_files;    
     }
 
     public function initJSData()
@@ -277,7 +277,7 @@ class Base extends CI_Controller {
         
         foreach(array_keys($js_files) as $key)
             $js_files[$key] = site_url($js_files[$key]);
-        $this->headerData['js_files'] = $js_files;   
+        $this->headData['js_files'] = $js_files;   
     }
     
     function append_js($files)

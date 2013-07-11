@@ -10,6 +10,7 @@
 
     <link rel="icon" href="<?=$favicon;?>" type="image/vnd.microsoft.icon"/>
     <link rel="shortcut icon" href="<?=$favicon;?>" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="<?=site_url('css/common/style.css');?>" media="all"/>
 
 <? foreach($css_files as $css){ ?>
     <link rel='stylesheet' href='<?=$css;?>' />
