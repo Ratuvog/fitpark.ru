@@ -3,22 +3,13 @@
         <h1>Результаты поиска</h1>
     </div>
     <div class="clear"></div>
-    <img src="images/corner_left.png" style="float: left;"/>
-    <img src="images/corner_right.png" style="float: right;"/>
+    <img src="/image/corner_left.png" style="float: left;"/>
+    <img src="/image/corner_right.png" style="float: right;"/>
     <div class="clear"></div>
 </div><!--#results-title[END]-->
 <div id="content">
 <div id="content-inner">
-<div id="make-better" style="display: none;">
-    <div id="help-links">
-        <ul>
-            <li><a></a></li>
-        </ul>
-    </div><!--#make-better[END]-->
-    <div id="make-better-button">
-        <p>Сделать ФитПарк лучше</p>
-    </div>
-</div>
+    <?$this->load->view("blocks/content-menu");#content-title-inner?>
 <div id="main">
 <div id="main-inner">
 
@@ -40,7 +31,7 @@
                                         <? if($activeFilters[$optinonName] === true) echo 'checked';?>
                                            class="green-checkbox"/>
                                     <!--                            <div class="sidebar-checkbox inline"></div>-->
-                                    <span>мужские групповые программы </span>
+                                    <span><?=$item->name;?></span>
                                 </li>
                             <? } ?>
                         </ul>
@@ -79,7 +70,7 @@
             <h3 class="inline"><?=$list_header;?></h3>
             <hr class="inline"/>
         </div>
-        <div id="pagination-sort" class="inline">
+        <div id="pagination-sort">
             <p>
                 <span>Сортировать: </span>
                 <a
@@ -106,39 +97,8 @@
     </div><!--#pagination[END]-->
 </div>
 <div id="search-results" class="no-border-bottom">
-<? foreach ($content as $row) { ?>
-
-<div class="item-result inline">
-    <div class="if-share"></div>
-    <div class="main-result-block">
-        <div class="item-result-name">
-            <a href="<?=site_url(array("club",$row->id));?>"></a><h2>Kangaroo</h2>
-        </div>
-        <div class="item-result-image">
-            <img src="<?=$row->head_picture;?>"/>
-        </div>
-        <div class="item-result-info">
-            <p class="street"><img src="images/map_pin.png" class="inline"/><span class="inline"><?=$row->address;?></span></p>
-            <p class="price"><img src="images/pig.png" class="inline"/><span class="inline">от 3500 руб</span></p>
-        </div>
-        <div class="item-result-bottom">
-            <div class="vote inline">
-                <div class="star active inline"></div>
-                <div class="star active inline"></div>
-                <div class="star inline"></div>
-                <div class="star inline"></div>
-                <div class="star inline"></div>
-            </div>
-            <div class="go-to-photos inline">
-                <a href=""><img src="images/camera.png" class="inline"/></a>
-            </div>
-            <div class="go-to-comments inline">
-                <a href=""><img src="images/speach.png" class="inline"/></a>
-            </div>
-        </div>
-    </div>
-</div><!--.item-result[END]-->
-
+<? foreach ($content as $club) { ?>
+    $this->load->view('blocks/club-item', $club);
 <? }?>
 </div><!--#search-results[END]-->
 <div class="clear"></div>

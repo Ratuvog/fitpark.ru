@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/Base.php');
+require_once(APPPATH.'controllers/test_Base.php');
 
 class Clubs extends Base {
 
@@ -317,7 +317,7 @@ class Clubs extends Base {
         $this->load->library('pagination');
         $pars = $this->uri->segment_array();
 
-        $config['full_tag_open'] = '<ul class="type-sort" style="float:right;"> <li class="title-type-sort">Страница: </li>';
+        $config['full_tag_open'] = '<ul class="type-sort" style="float:right;"> <li class="title-type-sort first-element">Страница: </li>';
         $config['full_tag_close'] = '</ul>';
         $config['num_tag_open'] = '<li class="item-type-sort">';
         $config['num_tag_close'] = '</li>';

@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('idna_convert');
+$autoload['libraries'] = array('idna_convert','session');
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('idna_convert');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('language', 'url', 'image');
+$autoload['helper'] = array('language', 'url', 'image', 'geolocation');
 
 
 /*
