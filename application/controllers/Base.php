@@ -122,7 +122,7 @@ class Base extends CI_Controller {
         $this->headerData["searchUrl"] = site_url(array("clubs","search"));
     }
 
-    private function cityByIP()
+    protected function cityByIP()
     {
         $host = $this->idna_convert->decode($_SERVER["HTTP_HOST"]);
         $hostArray = explode('.', $host);
