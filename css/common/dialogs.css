@@ -1,0 +1,57 @@
+.dnone {
+    display:none;
+}
+
+.message-dialog {
+    padding: 10px;
+    padding-top: 15px;
+}
+
+.center_table {
+    width: 100%;
+}
+
+.center_table > tbody > tr > td {
+    width: 100%;
+}
+
+.city-list li {
+    list-style-type: none;
+    float: left;
+}
+
+.city-list img{
+    height: 150px;
+}
+
+.city-list div {
+    border-bottom: 4px;
+    min-width: 30px;
+    padding: 20px;
+    border-bottom: 4px;
+}
+
+.city-list {
+    margin: 0 20px;
+}
+
+.city-list .active-city {
+    border-color: #33cc00;
+}
+
+.city-list .inactive-city {
+    border-color: rgb(128,128,128);
+}
+
+.city-list a {
+    color: #333333;
+}
+
+.active-city td.change-city-name {
+    border-bottom: 4px solid #ffffff;
+}
+
+.active-city:hover td.change-city-name {
+    border-bottom: 4px solid #3af83a;
+}
+
