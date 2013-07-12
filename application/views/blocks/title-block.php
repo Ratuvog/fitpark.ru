@@ -1,6 +1,6 @@
 <div id="content-title">
     <div id="content-title-inner">
-        <h1><?=$name;?></h1>
+        <h1><?=$title;?></h1>
     </div>
     <div class="clear"></div>
     <img src="<?=site_url('image/corner_left.png');?>" style="float: left;"/>

@@ -1,30 +1,42 @@
-<?php
-require_once(APPPATH.'controllers/Base.php');
-class Main extends Base {
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+require_once(APPPATH.'controllers/test_Base.php');
 
+class Main extends Base {
+           
     function __construct()
     {
         parent::__construct();
-        
-        $this->load->database();
+        $this->title = sprintf("ФитПарк. %s Тренажерные залы, фитнес центры,
+                                отзывы, стоимость, рейтинги, акции, скидки.",
+                                lang('title'));
 
-        $this->view = "main";
-        $this->viewData = new stdClass();
-        $this->initMetaData();
-        $this->initCssData();
-        $this->initJSData();
+        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
+                                    lang("common_desc"));
         
-        $this->breadCrumbs = FALSE;
+        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
+                                   танцы, йога, пилатес, тренажеры.",
+                                   lang("common_keys"));
+        
+        $this->header->currentCity = $this->localCity;
+        $this->header->menu_block->currentCity = $this->localCity;
+        $this->content_title->title = "Случайные клубы";
+        
+        $this->content->contents = array($this->content());
     }
     
-    function index()
+    function content()
     {
-        $this->load->model('club');
-        $this->viewData->clubs = $this->club->get_rand(5); // Выборка 5 случайных клубов
+        $content = new stdClass();
+        $content->view = 'main';
+        $content->data->clubs = $this->club->get_rand(5); // Выборка 5 случайных клубов
 
-        foreach ($this->viewData->clubs as &$value)
+        foreach ($content->data->clubs as &$value)
             $value->url = prep_url(site_url(array('club', $value->id)));
-
+        return $content;
+    }
+    
+    function index() 
+    { 
         $this->renderScene();
     }
 }

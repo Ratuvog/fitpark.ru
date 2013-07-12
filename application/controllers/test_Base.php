@@ -13,15 +13,26 @@ class Base extends Template {
     protected $content;
     protected $footer;
     
+    protected $localCity;
+            
     function __construct()
     {
         parent::__construct();
+
+        $this->load->database();
+        $this->config->load('global_const');
         $this->favicon = site_url($this->config->item('favicon'));
+        
+        // Definition the city on IP-address of the user
+        $this->localCity = $this->city->byName($this->cityByIP());
+
+        // install localization file according to local city name
+        $this->lang->load(mb_convert_case($this->localCity->english_name, MB_CASE_LOWER),
+                          mb_convert_case($this->localCity->english_name, MB_CASE_LOWER));
     }
    
-    private function head()
+    function head()
     {
-        $head = new stdClass();
         $head->title = $this->title;  
         $head->description = $this->description;
         $head->keywords = $this->keywords; 
@@ -30,9 +41,8 @@ class Base extends Template {
     }
     
     
-    private function body()
+    function body()
     {
-        $body = new stdClass();
         $body->header = $this->header;
         $body->content_title = $this->content_title;
         $body->content = $this->content;
@@ -51,6 +61,7 @@ class Base extends Template {
             return $hostArray[0];
         
     }
+    
     
     /*
 $output = {

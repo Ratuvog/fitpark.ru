@@ -39,7 +39,7 @@
 */
 
 $route['default_controller']      = "main";
-$route['404_override']            = 'errors/err404';
+$route['404_override']            = '';
 
 $route['question']                      = 'FAQ/getQuestion';
 $route["question/(:num)"]               = 'FAQ/getQuestion/$1';

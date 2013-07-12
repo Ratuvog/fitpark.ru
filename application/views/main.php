@@ -1,9 +1,3 @@
-<div id="top-blocks-wrap">
-<?$this->load->view('blocks/nav-block');?>
-<?$this->load->view('blocks/search-block');?>
-<?$this->load->view('blocks/title-block', array('name'=>"Случайные клубы"));?>
-<div id="content">
-    <div id="content-inner">
         <div id="main">
             <div id="main-inner">
                 <div id="search-results">
@@ -87,8 +81,7 @@
                 </div>
             </div>
         </div><!--#info-blocks[END]-->
-    </div>
-</div><!--#content[END]-->
+
         
 <div id="footer">
             <footer>

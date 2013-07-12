@@ -2,21 +2,21 @@
 
 abstract class Template extends CI_Controller {
            
-    private $template = 'templates/base';
-    private $output;
+    public $template = 'templates/base';
+    public $output;
     
     function __construct()
     {
         parent::__construct();
     }
 
-    private function renderScene()
+    function renderScene()
     {
         $this->initialize();
-        $this->load-view($this->template, $this->output);
+        $this->load->view($this->template, $this->output);
     }
 
-    private function initialize()
+    function initialize()
     {
         $this->output->head = $this->head();
         $this->output->body = $this->body();

@@ -55,7 +55,7 @@
             <div id="copy">
                 <div id="copy-inner">
                     <div id="bottom-logo" class="inline">
-                        <img src="images/logo.png" class="inline" height="25px" width="33px"/>
+                        <img src="image/logo.png" class="inline" height="25px" width="33px"/>
                         <h4 class="inline">ФитПарк</h4>
                     </div>
                     <div id="copyright" class="inline bordered">

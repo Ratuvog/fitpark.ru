@@ -1,17 +1,21 @@
 <body>
     <div id="wrap">
         <?
-            if($header)
-                $this->load->view('header', $header);
+            if($header) {
+                $this->load->view('templates/header', $header);
+            }
             
-            if($content_title)
-                $this->load->view('content-title', $content_title);
+            if($content_title) {
+                $this->load->view('blocks/title-block', $content_title);
+            }
 
-            if($content)
-                $this->load->view('content', $content);
+            if($content) {
+                $this->load->view('templates/content', $content);
+            }
             
-            if($footer)
-                $this->load->view('footer', $footer);
+            if($footer) {
+                $this->load->view('templates/footer', $footer);
+            }
         ?>
     </div>
 </body>

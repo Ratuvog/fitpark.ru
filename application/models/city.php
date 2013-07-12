@@ -14,7 +14,8 @@ class City extends CI_Model {
     
     function byName($cityName)
     {
-        $this->db->from($this->table)
+        $this->db->select("*")
+                 ->from($this->table)
                  ->where('name', mb_convert_case($cityName, MB_CASE_TITLE))
                  ->or_where("english_name", mb_convert_case($cityName, MB_CASE_TITLE));
         $result = $this->db->get()->row();

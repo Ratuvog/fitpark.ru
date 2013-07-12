@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Base extends CI_Controller {
+class Base1 extends CI_Controller {
 
     protected $allowedPages = array();
     protected $privateAllowedPages = array();
