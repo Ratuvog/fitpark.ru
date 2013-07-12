@@ -55,7 +55,7 @@
             <div id="copy">
                 <div id="copy-inner">
                     <div id="bottom-logo" class="inline">
-                        <img src="images/logo.png" class="inline" height="25px" width="33px"/>
+                        <img src="<?=site_url('image/logo.png');?>" class="inline" height="25px" width="33px"/>
                         <h4 class="inline">ФитПарк</h4>
                     </div>
                     <div id="copyright" class="inline bordered">
@@ -67,7 +67,7 @@
                     </div>
                     <div id="if-mistake" class="inline bordered">
                         <p>Обнаружили ошибку? Выделите мышью слово или<br />
-                        фразу и нажмите сочетание клавиш Ctrl + Enter</p>
+                            фразу и нажмите сочетание клавиш Ctrl + Enter</p>
                     </div>
                     <div id="share-socials" class="inline bordered">
                         <div id="share-socials-inner">
@@ -85,3 +85,6 @@
         </div>
     </footer>
 </div><!--#footer[END]-->
+<?=$currentCity->footer_scripts;?>
+<?$this->load->view('seo_tools/googleAnalitics');?>
+<?$this->load->view('blocks/reformal-block');?>

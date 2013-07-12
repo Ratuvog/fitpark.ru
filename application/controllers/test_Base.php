@@ -29,6 +29,8 @@ class Base extends Template {
         // install localization file according to local city name
         $this->lang->load(mb_convert_case($this->localCity->english_name, MB_CASE_LOWER),
                           mb_convert_case($this->localCity->english_name, MB_CASE_LOWER));
+        
+        $this->footer->currentCity = $this->localCity;
     }
    
     function head()
