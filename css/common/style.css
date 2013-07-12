@@ -414,7 +414,7 @@ div.item{
 
 #content-title-inner{
     background: -webkit-gradient(linear, left top, left bottom, from(#3a9cee), to(#005fa6));
-    background-image: linear-gradient(bottom, ##005fa6, #3a9cee);
+    background-image: linear-gradient(bottom, #005fa6, #3a9cee);
     background-image: -o-linear-gradient(bottom, #005fa6, #3a9cee);
     background-image: -moz-linear-gradient(bottom, #005fa6, #3a9cee);
     background-image: -ms-linear-gradient(bottom, #005fa6, #3a9cee);
@@ -470,14 +470,9 @@ div.item{
     max-height: 160px; 
 }
 
-.item-result-image * {
-    margin: 0;
-    padding: 0;
-}
-
 .item-result-image table {
-    width: 180px;
-    height: 160px; 
+    width: 182px;
+    height: 165px; 
 }
 
 .main-result-block{
@@ -515,7 +510,7 @@ div.item{
 
 .item-result-info span {
     padding-left: 10px;
-    width: 130px;
+    width: 143px;
     display: block;
     white-space: nowrap; 
     overflow: hidden; 

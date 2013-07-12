@@ -1,14 +1,10 @@
 <body>
+    <?$this->load->view('seo_tools/facebook');?>
+    <?$this->load->view('seo_tools/vkontakte');?>
+    <?$this->load->view('seo_tools/googleTagManager');?>
+    <?=$currentCity->header_scripts;?>
     <div id="wrap">
         <?
-            if($header) {
-                $this->load->view('templates/header', $header);
-            }
-            
-            if($content_title) {
-                $this->load->view('blocks/title-block', $content_title);
-            }
-
             if($content) {
                 $this->load->view('templates/content', $content);
             }

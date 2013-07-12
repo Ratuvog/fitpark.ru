@@ -49,6 +49,7 @@ class Base extends Template {
         $body->content_title = $this->content_title;
         $body->content = $this->content;
         $body->footer = $this->footer;
+        $body->currentCity = $this->localCity;
         return $body;
     }
        
@@ -74,16 +75,18 @@ $output = {
         favicon
     },
     body = {
-        header = {
-            menu-block = { currentCity },
-            search-block
-        },
-        content_title = { title },
+        currentCity,
         content = { 
-            var contents = array(
-                {view1, data1},
-                {view2, data2},
-                {view3, data3}
+            var contents = array({
+                view,
+                data = {
+                      header = {
+                        menu-block = { currentCity },
+                        search-block
+                       },
+                       content_title = { title },
+               },
+               ...
             )
         },
         footer

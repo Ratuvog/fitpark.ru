@@ -16,11 +16,7 @@ class Main extends Base {
         $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
                                    танцы, йога, пилатес, тренажеры.",
                                    lang("common_keys"));
-        
-        $this->header->currentCity = $this->localCity;
-        $this->header->menu_block->currentCity = $this->localCity;
-        $this->content_title->title = "Случайные клубы";
-        
+               
         $this->content->contents = array($this->content());
     }
     
@@ -29,9 +25,12 @@ class Main extends Base {
         $content = new stdClass();
         $content->view = 'main';
         $content->data->clubs = $this->club->get_rand(5); // Выборка 5 случайных клубов
-
         foreach ($content->data->clubs as &$value)
             $value->url = prep_url(site_url(array('club', $value->id)));
+
+        $content->data->header->menu_block->currentCity = $this->localCity;
+        $content->data->content_title->title = "Случайные клубы";
+        
         return $content;
     }
     
