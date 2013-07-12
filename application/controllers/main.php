@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/test_Base.php');
+require_once(APPPATH.'controllers/Base.php');
 
 class Main extends Base {
            

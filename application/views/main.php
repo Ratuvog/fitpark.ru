@@ -48,7 +48,7 @@
         <div id="info-block-2">
             <div id="info-block-2-inner">
                 <div class="info-block-title">
-                    <img src="image/search_logo.png" class="inline"/>
+                    <img src="<?=site_url('image/search_logo.png');?>" class="inline"/>
                     <h1 class="inline">Почему надо искать фитнес-клубы на ФитПарке</h1>
                 </div>
                 <div id="sub-block-2-1">
