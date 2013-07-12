@@ -1062,6 +1062,7 @@ text-overflow: ellipsis;
         #cboxNext:hover{background-position:bottom right;}
         #cboxClose{position:absolute; top:5px; right:5px; display:block; background:url(/image/close.png) no-repeat; width:15px; height:15px; text-indent:-9999px;}
         #cboxClose:hover{background-position:bottom center;}
+    
 .window .window-name-options {
     width: 150px;
 }

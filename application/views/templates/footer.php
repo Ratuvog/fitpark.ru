@@ -87,4 +87,5 @@
 </div><!--#footer[END]-->
 <?=$currentCity->footer_scripts;?>
 <?$this->load->view('seo_tools/googleAnalitics');?>
+<?$this->load->view('seo_tools/yandexMetrika');?>
 <?$this->load->view('blocks/reformal-block');?>

@@ -25,5 +25,21 @@ class City extends CI_Model {
         
         return $result;
     }
+    
+    function get()
+    {
+        $result = $this->db->get($this->table)->result();
+        foreach($result as &$city) {
+            $city->url = prep_url($city->url);
+            $city->symbol_path = site_url(
+                array(
+                    "image",
+                    "blazons",
+                    $city->english_name.".jpg"
+                )
+            );
+        }
+        return $result;
+    }
 }
 ?>

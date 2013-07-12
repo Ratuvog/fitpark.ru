@@ -224,16 +224,7 @@ class Base1 extends CI_Controller {
     {
         //TODO: Гербы грузить через админку; добавить в city соотв. поле
         $this->headerData['availableCity'] = $this->fitpark_model->getAvailableCity();
-        foreach($this->headerData['availableCity'] as $city) {
-            $city->url = prep_url($city->url);
-            $city->symbol_path = site_url(
-                array(
-                    "image",
-                    "blazons",
-                    $city->english_name.".jpg"
-                )
-            );
-        }
+        
     }
 
     public function initCssData()

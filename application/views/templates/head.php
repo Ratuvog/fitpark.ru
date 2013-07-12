@@ -12,6 +12,7 @@
     
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="<?=site_url('css/common/style.css');?>" media="all"/>
+    <link rel="stylesheet" type="text/css" href="<?=site_url('css/common/dialogs.css');?>"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/jquery.fancybox.css');?>"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/helpers/jquery.fancybox-buttons.css');?>"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/helpers/jquery.fancybox-thumbs.css');?>"/>
