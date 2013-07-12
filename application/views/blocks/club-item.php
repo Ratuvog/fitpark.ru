@@ -2,7 +2,7 @@
     <div class="if-share"></div>
     <div class="main-result-block">
         <div class="item-result-name">
-            <h2><?=$name;?></h2>
+            <h2><a href="<?=$url;?>"><?=$name;?></a></h2>
         </div>
         <div class="item-result-image">
             <table>
