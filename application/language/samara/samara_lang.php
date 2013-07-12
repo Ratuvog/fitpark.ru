@@ -13,5 +13,5 @@ $lang["current_club_title"] = "фитнес-клуб Самары";
 $lang["common_desc"] = "ФитПарк все фитнес клубы Самары";
 $lang["clubs_desc"] = "Фитнес-клуб в Самаре";
 $lang["common_keys"] = "Фитнес клубы Самары";
-
+$lang["city_2"] = "Самары";
 ?>
