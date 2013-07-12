@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/test_Base.php');
+require_once(APPPATH.'controllers/Base.php');
 
 class Clubs extends Base {
 
@@ -22,13 +22,11 @@ class Clubs extends Base {
     function __construct()
     {
         parent::__construct();
-        $this->allowedPages = array('index', 'clubs', 'filter',
-                                    'sort', 'search', 'row',
-                                    'page', 'clear', 'vote');
+        $this->content_title->title = "Список клубов";
+
         $this->privateAllowedPages = array();
         $this->titlePage = 'Фитнес клубы';
         $this->view = 'clubs/clubs';
-        $this->load->helper("mutator");
         $this->breadCrumbsData[] = array(
             'href'  =>  site_url(array('clubs')),
             'title' => 'Список клубов'
@@ -43,11 +41,6 @@ class Clubs extends Base {
             $this->showRecOnPage = $this->session->userdata('rowOnPage');
         
         $this->viewData   = $this->initViewData();
-        $headerData = $this->initHeaderData();
-        
-        foreach ($headerData as $key=>$value)
-            $this->headerData[$key] =  $value;
-
     }
 
     public function clubs()
@@ -56,18 +49,8 @@ class Clubs extends Base {
         $this->session->unset_userdata('filter');
         $this->session->unset_userdata('activeFilter');
         $this->filterEnabled = false;
-        $this->index();
-    }
-
-    private function initHeaderData()
-    {
-        $this->append_js(array("js/clubs.js"));
-        
-        $data = array('titleText'=>"ФитПарк. %s, тренажерные залы,
-            фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.");
-        $data["titleText"] = sprintf($data["titleText"], lang("title"));
-               
-        return  $data;
+        $this->init();
+        $this->renderScene();
     }
 
     private function initViewData()

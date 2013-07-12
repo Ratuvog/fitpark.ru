@@ -64,7 +64,7 @@ $autoload['libraries'] = array('idna_convert','session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('language', 'url', 'image', 'geolocation');
+$autoload['helper'] = array('language', 'url', 'image', 'geolocation','mutator');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('grocery_CRUD_Model', 'city', 'club_model', 'service');
+$autoload['model'] = array('grocery_CRUD_Model', 'city', 'club', 'fitpark_model');
 
 
 /* End of file autoload.php */

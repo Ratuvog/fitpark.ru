@@ -32,6 +32,7 @@
     <script type="text/javascript" src="<?=site_url("js/script.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/header.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/common.js");?>"></script>
+    <script type="text/javascript" src="<?=site_url("js/clubs.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/cb/jquery.colorbox.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/jquery.form.validation.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/fancybox/jquery.fancybox.pack.js");?>"></script>
