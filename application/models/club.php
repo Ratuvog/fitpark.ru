@@ -2,6 +2,15 @@
 class Club extends CI_Model {
     
     public $table = 'fitnesclub';
+    public $rating = 'fitnesclub_rating';
+    
+    function prepare()
+    {
+        $this->db->select("*, AVG($this->rating.value) as rating")
+                 ->from($this->table)
+                 ->join("$this->rating", "$this->table.id = $this->rating.clubId", "left")
+                 ->group_by("$this->table.id");
+    }
     
     function updateFromBuffer($bufData)
     {
@@ -13,8 +22,8 @@ class Club extends CI_Model {
     
     function get_rand($limit)
     {
-        $set = $this->db->from($this->table)
-                        ->order_by('RAND()')
+        $this->prepare();
+        $set = $this->db->order_by('RAND()')
                         ->limit($limit)
                         ->get()->result();
         foreach($set as $club)

@@ -26,11 +26,10 @@
         </div>
         <div class="item-result-bottom">
             <div class="vote inline">
-                <div class="star active inline"></div>
-                <div class="star active inline"></div>
-                <div class="star inline"></div>
-                <div class="star inline"></div>
-                <div class="star inline"></div>
+                <div class="rating clubs-mini"
+                    title="Средняя оценка клуба: <?=round($rating, 2);?>"
+                    data-score="<?=$rating;?>">
+               </div>
             </div>
             <div class="go-to-photos inline">
                 <a href="<?=$url;?>"><img src="<?=site_url('image/camera.png');?>" class="inline"/></a>

@@ -25,11 +25,7 @@
                     <div id="city-block-inner">
                         <span class="inline">Ваш город: </span>
                         <div id="city-title" class="inline">
-                            <h4><?=$currentCity->name;?>
-                            <a id="city-changed">
-                                <img src="<?=site_url(array('image/city_arrow_select.png'));?>" class="inline"/>
-                            </a>
-                            </h4>
+                            <h4><?=$currentCity->name;?></h4>
                         </div>
                     </div>
                 </div><!--#city-block[END]-->
@@ -46,7 +42,7 @@
             </div><!--#logo-wrap[END]-->
             <div id="logo-city-block" class="inline">
                 <div id="logo-city-block-inner" >
-                    <h2>все фитнес клубы <span><?=lang("city_2");?></span><img src="<?=site_url(array('image/city_arrow_select_2.png'));?>"/></h2>
+                    <h2>все фитнес клубы <span><?=lang("city_2");?></span><img id="city-changed" src="<?=site_url(array('image/city_arrow_select_2.png'));?>"/></h2>
                 </div>
             </div><!--#logo-city-block[END]-->
             <div id="picture" class="inline">

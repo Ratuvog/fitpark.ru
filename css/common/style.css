@@ -113,6 +113,10 @@ img{ border: none; }
     padding: 5px 0px 5px 10px;
 }
 
+#top-menu-inner ul li a:hover {
+    text-shadow: 1px 1px 8px #fff;
+}
+
 .inline{
     display: inline-table;
     vertical-align: middle;

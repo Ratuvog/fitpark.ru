@@ -262,7 +262,7 @@
         }
       }
     }, _getHint: function(score) {
-      var hint = this.opt.hints[score - 1];
+      var hint = '';//this.opt.hints[score - 1];
       return (hint === '') ? '' : (hint || score);
     }, _lock: function() {
       var score = parseInt(this.score.val(), 10), // TODO: 3.1 >> [['1'], ['2'], ['3', '.1', '.2']]

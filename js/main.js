@@ -25,12 +25,18 @@ $(function(){
         slider.startAuto();
         return false;
     })
-
-    // Центрирование кнопки
-    var widthControl = $(".main-controls-slide").width();
-    var widthContent = $(".bx-wrapper").width();
-    var offset = $(".bx-wrapper").offset();
-    $(".main-controls-slide").offset({left: offset["left"]+(widthContent/2-widthControl/2)});
+    
+    $(".rating").raty({      
+        score: function() {
+            return $(this).attr('data-score');
+        }, 
+        path : 'http://'+location.hostname+'/js/raty-2.5.2/img/',
+        readOnly : true,
+        noRatedMsg: function() {
+            return $(this).attr('title');
+        }
+    });
+    
 
 })
 
