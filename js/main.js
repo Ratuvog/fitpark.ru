@@ -37,6 +37,21 @@ $(function(){
         }
     });
     
+    $("#submit-search").click(function(e) {
+        if($("#search").val() === "")
+        {
+            stop();
+            var n = noty({
+                layout: 'topRight',
+                timeout: 3000,
+                text : "Введите слово для поиска",
+                type : 'info'
+            });
+            return;
+        }
+        $("#search-form").submit();
+    });
+    
 
 })
 

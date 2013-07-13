@@ -6,7 +6,7 @@ class Club extends CI_Model {
     
     function prepare()
     {
-        $this->db->select("*, AVG($this->rating.value) as rating")
+        $this->db->select("$this->table.*, AVG($this->rating.value) as rating")
                  ->from($this->table)
                  ->join("$this->rating", "$this->table.id = $this->rating.clubId", "left")
                  ->group_by("$this->table.id");

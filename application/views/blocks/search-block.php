@@ -7,7 +7,7 @@
             <h2>ФитПоиск</h2>
         </div>
         <div id="search-block-text" class="inline">
-        <form action="<?=site_url(array('clubs','search'));?>" method="post">
+        <form id="search-form" action="<?=site_url(array('clubs','search'));?>" method="post">
                 <input name="search" id="search" type="text" autocomplete="off" placeholder="Клубы, описание, услуги, улица..."/>
                 <input type="submit" id="submit-search" />
         </form>
@@ -25,8 +25,10 @@
                     <input type="checkbox"/>
                 </div>
                 <div class="item-name inline">
-                    <img src="<?=site_url('image/swim.png');?>" class="inline"/>
-                    <span class="inline">бассейн</span>
+                    <a href="<?=site_url(array("clubs","getByService",1));?>">
+                        <img src="<?=site_url('image/swim.png');?>" class="inline"/>
+                        <span class="inline">бассейн</span>
+                    </a>
                 </div>
             </div>
 
@@ -35,8 +37,10 @@
                     <input type="checkbox"/>
                 </div>
                 <div class="item-name inline">
-                    <img src="<?=site_url('image/sauna.png');?>" class="inline"/>
-                    <span class="inline">сауна</span>
+                    <a href="<?=site_url(array("clubs","getByService",12));?>">
+                        <img src="<?=site_url('image/sauna.png');?>" class="inline"/>
+                        <span class="inline">сауна</span>
+                    </a>
                 </div>
             </div>
 
@@ -45,8 +49,10 @@
                     <input type="checkbox"/>
                 </div>
                 <div class="item-name inline">
-                    <img src="<?=site_url('image/massage.png');?>" class="inline"/>
-                    <span class="inline">массаж</span>
+                    <a href="<?=site_url(array("clubs","getByService",14));?>">
+                        <img src="<?=site_url('image/massage.png');?>" class="inline"/>
+                        <span class="inline">массаж</span>
+                    </a>
                 </div>
             </div>
 
@@ -55,8 +61,10 @@
                     <input type="checkbox"/>
                 </div>
                 <div class="item-name inline">
-                    <img src="<?=site_url('image/joga.png');?>" class="inline"/>
-                    <span class="inline">йога</span>
+                    <a href="<?=site_url(array("clubs","getByService",3));?>">
+                        <img src="<?=site_url('image/joga.png');?>" class="inline"/>
+                        <span class="inline">йога</span>
+                    </a>
                 </div>
             </div>
         </div>

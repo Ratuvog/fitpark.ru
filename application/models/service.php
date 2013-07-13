@@ -19,5 +19,13 @@ class Service extends CI_Model {
         foreach($bufData as $data)
             $this->db->insert($this->relTable, $data);
     }
+    
+    function get()
+    {
+        $set = $this->db->get($this->table)->result();
+        foreach($set as &$row)
+            $row->icon = ImageHelper::replace_path($row->icon, '');
+        return $set;
+    }
 }
 ?>
