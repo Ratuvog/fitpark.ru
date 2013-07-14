@@ -24,7 +24,7 @@ class Base extends Template {
         
         // Definition the city on IP-address of the user
         $this->localCity = $this->city->byName($this->cityByIP());
-
+        $this->session->set_userdata("city", $this->localCity->id);
         // install localization file according to local city name
         $this->lang->load(mb_convert_case($this->localCity->english_name, MB_CASE_LOWER),
                           mb_convert_case($this->localCity->english_name, MB_CASE_LOWER));

@@ -1545,7 +1545,7 @@ div.item{
 
 li.first-element {
     font-weight: bold;
-    margin-right: 27px !important;
+    margin-right: 10px !important;
 }
 
 .type-sort li {
@@ -1557,4 +1557,8 @@ li.first-element {
 .type-sort li a {
     color: #1476c3;
     text-decoration: underline;
+}
+
+.pagination-bar {
+    width: 100%;
 }

@@ -141,6 +141,8 @@ class Fitpark_model extends CI_Model {
         $this->getSortStrategyByName($ord);
         $this->installFilter($filter);
         $clubs = $this->db->get()->result();
+        foreach ($clubs as &$value)
+            $value->url = prep_url(site_url(array('club', $value->id)));
         mutator_clubs_null_field($clubs, "head_picture", $this->config->item('empty_photo'));
         return $clubs;
     }

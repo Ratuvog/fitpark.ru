@@ -18,19 +18,45 @@ class Clubs extends Base {
 
     private $functionGetList = 'getClubsList';
     private $functionRowCount = 'getRowCount';
+    private $view = "clubs/clubs";
 
     function __construct()
     {
         parent::__construct();
         $this->content_title->title = "Список клубов";
 
-        $this->privateAllowedPages = array();
-        $this->titlePage = 'Фитнес клубы';
-        $this->view = 'clubs/clubs';
-        $this->breadCrumbsData[] = array(
-            'href'  =>  site_url(array('clubs')),
-            'title' => 'Список клубов'
+
+        $this->title = sprintf("ФитПарк. %s Тренажерные залы, фитнес центры,
+                                отзывы, стоимость, рейтинги, акции, скидки.",
+            lang('title'));
+
+        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
+            lang("common_desc"));
+
+        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
+                                   танцы, йога, пилатес, тренажеры.",
+            lang("common_keys"));
+    }
+
+    function content()
+    {
+        $this->breadcrumbs []= (object)array(
+            'name' => "Главная",
+            'url' => base_url()
         );
+
+        $this->breadcrumbs []= (object)array(
+            'name' => "Клубы",
+            'url' => site_url('clubs')
+        );
+        $content = $this->initViewData();;
+        foreach($content as $key=>$val ) {
+            $this->content->data->$key = $val;
+        }
+        $this->content->view = $this->view;
+
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
+        $this->content->data->content_title->title = "Фитнес-клуб";
     }
 
     public function init()
@@ -39,24 +65,26 @@ class Clubs extends Base {
         
         if($this->session->userdata('rowOnPage'))
             $this->showRecOnPage = $this->session->userdata('rowOnPage');
-        
-        $this->viewData   = $this->initViewData();
+        $this->content();
     }
-
+    private function index()
+    {
+        $this->init();
+        $this->renderScene();
+    }
     public function clubs()
     {
         $this->session->unset_userdata('search');
         $this->session->unset_userdata('filter');
         $this->session->unset_userdata('activeFilter');
         $this->filterEnabled = false;
-        $this->init();
-        $this->renderScene();
+        $this->index();
     }
 
     private function initViewData()
     {
         $data = array(
-            'list_header'   => $this->titlePage,
+            'list_header'   => $this->content_title->title,
             'filters'       => $this->getFilters(),
             'services'      => $this->getClubsServices(),
             'order'         => $this->prepareOrder(),
@@ -283,8 +311,9 @@ class Clubs extends Base {
 
     public function row($onPage)
     {
-        if(in_array($onPage, $this->rowOnPageList))
+        if(in_array($onPage, $this->rowOnPageList)) {
             $this->session->set_userdata('rowOnPage', $onPage);
+        }
 
         redirect(site_url(array('clubs','page')));
     }
