@@ -3,12 +3,14 @@ class Club_model extends CI_Model {
     
     public $table = 'fitnesclub';
     public $rating = 'fitnesclub_rating';
+    public $city = 'city';
     
     function prepare()
     {
-        $this->db->select("$this->table.*, AVG($this->rating.value) as rating")
+        $this->db->select("$this->table.*, AVG($this->rating.value) as rating, $this->city.geo as city_geo")
                  ->from($this->table)
                  ->join("$this->rating", "$this->table.id = $this->rating.clubId", "left")
+                 ->join("$this->city", "$this->table.cityId = $this->city.id")
                  ->group_by("$this->table.id");
     }
     

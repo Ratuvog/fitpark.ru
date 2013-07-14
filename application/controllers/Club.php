@@ -35,28 +35,24 @@ class Club extends Base {
  
  */
                
-        $this->content->contents = array($this->content());
+        $this->content();
     }
     
     function content()
     {
-        $content = new stdClass();
-        $content->view = $this->view;
-
-        $content->data->breadcrumbs->stack = $this->breadcrumbs;
-        $content->data->header->menu->currentCity = $this->localCity;
-        $content->data->header->menu->currentCity = $this->localCity;
-        $content->data->header->menu->chooseCity->cities = $this->city->get();
-        $content->data->content_title->title = "Фитнес-клуб";
+        $this->content->view = $this->view;
         
-       
+        $this->content->data->club = $this->club;
         
-        return $content;
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
+        $this->content->data->content_title->title = "Фитнес-клуб";              
     }
     
     function Club($club)
     {
         $this->club = $this->club_model->byId($club);
+        $this->club->services_row->service_map = $this->service->map();
+        $this->club->services_row->services = $this->service->byClub($club);
         
         $this->breadcrumbs []= (object)array(
             'name' => "Главная",

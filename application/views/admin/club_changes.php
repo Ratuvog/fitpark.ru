@@ -88,7 +88,7 @@
                     <td colspan="2">
                         <ul>
                         <?  foreach ($club_services as $serv):?>
-                            <li><?=$services[$serv->serviceId];?></li>
+                            <li><?=$services[$serv->serviceId]->name;?></li>
                         <?  endforeach;?>
                         </ul>
                     <td>

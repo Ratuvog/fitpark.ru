@@ -29,6 +29,8 @@ class Base extends Template {
                           mb_convert_case($this->localCity->english_name, MB_CASE_LOWER));
         
         $this->footer->currentCity = $this->localCity;
+        $this->content->data->header->menu->currentCity = $this->localCity;
+        $this->content->data->header->menu->chooseCity->cities = $this->city->get();
     }
    
     function head()

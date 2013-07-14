@@ -1,59 +1,89 @@
 <?$this->load->view('blocks/header', $header);?>
 <?$this->load->view('blocks/title-block', $content_title);?>
 
+<script type="text/javascript" src="<?=site_url("js/club.js");?>"></script>
 <div id="content">
     <div id="content-inner">
         <?$this->load->view('blocks/subtitle-block');?>
         <div id="main">
             <div id="main-inner">
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
-
                 <div id="page-club">
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
                             <div id="page-club-info-title">
-                                <h2 class="inline">Фитнес-клуб Imperial Fitness</h2>
-                                <img src="<?=site_url("image/swim_2.png");?>" class="inline"/>
-                                <img src="<?=site_url("image/bike.png");?>" class="inline"/>
-                                <img src="<?=site_url("image/fight.png");?>" class="inline"/>
+                                <h2 class="inline"><?=$club->name;?></h2>
+                                <?$this->load->view('blocks/services-row', $club->services_row);?>
                             </div>
-                            <div id="page-club-info-main-club">
-                                <img src="<?=site_url("image/club_logo.png");?>" id="page-club-logo" class="inline"/>
-                                <div id="page-club-price" class="inline">
-                                    <p>Стоимость посещения</p>
-                                    <table>
+                            <div id="page-club-info-main-inner">
+                                <div id="page-club-info-main-club">
+                                    <table id="logo-table">
                                         <tr>
-                                            <td>1 месяц</td>
-                                            <td>от <span>1 200 рублей</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>3 месяца</td>
-                                            <td>от <span>3 500 рублей</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>6 месяцев</td>
-                                            <td>от <span>7 100 рублей</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>12 месяцев</td>
-                                            <td>от <span>12 500 рублей</span></td>
+                                            <td align="center">
+                                                <img src="<?=$club->head_picture;?>" id="page-club-logo" class="inline"/>
+                                            </td>
                                         </tr>
                                     </table>
+                                    <div id="rating-club-big"
+                                        title="Средняя оценка клуба: <?=round($club->rating, 2);?>"
+                                        data-score="<?=$club->rating;?>">
+                                    </div>
+                                    <div id="page-club-price" class="inline">
+                                        <p>Стоимость посещения</p>
+                                        <table>
+                                            <tr>
+                                                <td>1 месяц</td>
+                                                <td>
+                                                    <?if($club->sub1 !== '0.00') {?>
+                                                    от <span><?=$club->sub1;?></span> рублей
+                                                    <?} else {?>
+                                                    цена не указана
+                                                    <?}?>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>3 месяца</td>
+                                                <td>
+                                                    <?if($club->sub3 !== '0.00') {?>
+                                                    от <span><?=$club->sub3;?></span> рублей
+                                                    <?} else {?>
+                                                    цена не указана
+                                                    <?}?>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>6 месяцев</td>
+                                                <td>
+                                                    <?if($club->sub6 !== '0.00') {?>
+                                                    от <span><?=$club->sub6;?></span> рублей
+                                                    <?} else {?>
+                                                    цена не указана
+                                                    <?}?>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>12 месяцев</td>
+                                                <td>
+                                                    <?if($club->sub12 !== '0.00') {?>
+                                                    от <span><?=$club->sub12;?></span> рублей
+                                                    <?} else {?>
+                                                    цена не указана
+                                                    <?}?>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div id="page-club-map" class="inline">
-                                    <img src="<?=site_url("image/club_map.png");?>"/>
-                                </div>
-                                <div id="page-club-rating">
-                                    <img src="<?=site_url("image/club_star_1.png");?>"/>
-                                    <img src="<?=site_url("image/club_star_1.png");?>"/>
-                                    <img src="<?=site_url("image/club_star_2.png");?>"/>
-                                    <img src="<?=site_url("image/club_star_2.png");?>"/>
-                                    <img src="<?=site_url("image/club_star_2.png");?>"/>
-                                </div>
+                                
+                                <div id="page-club-map" class="inline"
+                                     geo="<?=$club->geo;?>"
+                                     city-geo="<?=$club->city_geo;?>"
+                                     balloon-title="<?=$club->address;?>"></div>
                                 <div id="page-club-menu">
+                                    
                                     <div class="page-club-menu inline">
                                         <img src="<?=site_url("image/v_card.png");?>" class="inline"/>
                                         <p class="inline">Заявка на карту клуба</p>

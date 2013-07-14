@@ -7,9 +7,10 @@ class Service extends CI_Model {
     function map()
     {
         $services = $this->db->get($this->table)->result();
+        $this->after_get($services);
         $map = array();
         foreach ($services as $service)
-            $map[$service->id] = $service->name;
+            $map[$service->id] = $service;
         return $map;
     }
     
@@ -23,9 +24,20 @@ class Service extends CI_Model {
     function get()
     {
         $set = $this->db->get($this->table)->result();
+        $this->after_get($set);
+        return $set;
+    }
+    
+    function byClub($club)
+    {
+        $set = $this->db->get_where($this->relTable, array('clubId'=>$club))->result();
+        return $set;
+    }
+    
+    function after_get($set)
+    {
         foreach($set as &$row)
             $row->icon = ImageHelper::replace_path($row->icon, '');
-        return $set;
     }
 }
 ?>

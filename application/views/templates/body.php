@@ -6,7 +6,7 @@
     <div id="wrap">
         <?          
             if($content) {
-                $this->load->view('templates/content', $content);
+                $this->load->view($content->view, $content->data);
             }
             
             if($footer) {

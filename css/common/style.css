@@ -1299,24 +1299,50 @@ div.item{
     margin: 0 10px;
 }
 
+#page-club-info-main-club {
+    float: left;
+}
+
+#logo-table{
+    width: 260px;
+    height: 200px;
+    margin: 0 20px;
+}
+
+#logo-table img{
+    max-width: 190px;
+    max-height: 190px;
+}
+
 #page-club-info-main{
     padding: 0 30px;
     border-top: 2px dashed rgba(0, 0, 0, 0.2);
 }
 
 #page-club-price p{
-    margin-bottom: 2px;
+    margin: 0;
     font-weight: bold;
     font-size: 13px;
+    border-bottom: 2px solid #ccc;
+    height: 20px;
+    text-align: center;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#d4d4d4));
+    background-image: linear-gradient(bottom, #d4d4d4, #fff);
+    background-image: -o-linear-gradient(bottom, #d4d4d4, #fff);
+    background-image: -moz-linear-gradient(bottom, #d4d4d4, #fff);
+    background-image: -ms-linear-gradient(bottom, #d4d4d4, #fff);
 }
 
 #page-club-price{
-    margin: 0 0 0 35px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin: 8px 0 0 20px;
 }
 
 #page-club-price table{
     width: 250px;
     font-size: 13px;
+    padding-left: 5px;
 }
 
 #page-club-price table span{
@@ -1324,8 +1350,8 @@ div.item{
 }
 
 #page-club-map{
-    position: relative;
-    bottom: 20px;
+    width: 630px;
+    height: 350px;
 }
 
 #page-club-map img{
@@ -1333,7 +1359,7 @@ div.item{
     height: 150px;
 }
 
-#page-club-rating{
+#rating-club-big{
     padding: 0 80px;
 }
 
