@@ -30,16 +30,8 @@ class Base extends Template {
                           mb_convert_case($this->localCity->english_name, MB_CASE_LOWER));
         
         $this->footer->currentCity = $this->localCity;
-<<<<<<< HEAD
         $this->content->data->header->menu->currentCity = $this->localCity;
         $this->content->data->header->menu->chooseCity->cities = $this->city->get();
-=======
-
-        $this->header->currentCity = $this->localCity;
-        $this->header->menu_block->currentCity = $this->localCity;
-
-        $this->initMetaInformation();
->>>>>>> 6125436... Мелкие изменения
     }
    
     function head()
@@ -70,19 +62,6 @@ class Base extends Template {
         else
             return $hostArray[0];
         
-    }
-
-    protected function initMetaInformation() {
-        $this->title = sprintf("ФитПарк. %s Тренажерные залы, фитнес центры,
-                                отзывы, стоимость, рейтинги, акции, скидки.",
-            lang('title'));
-
-        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
-            lang("common_desc"));
-
-        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
-                                   танцы, йога, пилатес, тренажеры.",
-            lang("common_keys"));
     }
     
     /*

@@ -1,14 +1,14 @@
 <div id="breadcrumbs">
     <div id="breadcrumbs-inner">
         <h4>
-        <? $flag = false; foreach ($stack as $item) {
-            ?>
-            <? if($flag) { ?>
-                <li>→</li>
-            <? } $flag = true; ?>
-            <span><a href="<?=$item['href'];?>"><?=$item['title'];?></a></span>
-        <?
-        }
-        ?>
+        <? $counter = 0;
+           $last = count($stack);
+           foreach($stack as $step): $counter++; ?>
+                <a href="<?=$step->url;?>">
+                    <span><?=$step->name;?></span>
+                </a>
+                <?if($counter != $last) echo "&rarr;";?>
+        <? endforeach; ?>
+        </h4>
     </div>
 </div>
