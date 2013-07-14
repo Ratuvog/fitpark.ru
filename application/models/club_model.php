@@ -1,5 +1,5 @@
 <?php
-class Club extends CI_Model {
+class Club_model extends CI_Model {
     
     public $table = 'fitnesclub';
     public $rating = 'fitnesclub_rating';
@@ -12,6 +12,17 @@ class Club extends CI_Model {
                  ->group_by("$this->table.id");
     }
     
+    function after_get($set) 
+    {
+        foreach ($set as &$club)
+            $club->head_picture = ImageHelper::replace_path($club->head_picture, $this->config->item('empty_photo'));
+    }
+    
+    function after_get_row(&$row)
+    {
+        $row->head_picture = ImageHelper::replace_path($row->head_picture, $this->config->item('empty_photo'));
+    }
+            
     function updateFromBuffer($bufData)
     {
         $cur = $this->db->get_where($this->table, array('id' => $bufData->id))->row();
@@ -26,9 +37,18 @@ class Club extends CI_Model {
         $set = $this->db->order_by('RAND()')
                         ->limit($limit)
                         ->get()->result();
-        foreach($set as $club)
-            $club->head_picture = ImageHelper::replace_path($club->head_picture, $this->config->item('empty_photo'));
+        $this->after_get($set);
         return $set;
     }
+    
+    function byId($club)
+    {
+        $this->prepare();
+        $row = $this->db->where(array("$this->table.id"=>$club))->get()->row();
+        $this->after_get_row($row);
+        return $row;
+    }
+    
+
 }
 ?>

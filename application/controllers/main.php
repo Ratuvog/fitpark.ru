@@ -24,11 +24,12 @@ class Main extends Base {
     {
         $content = new stdClass();
         $content->view = 'main';
-        $content->data->clubs = $this->club->get_rand(5); // Выборка 5 случайных клубов
+        $content->data->clubs = $this->club_model->get_rand(5); // Выборка 5 случайных клубов
         foreach ($content->data->clubs as &$value)
             $value->url = prep_url(site_url(array('club', $value->id)));
 
-        $content->data->header->menu_block->currentCity = $this->localCity;
+        $content->data->header->menu->currentCity = $this->localCity;
+        $content->data->header->menu->chooseCity->cities = $this->city->get();
         $content->data->content_title->title = "Случайные клубы";
         
         return $content;

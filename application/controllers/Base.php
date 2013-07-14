@@ -7,8 +7,7 @@ class Base extends Template {
     protected $description;
     protected $keywords;
     protected $favicon;
-    
-    protected $menu;
+
     protected $content;
     protected $footer;
     
@@ -30,8 +29,6 @@ class Base extends Template {
                           mb_convert_case($this->localCity->english_name, MB_CASE_LOWER));
         
         $this->footer->currentCity = $this->localCity;
-        $this->menu->currentCity = $this->localCity;
-        $this->menu->chooseCity->cities = $this->city->get();
     }
    
     function head()
@@ -46,7 +43,6 @@ class Base extends Template {
     
     function body()
     {
-        $body->menu = $this->menu;
         $body->content = $this->content;
         $body->footer = $this->footer;
         $body->currentCity = $this->localCity;
@@ -76,7 +72,6 @@ $output = {
     },
     body = {
         currentCity,
-        menu,
         content = { 
             var contents = array({
                 view,

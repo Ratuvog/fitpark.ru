@@ -1,4 +1,4 @@
-<?$this->load->view('blocks/header', $header);?>
+<?$this->load->view('blocks/header-search', $header);?>
 <?$this->load->view('blocks/title-block', $content_title);?>
 
 <script type="text/javascript" src="<?=site_url("js/main.js");?>"></script>

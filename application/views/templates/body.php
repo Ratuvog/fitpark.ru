@@ -4,11 +4,7 @@
     <?$this->load->view('seo_tools/googleTagManager');?>
     <?=$currentCity->header_scripts;?>
     <div id="wrap">
-        <?
-            if($menu) {
-                $this->load->view('templates/menu', $menu);
-            }
-            
+        <?          
             if($content) {
                 $this->load->view('templates/content', $content);
             }

@@ -1,370 +1,257 @@
-                <section class="card-clubs">
-                    <section>
-                        <section>
-                            <div class="main-img-club">
-                                <table width="280px" height="100%" class="head-image">
-                                    <tr>
-                                        <td align="center" valign="middle">
-                                            <a href="<?=$base->head_picture;?>" rel="group" class="fancybox">
-                                                <img style="max-width: 280px;" src="<?=$base->head_picture;?>" alt="<?=$base->name;?>" />
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>
+<?$this->load->view('blocks/header', $header);?>
+<?$this->load->view('blocks/title-block', $content_title);?>
+
+<div id="content">
+    <div id="content-inner">
+        <?$this->load->view('blocks/subtitle-block');?>
+        <div id="main">
+            <div id="main-inner">
+                <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
+
+                <div id="page-club">
+                    <div id="page-club-inner">
+                        <div id="page-club-info-main">
+                            <div id="page-club-info-title">
+                                <h2 class="inline">Фитнес-клуб Imperial Fitness</h2>
+                                <img src="<?=site_url("image/swim_2.png");?>" class="inline"/>
+                                <img src="<?=site_url("image/bike.png");?>" class="inline"/>
+                                <img src="<?=site_url("image/fight.png");?>" class="inline"/>
                             </div>
-                            <div class="rating club-big"
-                                 data-vote-id="<?=$base->id;?>"
-                                 title="Ваша оценка: <? $userRating = 0; if(!empty($userVote)) $userRating = $userVote[0]['vote']; echo $userRating;?>"
-                                 data-score="<?if($userRating != 0)
-                                                echo $base->rating;
-                                            else
-                                                echo 0;?>"
-                                 ro="<?if($userRating != 0)
-                                            echo 'true';
-                                       else
-                                            echo 'false';?>">
-                            </div>
-                            <div colspan="2" class="rating-vote-answer">
-                                <?if($userRating == 0) {
-                                    echo 'Оцените клуб';
-                                } else {
-                                      echo "Ваша оценка: ".$userRating;
-                                      echo "<br>";
-                                      echo "Средняя оценка: ".round($base->rating,2);
-                                }?>
-                            </div>
-                        </section>
-                        <section class="short-description-card">
-                            <header class="card-name-club">
-                                <h3><?=$base->name;?></h3>
-                            </header>
-                            <table>
-                                <? if($base->rates){ ?>
-                                <tr>
-                                    <td colspan="2">
-                                        <? if ($base->isEmptyPrice) { ?>
-                                            <h4 class="variation-abonements">Варианты абонементов</h4>
-                                        <? } else {?>
-                                        <h4 class="variation-abonement">Данный клуб не предоставил информации о ценах</h4>
-                                        <? } ?>
-                                    </td>
-                                    <td>
-                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-feedback" href="/club/getFeedback/<?=$base->id; ?>">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="icon-small-phone"></div>
-                                                        </li>
-                                                        <li>
-                                                            <span class="button-text">Заказать звонок из клуба</span>
-                                                        </li>
-                                                    </ul>
-                                                    <div style="clear: both;"></div>
-                                                </div>
-                                    </td>
-                                </tr>
-                                <? foreach ($base->rates as $currentRate){ ?>
-                                <? if($currentRate['price']>1) {?>
-                                <tr>
-                                    <td><?=$currentRate['period'];?></td>
-                                    <td class="price-club-price"><h4>от <?=$currentRate['price'];?></h4></td>
-                                    <td></td>
-                                </tr>
-                                <? } ?>
-                                <? } ?>
+                            <div id="page-club-info-main-club">
+                                <img src="<?=site_url("image/club_logo.png");?>" id="page-club-logo" class="inline"/>
+                                <div id="page-club-price" class="inline">
+                                    <p>Стоимость посещения</p>
+                                    <table>
+                                        <tr>
+                                            <td>1 месяц</td>
+                                            <td>от <span>1 200 рублей</span></td>
+                                        </tr>
 
-                                <tr>
-                                    <td>
-                                        <div class="button-get-discount button-club card-action-button action-button" selector="#get-abon" href="/club/getAbonement/<?=$base->id;?>">
-                                            <ul>
-                                                <li>
-                                                    <div class="icon-small-buy"></div>
-                                                </li>
-                                                <li>
-                                                    <span class="button-text">Заявка на карту клуба</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td >
-                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-guest" href="/club/getGuest/<?=$base->id;?>">
-                                            <ul>
-                                                <li>
-                                                    <div class="icon-small-calendar"></div>
-                                                </li>
-                                                <li>
-                                                    <span class="button-text">Посетить клуб</span>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <tr>
+                                            <td>3 месяца</td>
+                                            <td>от <span>3 500 рублей</span></td>
+                                        </tr>
 
-                                    </td>
-                                    <td >
-                                        <div class="button-guest button-club button-guest-card card-action-button action-button" selector="#get-answer" href="/club/getQuestion/<?=$base->id;?>">
-                                            <ul>
-                                                <li>
-                                                    <div class="icon-small-help"></div>
-                                                </li>
-                                                <li>
-                                                    <span class="button-text">Вопрос менеджеру клуба</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td >
+                                        <tr>
+                                            <td>6 месяцев</td>
+                                            <td>от <span>7 100 рублей</span></td>
+                                        </tr>
 
-                                    </td>
-                                </tr>
-                                <tr class="like-bar">
-                                    <td>
-                                                                              <div id="vk_like"></div>
-<script type="text/javascript">
-VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
-</script>
-                                    </td>
-                                    <td colspan="3">
-                                        <div class="fb-like" data-href="<?=$clubUrl;?>" data-send="true" data-width="450" data-show-faces="true"></div>
-                                    </td>
-                                </tr>
-                                <? } ?>
-                            </table>
-                        </section>
-                    </section>
-                    <section class="tab-set">
-                        <table cellpadding="0" cellspacing="0" width="100%">
-                            <tr>
-                                <!--<td class="empty-tab"></td>-->
-                                <td class="tab <? if(!$isComment) {?>active-tab<?}?>" selector="#description-club">
-                                    <div ><a href="#">Описание</a></div>
-                                </td>
-                                <td class="spacer"></td>
-                                <td class="tab" selector="#image-club">
-                                    <div ><a href="#">Фотографии</a></div>
-                                </td>
-                                <td class="spacer"></td>
-                                <td class="tab <? if($isComment) {?>active-tab<?}?>" selector="#review-club">
-                                    <div ><a href="#"><a href="#">Отзывы</a></a></div>
-                                </td>
-                                <td class="spacer"></td>
-                                <td class="empty-back-item">
-                                    <div></div>
-                                </td>
-                            </tr>
-                        </table>
-                        <section id="description-club" class="full-card-description tabs-content <? if($isComment) {?>hideClass<?}?>">
-
-                                    <div class="club-info"><div class="desc-text">
-                                        <div class="icon-home card-img-home"></div> <div class="text-card-club"><?= $base->address; ?></div>
-                                            <div style="clear: both;"></div>
-                                        </div>
-                                        <? if ($base->phone) { ?>
-                                        <div class="desc-text">
-                                            <div class="icon-phone card-img-phone"></div> <div><?= $base->phone; ?></div>
-                                            <div style="clear: both;"></div>
-                                        </div>
-                                        <? } ?>
-                                        <? if ($base->site) { ?>
-                                        <div class="desc-text">
-                                            <a href=http://<?= $base->site; ?> target="_blank"><div class="icon-hand-up card-img-hand-up"></div> <div><?= $base->site; ?></div></a>
-                                            <div style="clear: both;"></div>
-                                        </div>
-                                        <? } ?>
-
-                                    </div>
-                            <div style="clear: both;"></div>
-
-                            <p>
-
-                                <? foreach($descript as $text) {
-                                    echo $text['text'];
-                                } ?>
-                            </p>
-                        </section>
-                        <div id="review-club" class="full-card-description tabs-content <? if(!$isComment) {?>hideClass<?}?> ">
-                            <section class="add-review">
-                                <div class="button-guest button-club action-button add-review-button" selector="#get-review" href="/club/addReview/<?=$base->id?>">
-                                    <ul>
-                                        <li>
-                                            <div class="icon-small-pencil"></div>
-                                        </li>
-                                        <li>
-                                            <span class="button-text">Оставить отзыв</span>
-                                        </li>
-                                    </ul>
+                                        <tr>
+                                            <td>12 месяцев</td>
+                                            <td>от <span>12 500 рублей</span></td>
+                                        </tr>
+                                    </table>
                                 </div>
-                            </section>
-                            <? if($reviews) { ?>
-                            <? foreach ($reviews as $review){?>
-                            <div class="review">
-                                <table>
-                                    <tr>
-                                        <td class="description-review">
-                                            <h4 class="<?=($review["type"]=="1" ? "pos-review" : "neg-review");?>"><?= $review['sender']; ?></h4>
-                                            <span><?= $review['outdate']; ?></span>
-                                            <? if(isset($review['rating'])) { ?>
-                                                <div class="rating club-mini"
-                                                    title="Оценил клуб на: <?=round($review['rating'],2);?>"
-                                                    data-score="<?=round($review['rating'],2);?>">
-                                                </div>
-                                            <? } ?>
-                                        </td>
-                                        <td class="content-review">
-                                                    <? if ($review['text']) { ?>
-                                                        <p>
-                                                            <?= $review['text']; ?>
-                                                        </p>
-                                                    <? } ?>
-                                                    <? if ($review['positive']) { ?>
-                                                        <h4>
-                                                            Плюсы
-                                                        </h4>
-                                                        <p>
-                                                            <?= $review['positive']; ?>
-                                                        </p>
-                                                    <? } ?>
-                                                    <? if ($review['negative']) { ?>
-                                                        <h4>
-                                                            Минусы
-                                                        </h4>
-                                                        <p>
-                                                            <?= $review['negative']; ?>
-                                                        </p>
-                                                    <? } ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">
-                                            <div id="<?="review".$review['fake_id'];?>"></div>
-                                            <script type="text/javascript">
-                                                VK.Widgets.Like("<?="review".$review['fake_id'];?>", {type: "mini"},<?=$review['fake_id'];?>);
-                                            </script>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <? }?>
-                            <? } else {?>
-                            <div class="review">
-                                <h2 class="no-reviews">Нет отзывов. Ваш отзыв будет первым.</h2>
-                            </div>
-                            <? } ?>
-                        </div>
-                        <section id="image-club">
-                            <? if($images) {?>
-                            <table class="images-galery">
-                                <? $countImages = 0;?>
-                                <? foreach ($images as $currentImage) {?>
-                                    <? if($countImages%3==0) { ?>
-                                    <tr>
-                                    <? } ?>
-                                        <td align="center" valign="middle">
-                                            <a href="<?=$currentImage['photo'];?>" class="fancybox gallery" rel="gallery1"><img src="<?=$currentImage['min_photo'];?>" alt="" /></a>
-                                        </td>
-                                    <? if(($countImages+1)%(3)==0) {?>
-                                    </tr>
-                                    <? } ?>
-                                    <? $countImages++; ?>
-                                <? } ?>
-                            </table>
-                            <? } else{ ?>
-                                <h2 class="no-info">Фотографий нет</h2>
-                            <? } ?>
-                        </section>
-                    </section>
-                </section>
-                <section class="analogs">
-                    <? if($analogs && !$base->isHideAnalogs) {?>
-                    <header class="title-analogs-section">
-                        <h2>
-                            Похожие фитнес-клубы
-                        </h2>
-                    </header>
-                    <section>
-                        <table class="analogs-list">
-                            <? $countClubs = 1; ?>
-                            <? foreach ($analogs as $currentClub) { ?>
-                                <? if($countClubs%$countAnalogsOnRow==0) { ?>
-                                <tr>
-                                <? } ?>
-                                <td align="center">
-                                    <img src="<?=$currentClub->head_picture;?>" class="analog-foto" alt="<?=$currentClub->name;?>" style="max-width: 160px;" />
-                                    <div class="analog-name"><a  target="_blank" href="/club/<?=$currentClub->id;?>"><?=$currentClub->name;?></a></div>
-                                    <div class="button-get-discount button-club action-button" selector="#get-answer"  href="/club/getQuestion/<?=$currentClub->id;?>">
-                                        <ul>
-                                            <li>
-                                                <div class="icon-small-help"></div>
-                                            </li>
-                                            <li>
-                                                <span class="button-text">Вопрос менеджеру клуба</span>
-                                            </li>
-                                        </ul>
+                                <div id="page-club-map" class="inline">
+                                    <img src="<?=site_url("image/club_map.png");?>"/>
+                                </div>
+                                <div id="page-club-rating">
+                                    <img src="<?=site_url("image/club_star_1.png");?>"/>
+                                    <img src="<?=site_url("image/club_star_1.png");?>"/>
+                                    <img src="<?=site_url("image/club_star_2.png");?>"/>
+                                    <img src="<?=site_url("image/club_star_2.png");?>"/>
+                                    <img src="<?=site_url("image/club_star_2.png");?>"/>
+                                </div>
+                                <div id="page-club-menu">
+                                    <div class="page-club-menu inline">
+                                        <img src="<?=site_url("image/v_card.png");?>" class="inline"/>
+                                        <p class="inline">Заявка на карту клуба</p>
                                     </div>
-                                    <a href="/club/<?=$currentClub->id;?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
-                                </td>
-                                <? if($countClubs%($countAnalogsOnRow-1)==0) {?>
-                                </tr>
-                                <? } ?>
-                                <? $countClubs++;?>
-                            <? } ?>
-                        </table>
-                    </section>
-                    <? } ?>
-                </section>
 
-                <div style="clear: both;"></div>
+                                    <div class="page-club-menu inline">
+                                        <img src="<?=site_url("image/calendar.png");?>" class="inline"/>
+                                        <p class="inline">Посетить клуб</p>
+                                    </div>
 
-            </div>
+                                    <div class="page-club-menu inline">
+                                        <img src="<?=site_url("image/info.png");?>" class="inline"/>
+                                        <p class="inline">Вопрос менеджеру клуба</p>
+                                    </div>
 
-<div class="dnone">
-    <div id="get-review" class="message-dialog">
-        <form action="" method="post">
-            <h4> Мой отзыв о <?=$base->name;?> </h4>
-            <table width="100%" class="window">
-                <tr>
-                    <td colspan="2" class="error-text">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Имя
-                    </td>
-                    <td><input class="checkout-input search" type="text" name="name" isReq="false" text="Имя" validator="blank"/></td>
-                </tr>
-                <tr>
-                    <td>Отзыв</td>
-                    <td>
-                        <textarea class="search review-text" name="text" cols="30"  rows="10"  text="Отзыв" validator="blank"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Плюсы
-                    </td>
-                    <td><textarea class="search review-text" name="plus" isReq="false" id="" cols="30" rows="10"  text="Плюсы" validator="blank"></textarea></td>
-                </tr>
-                <tr>
-                    <td>Минусы</td>
-                    <td>
-                        <textarea class="search review-text" name="minus" isReq="false" id="" cols="30" rows="10"  text="минусы" validator="blank"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Оценка отзыва
-                    </td>
+                                    <div class="page-club-menu inline">
+                                        <img src="<?=site_url("image/telephone.png");?>" class="inline"/>
+                                        <p class="inline">Заказать звонок из клуба</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--#page-club-info-main[END]-->
+                        <div id="page-club-info-additional">
+                            <div id="page-club-side-menu">
+                                <ul>
+                                    <li><img src="<?=site_url("image/file.png");?>" width="29px"/><p>Описание</p></li>
+                                    <li><img src="<?=site_url("image/camera_2.png");?>" width="25px"/><p>Фотографии</p></li>
+                                    <li><img src="<?=site_url("image/speach.png");?>" width="25px"/><p>Отзывы</p></li>
+                                </ul>
+                            </div>
+                            <div id="slide-pointer" class="inline">
+                                <img src="<?=site_url("image/side_menu_pointer.png");?>"/>
+                            </div>
+                            <div id="page-side-menu-info" class="inline">
+                                <div id="page-side-menu-info-tz" class="page-side-menu-info inline">
+                                    <p>
+                                        <img src="<?=site_url("image/map_pin.png");?>"/>
+                                        <span>г. Самара, Московское шоссе, д.145</span>
+                                    </p>
+                                    <p>
+                                        <img src="<?=site_url("image/telephone.png");?>"/>
+                                        <span>8 (846) 240 40 40</span>
+                                    </p>
+                                    <p>
+                                        <img src="<?=site_url("image/keyboard.png");?>" />
+                                        <span><a href="">www.imperialift.ru</a></span>
+                                    </p>
+                                    <p>
+                                        <img src="<?=site_url("image/clock.png");?>" />
+                                        <span>будни - с 7.00 до 24.00, выходные - с 10.00 до 22.00</span>
+                                    </p>
+                                    <p>Большое красивое описание непосредственно тут. <br />
+                                    Дабы  покупатель смог прочитать важную информацию, 
+                                    обдумать и после этого тыкнуть в иконку скидки.<br />
+                                    После этого мы заработаем денег и будем долго радоваться.</p>
+                                </div>
+                                <div id="page-side-menu-info-photo" class="page-side-menu-info inline" style="display: none;"></div>
+                                <div id="page-side-menu-info-comments" class="page-side-menu-info inline" style="display: none;"></div>
+                                <div id="like-the-club" class="inline">
+                                    <p>Оцени клуб:</p>
+                                    <img src="<?=site_url("image/like_club.png");?>"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="similar-clubs">
+                            <h2>Похожие фитнес-клубы</h2>
+                            <div id="similar-clubs-list">
 
-                    <td>
-                        <select name="type-rewiew" id="">
-                            <option value="1" selected="selected">Положительно</option>
-                            <option value="2">Отрицательно</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-                        <div class="button-send button submit-review">Отправить</div>
-                    </td>
-                </tr>
-            </table>
-        </form>
+
+                                <div class="item-result inline">
+                                    <div class="if-share"></div>
+                                    <div class="main-result-block">
+                                        <div class="item-result-name">
+                                            <h2>Kangaroo</h2>
+                                        </div>
+                                        <div class="item-result-image">
+                                            <img src="<?=site_url("image/kangaroo.png");?>"/>
+                                        </div>
+                                        <div class="item-result-info">
+                                            <p class="street"><img src="<?=site_url("image/map_pin.png");?>" class="inline"/><span class="inline">Запорожская 15</span></p>
+                                            <p class="price"><img src="<?=site_url("image/pig.png");?>" class="inline"/><span class="inline">от 3500 руб</span></p>
+                                        </div>
+                                        <div class="item-result-bottom">
+                                            <div class="vote inline">
+                                                <div class="star active inline"></div>
+                                                <div class="star active inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                            </div>
+                                            <div class="go-to-photos inline">
+                                                <a href=""><img src="<?=site_url("image/camera.png");?>" class="inline"/></a>
+                                            </div>
+                                            <div class="go-to-comments inline">
+                                                <a href=""><img src="<?=site_url("image/speach.png");?>" class="inline"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--.item-result[END]-->
+
+                                <div class="item-result inline">
+                                    <div class="if-share"></div>
+                                    <div class="main-result-block">
+                                        <div class="item-result-name">
+                                            <h2>Kangaroo</h2>
+                                        </div>
+                                        <div class="item-result-image">
+                                            <img src="<?=site_url("image/kangaroo.png");?>"/>
+                                        </div>
+                                        <div class="item-result-info">
+                                            <p class="street"><img src="<?=site_url("image/map_pin.png");?>" class="inline"/><span class="inline">Запорожская 15</span></p>
+                                            <p class="price"><img src="<?=site_url("image/pig.png");?>" class="inline"/><span class="inline">от 3500 руб</span></p>
+                                        </div>
+                                        <div class="item-result-bottom">
+                                            <div class="vote inline">
+                                                <div class="star active inline"></div>
+                                                <div class="star active inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                            </div>
+                                            <div class="go-to-photos inline">
+                                                <a href=""><img src="<?=site_url("image/camera.png");?>" class="inline"/></a>
+                                            </div>
+                                            <div class="go-to-comments inline">
+                                                <a href=""><img src="<?=site_url("image/speach.png");?>" class="inline"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--.item-result[END]-->
+
+                                <div class="item-result inline">
+                                    <div class="if-share"></div>
+                                    <div class="main-result-block">
+                                        <div class="item-result-name">
+                                            <h2>Kangaroo</h2>
+                                        </div>
+                                        <div class="item-result-image">
+                                            <img src="<?=site_url("image/kangaroo.png");?>"/>
+                                        </div>
+                                        <div class="item-result-info">
+                                            <p class="street"><img src="<?=site_url("image/map_pin.png");?>" class="inline"/><span class="inline">Запорожская 15</span></p>
+                                            <p class="price"><img src="<?=site_url("image/pig.png");?>" class="inline"/><span class="inline">от 3500 руб</span></p>
+                                        </div>
+                                        <div class="item-result-bottom">
+                                            <div class="vote inline">
+                                                <div class="star active inline"></div>
+                                                <div class="star active inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                            </div>
+                                            <div class="go-to-photos inline">
+                                                <a href=""><img src="<?=site_url("image/camera.png");?>" class="inline"/></a>
+                                            </div>
+                                            <div class="go-to-comments inline">
+                                                <a href=""><img src="<?=site_url("image/speach.png");?>" class="inline"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--.item-result[END]-->
+
+                                <div class="item-result inline">
+                                    <div class="if-share"></div>
+                                    <div class="main-result-block">
+                                        <div class="item-result-name">
+                                            <h2>Kangaroo</h2>
+                                        </div>
+                                        <div class="item-result-image">
+                                            <img src="<?=site_url("image/kangaroo.png");?>"/>
+                                        </div>
+                                        <div class="item-result-info">
+                                            <p class="street"><img src="<?=site_url("image/map_pin.png");?>" class="inline"/><span class="inline">Запорожская 15</span></p>
+                                            <p class="price"><img src="<?=site_url("image/pig.png");?>" class="inline"/><span class="inline">от 3500 руб</span></p>
+                                        </div>
+                                        <div class="item-result-bottom">
+                                            <div class="vote inline">
+                                                <div class="star active inline"></div>
+                                                <div class="star active inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                                <div class="star inline"></div>
+                                            </div>
+                                            <div class="go-to-photos inline">
+                                                <a href=""><img src="<?=site_url("image/camera.png");?>" class="inline"/></a>
+                                            </div>
+                                            <div class="go-to-comments inline">
+                                                <a href=""><img src="<?=site_url("image/speach.png");?>" class="inline"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--.item-result[END]-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div><!--#main[END]-->
     </div>
-</div>
+</div><!--#content[END]-->
