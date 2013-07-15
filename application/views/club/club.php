@@ -12,7 +12,6 @@
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
                             <div id="page-club-info-title">
-                                <h2 class="inline"><?=$club->name;?></h2>
                                 <?$this->load->view('blocks/services-row', $club->services_row);?>
                             </div>
                             <div id="page-club-info-main-inner">
@@ -82,24 +81,25 @@
                                      geo="<?=$club->geo;?>"
                                      city-geo="<?=$club->city_geo;?>"
                                      balloon-title="<?=$club->address;?>"></div>
-                                <div id="page-club-menu">
-                                    
-                                    <div class="page-club-menu inline">
+                                
+                                <div id="buttons-row">
+                                    <div class="page-club-menu inline action-button" for="get-club-card" href="<?=site_url("club/getAbonement/$club->id");?>">
+                                        <?$this->load->view('dialogs/getClubCard');?>
                                         <img src="<?=site_url("image/v_card.png");?>" class="inline"/>
                                         <p class="inline">Заявка на карту клуба</p>
                                     </div>
-
-                                    <div class="page-club-menu inline">
+                                    <div class="page-club-menu inline action-button" for="visit-club" href="<?=site_url("/club/getGuest/$club->id");?>">
+                                        <?$this->load->view('dialogs/visitClub');?>
                                         <img src="<?=site_url("image/calendar.png");?>" class="inline"/>
                                         <p class="inline">Посетить клуб</p>
                                     </div>
-
-                                    <div class="page-club-menu inline">
+                                    <div class="page-club-menu inline action-button" for="ask-question" href="<?=site_url("/club/getQuestion/$club->id");?>">
+                                        <?$this->load->view('dialogs/askQuestion');?>
                                         <img src="<?=site_url("image/info.png");?>" class="inline"/>
                                         <p class="inline">Вопрос менеджеру клуба</p>
                                     </div>
-
-                                    <div class="page-club-menu inline">
+                                    <div class="page-club-menu inline action-button" for="get-call" href="<?=site_url("/club/getFeedback/$club->id");?>">
+                                        <?$this->load->view('dialogs/getCall');?>
                                         <img src="<?=site_url("image/telephone.png");?>" class="inline"/>
                                         <p class="inline">Заказать звонок из клуба</p>
                                     </div>

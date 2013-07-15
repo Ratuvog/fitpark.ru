@@ -1291,8 +1291,8 @@ div.item{
     padding-left: 20px;
 }
 
-#page-club-info-title h2{
-    font-family: cricket;
+#page-club-info-title {
+    height: 40px;
 }
 
 #page-club-info-title img{
@@ -1350,7 +1350,7 @@ div.item{
 }
 
 #page-club-map{
-    width: 630px;
+    width: 600px;
     height: 350px;
 }
 
@@ -1600,4 +1600,8 @@ li.first-element {
 
 #page-club-list {
     border-top: 2px dashed rgba(0, 0, 0, 0.2);
+}
+
+#buttons-row{
+    margin-left: 10px;
 }
