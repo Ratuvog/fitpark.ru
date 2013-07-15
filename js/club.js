@@ -39,5 +39,21 @@ $(function(){
         }
         
     });
+    
+    function createDialog(form, href)
+    {
+        form.find('.error-text').empty();
+        form.attr("action", href);
+        form.on("click", ".button-send", checkForm);
+        $.colorbox({
+            href: form,
+            inline: true
+        });
+    }
+    
+    
+    $(".action-button").click(function(){
+        createDialog($("#"+$(this).attr("for")), $(this).attr("href"));
+    })
 
 });

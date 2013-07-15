@@ -45,7 +45,7 @@ class Club extends Base {
         $this->content->data->club = $this->club;
         
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
-        $this->content->data->content_title->title = "Фитнес-клуб";              
+        $this->content->data->content_title->title = sprintf("Фитнес-клуб %s", $this->club->name);              
     }
     
     function Club($club)

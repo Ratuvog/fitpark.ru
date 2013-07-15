@@ -20,7 +20,7 @@ validate = {
             return value.length !== 0;
         },
         errorPattern: function(fieldName) {
-            return "Поле '" + fieldName + "' должно быть непустым";
+            return "Поле '" + fieldName + "' должно быть заполнено";
         }
     },
     date: {
@@ -56,6 +56,7 @@ checkForm = function(event) {
     var form = $(this).parents("form").first();
     form.find('input,textarea').each(function() {
         var type = $(this).attr("type");
+        $(this).css("border-color", "");
         if(type !== "hidden")
         {
             var validator = $(this).attr("validator");
@@ -71,10 +72,15 @@ checkForm = function(event) {
         form.submit();
         return;
     }
-    var error = form.find('.error-text');
-    error.empty();
-//    error.css("display", "");
-    error.text("Некоторые поля заполнены с ошибками");
-//    error.fadeOut(2000);
+    
+    for(var i = 0; i < errorPull.length; ++i)
+    {
+        var n = noty({
+            layout: 'topRight',
+            timeout: 5000,
+            text : errorPull[i],
+            type : 'info'
+        });
+    }
     errorPull = [];
 }

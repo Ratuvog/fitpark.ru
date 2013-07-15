@@ -27,7 +27,7 @@ class Main extends Base {
         foreach ($this->content->data->clubs as &$value)
             $value->url = prep_url(site_url(array('club', $value->id)));
 
-        $this->content->data->content_title->title = "Случайные клубы";
+        $this->content->data->content_title->title = "Популярные клубы";
     }
     
     function index() 
