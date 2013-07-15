@@ -7,20 +7,27 @@ $(function(){
     // Create slider
     $(".slider").each(function(){
         var self = $(this);
-        var leftInput = $(".slider-from").attr("value");
-        var rightInput = $(".slider-to").attr("value");
-        self.next(".slider-input").find('[name="rangeF"]').val(leftInput);
-        self.next(".slider-input").find('[name="rangeT"]').val(rightInput);
+        var left =  $(".slider-from"),
+            right = $(".slider-to");
+        var leftInput = left.attr("value");
+        var rightInput = right.attr("value");
+        left.val(leftInput);
+        right.val(rightInput);
         $( this ).slider({
             range: true,
             min: parseInt(self.attr("from")),
             max: parseInt(self.attr("to")),
             values: [ parseInt(leftInput), parseInt(rightInput) ],
             slide: function( event, ui ) {
-                self.next(".slider-input").find('[name="rangeF"]').val(ui.values[0] ? ui.values[0] : 0);
-                self.next(".slider-input").find('[name="rangeT"]').val(ui.values[1]);
+                left.val(ui.values[0] ? ui.values[0] : 0);
+                right.val(ui.values[1]);
             }
         });
+        var changeValues = function(){
+            self.slider("option", "values", [left.val(),right.val()]);
+        };
+        left.on("change keyup", changeValues);
+        right.on("change keyup", changeValues);
     })
 
     // Схлопывание пунктов меня в фильтре

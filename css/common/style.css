@@ -1562,3 +1562,42 @@ li.first-element {
 .pagination-bar {
     width: 100%;
 }
+
+.slider {
+    width: 205px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.slider-input {
+    /*margin-left: 15px;*/
+    margin-bottom: 10px;
+}
+
+.submit-filter {
+    padding: 5px;
+    padding-left: 35px;
+}
+
+.submit-filter a {
+    color: #1476c3;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 20px;
+}
+
+.submit-filter a:hover {
+    text-decoration: none;
+}
+
+.slider-input-wrapper {
+    width: 100%;
+}
+
+.slider-input-wrapper {
+    width: 100%;
+}
+
+#page-club-list {
+    border-top: 2px dashed rgba(0, 0, 0, 0.2);
+}

@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/jquery.fancybox.css');?>"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/helpers/jquery.fancybox-buttons.css');?>"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/helpers/jquery.fancybox-thumbs.css');?>"/>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
     <!--END_CSS-->
     
     <!--SCRIPTS-->
