@@ -27,10 +27,10 @@
     <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU&coordorder=longlat" type="text/javascript"></script>
 
+    <script type="text/javascript" src="<?=site_url("js/script.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/noty/jquery.noty.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/noty/layouts/topRight.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/noty/themes/default.js");?>"></script>
-    <script type="text/javascript" src="<?=site_url("js/script.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/header.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/common.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/clubs.js");?>"></script>

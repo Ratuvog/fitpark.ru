@@ -846,8 +846,15 @@ div.item{
     color: #1476c3;
     text-decoration: underline;
     margin: 0 0 0 8px ;
-    background: url("/image/city_arrow_select_2.png") no-repeat right top 7px;
     padding-right: 15px;
+}
+
+a.sort {
+    background: url("/image/city_arrow_select_2.png") no-repeat right top 4px;
+}
+
+a.sort-down {
+    background: url("/image/city_arrow_select_3.png") no-repeat right top 4px;
 }
 
 #pagination-sort p a:hover{
@@ -1532,7 +1539,6 @@ div.item{
     color: #1476c3;
     text-decoration: underline;
     margin: 0 0 0 8px ;
-    background: url("/image/city_arrow_select_2.png") no-repeat right top 7px;
     padding-right: 15px;
 }
 

@@ -1,5 +1,7 @@
-<?$this->load->view('blocks/header-search', $header);?>
+<?$this->load->view('blocks/header', $header);?>
 <?$this->load->view('blocks/title-block', $content_title);?>
+
+
 <div id="content">
     <div id="content-inner">
         <?$this->load->view('blocks/subtitle-block');?>
@@ -18,11 +20,13 @@
                                                 <?  foreach ($filter as $item) {
                                                     $optinonName = "option".$item->filterid."-".$item->id;?>
                                                     <li>
+                                                        <div class="checkbox inline">
                                                         <input name="<?=$optinonName;?>"
                                                                id="<?=$optinonName;?>"
                                                                type="checkbox"
                                                             <? if($activeFilters[$optinonName] === true) echo 'checked';?>
                                                                class="green-checkbox"/>
+                                                        </div>
                                                         <!--                            <div class="sidebar-checkbox inline"></div>-->
                                                         <span><?=$item->name;?></span>
                                                     </li>
@@ -75,16 +79,16 @@
                                         class="sort <?if($order=='popularity') echo 'active';?>"
                                         href="<?=site_url(array('clubs','sort','popularity'));?>"
                                         >По популярности</a>
-                                    <?if($order=='ratingdesc') { ?>
-                                        <a class="sort" href="<?=site_url(array('clubs','sort','ratingasc'));?>">по рейтингу</a>
-                                    <?} else { ?>
+                                    <?if($order=='ratingasc') { ?>
                                         <a class="sort-down" href="<?=site_url(array('clubs','sort','ratingdesc'));?>">по рейтингу</a>
+                                    <?} else { ?>
+                                        <a class="sort" href="<?=site_url(array('clubs','sort','ratingasc'));?>">по рейтингу</a>
                                     <? } ?>
 
-                                    <?if($order=='pricedesc') { ?>
-                                        <a class="sort" href="<?=site_url(array('clubs','sort','priceasc'));?>">по стоимости</a>
-                                    <?} else { ?>
+                                    <?if($order=='priceasc') { ?>
                                         <a class="sort-down" href="<?=site_url(array('clubs','sort','pricedesc'));?>">по стоимости</a>
+                                    <?} else { ?>
+                                        <a class="sort" href="<?=site_url(array('clubs','sort','priceasc'));?>">по стоимости</a>
                                     <? } ?>
                                 </p>
                             </div>
