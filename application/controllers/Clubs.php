@@ -128,7 +128,7 @@ class Clubs extends Base {
 
     function search()
     {
-        $this->searchQuery = $this->input->post("search");
+        $this->searchQuery = $this->input->get("search");
         $this->session->set_userdata('search', $this->searchQuery);
         $this->index();
     }

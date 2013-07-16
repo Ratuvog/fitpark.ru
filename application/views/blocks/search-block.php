@@ -7,7 +7,7 @@
             <h2>ФитПоиск</h2>
         </div>
         <div id="search-block-text" class="inline">
-        <form id="search-form" action="<?=site_url(array('clubs','search'));?>" method="post">
+        <form id="search-form" action="<?=site_url(array('clubs','search'));?>" method="get">
                 <input name="search" id="search" type="text" autocomplete="off" placeholder="Клубы, описание, услуги, улица..."/>
                 <input type="submit" id="submit-search" />
         </form>
