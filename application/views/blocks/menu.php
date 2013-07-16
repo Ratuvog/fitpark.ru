@@ -13,9 +13,9 @@
                 </div><!--#top-menu[END]-->
                 <div id="top-search" class="split inline">
                     <div id="top-search-inner">
-                        <form method="post">
+                        <form method="post" action="<?=site_url(array('clubs','search'));?>">
                             <div id="search-text">
-                                <input type="text" autocomplete="off" placeholder="Поиск по каталогу фитнес клуба"/><br />
+                                <input name="search" type="text" autocomplete="off" placeholder="Поиск по каталогу фитнес клуба"/><br />
                                 <input type="submit"/>
                             </div>
                         </form>

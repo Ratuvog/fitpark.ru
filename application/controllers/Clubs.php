@@ -49,6 +49,13 @@ class Clubs extends Base {
             'name' => "Клубы",
             'url' => site_url('clubs')
         );
+
+        if(!empty($this->searchQuery)) {
+            $this->breadcrumbs[] = (object)array(
+                'url'  => current_url(),
+                'name' => 'Поиск клубов'
+            );
+        }
         $content = $this->initViewData();;
         foreach($content as $key=>$val ) {
             $this->content->data->$key = $val;
@@ -123,7 +130,6 @@ class Clubs extends Base {
     {
         $this->searchQuery = $this->input->post("search");
         $this->session->set_userdata('search', $this->searchQuery);
-
         $this->index();
     }
 
@@ -367,11 +373,6 @@ class Clubs extends Base {
             $this->titlePage = "Поиск фитнес клубов: ".$this->searchQuery;
             $this->functionGetList = 'getClubsByString';
             $this->functionRowCount = 'getRowCountByString';
-            
-            $this->breadCrumbsData[] = array(
-                'href'  => current_url(),
-                'title' => 'Поиск клубов'
-        );
         }
     }
 
