@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('grocery_CRUD_Model', 'city', 'club_model', 'fitpark_model', 'service');
+$autoload['model'] = array('grocery_CRUD_Model', 'city', 'club_model', 'fitpark_model', 'service', 'fitpark_qa_model');
 
 
 /* End of file autoload.php */

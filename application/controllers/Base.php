@@ -63,6 +63,11 @@ class Base extends Template {
             return $hostArray[0];
         
     }
+    protected function customRedirect($url)
+    {
+        redirect($this->idna_convert->encode($url));
+    }
+
     
     /*
 $output = {

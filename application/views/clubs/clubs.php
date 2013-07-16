@@ -1,12 +1,12 @@
 <?$this->load->view('blocks/header', $header);?>
 <?$this->load->view('blocks/title-block', $content_title);?>
 
-
 <div id="content">
     <div id="content-inner">
         <?$this->load->view('blocks/subtitle-block');?>
         <div id="main">
             <div id="main-inner">
+                <?$this->load->view('blocks/content-menu');?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
                 <div id="page-club-list">
                     <div id="sidebar-options">
