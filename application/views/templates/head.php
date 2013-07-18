@@ -18,10 +18,13 @@
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/helpers/jquery.fancybox-buttons.css');?>"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('js/fancybox/helpers/jquery.fancybox-thumbs.css');?>"/>
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="<?=site_url('assets/fileupload/css/jquery.fileupload-ui.css')?>"/>
+    <link rel="stylesheet" type="text/css" href="<?=site_url('assets/fileupload/css/style.css')?>"/>
     <!--END_CSS-->
     
     <!--SCRIPTS-->
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<!--    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
     <script src="//vk.com/js/api/openapi.js?96"></script>
     <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>

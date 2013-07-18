@@ -59,18 +59,17 @@ checkForm = function(event) {
         $(this).css("border-color", "");
         if(type !== "hidden")
         {
-            var validator = $(this).attr("validator");
-            var textField = $(this).attr("text");
-            var isRequire = $(this).attr("isReq");
-            if (!validate[validator].func($(this).val()) && (isRequire !== "false")) {
+            var validator = $(this).attr("validator") || "blank";
+            var textField = $(this).attr("text") || "";
+            var isRequire = $(this).attr("isReq") || "true";
+            if ((isRequire !== "false") && !validate[validator].func($(this).val()) ) {
                 $(this).css("border-color", "red");
                 errorPull.push(validate[validator].errorPattern(textField));
             }
         }
     })
     if (errorPull.length === 0) {
-        form.submit();
-        return;
+        return true;
     }
     
     for(var i = 0; i < errorPull.length; ++i)
@@ -83,4 +82,5 @@ checkForm = function(event) {
         });
     }
     errorPull = [];
+    return false;
 }

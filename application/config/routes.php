@@ -59,5 +59,7 @@ $route['club/getGuest/(:num)']      = 'Club/getGuest/$1';
 $route['club/addReview/(\d+)']      = 'Club/addReview/$1';
 $route['club/vote']                 = 'Club/vote';
 
+$route['training_program']          = 'Training_program/index';
+$route['training_program/add']      = 'Training_program/addProgram';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
