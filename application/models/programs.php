@@ -27,5 +27,10 @@ class Programs extends CI_Model {
         $lastInsertId = $this->db->query("SELECT LAST_INSERT_ID() id")->row();
         return $lastInsertId->id;
     }
+
+    function setPaymented($id)
+    {
+        $this->db->update($this->table, array("paymented"=>1),array("id" => $id));
+    }
 }
 ?>

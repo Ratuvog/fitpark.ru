@@ -69,7 +69,8 @@ checkForm = function(event) {
         }
     })
     if (errorPull.length === 0) {
-        return true;
+        form.submit();
+        return false;
     }
     
     for(var i = 0; i < errorPull.length; ++i)

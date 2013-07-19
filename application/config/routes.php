@@ -61,5 +61,9 @@ $route['club/vote']                 = 'Club/vote';
 
 $route['training_program']          = 'Training_program/index';
 $route['training_program/add']      = 'Training_program/addProgram';
+$route['training_program/payment']      = 'Training_program/paymentProgram';
+$route['training_program/success_payment'] = 'Training_program/success_payment';
+$route['training_program/fail_payment'] = 'Training_program/fail_payment';
+$route['payment']                   = 'Payment/index';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

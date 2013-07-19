@@ -1274,7 +1274,9 @@ a.sort-down {
     transition: all 300ms;
 }
 
+#form-comment-wrap a,
 #form-comment-wrap input[type=submit]{
+    border-radius: 6px;
     background: -webkit-gradient(linear, left top, left bottom, from(#3a9cee), to(#005fa6));
     background-image: linear-gradient(bottom, ##005fa6, #3a9cee);
     background-image: -o-linear-gradient(bottom, #005fa6, #3a9cee);
@@ -1287,10 +1289,14 @@ a.sort-down {
     font-size: 18px;
     width: 413px;
     cursor: pointer;
+    display: block;
+    text-align: center;
     border: none !important;
 }
 
-#form-comment-wrap input[type=submit]:hover{
+#form-comment-wrap a:hover,
+#form-comment-wrap input[type=submit]:hover
+{
     background: -webkit-gradient(linear, left top, left bottom, from(rgb(20, 141, 243)), to(rgb(3, 88, 151)));
     
     background-image: linear-gradient(bottom, rgb(3, 88, 151), rgb(20, 141, 243));
@@ -1635,4 +1641,26 @@ div.addqa {
 .fileinput-button table, .fileinput-button td {
     width: 100px;
     height: 100px;
+}
+
+
+.name-field {
+    width: 300px;
+    font-size: 20px;
+    text-align: left;
+    padding: 20px;
+    padding-left: 0;
+    font-family: cricket;
+}
+
+.value-field {
+    font-size: 20px;
+    padding: 20px;
+    font-weight: bold;
+    text-align: right;
+    font-family: cricket;
+}
+
+.payment-submit {
+    margin-bottom: 20px;
 }

@@ -16,7 +16,7 @@
                         фитнесу 2005. Стоимость программы составит всего 750 рублей.</p>
                 </div>
                 <div id="select-form">
-                    <form method="post" action="<?=site_url('training_program/add');?>" enctype="multipart/form-data">
+                    <form method="post" action="<?=site_url('training_program/payment');?>">
                     <div id="select-form-inner">
                         <div id="select-form-options">
                             <h2 class="inline">Заполните форму для тренера</h2>
@@ -201,7 +201,9 @@
                                     </div>
                                     <div id="form-email-and-order" class="inline">
                                         <input type="text" text="Ваш адрес электронной почты" name="email" placeholder="Ваш адрес электронной почты" validator="email"/><br />
-                                        <input type="submit" id="submit" value="Заказать программу"/>
+                                        <a id="submit" href="#">Перейти к оплате</a>
+<!--                                        <button id="submit">Заказать программу</button>-->
+<!--                                        <input type="button" name="submit" id="submit" value=""/>-->
                                     </div>
 
                                 <p>А тут будет текст о том. что происходит после заказа программы тренировок.
