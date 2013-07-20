@@ -16,7 +16,7 @@
                         фитнесу 2005. Стоимость программы составит всего 750 рублей.</p>
                 </div>
                 <div id="select-form">
-                    <form method="post" action="<?=site_url('training_program/payment');?>">
+                    <form method="post" action="<?=site_url('training_program/payment');?>" class="program_training">
                     <div id="select-form-inner">
                         <div id="select-form-options">
                             <h2 class="inline">Заполните форму для тренера</h2>
@@ -28,6 +28,7 @@
                                         <td>
                                             <p class="inline first">где тренироваться:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="where" id="">
                                                     <? foreach($where as $key=>$value) {?>
                                                         <option value="<?=$key;?>"><?=$value;?></option>
@@ -38,6 +39,7 @@
                                         <td>
                                             <p class="inline second">пол:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="gender" id="">
                                                     <? foreach ($gender as $key=>$val) {?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>
@@ -51,6 +53,7 @@
                                         <td>
                                             <p class="inline first">цель тренировок:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="target" id="">
                                                 <? foreach ($target as $key=>$val) { ?>
                                                     <option value="<?=$key;?>"><?=$val;?></option>
@@ -59,8 +62,9 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="inline second">возраст:</p>
+                                            <p class="inline second" style="padding-right: 3px;">возраст:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="years" id="">
                                                 <? foreach ($years as $key=>$val){ ?>
                                                     <option value="<?=$key;?>"><?=$val;?></option>
@@ -74,6 +78,7 @@
                                         <td>
                                             <p class="inline first">опыт занятий:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="experience" id="">
                                                     <? foreach ($experience as $key=>$val) { ?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>
@@ -84,6 +89,7 @@
                                         <td>
                                             <p class="inline second">вес:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="weight" id="">
                                                     <? foreach ($weight as $key=>$val) { ?>
                                                         <option value="<?= $key; ?>"><?=$val;?></option>
@@ -97,6 +103,7 @@
                                         <td>
                                             <p class="inline first">периодичность:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="periodicity" id="">
                                                     <? foreach ($periodicity as $key=>$val){ ?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>
@@ -107,6 +114,7 @@
                                         <td>
                                             <p class="inline second">рост:</p>
                                             <div class="inline">
+                                                <div class="select-arrow inline"></div>
                                                 <select name="height" id="">
                                                     <? foreach ($height as $key => $val) { ?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>
