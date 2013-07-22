@@ -65,5 +65,8 @@ $route['training_program/payment']      = 'Training_program/paymentProgram';
 $route['training_program/success_payment'] = 'Training_program/success_payment';
 $route['training_program/fail_payment'] = 'Training_program/fail_payment';
 $route['payment']                   = 'Payment/index';
+
+$route['exercises']                 = 'Exercises/exercises';
+$route['exercises/(:num)']          = 'Exercises/exercises/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

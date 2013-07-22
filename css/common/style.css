@@ -1080,6 +1080,11 @@ a.sort-down {
     text-decoration: underline;
 }
 
+#exercise-show span.item {
+    margin: 0 20px;
+    color: #626262;
+}
+
 #exercise-show a:hover,
 #exercise-sort a:hover{
     text-decoration: none;
@@ -1099,6 +1104,12 @@ a.sort-down {
 .exercise-item{
     text-align: center;
     margin: 0 6px;
+    width: 215px;
+    min-height: 237px;
+}
+
+.exercise-item div {
+
 }
 
 .exercise-item p{
@@ -1113,10 +1124,26 @@ a.sort-down {
     text-decoration: none;
 }
 
-.exercise-item img{
+.exercise-item table {
+    height: 196px;
+    width: 100%;
+}
+
+.exercise-item img {
+    max-width: 215px;
+}
+
+.exercise-item td{
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     box-shadow: 0px 0px 2px;
+    height: 100%;
+    width: 100%x;
+}
+
+.exercise-inline {
+    display: inline-table;
+    vertical-align: top;
 }
 
 #select-form-options{
