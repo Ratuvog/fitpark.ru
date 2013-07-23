@@ -153,11 +153,16 @@
 
 .window {
     width: 100%;
+    padding-bottom: 5px;
 }
 
 .window td{
     padding: 10px;
     padding-left: 22px;
+}
+
+.window textarea{
+    width: 410px;
 }
 
 #content-title-dialog{
@@ -183,4 +188,23 @@
 #content-title-inner-dialog h1{
     margin: 0;
     padding: 5px 0;
+}
+
+.window .add-review-select{
+    width: 190px;
+    margin: 0;
+}
+
+.window .add-review-select-arrow{
+    top: -25px;
+    right: 1px;
+}
+
+#add-review td{
+    vertical-align: top;
+    padding: 10px 10px 0 22px;
+}
+
+#add-review p{
+    margin: 0;
 }

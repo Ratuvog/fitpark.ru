@@ -1,6 +1,6 @@
 <div class="dnone">
     <div class="message-dialog">
-        <form id="get-club-card" action="" method="post">
+        <form class="dialog-ajax-form" id="get-club-card" action="" method="post">
             <div id="content-title-dialog">
                 <div id="content-title-inner-dialog">
                     <h1>Получи клубную карту</h1>

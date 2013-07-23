@@ -1,6 +1,6 @@
 <div class="dnone">
     <div  class="message-dialog">
-        <form id="visit-club" action="" method="post">
+        <form class="dialog-ajax-form" id="visit-club" action="" method="post">
             <div id="content-title-dialog">
                 <div id="content-title-inner-dialog">
                     <h1>Посети клуб</h1>

@@ -1,6 +1,7 @@
 <?$this->load->view('blocks/header', $header);?>
 <?$this->load->view('blocks/title-block', $content_title);?>
 
+<script type="text/javascript" src="<?=site_url("js/clubs.js");?>"></script>
 <div id="content">
     <div id="content-inner">
         <?$this->load->view('blocks/subtitle-block');?>

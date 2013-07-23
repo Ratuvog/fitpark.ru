@@ -3,6 +3,7 @@ require_once(APPPATH.'controllers/Base.php');
 class Club extends Base {
 
     public $view = 'club/club';
+    public $page = 'info';
     public $breadcrumbs = array();
     
     function __construct()
@@ -45,15 +46,40 @@ class Club extends Base {
         $this->content->data->club = $this->club;
         
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
-        $this->content->data->content_title->title = sprintf("Фитнес-клуб %s", $this->club->name);              
+        $this->content->data->content_title->title = sprintf("Фитнес-клуб %s", $this->club->name);      
+        $this->content->data->page = $this->page;
     }
     
-    function Club($club)
+    function Club($club, $page = null)
     {
+        $this->page = $page;
+        
+        // Клуб
         $this->club = $this->club_model->byId($club);
+        
+        // Услуги
         $this->club->services_row->service_map = $this->service->map();
         $this->club->services_row->services = $this->service->byClub($club);
         
+        // Город
+        $this->club->city = $this->city->byId($this->club->cityid);
+  
+        // Аналоги
+        $this->club->analogs = $this->club_model->analogs($club);
+        foreach($this->club->analogs as &$value)
+            $value->url = prep_url(site_url(array('club', $value->id)));
+        
+        // Оценка пользователя
+        $this->club->userVote = $this->club_model->userVote($club, $_SERVER['REMOTE_ADDR']);
+        
+        // Отзывы
+        $this->club->comments->reviews = $this->review->byClub($club);
+        foreach ($this->club->comments->reviews as &$value)
+            $value->fake_id = $value->id + 1e6;
+        
+        // Фотографии
+        $this->club->photos->images = $this->photo->byClub($club);
+
         $this->breadcrumbs []= (object)array(
             'name' => "Главная",
             'url' => base_url()
@@ -70,6 +96,13 @@ class Club extends Base {
         );
         
         $this->renderScene();
+    }
+    
+    public function vote()
+    {
+        $val = $this->input->post('score');
+        $clubId = $this->input->post('vote-id');
+        echo $this->club_model->addVote($clubId, $_SERVER['REMOTE_ADDR'], $val);
     }
 }
 ?>

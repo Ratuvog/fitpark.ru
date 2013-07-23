@@ -142,7 +142,8 @@
 					this.$buttons.css({borderTop: '1px solid #0B90C4'}); break;
 				case 'success':
 					this.$bar.css({backgroundColor: 'lightgreen', borderColor: '#50C24E', color: 'darkgreen'}); 
-					this.$buttons.css({borderTop: '1px solid #50C24E'});break;
+					this.$buttons.css({borderTop: '1px solid #50C24E'});
+                                        this.$message.css({fontSize: '16px'});break;
 				default:
 					this.$bar.css({backgroundColor: '#FFF', borderColor: '#CCC', color: '#444'}); 
                                         this.$message.css({fontSize: '16px'});break;

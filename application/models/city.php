@@ -26,6 +26,11 @@ class City extends CI_Model {
         return $result;
     }
     
+    function byId($cityId)
+    {
+        return $this->db->get_where($this->table, array('id'=>$cityId))->row();
+    }
+    
     function get()
     {
         $result = $this->db->get($this->table)->result();

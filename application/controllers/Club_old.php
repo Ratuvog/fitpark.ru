@@ -136,7 +136,7 @@ class Club_old extends Base {
     {
         $this->viewData['reviews'] = $this->fitpark_club_model->getReviewsClub($this->clubId, $_SERVER['REMOTE_ADDR']);
         foreach ($this->viewData['reviews'] as &$value) {
-            $value['fake_id'] = $value['id']+1e6;
+            $value['fake_id'] = $value['id'] + 1e6;
         }
     }
 

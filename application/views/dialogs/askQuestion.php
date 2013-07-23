@@ -1,6 +1,6 @@
 <div class="dnone">
     <div class="message-dialog">
-        <form id="ask-question" action="" method="post">
+        <form class="dialog-ajax-form" id="ask-question" action="" method="post">
             <div id="content-title-dialog">
                 <div id="content-title-inner-dialog">
                     <h1>Задай вопрос менеджеру</h1>
@@ -23,7 +23,7 @@
                 <tr>
                     <td class="window-name-options">Вопрос</td>
                     <td>
-                        <textarea class="checkout-input search" style="height: 60px;" name="desc" cols="30" rows="10" validator="blank" text="Вопрос"></textarea>
+                        <textarea class="checkout-input search" style="height: 60px;" name="question" cols="30" rows="10" validator="blank" text="Вопрос"></textarea>
                     </td>
                 </tr>
                 <tr>

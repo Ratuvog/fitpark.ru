@@ -282,7 +282,7 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                         <table class="analogs-list">
                             <? $countClubs = 1; ?>
                             <? foreach ($analogs as $currentClub) { ?>
-                                <? if($countClubs%$countAnalogsOnRow==0) { ?>
+                                <? if($countClubs%4==0) { ?>
                                 <tr>
                                 <? } ?>
                                 <td align="center">
@@ -300,10 +300,10 @@ VK.Widgets.Like("vk_like", {type: "button",pageUrl: "<?=$clubUrl;?>"});
                                     </div>
                                     <a href="/club/<?=$currentClub->id;?>" target="_blank" class="no-decoration"><div class="button-more button">Подробнее о клубе</div></a>
                                 </td>
-                                <? if($countClubs%($countAnalogsOnRow-1)==0) {?>
+                                <? if($countClubs%3 == 0) {?>
                                 </tr>
                                 <? } ?>
-                                <? $countClubs++;?>
+                                <? $countClubs++; ?>
                             <? } ?>
                         </table>
                     </section>

@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('idna_convert','session');
+$autoload['libraries'] = array('idna_convert', 'session', 'image_lib', 'database');
 
 
 /*
@@ -109,7 +109,9 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('grocery_CRUD_Model', 'city', 'club_model', 'fitpark_model', 'service', 'fitpark_qa_model');
+$autoload['model'] = array('grocery_CRUD_Model', 'city', 'club_model',
+                           'fitpark_model', 'service', 'fitpark_qa_model',
+                           'review', 'photo');
 
 
 /* End of file autoload.php */

@@ -51,7 +51,7 @@ $route['clubs/(\w+)']             = 'Clubs/$1';
 $route['clubs/(\w+)/(\w+)']       = 'Clubs/$1/$2';
 
 $route['club/(:num)']               = 'Club/club/$1';
-$route['club/(:num)/(:num)']        = 'Club/club/$1/$2';
+$route['club/(:num)/(:any)']        = 'Club/club/$1/$2';
 $route['club/getAbonement/(:num)']  = "Club/getAbonement/$1";
 $route['club/getFeedback/(:num)']   = "Club/getFeedback/$1";
 $route['club/getQuestion/(:num)']   = "Club/getQuestion/$1";
