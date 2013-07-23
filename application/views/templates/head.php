@@ -29,7 +29,7 @@
     <script src="http://malsup.github.com/jquery.form.js"></script> 
     <script src="//vk.com/js/api/openapi.js?96"></script>
     <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
-    <script src="http://api-maps.yandex.ru/2.0-stable/?coordorder=longlat&load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <!--<script src="http://api-maps.yandex.ru/2.0-stable/?coordorder=longlat&load=package.standard&lang=ru-RU" type="text/javascript"></script>-->
 
     <script type="text/javascript" src="<?=site_url("js/script.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/noty/jquery.noty.js");?>"></script>

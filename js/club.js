@@ -63,7 +63,7 @@ $(function(){
         }
     });
     
-    ymaps.ready(function () {
+    /*ymaps.ready(function () {
         var isClub = true;
         var zoom = 15;
         var coords = $("#page-club-map").attr('geo').split(',');
@@ -87,7 +87,7 @@ $(function(){
             }));
         }
         
-    });
+    });*/
     
     function createDialog(form, href)
     {

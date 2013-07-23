@@ -1,13 +1,4 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: dmitry
- * Date: 7/16/13
- * Time: 10:24 PM
- * To change this template use File | Settings | File Templates.
- */
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require_once(APPPATH.'controllers/Base.php');
 class Training_program extends Base {
     public $view = 'trainig_program/trainig_program';

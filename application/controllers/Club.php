@@ -24,19 +24,16 @@ class Club extends Base {
     
     function collectContent()
     {
-/*        $this->title = sprintf("ФитПарк. %s %s. Стоимость, отзывы, фотографии, рейтинг, акции.",
-                               '','');
-
-        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
-                                    lang("common_desc"));
-        
-        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
-                                   танцы, йога, пилатес, тренажеры.",
-                                   lang("common_keys"));
- 
- */
-               
         $this->content();
+
+        $this->title = sprintf("ФитПарк. %s %s. Стоимость, отзывы, фотографии, рейтинг, акции.",
+                               $this->club->name, lang("current_club_title"));
+
+        $this->description = sprintf("%s %s. Отзывы, рейтинг, фотографии, цены, описание.",
+                                    $this->club->name, lang("club_desc"));
+        
+        $this->keywords = sprintf("%s. %s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.",
+                                   $this->club->name, lang("common_keys"));
     }
     
     function content()
