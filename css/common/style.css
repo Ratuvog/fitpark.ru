@@ -1721,3 +1721,12 @@ div.addqa {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
+
+#exercise-content-inner>table {
+    /*width: 100%;*/
+    margin: 30px;
+}
+
+#exercise-content-inner p {
+    line-height: 1.5;
+}
