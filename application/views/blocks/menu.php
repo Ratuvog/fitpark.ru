@@ -6,9 +6,21 @@
                     <ul>
                         <li class="split"><a href="<?=base_url();?>"><img src="<?=site_url(array('image/main_link.png'));?>"/></a></li>
                         <li class="split"><a href="<?=site_url(array('clubs'));?>" class="padded">Фитнес-клубы</a></li>
-                        <li class="split"><a href="#" class="padded">Акции</a></li>
-                        <li class="split"><a href="#" class="padded">ФитГид</a></li>
-                        <li class="split"><a href="#" class="padded">О ФитПарке</a></li>
+                        <li class="split"><a href="<?=site_url(array('sales'));?>" class="padded">Акции</a></li>
+                        <li class="split">
+                            <a href="#" class="padded">ФитГид</a>
+                            <ul class="submenu menu-item-gid">
+                                <li><a href="<?=site_url(array('exercises'))?>">Упражнения</a></li>
+                                <li><a href="<?=site_url(array('question'));?>">Задать вопрос специалисту</a></li>
+                            </ul>
+                        </li>
+                        <li class="split">
+                            <a href="<?=site_url('about')?>" class="padded">Услуги</a>
+                            <ul class="submenu menu-item-services">
+                                <li><a href="<?=site_url(array('training_program'));?>">Заказать программу тренировок</a></li>
+                            </ul>
+                        </li>
+                        <li class="split"><a href="<?=site_url('about')?>" class="padded">О ФитПарке</a></li>
                     </ul>
                 </div><!--#top-menu[END]-->
                 <div id="top-search" class="split inline">

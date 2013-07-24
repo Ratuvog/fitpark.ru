@@ -7,7 +7,7 @@ body {
 @font-face {
 	font-family: 'trebuc';
 	src: url('fonts/trebuc.eot');
-	src: local('â?º'), 
+	src: local('ï¿½?ï¿½'), 
         url('fonts/trebuc.woff') format('woff'), 
         url('fonts/trebuc.ttf') format('truetype'), 
         url('fonts/trebuc.svg') format('svg');
@@ -18,7 +18,7 @@ body {
 @font-face {
 	font-family: 'cricket';
 	src: url('fonts/Cricket_Bold.eot');
-	src: local('â?º'), url('fonts/Cricket_Bold.woff') format('woff'), url('fonts/Cricket_Bold.ttf') format('truetype'), url('fonts/Cricket_Bold.svg') format('svg');
+	src: local('ï¿½?ï¿½'), url('fonts/Cricket_Bold.woff') format('woff'), url('fonts/Cricket_Bold.ttf') format('truetype'), url('fonts/Cricket_Bold.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -1806,4 +1806,59 @@ div.addqa {
 
 #image-club img {
     width: 180px;
+}
+
+Menu
+#top-menu-inner{
+    position:relative;
+    z-index:100;
+}
+#top-menu-inner ul li a, #top-menu-inner ul li a:visited{
+    display:block;
+    overflow:hidden;
+}
+#top-menu-inner ul{
+    padding:0;
+    margin:0;
+    list-style:none
+}
+#top-menu-inner ul li{
+    position:relative
+}
+
+#top-menu-inner ul li ul{
+    display:none;
+    background: -webkit-gradient(linear, left top, left bottom, from(#3a9cee), to(#005fa6));
+    background-image: linear-gradient(bottom, ##005fa6, #3a9cee);
+    background-image: -o-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -moz-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -ms-linear-gradient(bottom, #005fa6, #3a9cee);
+    border-radius: 3px;
+    text-align: left;
+}
+#top-menu-inner ul li:hover a{
+    /*color:#fff;*/
+    /*background:#36f*/
+}
+#top-menu-inner ul li:hover ul{
+    display:block;
+    position:absolute;
+    top:21px;
+    left:0;
+    padding: 5px;
+}
+#top-menu-inneru ul li:hover ul li a{
+    display:block;
+}
+
+#top-menu-inneru ul li:hover ul li {
+    display: block;
+}
+
+.menu-item-gid {
+    width: 250px;
+}
+
+.menu-item-services {
+    width: 270px;
 }
