@@ -1,35 +1,60 @@
-<?$this->load->view('blocks/header', $header);?>
-<?$this->load->view('blocks/title-block', $content_title);?>
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+require_once(APPPATH.'controllers/Base.php');
+/**
+ * Created by JetBrains PhpStorm.
+ * User: dmitry
+ * Date: 7/25/13
+ * Time: 12:28 AM
+ * To change this template use File | Settings | File Templates.
+ */
 
-<div id="content">
-    <div id="content-inner">
-        <?$this->load->view('blocks/subtitle-block');?>
-        <div id="main">
-            <div id="main-inner">
-                <?$this->load->view('blocks/content-menu');?>
-                <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
-                <div id="exercise-content">
-                    <div id="exercise-content-inner">
-                        <? foreach($sales as $sale){ ?>
-                        <div class="sale-club">
-                            <div class="banner">
-                                <img src=<?=$sale->image;?>"/>
-                            </div>
-                            <div class="item-result-wrap">
-                                <div class="item-result inline">
-                                    <div class="if-share do"></div>
-                                    <div class="main-result-block">
-                                        <? $this->load->view('blocks/club-item', $sale->club); ?>
-                                    </div>
-                                </div><!--.item-result[END]-->
-                            </div>
-                            <div class="clear"></div>
-                        </div><!--.sale-club[END]-->
-                        <? } ?>
-                    </div>
-                </div><!--#exercise-content[END]-->
-            </div>
-        </div>
-    </div>
-</div>
-</div><!--#main[END]-->
+class Sales extends Base
+{
+    public $view = "sales";
+    
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model("sales_model");
+        $this->load->model("club_model");
+        $this->title = sprintf("Акции. ФитПарк. %s Тренажерные залы, фитнес центры,
+                                отзывы, стоимость, рейтинги, акции, скидки.",
+            lang('title'));
+
+        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
+            lang("common_desc"));
+
+        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
+                                   танцы, йога, пилатес, тренажеры.",
+            lang("common_keys"));
+    }
+
+    function index()
+    {
+        $this->breadcrumbs []= (object)array(
+            'name' => "Главная",
+            'url' => base_url()
+        );
+
+        $this->breadcrumbs []= (object)array(
+            'name' => "Акции",
+            'url'  => site_url('sales')
+        );
+
+        $sales = $this->sales_model->getList();
+        foreach ($sales as &$sale) {
+            $sale->url = site_url(array('sales',$sale->id));
+            $sale->club = $this->club_model->byId($sale->clubId);
+            $sale->club->url = site_url(array('club',$sale->club->id));
+        }
+
+        $this->content->view = $this->view;
+        $this->content->data->content_title->title = 'Акции';
+        $this->content->data->sales = $sales;
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
+        $this->renderScene();
+    }
+
+}   
+
+?>

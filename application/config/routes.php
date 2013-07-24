@@ -69,5 +69,9 @@ $route['payment']                   = 'Payment/index';
 $route['exercises']                 = 'Exercises/exercises';
 $route['exercises/(:num)']          = 'Exercises/exercises/$1';
 $route['exercise/(:num)']           = 'Exercise/index/$1';
+
+$route['sales']                     = 'Sales/index';
+$route['sales/(:num)']              = 'Sales/sale/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
