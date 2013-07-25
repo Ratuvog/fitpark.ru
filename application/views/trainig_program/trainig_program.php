@@ -6,9 +6,8 @@
         <?$this->load->view('blocks/subtitle-block');?>
         <div id="main">
             <div id="main-inner">
-                <?$this->load->view('blocks/content-menu');?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
-                <div id="brief-info">
+                <div id="brief-info" class="content-page">
                     <p>Программа тренировок, составленная профессионалом сделает занятия
                         эффективнее, сэкономит время, даст лучший результат, убережет от разочарований,
                         сделает твое тело прекрасным.<br />

@@ -6,9 +6,9 @@
         <?$this->load->view('blocks/subtitle-block');?>
         <div id="main">
             <div id="main-inner">
-                <?$this->load->view('blocks/content-menu');?>
+                <?$this->load->view('blocks/exercise-content-menu');?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
-                <div id="exercise-content">
+                <div id="exercise-content" class="content-page">
                     <div id="exercise-content-inner">
                         <div id="exercise-menu">
                             <nav>

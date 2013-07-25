@@ -7,7 +7,7 @@
         <div id="main">
             <div id="main-inner">
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
-                <div id="exercise-content">
+                <div id="exercise-content" class="content-page">
                     <div id="exercise-content-inner">
                         <? foreach($sales as $sale){ ?>
                         <div class="sale-club">

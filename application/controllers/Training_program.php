@@ -163,9 +163,6 @@ class Training_program extends Base {
 
     function success_payment()
     {
-        $programId = $this->input->post("WMI_PAYMENT_NO");
-        $this->programs->setPaymented($programId);
-        $this->postSuccess();
         $this->generateBreadcrumbs();
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->content->data->content_title->title = "Заказ успешно оформлен";
@@ -174,39 +171,6 @@ class Training_program extends Base {
                                 А пока вы можете посмотреть другие предложения нашего портала.";
         $this->content->data->redirect_url = base_url();
         parent::renderScene();
-    }
-
-    private function postSuccess()
-    {
-        //инициализируем сеанс
-        $curl = curl_init();
-
-        //уcтанавливаем урл, к которому обратимся
-        curl_setopt($curl, CURLOPT_URL, $this->config->item("address"));
-
-        //включаем вывод заголовков
-        curl_setopt($curl, CURLOPT_HEADER, 1);
-
-        //передаем данные по методу post
-        curl_setopt($curl, CURLOPT_POST, 1);
-
-        //теперь curl вернет нам ответ, а не выведет
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-
-        //переменные, которые будут переданные по методу post
-        curl_setopt($curl, CURLOPT_POSTFIELDS, 'WMI_RESULT='.
-            urlencode('OK'));
-        //я не скрипт, я браузер опера
-        curl_setopt($curl, CURLOPT_USERAGENT, 'Opera 10.00');
-
-        $res = curl_exec($curl);
-
-        //проверяем, если ошибка, то получаем номер и сообщение
-        if(!$res){
-            die(curl_error($curl).'('.curl_errno($curl).')');
-        }
-
-        curl_close($curl);
     }
 
     function fail_payment()

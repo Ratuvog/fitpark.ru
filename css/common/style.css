@@ -1874,6 +1874,11 @@ Menu
     height: 100%;
 }
 
+.content-page {
+    border-top: 2px dashed rgba(0, 0, 0, 0.2);
+    padding-top: 5px;
+}
+
 /*Social Network*/
 .share42init {
     display: none;

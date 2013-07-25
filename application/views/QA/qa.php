@@ -7,9 +7,9 @@
         <?$this->load->view('blocks/subtitle-block');?>
         <div id="main">
             <div id="main-inner">
-                <?$this->load->view('blocks/content-menu');?>
+                <?$this->load->view('blocks/exercise-content-menu');?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
-                <div id="page-club-list">
+                <div id="page-club-list" class="content-page">
                     <div id="brief-info">
                         <p>У многих возникают вопросы о том, как правильно заниматься
                             в фитнес-клубе, на что стоит обратить внимание, какие есть

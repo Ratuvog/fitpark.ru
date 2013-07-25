@@ -6,10 +6,9 @@
         <?$this->load->view('blocks/subtitle-block');?>
         <div id="main">
             <div id="main-inner">
-                <?$this->load->view('blocks/content-menu');?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
 
-                <div id="page-club">
+                <div id="page-club" class="content-page">
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
                             <form action="<?=$address;?>"
