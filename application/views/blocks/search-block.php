@@ -21,9 +21,6 @@
         </div>
         <div id="select-itmes" class="inline">
             <div class="item inline">
-                <div class="checkbox inline">
-                    <input type="checkbox"/>
-                </div>
                 <div class="item-name inline">
                     <a href="<?=site_url(array("clubs","getByService",1));?>">
                         <img src="<?=site_url('image/swim.png');?>" class="inline"/>
@@ -33,9 +30,6 @@
             </div>
 
             <div class="item inline">
-                <div class="checkbox inline">
-                    <input type="checkbox"/>
-                </div>
                 <div class="item-name inline">
                     <a href="<?=site_url(array("clubs","getByService",12));?>">
                         <img src="<?=site_url('image/sauna.png');?>" class="inline"/>
@@ -45,9 +39,6 @@
             </div>
 
             <div class="item inline">
-                <div class="checkbox inline">
-                    <input type="checkbox"/>
-                </div>
                 <div class="item-name inline">
                     <a href="<?=site_url(array("clubs","getByService",14));?>">
                         <img src="<?=site_url('image/massage.png');?>" class="inline"/>
@@ -57,9 +48,6 @@
             </div>
 
             <div class="item inline">
-                <div class="checkbox inline">
-                    <input type="checkbox"/>
-                </div>
                 <div class="item-name inline">
                     <a href="<?=site_url(array("clubs","getByService",3));?>">
                         <img src="<?=site_url('image/joga.png');?>" class="inline"/>

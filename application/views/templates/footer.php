@@ -77,6 +77,8 @@
                                 <div id="fb" class="inline"></div>
                                 <div id="vk" class="inline"></div>
                                 <div id="tw" class="inline"></div>
+                                <div class="share42init"></div>
+                                <script type="text/javascript" src="<?=site_url('js/share42/share42.js');?>"></script>
                             </div>
                         </div>
                     </div>
@@ -85,6 +87,7 @@
         </div>
     </footer>
 </div><!--#footer[END]-->
+<script type="text/javascript" src="<?=site_url(array('js','footer.js'))?>"></script>
 <?=$currentCity->footer_scripts;?>
 <?$this->load->view('seo_tools/googleAnalitics');?>
 <?$this->load->view('seo_tools/yandexMetrika');?>
