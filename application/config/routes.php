@@ -72,6 +72,7 @@ $route['exercise/(:num)']           = 'Exercise/index/$1';
 
 $route['sales']                     = 'Sales/index';
 $route['sales/(:num)']              = 'Sales/sale/$1';
+$route['about']                     = 'About/index';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
