@@ -36,7 +36,7 @@
                                         </h3>
                                         <p>
                                             Отвечаю за техническую часть ФитПарк <br>
-                                            Контактный e-mail: dimansny@bk.ru <br>
+                                            Контактный e-mail: dmitriy@фитпарк.рф <br>
                                         </p>
                                         <div style="clear: both;"></div>
                                     </div>
@@ -53,7 +53,7 @@
                                         </h3>
                                         <p>
                                             Отвечаю за техническую часть ФитПарк <br>
-                                            Контактный e-mail: dimansny@bk.ru <br>
+                                            Контактный e-mail: mikhail@фитпарк.рф <br>
                                         </p>
                                         <div style="clear: both;"></div>
                                     </div>
@@ -68,7 +68,7 @@
                                         </h3>
                                         <p>
                                             Отвечаю за СЕО <br>
-                                            Контактный e-mail: dimansny@bk.ru <br>
+                                            Контактный e-mail: denis@фитпарк.рф <br>
                                         </p>
                                         <div style="clear: both;"></div>
                                     </div>
@@ -85,7 +85,7 @@
                                         </h3>
                                         <p>
                                             Отвечаю за переговоры с партнерами <br>
-                                            Контактный e-mail: dimansny@bk.ru <br>
+                                            Контактный e-mail: vitaliy@фитпарк.рф <br>
                                         </p>
                                         <div style="clear: both;"></div>
                                     </div>
@@ -100,7 +100,7 @@
                                         </h3>
                                         <p>
                                             Отвечаю за финансовую стабильность ФитПарк <br>
-                                            Контактный e-mail: dimansny@bk.ru <br>
+                                            Контактный e-mail: elvira@фитпарк.рф <br>
                                         </p>
                                         <div style="clear: both;"></div>
                                     </div>
