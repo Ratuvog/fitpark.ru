@@ -23,5 +23,16 @@ $(function () {
         }
     })
 
+    if($.browser.mozilla) {
+        $("input:file.fileupload").each(function(){
+            $(this).css({
+                "right" : "-260px",
+                "top"   : "39px",
+                "height": "29px",
+                "width" : "33px"
+            })
+        })
+    }
+
     $("#submit").on("click",checkForm);
 });
