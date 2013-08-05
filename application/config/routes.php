@@ -74,5 +74,6 @@ $route['sales']                     = 'Sales/index';
 $route['sales/(:num)']              = 'Sales/sale/$1';
 $route['about']                     = 'About/index';
 
+$route['manager_in']                = 'Manager_in/index';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

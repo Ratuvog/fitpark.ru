@@ -17,7 +17,8 @@ class Hfnedjuhfnedju extends CI_Controller {
         'descriptions' => array('Описания','fitnesclub_description'),
         'photos' => array('Фотографии','fitnesclub_photo'),
         'order_list_active' => array('Заявки на изменение', ''),
-        'club_changes' => array('Модерация изменений клуба', '')
+        'club_changes' => array('Модерация изменений клуба', ''),
+        'exercises'    => array('Упражнения','exercises')
     );
     private $categoryName = 'Авторизация';
     
@@ -194,29 +195,39 @@ class Hfnedjuhfnedju extends CI_Controller {
 		$this->render($output);
 	}
 	
-        function cities()
-        {
-                $this->setCurentState('cities');
-                $crud = new grocery_CRUD();
-                $crud->set_table($this->currentTable);
-                
-                $crud->set_field_upload('icon','assets/uploads/files');
-                
-		$output = $crud->render();
-		$this->render($output);
-        }
+    function cities()
+    {
+        $this->setCurentState('cities');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+
+        $crud->set_field_upload('icon','assets/uploads/files');
+
+        $output = $crud->render();
+        $this->render($output);
+    }
+
+    function exercise()
+    {
+        $this->setCurentState('exercises');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('typeId', 'exerciseType', 'name');
+        $crud->set_field_upload('image','image/exercises');
+        $this->render($crud->render());
+    }
         
-        function districts()
-	{
+    function districts()
+    {
                 $this->setCurentState('districts');
                 $crud = new grocery_CRUD();
                 $crud->set_table($this->currentTable);
                 $crud->set_relation('cityid', 'city', 'name');
                 $crud->set_field_upload('icon','assets/uploads/files');
-                
-		$output = $crud->render();
-		$this->render($output);
-	}
+
+        $output = $crud->render();
+        $this->render($output);
+    }
         
         function clubs()
         {

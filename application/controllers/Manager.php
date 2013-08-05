@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/Base.php');
-class Manager extends Base {
+require_once(APPPATH.'controllers/Base_old.php');
+class Manager extends Base_old {
 
     protected $clubId = 0;
     private $categoryName = 'Личный кабинет';
@@ -62,7 +62,7 @@ class Manager extends Base {
     
     function auth()
     {
-        $this->view = 'manager/auth'; // by default
+        $this->view = 'old/manager/auth'; // by default
         $this->categoryName = "Авторизация";
 
         $this->viewData['categoryName'] = $this->categoryName;
@@ -221,7 +221,7 @@ class Manager extends Base {
         if(!$userId)
             return $this->auth();
 
-        $this->view = 'manager/list';
+        $this->view = 'old/manager/list';
         
         $this->categoryName = 'Cписок клубов';
         $this->viewData['categoryName'] = $this->categoryName;

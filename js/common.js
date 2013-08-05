@@ -40,8 +40,9 @@ $(function(){
         });
     })
 
-    $(".submit").click(function(){
+    $(".submit, form #submit").click(function(){
         $(this).parents('form').first().submit();
     })
+
 })
 

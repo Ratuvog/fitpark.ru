@@ -150,8 +150,6 @@ class Training_program extends Base {
             $this->content->data->$key = $val;
         }
 
-
-
         $this->content->data->coach = $this->coach->byId();
         $this->content->data->coach->avatar = site_url(array("image",
                                               "coach",
