@@ -1,5 +1,5 @@
-<!--vk.com-->
+<!--    vk.com    -->
 <script type="text/javascript">
-  VK.init({apiId: 3772163, onlyWidgets: true});
+    VK.init({apiId: 3677727, onlyWidgets: true});
 </script>
-<!--end vk.com-->
+<!--    end vk.com-->
