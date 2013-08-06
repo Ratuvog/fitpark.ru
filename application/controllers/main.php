@@ -18,12 +18,13 @@ class Main extends Base {
                                    lang("common_keys"));
                
         $this->content();
+
     }
     
     function content()
     {
         $this->content->view = 'main';
-        $this->content->data->clubs = $this->club_model->get_rand(5); // Выборка 5 случайных клубов
+        $this->content->data->clubs = $this->club_model->get_rand(5, $this->localCity); // Выборка 5 случайных клубов
         foreach ($this->content->data->clubs as &$value)
             $value->url = prep_url(site_url(array('club', $value->id)));
 

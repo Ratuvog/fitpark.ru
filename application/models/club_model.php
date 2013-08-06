@@ -4,7 +4,8 @@ class Club_model extends CI_Model {
     public $table = 'fitnesclub';
     public $rating = 'fitnesclub_rating';
     public $city = 'city';
-    
+
+
     function prepare()
     {
         $this->db->select("$this->table.*, AVG($this->rating.value) as rating, $this->city.geo as city_geo")
@@ -33,12 +34,14 @@ class Club_model extends CI_Model {
         $this->db->update($this->table, $cur, array('id' => $cur->id));
     }
     
-    function get_rand($limit)
+    function get_rand($limit, $city)
     {
         $this->prepare();
-        $set = $this->db->order_by('RAND()')
-                        ->limit($limit)
-                        ->get()->result();
+        $set = $this->db
+                    ->where("$this->table.cityId = $city->id")
+                    ->order_by('RAND()')
+                    ->limit($limit)
+                    ->get()->result();
         $this->after_get($set);
         return $set;
     }
