@@ -26,8 +26,9 @@
                                     <tr>
                                         <td>
                                             <p class="inline first">где тренироваться:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="where" id="" class="my-combobox">
                                                     <? foreach($where as $key=>$value) {?>
                                                         <option value="<?=$key;?>"><?=$value;?></option>
@@ -37,8 +38,9 @@
                                         </td>
                                         <td>
                                             <p class="inline second">пол:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="gender" id="" class="my-combobox">
                                                     <? foreach ($gender as $key=>$val) {?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>
@@ -51,8 +53,9 @@
                                     <tr>
                                         <td>
                                             <p class="inline first">цель тренировок:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="target" id="" class="my-combobox">
                                                 <? foreach ($target as $key=>$val) { ?>
                                                     <option value="<?=$key;?>"><?=$val;?></option>
@@ -62,8 +65,9 @@
                                         </td>
                                         <td>
                                             <p class="inline second" style="padding-right: 3px;">возраст:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="years" id="" class="my-combobox">
                                                 <? foreach ($years as $key=>$val){ ?>
                                                     <option value="<?=$key;?>"><?=$val;?></option>
@@ -76,8 +80,9 @@
                                     <tr>
                                         <td>
                                             <p class="inline first">опыт занятий:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="experience" id="" class="my-combobox">
                                                     <? foreach ($experience as $key=>$val) { ?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>
@@ -87,8 +92,9 @@
                                         </td>
                                         <td>
                                             <p class="inline second">вес:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="weight" id="" class="my-combobox">
                                                     <? foreach ($weight as $key=>$val) { ?>
                                                         <option value="<?= $key; ?>"><?=$val;?></option>
@@ -101,8 +107,9 @@
                                     <tr>
                                         <td>
                                             <p class="inline first">периодичность:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="periodicity" id="" class="my-combobox">
                                                     <? foreach ($periodicity as $key=>$val){ ?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>
@@ -112,8 +119,9 @@
                                         </td>
                                         <td>
                                             <p class="inline second">рост:</p>
-                                            <div class="inline">
-                                                <div class="select-arrow inline"></div>
+                                        </td>
+                                        <td>
+                                            <div class="my-combobox-wrapper">
                                                 <select name="height" id="" class="my-combobox">
                                                     <? foreach ($height as $key => $val) { ?>
                                                         <option value="<?=$key;?>"><?=$val;?></option>

@@ -1698,18 +1698,39 @@ div.addqa {
 }
 
 
-.program_training select{
+.program_training .my-combobox-wrapper{
     border: 1px solid #aaa;
     padding: 3px;
+    background: url("/image/select_form_arrow.png") no-repeat right 6px center #AAAAAA;
     border-radius: 5px;
     width: 175px;
     cursor: pointer;
+    overflow: hidden;
 }
 
-.program_training select:focus{
-    outline: none;
+.program_training .my-combobox-wrapper:hover{
     box-shadow: 0px 0px 8px rgba(25, 153, 250, 0.8);
 }
+
+.program_training .my-combobox-wrapper select:active,
+.program_training .my-combobox-wrapper select:focus {
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.program_training .my-combobox-wrapper select {
+    background: transparent;
+    border: none;
+    width: 200px;
+    position: relative;
+    height: 100%;
+    outline: none;
+}
+
+/*.program_training select:focus{*/
+    /*outline: none;*/
+    /*box-shadow: 0px 0px 8px rgba(25, 153, 250, 0.8);*/
+/*}*/
 
 .program_training .select-arrow {
     float: right;
@@ -1726,6 +1747,7 @@ div.addqa {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
+
 
 #exercise-content-inner>table {
     /*width: 100%;*/

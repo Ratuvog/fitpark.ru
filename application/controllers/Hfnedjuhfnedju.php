@@ -31,76 +31,76 @@ class Hfnedjuhfnedju extends CI_Controller {
                 $this->load->helper('image');
                 
 		$this->load->library('grocery_CRUD');
-                $this->load->library('PHPExcel');
-                $this->load->library('session');
-                $this->load->library('image_CRUD');
-                $this->load->library('image_Moo');
-                
-                $ci = &get_instance();
-                $ci->load->model('grocery_CRUD_Model');
-                $this->baseModel = $ci->grocery_CRUD_Model;
+        $this->load->library('PHPExcel');
+        $this->load->library('session');
+        $this->load->library('image_CRUD');
+        $this->load->library('image_Moo');
+
+        $ci = &get_instance();
+        $ci->load->model('grocery_CRUD_Model');
+        $this->baseModel = $ci->grocery_CRUD_Model;
 	}
         
-        function _remap($method, $param)
-        {
-            $pars = $this->uri->segment_array();    //unsetting uri last segments
-            unset($pars[1]);
-            unset($pars[2]);
+    function _remap($method, $param)
+    {
+        $pars = $this->uri->segment_array();    //unsetting uri last segments
+        unset($pars[1]);
+        unset($pars[2]);
 
-            if ($method != null && $this->session->userdata('logged_in') === true || $method === 'login')
-            {
-                call_user_func_array(array($this, $method), $pars);
-            }
-            else
-            {
-                $this->auth();
-            }
-        }
-        
-        function login()
+        if ($method != null && $this->session->userdata('logged_in') === true || $method === 'login')
         {
-            if(isset($_POST['username']) && isset($_POST['password']))
-            {
-                $login = $_POST['username'];
-                $password = $_POST['password'];
-                if(md5($login.$password) === md5('admin40000monkeybananapushintheasshole'))
-                {
-                    $this->session->set_userdata('logged_in',true);
-                    $this->index();
-                }
-            }
-            else
-            {
-                echo "Ошибка входа: Имя пользователя и пароль не должны быть пустыми.";
-                $this->auth();
-            }
+            call_user_func_array(array($this, $method), $pars);
         }
-        
-        function logout()
+        else
         {
-            $this->session->set_userdata('logged_in',false);
             $this->auth();
         }
+    }
 
-        function auth()
+    function login()
+    {
+        if(isset($_POST['username']) && isset($_POST['password']))
         {
-            $this->load->helper('form');
-            
-            $output = form_open(site_url('Hfnedjuhfnedju/login'));
-            $userData = array('name' => 'username','placeholder' => 'Имя пользователя');
-            $output .= form_input($userData);
-            $passData = array('name' => 'password','placeholder' => 'Пароль');
-            $output .= form_input($passData);
-            $output .= form_submit('my_submit', 'Войти', 'class="btn btn-primary login-button"');
-            
-            $this->render((object)array('output' => $output, 'js_files' => array(), 'css_files' => array()));
+            $login = $_POST['username'];
+            $password = $_POST['password'];
+            if(md5($login.$password) === md5('admin40000monkeybananapushintheasshole'))
+            {
+                $this->session->set_userdata('logged_in',true);
+                $this->index();
+            }
         }
+        else
+        {
+            echo "Ошибка входа: Имя пользователя и пароль не должны быть пустыми.";
+            $this->auth();
+        }
+    }
 
-        function setCurentState($stateNum)
-        {
-            $this->categoryName = $this->state[$stateNum][0];
-            $this->currentTable = $this->state[$stateNum][1];
-        }
+    function logout()
+    {
+        $this->session->set_userdata('logged_in',false);
+        $this->auth();
+    }
+
+    function auth()
+    {
+        $this->load->helper('form');
+
+        $output = form_open(site_url('Hfnedjuhfnedju/login'));
+        $userData = array('name' => 'username','placeholder' => 'Имя пользователя');
+        $output .= form_input($userData);
+        $passData = array('name' => 'password','placeholder' => 'Пароль');
+        $output .= form_input($passData);
+        $output .= form_submit('my_submit', 'Войти', 'class="btn btn-primary login-button"');
+
+        $this->render((object)array('output' => $output, 'js_files' => array(), 'css_files' => array()));
+    }
+
+    function setCurentState($stateNum)
+    {
+        $this->categoryName = $this->state[$stateNum][0];
+        $this->currentTable = $this->state[$stateNum][1];
+    }
 	
 	function render($output = null, $view = 'admin/admin', $hasJsCss = true)
         {

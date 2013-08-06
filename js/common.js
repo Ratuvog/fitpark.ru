@@ -44,5 +44,10 @@ $(function(){
         $(this).parents('form').first().submit();
     })
 
+    // При нажатии на стрелочку так же выпадает меню
+    $(".select-arrow").click(function(){
+        $(this).next().trigger("click");
+    })
+
 })
 
