@@ -63,7 +63,7 @@ class Clubs extends Base {
         $this->content->view = $this->view;
 
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
-        $this->content->data->content_title->title = "Фитнес-клуб";
+        $this->content->data->content_title->title = sprintf("Список фитнес-клубов %s", lang('city_2'));
     }
 
     public function init()
