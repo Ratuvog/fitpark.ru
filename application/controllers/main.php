@@ -16,7 +16,7 @@ class Main extends Base {
         $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
                                    танцы, йога, пилатес, тренажеры.",
                                    lang("common_keys"));
-               
+
         $this->content();
 
     }

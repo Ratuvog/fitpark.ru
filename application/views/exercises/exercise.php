@@ -10,11 +10,13 @@
                 <div id="exercise-content" class="content-page">
                     <div id="exercise-content-inner">
                         <table>
+                            <? if($exercise->video) { ?>
                             <tr>
                                 <td colspan="2" align="center">
                                     <iframe width="560" height="315" src="<?=$exercise->video;?>" frameborder="0" allowfullscreen></iframe>
                                 </td>
                             </tr>
+                            <? } ?>
                             <tr>
                                 <td colspan="2">
                                     <h1>Описание</h1>

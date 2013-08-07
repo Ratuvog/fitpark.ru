@@ -57,7 +57,12 @@ class Club extends Base {
         // Услуги
         $this->club->services_row->service_map = $this->service->map();
         $this->club->services_row->services = $this->service->byClub($club);
-        
+
+        foreach ($this->club->services_row->service_map as &$service)
+        {
+            $service->icon = site_url(array('image', 'services_icon', $service->icon));
+        }
+
         // Город
         $this->club->city = $this->city->byId($this->club->cityid);
   

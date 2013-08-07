@@ -7,7 +7,7 @@ class Service extends CI_Model {
     function map()
     {
         $services = $this->db->get($this->table)->result();
-        $this->after_get($services);
+        //$this->after_get($services);
         $map = array();
         foreach ($services as $service)
             $map[$service->id] = $service;

@@ -1338,11 +1338,11 @@ a.sort-down {
 }
 
 #page-club-info-title {
-    height: 40px;
+    margin-top: 10px;
 }
 
 #page-club-info-title img{
-    margin: 0 10px;
+    margin: 0 8px;
 }
 
 #page-club-info-main-club {
