@@ -1338,7 +1338,7 @@ a.sort-down {
 }
 
 #page-club-info-title {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #page-club-info-title img{
@@ -1794,6 +1794,7 @@ div.addqa {
 }
 
 .review {
+    min-height: 135px;
     border-top: 2px dashed rgba(0, 0, 0, 0.2);
 }
 
