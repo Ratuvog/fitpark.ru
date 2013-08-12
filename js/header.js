@@ -9,7 +9,8 @@ $(function(){
     $("#city-changed").click(function(){
         $.colorbox({
             href: "#change-city-window",
-            inline: true
+            inline: true,
+            width: "500px"
         });
         return false;
     });
