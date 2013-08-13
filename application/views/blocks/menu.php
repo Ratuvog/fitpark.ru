@@ -37,7 +37,7 @@
                     <div id="city-block-inner">
                         <span class="inline">Ваш город: </span>
                         <div id="city-title" class="inline">
-                            <h4><?=$currentCity->name;?></h4>
+                            <h4><?=$currentCity->full_name;?></h4>
                         </div>
                     </div>
                 </div><!--#city-block[END]-->

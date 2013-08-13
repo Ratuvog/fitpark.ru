@@ -10,7 +10,7 @@ $(function(){
         $.colorbox({
             href: "#change-city-window",
             inline: true,
-            width: "500px"
+            width: "1100px"
         });
         return false;
     });

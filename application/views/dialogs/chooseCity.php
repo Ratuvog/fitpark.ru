@@ -14,12 +14,12 @@
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <img src="<?=$city->symbol_path;?>" alt="<?=$city->name;?>"/>
+                                                    <img src="<?=$city->symbol_path;?>" alt="<?=$city->full_name;?>"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td align="center" class="change-city-name">
-                                                    <?=$city->name;?>
+                                                    <?=$city->full_name;?>
                                                 </td>
                                             </tr>
                                         </table>

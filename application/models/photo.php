@@ -26,6 +26,7 @@ class Photo extends CI_Model {
     protected function after_get(&$result)
     {
         $ADDITIONAL = "_min";
+        $i=0;
         foreach ($result as &$image)
         {
             $image->photo = "image/club/$image->photo";
