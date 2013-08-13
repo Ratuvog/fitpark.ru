@@ -62,33 +62,32 @@ $(function(){
             return $(this).attr('title');
         }
     });
-    
-    /*ymaps.ready(function () {
-        var isClub = true;
-        var zoom = 15;
-        var coords = $("#page-club-map").attr('geo').split(',');
-        if(coords.length < 2)
-        {
-            coords = $("#page-club-map").attr('city-geo').split(',');
-            zoom = 12;
-            isClub = false;
-        }
-        var map = new ymaps.Map ("page-club-map", {
-            center: coords,
-            zoom: zoom,
-        });
-        map.controls.add(new ymaps.control.ZoomControl());
-        map.controls.add('typeSelector');
-        map.controls.add('searchControl');
-        if(isClub)
-        {
-            map.geoObjects.add(new ymaps.Placemark(coords,{
-                balloonContent: $("#page-club-map").attr('balloon-title')
-            }));
-        }
-        
-    });*/
-    
+
+    ymaps.ready(init);
+    var myMap,
+        myPlacemark;
+
+    function init(){
+        var currentMapWidget = $("#page-club-map");
+        var currentCity = currentMapWidget.attr("currentCity");
+        var currentAddress = currentMapWidget.attr("geo") || currentCity;
+        var currentBalloon = currentMapWidget.attr("balloon-title") || currentAddress || currentCity;
+        var myGeocode = ymaps.geocode(currentAddress);
+        myGeocode.then(function(res) {
+            myMap = new ymaps.Map ("page-club-map", {
+                center: res.geoObjects.get(0).geometry.getCoordinates(),
+                zoom: 16
+            });
+
+            myPlacemark = new ymaps.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), {
+                hintContent: currentBalloon,
+                balloonContent: 'Столица России'
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+        })
+
+    }
     function createDialog(form, href)
     {
         form.find('.error-text').empty();

@@ -78,9 +78,10 @@
                                 </div>
                                 
                                 <div id="page-club-map" class="inline"
-                                     geo="<?=$club->geo;?>"
+                                     currentCity = "<?=$club->city->name;?>"
+                                     geo="г. <?=$club->city->name;?>, <?=$club->address;?>"
                                      city-geo="<?=$club->city_geo;?>"
-                                     balloon-title="<?=$club->address;?>"></div>
+                                     balloon-title="<?=$club->name;?>"></div>
                                 
                                 <div id="buttons-row">
                                     <div class="page-club-menu inline action-button" for="get-club-card" href="<?=site_url("dialog/getClubCard/$club->id");?>">

@@ -24,6 +24,7 @@
     
     <!--SCRIPTS-->
 <!--    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+    <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="http://api.jquery.com/jquery-wp-content/themes/jquery/js/jquery-migrate-1.1.1.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
