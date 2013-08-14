@@ -24,6 +24,11 @@ class Club_model extends CI_Model {
     function after_get_row(&$row)
     {
         $row->head_picture = ImageHelper::replace_path($row->head_picture, $this->config->item('empty_photo'));
+        $description = $this->db->get_where('fitnesclub_description', array('clubid'=>$row->id))->row();
+        if($description)
+        {
+            $row->description = $description->text;
+        }
     }
             
     function updateFromBuffer($bufData)

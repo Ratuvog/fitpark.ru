@@ -9,7 +9,7 @@ AddDefaultCharset utf-8
 	RewriteRule ^(.*)$ /site_mapper.php [L]
 
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteCond $1 !^(site_mapper.php|index\.php|assets|css|image|js|robots\.txt|yandex_781c2dd8ae286aca\.html|googleda81b1acc0923503.html|w1_114782480248\.txt)
+	RewriteCond $1 !^(site_mapper.php|index\.php|assets|css|image|js|robots\.txt|yandex_781c2dd8ae286aca\.html|googleda81b1acc0923503.html|w1_114782480248\.txt|yandex_69a99d82df015ea6\.html|yandex_7f373d2e2d1ecedc\.html|yandex_7d472bf9ad5202a0\.html|yandex_4b33771fbb1bfa22\.html)
 	RewriteRule ^(.*)$ /index.php/$1 [L]
 
 

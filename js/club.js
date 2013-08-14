@@ -81,7 +81,7 @@ $(function(){
 
             myPlacemark = new ymaps.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), {
                 hintContent: currentBalloon,
-                balloonContent: 'Столица России'
+                balloonContent: currentBalloon
             });
 
             myMap.geoObjects.add(myPlacemark);

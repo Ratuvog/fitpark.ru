@@ -12,7 +12,7 @@
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
                             <div id="page-club-info-title">
-                                <?$this->load->view('blocks/services-row', $club->services_row);?>
+                           this     <?$this->load->view('blocks/services-row', $club->services_row);?>
                             </div>
                             <div id="page-club-info-main-inner">
                                 <div id="page-club-info-main-club">
@@ -78,8 +78,8 @@
                                 </div>
                                 
                                 <div id="page-club-map" class="inline"
-                                     currentCity = "<?=$club->city->name;?>"
-                                     geo="г. <?=$club->city->name;?>, <?=$club->address;?>"
+                                     currentCity = "<?=$club->city->full_name;?>"
+                                     geo="г. <?=$club->city->full_name;?>, <?=$club->address;?>"
                                      city-geo="<?=$club->city_geo;?>"
                                      balloon-title="<?=$club->name;?>"></div>
                                 
@@ -129,7 +129,7 @@
                                 <div id="page-side-menu-info-tz" class="page-side-menu-info inline">
                                     <p>
                                         <img src="<?=site_url("image/map_pin.png");?>"/>
-                                        <span>г. <?=$club->city->name;?>, <?=$club->address;?></span>
+                                        <span>г. <?=$club->city->full_name;?>, <?=$club->address;?></span>
                                     </p>
                                     <p>
                                         <img src="<?=site_url("image/telephone.png");?>"/>
@@ -137,7 +137,7 @@
                                     </p>
                                     <p>
                                         <img src="<?=site_url("image/keyboard.png");?>" />
-                                        <span><a href="http://<?=$club->site;?>" target="_blank"><? if($club->site) echo $club->site; else echo "Сайт не указан";?></a></span>
+                                        <span><a href="http://<?=$club->site;?>" target="_blank" rel=”nofollow”><? if($club->site) echo $club->site; else echo "Сайт не указан";?></a></span>
                                     </p>
                                     <p>
                                         <img src="<?=site_url("image/clock.png");?>" />
