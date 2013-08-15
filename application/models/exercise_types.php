@@ -15,6 +15,11 @@ class Exercise_types extends CI_Model
     {
         return $this->db->get($this->table)->result();
     }
+
+    function byId($id)
+    {
+        return $this->db->get_where('exerciseType', array('id'=>$id))->row();
+    }
 }
 
 

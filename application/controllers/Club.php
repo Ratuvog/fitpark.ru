@@ -26,11 +26,11 @@ class Club extends Base {
     {
         $this->content();
 
-        $this->title = sprintf("ФитПарк. %s %s. Стоимость, отзывы, фотографии, рейтинг, акции.",
-                               $this->club->name, lang("current_club_title"));
+        $this->title = sprintf("Фитнес-клуб %s %s на ФитПарке. Фотографии, цены, отзывы, рейтинг",
+                               lang("city_2"), $this->club->name);
 
-        $this->description = sprintf("%s %s. Отзывы, рейтинг, фотографии, цены, описание.",
-                                    $this->club->name, lang("club_desc"));
+        $this->description = sprintf("Фитнес клуб %s города %s по адресу %s. Фотографии, стоимость, комментарии, оценки, описание ",
+                                    $this->club->name, lang('city_2'), $this->club->address);
         
         $this->keywords = sprintf("%s. %s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.",
                                    $this->club->name, lang("common_keys"));

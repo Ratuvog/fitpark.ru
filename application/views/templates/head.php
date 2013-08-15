@@ -50,5 +50,6 @@
     <script type="text/javascript" src="<?=site_url("js/validator_helper.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/raty-2.5.2/jquery.raty.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/slider/jquery.bxslider.js");?>"></script>
+    <script type="text/javascript" src="<?php echo site_url(array("js/fix_style_ckeditor.js")); ?>"></script>
     <!--END_SCRIPTS-->
 </head>

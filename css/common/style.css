@@ -1092,6 +1092,7 @@ a.sort-down {
 
 #exercise-show span, #exercise-sort span{
     color: #1375c1;
+    display: inline;
 }
 
 #exercise-items{
@@ -1975,4 +1976,67 @@ Menu
 
 .manager-in-table #submit {
     width: inherit;
+}
+
+/*Стили, замещающие стили редактора в описании клуба*/
+.ckeditor-text ul {
+    margin-left: 17px;
+    font-family: trebuc !important;
+    font-size: 14px !important;
+    color: #626262 !important;
+}
+
+.ckeditor-text h1,
+.ckeditor-text h2,
+.ckeditor-text h3,
+.ckeditor-text h4,
+.ckeditor-text h5,
+.ckeditor-text h6 {
+    text-align: center;
+}
+
+.ckeditor-text *{
+    line-height: 1.5;
+}
+
+.page-side-menu-info-tab h2{
+    cursor: pointer;
+    margin: 2px 0;
+    font-size: 11px;
+    text-align: center;
+    font-family: trebuc;
+    font-weight: normal;
+}
+
+#exercise-show h2 {
+    font-size: 14px;
+    text-align: center;
+    display: inline;
+    font-family: trebuc;
+    font-weight: normal;
+}
+
+#exercise-show p {
+    display: inline;
+}
+
+#exercise-show {
+    padding-top: 10px;
+    padding-bottom: 12px;
+}
+
+.exercise-item h3{
+    font-size: 13px;
+    text-align: center;
+    display: inline;
+    font-family: trebuc;
+    font-weight: normal;
+}
+
+.exercise-item a{
+    text-decoration: underline;
+}
+
+.exercise-item a:hover{
+    text-decoration: none;
 }

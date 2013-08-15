@@ -18,16 +18,6 @@ class Exercises extends Base
         parent::__construct();
         $this->load->model("exercises_model");
         $this->load->model("exercise_types");
-        $this->title = sprintf("Упражнения. ФитПарк. %s Тренажерные залы, фитнес центры,
-                                отзывы, стоимость, рейтинги, акции, скидки.",
-            lang('title'));
-
-        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
-            lang("common_desc"));
-
-        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
-                                   танцы, йога, пилатес, тренажеры.",
-            lang("common_keys"));
     }
 
     function exercises($typeId = 1)
@@ -53,6 +43,10 @@ class Exercises extends Base
             $type->url = site_url(array("exercises",$type->Id));
         }
 
+        $exerciseType = $this->exercise_types->byId($typeId);
+        $this->title = $exerciseType->title;
+        $this->description = $exerciseType->description;
+        $this->keywords = $exerciseType->keywords;
 
         $this->content->view = $this->view;
         $this->content->data->content_title->title = "Упражнения";

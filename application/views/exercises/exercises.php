@@ -17,25 +17,13 @@
                                         <span>Показать:</span>
                                         <? foreach ($types as $type) {
                                                 if ($type->Id == $activeType) {?>
-                                                    <span class="item"><?=$type->name?></span>
+                                                    <span class="item"><h2><?=$type->name?></h2></span>
                                                 <? } else { ?>
-                                                    <a href="<?=$type->url;?>"><?=$type->name;?></a>
+                                                    <a href="<?=$type->url;?>"><h2><?=$type->name;?></h2></a>
                                                     <? } ?>
                                             <? } ?>
                                     </p>
                                 </div>
-<!--                                <div id="exercise-sort">-->
-<!--                                    <p>-->
-<!--                                        <span>Сортировать:</span>-->
-<!--                                        <a href="">Грудь</a>-->
-<!--                                        <a href="">Спина</a>-->
-<!--                                        <a href="">Бицепс</a>-->
-<!--                                        <a href="">Трицепс</a>-->
-<!--                                        <a href="">Плечи</a>-->
-<!--                                        <a href="">Пресс</a>-->
-<!--                                        <a href="">Ноги</a>-->
-<!--                                    </p>-->
-<!--                                </div>-->
                             </nav>
                         </div>
                         <div id="exercise-items">
@@ -50,7 +38,7 @@
                                             </tr>
                                         </table>
                                         <div></div>
-                                        <p><a href="<?=$exercise->url;?>"><?=$exercise->name;?></a></p>
+                                        <p><h3><a href="<?=$exercise->url;?>"><?=$exercise->name;?></a></h3></p>
                                     </div>
                                 <? } ?>
                             </div>

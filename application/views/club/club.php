@@ -12,7 +12,7 @@
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
                             <div id="page-club-info-title">
-                           this     <?$this->load->view('blocks/services-row', $club->services_row);?>
+                                <?$this->load->view('blocks/services-row', $club->services_row);?>
                             </div>
                             <div id="page-club-info-main-inner">
                                 <div id="page-club-info-main-club">
@@ -112,13 +112,13 @@
                             <div id="page-club-side-menu" active-page="<?=$page;?>">
                                 <ul>
                                     <li class="page-side-menu-info-tab" for="page-side-menu-info-tz" pointer="35">
-                                        <img src="<?=site_url("image/file.png");?>" width="29px"/><p>Описание</p>
+                                        <img src="<?=site_url("image/file.png");?>" width="29px"/><h2>Описание</h2>
                                     </li>
                                     <li class="page-side-menu-info-tab" for="page-side-menu-info-photo" pointer="105">
-                                        <img src="<?=site_url("image/camera_2.png");?>" width="25px"/><p>Фотографии</p>
+                                        <img src="<?=site_url("image/camera_2.png");?>" width="25px"/><h2>Фотографии</h2>
                                     </li>
                                     <li id="page-side-menu-info-comment-tab" class="page-side-menu-info-tab" for="page-side-menu-info-comments" pointer="165">
-                                        <img src="<?=site_url("image/speach.png");?>" width="25px"/><p>Отзывы</p>
+                                        <img src="<?=site_url("image/speach.png");?>" width="25px"/><h2>Отзывы</h2>
                                     </li>
                                 </ul>
                             </div>
@@ -143,7 +143,7 @@
                                         <img src="<?=site_url("image/clock.png");?>" />
                                         <span><? if($club->work_hours) echo $club->work_hours; else echo "Часы работы не указаны";?></span>
                                     </p>
-                                    <div class="club-description-text">
+                                    <div class="club-description-text ckeditor-text">
                                         <p><?=$club->description;?></p>
                                     </div>
                                 </div>

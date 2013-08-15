@@ -19,24 +19,26 @@
                             <? } ?>
                             <tr>
                                 <td colspan="2">
-                                    <h1>Описание</h1>
-                                    <p><?=$exercise->description;?></p>
+                                    <h2>Описание</h2>
+                                    <div class="ckeditor-text">
+                                        <?=$exercise->description;?>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <h1>Техника выполнения</h1>
-                                    <p>
+                                    <h2>Техника выполнения</h2>
+                                    <div class="ckeditor-text">
                                         <?=$exercise->technique;?>
-                                    </p>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <h1>Нюансы упражнения</h1>
-                                    <p>
+                                    <h2>Нюансы упражнения</h2>
+                                    <div class="ckeditor-text">
                                         <?=$exercise->nuances;?>
-                                    </p>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
