@@ -23,7 +23,16 @@ class Base extends Template {
         $this->favicon = site_url($this->config->item('favicon'));
         
         // Definition the city on IP-address of the user
-        $this->localCity = $this->city->byName($this->cityByIP());
+        $city = $this->cityByIP();
+        if($city)
+        {
+            $this->localCity = $this->city->byName($city);
+        }
+        else
+        {
+            $city = $this->city->byName($this->input->ip_address());
+            $this->customRedirect($this->replaceHttpsHost($city->url));
+        }
         $this->session->set_userdata("city", $this->localCity->id);
         // install localization file according to local city name
         $this->lang->load(mb_convert_case($this->localCity->english_name, MB_CASE_LOWER),
@@ -32,6 +41,7 @@ class Base extends Template {
         $this->footer->currentCity = $this->localCity;
         $this->content->data->header->menu->currentCity = $this->localCity;
         $this->content->data->header->menu->chooseCity->cities = $this->city->get();
+
     }
    
     function head()
@@ -58,7 +68,7 @@ class Base extends Template {
         $hostArray = explode('.', $host);
         
         if(count($hostArray) != 3)
-            return getCityFromIp($this->input->ip_address());
+            return false;
         else
             return $hostArray[0];
         
@@ -68,7 +78,15 @@ class Base extends Template {
         redirect($this->idna_convert->encode($url));
     }
 
-    
+    private function replaceHttpsHost($newHost)
+    {
+        $url = $newHost.$_SERVER['REQUEST_URI'];
+        if($_SERVER['QUERY_STRING']) {
+            $url.="?".$_SERVER["QUERY_STRING"];
+        }
+        
+        return prep_url($url);
+    }
     /*
 $output = {
     head = {
