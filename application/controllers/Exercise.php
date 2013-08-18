@@ -15,21 +15,18 @@ class Exercise extends Base {
     {
         parent::__construct();
         $this->load->model("exercises_model");
-        $this->title = sprintf("Упражнения. ФитПарк. %s Тренажерные залы, фитнес центры,
-                                отзывы, стоимость, рейтинги, акции, скидки.",
-            lang('title'));
-
-        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
-            lang("common_desc"));
-
-        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
-                                   танцы, йога, пилатес, тренажеры.",
-            lang("common_keys"));
     }
 
     function index($id)
     {
         $exercise = $this->exercises_model->byId($id);
+        $this->title = sprintf("%s, описание, техника, видео. ФитПарк",
+            $exercise->name);
+
+        $this->description = sprintf("%s. Подробное описание, порядок выполнения, нюансы упражнения, видео.",
+            $exercise->name);
+
+        $this->keywords = $exercise->name;
 
         $this->breadcrumbs []= (object)array(
             'name' => "Главная",

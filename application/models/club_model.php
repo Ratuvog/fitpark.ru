@@ -75,10 +75,14 @@ class Club_model extends CI_Model {
         $indexes = array();
         foreach ($clubs as $item)
             $indexes []= $item->id;
-        
-        $this->prepare();
-        $analogs = $this->db->where_in("$this->table.id", $indexes)->get()->result();
-        $this->after_get($analogs);
+
+        $analogs = array();
+        if(count($indexes))
+        {
+            $this->prepare();
+            $analogs = $this->db->where_in("$this->table.id", $indexes)->get()->result();
+            $this->after_get($analogs);
+        }
         return $analogs;
     }
     

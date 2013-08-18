@@ -6,16 +6,14 @@ class Main extends Base {
     function __construct()
     {
         parent::__construct();
-        $this->title = sprintf("ФитПарк. %s Тренажерные залы, фитнес центры,
-                                отзывы, стоимость, рейтинги, акции, скидки.",
-                                lang('title'));
+        $this->title = sprintf("Все фитнес клубы %s. Отзывы, стоимость, описания, фотографии.",
+                                lang('city_2'));
 
-        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
-                                    lang("common_desc"));
-        
-        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
-                                   танцы, йога, пилатес, тренажеры.",
-                                   lang("common_keys"));
+        $this->description = sprintf("Тренажерные залы, фитнес центры, цены, акции, адреса и услуги %s",
+                                    lang('city_2'));
+
+        $this->keywords = sprintf("Бассейн, тренажер, %s, упражнения, похудеть, нарастить мышцы",
+                                   $this->localCity->full_name);
 
         $this->content();
 

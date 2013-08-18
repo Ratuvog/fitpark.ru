@@ -164,6 +164,7 @@
                             </div>
                         </div>
                         <div class="clear"></div>
+                        <? if(count($club->analogs)) {?>
                         <div id="similar-clubs">
                             <h2>Похожие фитнес-клубы</h2>
                             <div id="similar-clubs-list">
@@ -173,6 +174,7 @@
                                 ?>
                             </div>
                         </div>
+                        <? } ?>
                     </div>
                 </div>
             </div> 
