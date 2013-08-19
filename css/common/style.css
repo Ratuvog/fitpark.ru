@@ -1449,7 +1449,7 @@ a.sort-down {
 #page-club-side-menu{
     float: left;
     text-align: center;
-    font-size: 11px;
+    font-size: 11px !important;
 }
 
 #page-club-side-menu li{

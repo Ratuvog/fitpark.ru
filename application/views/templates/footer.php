@@ -15,7 +15,7 @@
                         <p>Все права принадлежат<br /> компании "Фитпарк" &reg;</p>
                     </div>
                     <div id="imstudio" class="inline bordered">
-                        <p>Содержание и продвижение сайта</p>
+                        <p>Дизайн и верстка сайта от </p>
                         <p><a href="">imwebstudio.ru</a>  |  <a href="">imseo.ru</a>  |  <time>2013</time></p>
                     </div>
                     <div id="share-socials" class="inline bordered">
@@ -30,6 +30,11 @@
                                 <script type="text/javascript" src="<?=site_url('js/share42/share42.js');?>"></script>
                             </div>
                         </div>
+                    </div>
+                    <div id="oferta" class="inline bordered">
+                        <p>
+                            Информация на сайте не <br>является публичной офертой
+                        </p>
                     </div>
                 </div>
             </div><!--#copy[END]-->
