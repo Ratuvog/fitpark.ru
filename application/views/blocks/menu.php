@@ -54,7 +54,7 @@
             </div><!--#logo-wrap[END]-->
             <div id="logo-city-block" class="inline">
                 <div id="logo-city-block-inner" >
-                    <h2>все фитнес клубы <span><?=lang("city_2");?></span><img id="city-changed" src="<?=site_url(array('image/city_arrow_select_2.png'));?>"/></h2>
+                    <h2>все фитнес клубы <span id="current-city-title"><?=lang("city_2");?></span><img id="city-changed" src="<?=site_url(array('image/city_arrow_select_2.png'));?>"/></h2>
                 </div>
             </div><!--#logo-city-block[END]-->
             <div id="picture" class="inline">

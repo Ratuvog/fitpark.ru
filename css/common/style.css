@@ -2040,3 +2040,7 @@ Menu
 .exercise-item a:hover{
     text-decoration: none;
 }
+
+#city-title {
+    cursor: pointer;
+}

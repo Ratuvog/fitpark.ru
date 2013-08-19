@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 $(function(){
-    $("#city-changed").click(function(){
+    $("#city-changed, #city-title, #current-city-title").click(function(){
         $.colorbox({
             href: "#change-city-window",
             inline: true,

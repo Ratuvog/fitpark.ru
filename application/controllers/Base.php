@@ -84,7 +84,7 @@ class Base extends Template {
         if($_SERVER['QUERY_STRING']) {
             $url.="?".$_SERVER["QUERY_STRING"];
         }
-        
+
         return prep_url($url);
     }
     /*
