@@ -15,14 +15,14 @@
                                 <div id="exercise-show">
                                     <p>
                                         <span>Показать:</span>
-                                        <? foreach ($types as $type) {
-                                                if ($type->Id == $activeType) {?>
-                                                    <span class="item"><h2><?=$type->name?></h2></span>
-                                                <? } else { ?>
-                                                    <a href="<?=$type->url;?>"><h2><?=$type->name;?></h2></a>
-                                                    <? } ?>
-                                            <? } ?>
                                     </p>
+                                    <? foreach ($types as $type) {
+                                        if ($type->Id == $activeType) {?>
+                                            <span class="item"><h2><?=$type->name?></h2></span>
+                                        <? } else { ?>
+                                            <a href="<?=$type->url;?>"><h2><?=$type->name;?></h2></a>
+                                        <? } ?>
+                                    <? } ?>
                                 </div>
                             </nav>
                         </div>
