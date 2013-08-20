@@ -26,7 +26,7 @@
                     <div id="info-block-1-inner">
                         <div class="info-block-title">
                             <img src="<?=site_url("image/search_logo.png");?>" class="inline"/>
-                            <h1 class="inline">Другие полезные разделы</h1>
+                            <h2 class="inline">Другие полезные разделы</h2>
                         </div>
                         <div class="info-block-text">
                             <ul>
@@ -55,7 +55,7 @@
                     <div id="info-block-2-inner">
                         <div class="info-block-title">
                             <img src="<?=site_url('image/search_logo.png');?>" class="inline"/>
-                            <h1 class="inline">Почему надо искать фитнес-клубы на ФитПарке</h1>
+                            <h2 class="inline">Почему надо искать фитнес-клубы на ФитПарке</h2>
                         </div>
 
                         <div>
