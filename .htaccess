@@ -5,7 +5,7 @@ AddDefaultCharset utf-8
         RewriteCond %{REQUEST_FILENAME} !-f
 
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond $1 ^(robot.txt)
+    RewriteCond $1 ^(sitemap.xml)
 	RewriteRule ^(.*)$ /site_mapper.php [L]
 
 	RewriteCond %{REQUEST_FILENAME} !-d

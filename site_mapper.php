@@ -9,26 +9,24 @@
     include_once "./application/libraries/idna_convert.php";
 
     $siteMaps = array (
-        "samara"     => "samara.txt",
-        "togliatti"  => "togliatti.txt",
-        "base"       => "base.txt"
+        "samara"     => "Samara.xml",
+        "togliatti"  => "Togliatti.xml",
+        "chelny"     => "Chelny.xml",
+        "kazan"      => "Kazan.xml",
+        "ufa"        => "Ufa.xml",
+        "nizhnijnovgorod" => "Nizhnijnovgorod.xml",
+        "base"       => "Samara.xml"
     );
     $convert = new Idna_convert();
     $host = $convert->decode($_SERVER["HTTP_HOST"]);
     $hostArray = explode('.', $host);
-    header("Content-Description: File Transfer\r\n");
-    header("Pragma: public\r\n");
-    header("Expires: 0\r\n");
-    header("Cache-Control: must-revalidate, post-check=0, pre-check=0\r\n");
-    header("Cache-Control: public\r\n");
-    header("Content-Type: text/plain; charset=UTF-8\r\n");
     $currentSiteMap = "";
-    if(count($hostArray) == 3) {
+    if(count($hostArray) == 3 || !isset($siteMaps[$hostArray[0]])) {
         $currentSiteMap = $siteMaps[$hostArray[0]];
     } else {
         $currentSiteMap = $siteMaps["base"];
     }
 //    echo "$currentSiteMap";
-    header("Content-Disposition: attachment; filename=\"robot.txt\"\r\n");
+    // header("Content-Disposition: attachment; filename=\"sitemap.xml\"\r\n");
     echo file_get_contents("./site_maps/$currentSiteMap");
 ?>
