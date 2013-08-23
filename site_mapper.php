@@ -9,19 +9,19 @@
     include_once "./application/libraries/idna_convert.php";
 
     $siteMaps = array (
-        "samara"     => "Samara.xml",
-        "togliatti"  => "Togliatti.xml",
-        "chelny"     => "Chelny.xml",
-        "kazan"      => "Kazan.xml",
-        "ufa"        => "Ufa.xml",
-        "nizhnijnovgorod" => "Nizhnijnovgorod.xml",
+        "самара"     => "Samara.xml",
+        "тольятти"  => "Togliatti.xml",
+        "челны"     => "Chelny.xml",
+        "казань"      => "Kazan.xml",
+        "уфа"        => "Ufa.xml",
+        "нижний" => "Nizhnijnovgorod.xml",
         "base"       => "Samara.xml"
     );
     $convert = new Idna_convert();
     $host = $convert->decode($_SERVER["HTTP_HOST"]);
     $hostArray = explode('.', $host);
     $currentSiteMap = "";
-    if(count($hostArray) == 3 || !isset($siteMaps[$hostArray[0]])) {
+    if(count($hostArray) == 3 && isset($siteMaps[$hostArray[0]])) {
         $currentSiteMap = $siteMaps[$hostArray[0]];
     } else {
         $currentSiteMap = $siteMaps["base"];
