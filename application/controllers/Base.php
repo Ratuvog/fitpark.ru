@@ -42,6 +42,11 @@ class Base extends Template {
         $this->content->data->header->menu->currentCity = $this->localCity;
         $this->content->data->header->menu->chooseCity->cities = $this->city->get();
 
+        $block = json_decode($this->localCity->promotion);
+        if($block)
+        {
+            $this->footer->blocks = $block;
+        }
     }
    
     function head()
@@ -87,32 +92,5 @@ class Base extends Template {
 
         return prep_url($url);
     }
-    /*
-$output = {
-    head = {
-        title,
-        description,
-        keywords,
-        favicon
-    },
-    body = {
-        currentCity,
-        content = { 
-            var contents = array({
-                view,
-                data = {
-                      header = {
-                        menu-block = { currentCity },
-                        search-block
-                       },
-                       content_title = { title },
-               },
-               ...
-            )
-        },
-        footer
-    }
-};
- */
 }
 ?>

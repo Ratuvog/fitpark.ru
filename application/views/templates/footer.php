@@ -3,6 +3,21 @@
         <div id="footer-inner">
             <div id="bottom-menu">
                 <div id="bottom-menu-inner">
+                    <menu>
+                        <div id="seo-blocks">
+                            <div id="seo-blocks-inner">
+                                <nav>
+                                    <? foreach ($blocks as $block) { ?>
+                                    <ul class="inline">
+                                        <? foreach ($block as $item) { ?>
+                                            <li><a href="<?=site_url($item->url);?>"><?=$item->name;?></a></li>
+                                        <? } ?>
+                                    </ul>
+                                    <? } ?>
+                                </nav>
+                            </div>
+                        </div>
+                    </menu>
                 </div>
             </div><!--#bottom-menu[END]-->
             <div id="copy">

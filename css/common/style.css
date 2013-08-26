@@ -688,8 +688,9 @@ div.item{
 
 #seo-blocks-inner li{
     display: block;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 21px;
+    font-family: trebuc;
 }
 
 #seo-blocks-inner a{
