@@ -66,12 +66,7 @@ class Manager_private extends CI_Model {
             return $info[0]['managerId'];
         return 0;
     }
-    
-    function manager($login)
-    {
-        return $this->db->get_where('manager', array('login'=>$login))->first_row();
-    }
-    
+     
     function updateCommon($data, $club)
     {
         $data['state'] = 1;

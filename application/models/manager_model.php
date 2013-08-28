@@ -1,5 +1,5 @@
 <?php
-class Manager extends CI_Model {
+class Manager_model extends CI_Model {
     
     public $table = 'manager';
     
@@ -10,6 +10,11 @@ class Manager extends CI_Model {
         foreach ($managers as $manager)
             $map[$manager->id] = $manager->name;
         return $map;
+    }
+    
+    function byName($login)
+    {
+        return $this->db->get_where($this->table, array('login' => $login))->first_row();
     }
 }
 ?>

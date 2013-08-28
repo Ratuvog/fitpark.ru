@@ -33,7 +33,7 @@
 	$lang['form_save'] 				= 'Save';
 	$lang['form_insert_loading'] 	= 'Loading, saving data...';
 
-	$lang['form_upload_a_file'] 	= 'Upload a file';
+	$lang['form_upload_a_file'] 	= 'Загрузить файлы';
 	$lang['form_upload_delete'] 	= 'delete';
 	$lang['form_button_clear'] 		= 'Clear';
 

@@ -190,7 +190,7 @@
     });
   };
   
-  $(function() {
+$(function() {
                
     createCityCombobox();
     createDistrictCombobox();
@@ -322,5 +322,10 @@
         FormSaver.showResultMessage(status);
     });
 
-  });
+    $("#auth-button").click(function(){
+        $(this).parent('form').submit();
+    });
+
+
+});
      

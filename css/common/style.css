@@ -7,7 +7,7 @@ body {
 @font-face {
 	font-family: 'trebuc';
 	src: url('fonts/trebuc.eot');
-	src: local('ï¿½?ï¿½'), 
+	src: local('â?º'), 
         url('fonts/trebuc.woff') format('woff'), 
         url('fonts/trebuc.ttf') format('truetype'), 
         url('fonts/trebuc.svg') format('svg');
@@ -18,7 +18,7 @@ body {
 @font-face {
 	font-family: 'cricket';
 	src: url('fonts/Cricket_Bold.eot');
-	src: local('ï¿½?ï¿½'), url('fonts/Cricket_Bold.woff') format('woff'), url('fonts/Cricket_Bold.ttf') format('truetype'), url('fonts/Cricket_Bold.svg') format('svg');
+	src: local('â?º'), url('fonts/Cricket_Bold.woff') format('woff'), url('fonts/Cricket_Bold.ttf') format('truetype'), url('fonts/Cricket_Bold.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -151,7 +151,7 @@ img{ border: none; }
 }
 
 #menu-block-inner{
-    /*width: 1000px;*/
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -330,7 +330,7 @@ img{ border: none; }
     transition: all 0.3s;
     background: url("/image/big_search_icon.png") no-repeat right 10px center;
     height: 25px;
-    width: 480px;
+    width: 510px;
     position: relative;
     left: 10px;
 }
@@ -617,7 +617,7 @@ div.item{
     margin-bottom: -40px;
 }
 
-.info-block-title h2{
+.info-block-title h1{
     font-size: 22px;
     font-family: cricket;
 }
@@ -688,7 +688,7 @@ div.item{
 
 #seo-blocks-inner li{
     display: block;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 21px;
     font-family: trebuc;
 }
@@ -959,7 +959,7 @@ a.sort-down {
 }
 
 #brief-info p{
-    /*font-size: 13px;*/
+    font-size: 13px;
 }
 
 #question-answer-menu a{
@@ -1082,7 +1082,7 @@ a.sort-down {
 }
 
 #exercise-show span.item {
-    margin: 0 10px;
+    margin: 0 20px;
     color: #626262;
 }
 
@@ -1340,12 +1340,12 @@ a.sort-down {
 }
 
 #page-club-info-title {
-    margin-top: 20px;
+    height: 40px;
     margin-bottom: 10px;
 }
 
 #page-club-info-title img{
-    margin: 0 8px;
+    margin: 0 10px;
 }
 
 #page-club-info-main-club {
@@ -1450,7 +1450,7 @@ a.sort-down {
 #page-club-side-menu{
     float: left;
     text-align: center;
-    font-size: 11px !important;
+    font-size: 11px;
 }
 
 #page-club-side-menu li{
@@ -1533,7 +1533,7 @@ a.sort-down {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
     border-radius: 6px;
     width: 85px;
-    height: 105px;
+    height: 84px;
 }
 
 #trainer-avatar{
@@ -1701,33 +1701,24 @@ div.addqa {
 }
 
 
-.program_training .my-combobox-wrapper{
+.program_training select{
     border: 1px solid #aaa;
     padding: 3px;
     background: url("/image/select_form_arrow.png") no-repeat right 6px center #AAAAAA;
     border-radius: 5px;
-    width: 175px;
+    width: 185px;
     cursor: pointer;
     overflow: hidden;
 }
 
-.program_training .my-combobox-wrapper:hover{
+.program_training select:focus{
     box-shadow: 0px 0px 8px rgba(25, 153, 250, 0.8);
 }
 
 .program_training .my-combobox-wrapper select:active,
 .program_training .my-combobox-wrapper select:focus {
     outline: none;
-    -webkit-appearance: none;
-}
-
-.program_training .my-combobox-wrapper select {
-    background: transparent;
-    border: none;
-    width: 200px;
-    position: relative;
-    height: 100%;
-    outline: none;
+    box-shadow: 0px 0px 8px rgba(25, 153, 250, 0.8);
 }
 
 /*.program_training select:focus{*/
@@ -1738,14 +1729,14 @@ div.addqa {
 .program_training .select-arrow {
     float: right;
     width: 33px;
-    height: 25px;
+    height: 24px;
     background: url("/image/select_form_arrow.png") no-repeat right 6px center;
     -webkit-background: url("/image/select_form_arrow.png") no-repeat right 6px center;
     cursor: pointer;
     transition: all 200ms;
     position: relative;
     right: 34px;
-    top: 2px;
+    top: 3px;
     background-color: white;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;

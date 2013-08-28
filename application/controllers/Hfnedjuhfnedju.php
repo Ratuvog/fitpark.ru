@@ -334,8 +334,8 @@ class Hfnedjuhfnedju extends CI_Controller {
             $this->load->model('city');
             $output->cities = $this->city->map();
             
-            $this->load->model('manager');
-            $output->manager = $this->manager->map();
+            $this->load->model('Manager_model');
+            $output->manager = $this->Manager_model->map();
 
             $this->render($output, 'admin/change_list', false);
         }
@@ -352,8 +352,8 @@ class Hfnedjuhfnedju extends CI_Controller {
             $this->load->model('city');
             $output->cities = $this->city->map();
             
-            $this->load->model('manager');
-            $output->manager = $this->manager->map();
+            $this->load->model('Manager_model');
+            $output->manager = $this->Manager_model->map();
 
             $this->render($output, 'admin/change_list_all', false);
         }
@@ -379,8 +379,8 @@ class Hfnedjuhfnedju extends CI_Controller {
             
             $output->images = $this->getImages($club);
             
-            $this->load->model('manager');
-            $output->manager = $this->manager->map();
+            $this->load->model('Manager_model');
+            $output->manager = $this->Manager_model->map();
 
             $this->render($output, 'admin/club_changes', false);
         }
@@ -391,43 +391,6 @@ class Hfnedjuhfnedju extends CI_Controller {
             $ADDITIONAL = "_min";
             $this->load->model('photo');
             $images = $this->photo->byClub($club, 1);
-            
-            $i = 0;
-            foreach ($images as &$currentImage) {
-                $currentImage->photo = "image/club/".$currentImage->photo;
-                if(!$currentImage->min_photo)
-                {
-                    $config['image_library'] = 'gd2';
-                    $config['source_image'] = $currentImage->photo;
-                    $config['create_thumb'] = TRUE;
-                    $config['maintain_ratio'] = TRUE;
-                    $config['width'] = 300;
-                    $config['height'] = 150;
-                    $config['thumb_marker'] = $ADDITIONAL;
-
-                    $this->load->library("image_lib");
-                    $this->image_lib->initialize($config);
-                    if(!$this->image_lib->resize())
-                    {
-                        echo $i."<br>";
-                        echo $this->image_lib->display_errors();
-                        exit;
-                    }
-                    $i++;
-                    
-                    $fileParts = explode('.', $currentImage->photo);
-                    $extension = $fileParts[count($fileParts)-1];
-                    array_pop($fileParts);
-                    $fileName = implode('.', $fileParts);
-
-                    $resultFileName = $fileName.$ADDITIONAL.'.'.$extension;
-                    $this->photo->setData($currentImage->id, 'min_photo', $resultFileName);
-                    $currentImage->min_photo = $resultFileName;
-                    $this->image_lib->clear();
-                }
-                $currentImage->photo     = site_url($currentImage->photo);
-                $currentImage->min_photo = site_url($currentImage->min_photo);
-            }
             return $images;
         }
         
@@ -436,8 +399,8 @@ class Hfnedjuhfnedju extends CI_Controller {
             $this->load->model('buffer_club');
             $buf = $this->buffer_club->byId($club, false);
             
-            $this->load->model('club');
-            $this->club->updateFromBuffer($buf);
+            $this->load->model('club_model');
+            $this->club_model->updateFromBuffer($buf);
             
             $this->load->model('buf_club_service');
             $buf_services = $this->buf_club_service->byClub($club);

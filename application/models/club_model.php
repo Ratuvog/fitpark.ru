@@ -118,6 +118,14 @@ class Club_model extends CI_Model {
             return 0;
         return $result->value;
     }
+    
+    function owner($club)
+    {
+        $info = $this->db->get_where($this->table, array('id' => $club))->row();
+        if($info)
+            return $info->managerId;
+        return 0;
+    }
 
 }
 ?>

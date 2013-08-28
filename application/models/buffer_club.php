@@ -2,6 +2,7 @@
 class Buffer_club extends CI_Model {
     
     public $table = 'buf_club';
+    public $origin = 'fitnesclub';
     
     private $states = array(
         'void' => 0,
@@ -41,6 +42,24 @@ class Buffer_club extends CI_Model {
         return $result;
     }
     
+    function byOwner($manager)
+    {
+        $emptyRecord = $this->db->select("$this->origin.id as id")
+                                ->from($this->origin)
+                                ->join($this->table, 'fitnesclub.id = buf_club.id', 'left')
+                                ->where(array("$this->origin.managerId" => 1,"$this->table.id" => NULL))
+                                ->get()->result();
+        
+        foreach($emptyRecord as $row)
+        {
+            $fClub = $this->db->get_where($this->origin, array('id' => $row->id))->row_array();
+            if($fClub)
+                $this->db->insert($this->table, $fClub); 
+        }
+        
+        return $this->db->get_where($this->table, array('managerId' => $manager))->result();
+    }
+        
     function setData($id, $data)
     {
         $this->db->update($this->table, $data, array('id' => $id));

@@ -1,31 +1,23 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/Base_old.php');
-class Manager extends Base_old {
+require_once(APPPATH.'controllers/Base.php');
+class Manager extends Base {
 
-    public $view = 'manager/private';
-    public $controllerName = 'Manager';
-    public $breadcrumbs = array();
-    public $authError = 'OK';
-    
+    protected $clubId = 0;
+    private $categoryName = 'Личный кабинет';
+    private $controllerName = 'Manager';
+    private $authError = 'OK';
     function __construct()
     {
         parent::__construct();
-        $this->breadcrumbs []= (object)array(
-            'name' => "Главная",
-            'url' => base_url()
-        );
-        
-        $this->breadcrumbs []= (object)array(
-            'name' => "Личный кабинет",
-            'url' => ""
-        );
         $this->load->model('manager_private');
+        $this->init();
     }
-
-    /*
-     * Перед переходом на любую страницу ЛК
-     * проверяем авторизацию пользователя
-     */
+    
+    function  init()
+    {
+        
+    }
+            
     function _remap($method, $param) 
     {
         if($this->session->userdata('logged_in') === true || $method === 'login')
@@ -34,9 +26,9 @@ class Manager extends Base_old {
             $this->auth();
     }
     
-    function index()
+    function auth()
     {
-        $this->view = 'old/manager/auth'; // by default
+        $this->view = 'manager/auth'; // by default
         $this->categoryName = "Авторизация";
 
         $this->viewData['categoryName'] = $this->categoryName;
@@ -85,18 +77,18 @@ class Manager extends Base_old {
         $this->session->unset_userdata('userid');
         $this->auth();
     }
-   
+            
     function index()
     {
         $this->clubs();
     }
-        
+
     protected function deleteImage($id) {
         $this->manager_private->deleteImage($id);
         $this->customRedirect(site_url(array("Manager","getClub", $club->id, "photo")));
         echo json_encode(array("success"=>TRUE));
     }
-        
+
     protected function uploadFile($clubId)
     {
         $uploadPath = $_SERVER["DOCUMENT_ROOT"]."/".$this->config->item("images_club_path").
@@ -195,7 +187,7 @@ class Manager extends Base_old {
         if(!$userId)
             return $this->auth();
 
-        $this->view = 'old/manager/list';
+        $this->view = 'manager/list';
         
         $this->categoryName = 'Cписок клубов';
         $this->viewData['categoryName'] = $this->categoryName;

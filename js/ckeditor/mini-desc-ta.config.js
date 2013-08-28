@@ -8,7 +8,7 @@ CKEDITOR.editorConfig = function( config ) {
     ];
     config.autoUpdateElement = true;
     config.language = 'ru';
-    config.uiColor = '#009900';
+    config.uiColor = '#005fa6';
     config.height = '300px';
     config.resize_enabled = false;
     config.removePlugins = '';

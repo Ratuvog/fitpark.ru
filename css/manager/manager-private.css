@@ -34,9 +34,7 @@
 }
 
 .auth-block {
-    float: left;
     width: 320px;
-    padding: 10px 0px;
     display: inline-table;
 }
 
@@ -44,8 +42,18 @@
     min-height: 200px;
 }
 
-.auth-block .save {
-    margin-top: 40px;
+.auth-info-block{
+    border-radius: 5px;
+    border: 1px solid silver;
+    box-shadow: 0px 0px 3px grey;
+    width: 580px;
+    height: 200px;
+    margin-left: 25px;
+}
+
+.auth-info-block p{
+    font-size: 18px;
+    margin-left: 15px;
 }
 
 .info-block {
@@ -63,16 +71,9 @@
 }
 
 .box {
-    border: 1px dashed #ccc;
-    border-radius: 5px;
     min-height: 250px;
-    padding: 15px;
+    padding: 5px;
     padding-bottom: 10px;
-}
-
-.box:hover {
-    border: 1px solid #009900;
-    box-shadow: 2px 2px 5px #555;
 }
 
 table[class='user-input'] {
@@ -89,61 +90,54 @@ table[class='user-input'] {
     border: 1px solid #aaa;
     padding: 5px;
     width: 98%;
-
 }
 
-.user-input input[type="text"] {
-
+.user-input input[type="button"] {
+    width: 160px;
 }
 
 .user-input input[type="file"] {
     min-width: 200px;
 }
 
-.user-input input[type="button"] {
+.button-save {
     width: 160px;
-    border-color: #009900;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    margin-top: 15px;
+}
+
+.button-save:hover {
+    border-color: rgba(25, 153, 250, 0.8);
+    outline: 0;
+    outline: thin dotted 9;
+    -webkit-box-shadow: inset 0px 0px 8px rgba(25, 153, 250, 0.8), 0px 0px 8px rgba(25, 153, 250, 0.8);
+    -moz-box-shadow: inset 0px 0px 8px rgba(25, 153, 250, 0.8), 0px 0px 8px rgba(25, 153, 250, 0.8);
+    box-shadow: inset 0px 0px 8px rgba(25, 153, 250, 0.8), 0px 0px 8px rgba(25, 153, 250, 0.8);
 }
 
 .user-input .caption {
     padding-top: 5px;  
     margin-bottom: 2px;
     float:left;
-    font-size: 18px;
+    font-size: 14px;
     color: #555;
     
 }
 
 .user-input input:focus {
-    border-color: rgba(0, 216, 0, 0.8);
+    border-color: rgba(25, 153, 250, 0.8);
     outline: 0;
     outline: thin dotted 9;
-    
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
-    
+    -webkit-box-shadow: inset 0px 0px 8px rgba(25, 153, 250, 0.8), 0px 0px 8px rgba(25, 153, 250, 0.8);
+    -moz-box-shadow: inset 0px 0px 8px rgba(25, 153, 250, 0.8), 0px 0px 8px rgba(25, 153, 250, 0.8);
+    box-shadow: inset 0px 0px 8px rgba(25, 153, 250, 0.8), 0px 0px 8px rgba(25, 153, 250, 0.8);
 }
 
 .user-input .club-logo {
     max-width: 160px;
     float: left;
     margin-right: 20px;
-}
-
-.save {
-    background: #fff;
-    width: 120px;
-    height: 30px;
-    border: 1px solid #009900;
-    border-radius: 8px;
-    margin-top: 5px;
-}
-
-.save:hover {
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 199, 0, 0.74);
 }
 
 .result {
@@ -239,15 +233,16 @@ input.custom-combobox-input {
 
 .left-block {
     display: inline-block;
-    width: 200px;
+    width: 220px;
     float: left;
     padding: 10px 20px;
 }
 
 .right-block {
-    width: 760px;
+    width: 700px;
     display: inline-block;
     padding: 10px 20px;
+    padding-top: 30px;
 }
 
 .MainHeader {
@@ -258,4 +253,26 @@ input.custom-combobox-input {
 
 .img-placeholder img {
     width: 160px;
+}
+
+#auth-button{
+    margin: 0;
+    margin-top: 20px;
+}
+
+.club-list-item {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.club-list-item:hover {
+    background-color: rgba(25, 153, 250, 0.15);
+}
+
+.image-wrapper {
+    min-height: 160px;
+}
+
+.mini-card-club-part {
+    width: 25%;
 }
