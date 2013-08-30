@@ -50,7 +50,7 @@
         <div id="logo-wrap">
             <div id="logo-wrap-inner" class="inline">
                 <img src="<?=site_url(array('image/logo.png'));?>" class="inline"/>
-                <div id="logo-wrap-title" class="inline"><h1>ФитПарк</h1></div>
+                <div id="logo-wrap-title" class="inline"><h4>ФитПарк</h4></div>
             </div><!--#logo-wrap[END]-->
             <div id="logo-city-block" class="inline">
                 <div id="logo-city-block-inner" >

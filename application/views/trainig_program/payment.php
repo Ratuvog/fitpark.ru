@@ -18,7 +18,7 @@
                             <table>
                                 <tr>
                                     <td class="name-field">Стоимость программы: </td>
-                                    <td class="value-field">750 рублей</td>
+                                    <td class="value-field">950 рублей</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" align="center" class="payment-submit-wrapper">

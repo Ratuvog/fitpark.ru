@@ -10,7 +10,7 @@
                                     <? foreach ($blocks as $block) { ?>
                                     <ul class="inline">
                                         <? foreach ($block as $item) { ?>
-                                            <li><a href="<?=site_url($item->url);?>"><?=$item->name;?></a></li>
+                                            <li><h3><a href="<?=site_url($item->url);?>"><?=$item->name;?></a></h3></li>
                                         <? } ?>
                                     </ul>
                                     <? } ?>

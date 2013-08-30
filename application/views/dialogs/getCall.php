@@ -3,7 +3,7 @@
         <form class="dialog-ajax-form" id="get-call" action="" method="post">
            <div id="content-title-dialog">
                 <div id="content-title-inner-dialog">
-                    <h1>Закажи звонок от менеджера</h1>
+                    <h4>Закажи звонок от менеджера</h4>
                 </div>
             </div><!--#results-title[END]-->
             <table width="100%" class="window">

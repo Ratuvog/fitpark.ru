@@ -3,7 +3,7 @@
         <form class="dialog-ajax-form" id="visit-club" action="" method="post">
             <div id="content-title-dialog">
                 <div id="content-title-inner-dialog">
-                    <h1>Посети клуб</h1>
+                    <h4>Посети клуб</h4>
                 </div>
             </div><!--#results-title[END]-->
             <table width="100%" class="window">

@@ -3,7 +3,7 @@
         <form class="dialog-ajax-form" id="ask-question" action="" method="post">
             <div id="content-title-dialog">
                 <div id="content-title-inner-dialog">
-                    <h1>Задай вопрос менеджеру</h1>
+                    <h4>Задай вопрос менеджеру</h4>
                 </div>
             </div><!--#results-title[END]-->
             <table width="100%" class="window">
