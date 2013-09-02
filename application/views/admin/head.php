@@ -38,6 +38,8 @@
         <li><a href='<?php echo site_url('Hfnedjuhfnedju/filters')?>'>Фильтры</a></li>
         <li><a href='<?php echo site_url('Hfnedjuhfnedju/order_list_active')?>'>Заявки на изменения (<?=$changeOrderCount;?>)</a></li>
         <li><a href='<?php echo site_url('Hfnedjuhfnedju/exercise')?>'>Упражнения</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/qa')?>">Вопрос ответ</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/sales')?>">Акции</a></li>
     </ul>
     </div>
 </div>

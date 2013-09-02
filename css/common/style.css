@@ -151,7 +151,6 @@ img{ border: none; }
 }
 
 #menu-block-inner{
-    width: 1000px;
     margin: 0 auto;
 }
 
@@ -242,7 +241,7 @@ img{ border: none; }
 
 #logo-wrap-title h4{
     margin: 0;
-    font-size: 54px;
+    font-size: 45px;
     text-shadow: 1px 1px white;
     color: #0567b2;
 }
@@ -255,6 +254,7 @@ img{ border: none; }
 
 #logo-city-block h2{
     margin: 0;
+    font-size: 20px;
 }
 
 #logo-city-block h2 span{

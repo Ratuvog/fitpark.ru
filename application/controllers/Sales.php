@@ -41,11 +41,14 @@ class Sales extends Base
             'url'  => site_url('sales')
         );
 
-        $sales = $this->sales_model->getList();
+        $sales = $this->sales_model->getList($this->localCity);
         foreach ($sales as &$sale) {
-            $sale->url = site_url(array('sales',$sale->id));
-            $sale->club = $this->club_model->byId($sale->clubId);
-            $sale->club->url = site_url(array('club',$sale->club->id));
+            if($sale->clubId)
+            {
+                $sale->url = site_url(array('sales',$sale->id));
+                $sale->club = $this->club_model->byId($sale->clubId);
+                $sale->club->url = site_url(array('club',$sale->club->id));
+            }
         }
 
         $this->content->view = $this->view;

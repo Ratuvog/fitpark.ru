@@ -18,9 +18,11 @@
                                     </td>
                                 </tr>
                             </table>
+                            <? if($sale->clubId) {?>
                             <div class="item-result-wrap">
                                 <? $this->load->view('blocks/club-item', $sale->club); ?>
                             </div>
+                            <? } ?>
                             <div class="clear"></div>
                         </div><!--.sale-club[END]-->
                         <? } ?>

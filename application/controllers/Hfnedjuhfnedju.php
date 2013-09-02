@@ -18,7 +18,9 @@ class Hfnedjuhfnedju extends CI_Controller {
         'photos' => array('Фотографии','fitnesclub_photo'),
         'order_list_active' => array('Заявки на изменение', ''),
         'club_changes' => array('Модерация изменений клуба', ''),
-        'exercises'    => array('Упражнения','exercises')
+        'exercises'    => array('Упражнения','exercises'),
+        'qa'           => array('Вопрос-ответ', 'QA'),
+        'sales'           => array('Вопрос-ответ', 'sale'),
     );
     private $categoryName = 'Авторизация';
     
@@ -214,6 +216,26 @@ class Hfnedjuhfnedju extends CI_Controller {
         $crud->set_table($this->currentTable);
         $crud->set_relation('typeId', 'exerciseType', 'name');
         $crud->set_field_upload('image','image/exercises');
+        $this->render($crud->render());
+    }
+
+    function qa()
+    {
+        $this->setCurentState('qa');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('qathemeid', 'qatheme', 'name');
+        $crud->set_relation('expertid', 'experts', 'name');
+        $this->render($crud->render());
+    }
+
+    function sales()
+    {
+        $this->setCurentState('sales');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('clubId', 'fitnesclub', 'name');
+        $crud->set_relation('cityId', 'city', 'name');
         $this->render($crud->render());
     }
         

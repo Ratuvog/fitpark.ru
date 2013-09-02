@@ -16,9 +16,9 @@ class Sales_model extends CI_Model
         return $this->db->get_where($this->table,array("id"=>$id))->row();
     }
 
-    function getList()
+    function getList($city)
     {
-        return $this->db->get($this->table)->result();
+        return $this->db->get_where($this->table, array('cityId'=>$city->id))->result();
     }
 }
 
