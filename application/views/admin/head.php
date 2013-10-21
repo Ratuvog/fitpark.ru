@@ -40,6 +40,11 @@
         <li><a href='<?php echo site_url('Hfnedjuhfnedju/exercise')?>'>Упражнения</a></li>
         <li><a href="<?php echo site_url('Hfnedjuhfnedju/qa')?>">Вопрос ответ</a></li>
         <li><a href="<?php echo site_url('Hfnedjuhfnedju/sales')?>">Акции</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/comments')?>">Коментарии</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/feedback')?>">Звонок менеджеру</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/abonement')?>">Заявка на абонемент</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/guest')?>">Звонок в клуб</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/question')?>">Вопрос менеджеру</a></li>
     </ul>
     </div>
 </div>

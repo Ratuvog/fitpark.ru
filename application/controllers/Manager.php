@@ -34,7 +34,7 @@ class Manager extends Base_old {
             $this->auth();
     }
     
-    function index()
+    function auth()
     {
         $this->view = 'old/manager/auth'; // by default
         $this->categoryName = "Авторизация";

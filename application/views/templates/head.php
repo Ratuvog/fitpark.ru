@@ -6,9 +6,8 @@
     <meta name='yandex-verification' content='781c2dd8ae286aca' />
     <meta name="google-site-verification" content="LPcTvq9lj7flD6_bLTq3HL-vJF9SFxRaLNq0eWIYGLs" />
     <title><?=$title?></title>
-    
-    <link rel="icon" type="image/vnd.microsoft.icon" href="<?=$favicon;?>" />
-    <link rel="SHORTCUT ICON" type="image/x-icon" href="<?=$favicon;?>" />
+    <link rel="shortcut icon" href="<?=$favicon;?>" type="image/x-icon" />
+    <link rel="icon" href="<?=$favicon;?>" type="image/x-icon" />
     
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="<?=site_url('css/common/style.css');?>" media="all"/>

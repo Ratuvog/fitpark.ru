@@ -26,7 +26,7 @@ class Dialog extends CI_Controller {
 
     function getClubCard($club)
     {
-        $ans_ok = array('status' => "OK", 'msg' => "Заявка на получение дисконтной карты принята");
+        $ans_ok = array('status' => "OK", 'msg' => "Заявка на получение абонемента в фитнес-клуб принята");
         $ans_err = array('status' => "ERR", 'msg' => "От посетителя с таким телефоном и адресом электронной почты уже поступала заявка");
         
         $data = array(

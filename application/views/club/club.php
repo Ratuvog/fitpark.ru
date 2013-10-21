@@ -86,22 +86,22 @@
                                 <div id="buttons-row">
                                     <div class="page-club-menu inline action-button" for="get-club-card" href="<?=site_url("dialog/getClubCard/$club->id");?>">
                                         <?$this->load->view('dialogs/getClubCard');?>
-                                        <img src="<?=site_url("image/v_card.png");?>" class="inline"/>
+                                        <img src="<?=site_url("image/v_card.png");?>" class="inline icon"/>
                                         <p class="inline">Заявка на карту клуба</p>
                                     </div>
                                     <div class="page-club-menu inline action-button" for="visit-club" href="<?=site_url("/dialog/visitClub/$club->id");?>">
                                         <?$this->load->view('dialogs/visitClub');?>
-                                        <img src="<?=site_url("image/calendar.png");?>" class="inline"/>
+                                        <img src="<?=site_url("image/calendar.png");?>" class="inline icon"/>
                                         <p class="inline">Посетить клуб</p>
                                     </div>
                                     <div class="page-club-menu inline action-button" for="ask-question" href="<?=site_url("/dialog/askQuestion/$club->id");?>">
                                         <?$this->load->view('dialogs/askQuestion');?>
-                                        <img src="<?=site_url("image/info.png");?>" class="inline"/>
+                                        <img src="<?=site_url("image/info.png");?>" class="inline icon"/>
                                         <p class="inline">Вопрос менеджеру клуба</p>
                                     </div>
                                     <div class="page-club-menu inline action-button" for="get-call" href="<?=site_url("/dialog/getCall/$club->id");?>">
                                         <?$this->load->view('dialogs/getCall');?>
-                                        <img src="<?=site_url("image/telephone.png");?>" class="inline"/>
+                                        <img src="<?=site_url("image/telephone.png");?>" class="inline icon"/>
                                         <p class="inline">Заказать звонок из клуба</p>
                                     </div>
                                 </div>

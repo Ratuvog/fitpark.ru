@@ -16,6 +16,7 @@
                                     <? } ?>
                                 </nav>
                             </div>
+                            <?$this->load->view("seo_tools/counters.php");?>
                         </div>
                     </menu>
                 </div>
@@ -31,7 +32,7 @@
                     </div>
                     <div id="imstudio" class="inline bordered">
                         <p>Дизайн и верстка сайта от </p>
-                        <p><a href="">imwebstudio.ru</a>  |  <a href="">imseo.ru</a>  |  <time>2013</time></p>
+                        <p><a href="http://imwebstudio.ru" rel="nofollow">imwebstudio.ru</a>  |  <a href="">imseo.ru</a>  |  <time>2013</time></p>
                     </div>
                     <div id="share-socials" class="inline bordered">
                         <div id="share-socials-inner">

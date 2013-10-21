@@ -21,6 +21,11 @@ class Hfnedjuhfnedju extends CI_Controller {
         'exercises'    => array('Упражнения','exercises'),
         'qa'           => array('Вопрос-ответ', 'QA'),
         'sales'           => array('Вопрос-ответ', 'sale'),
+        'comments'     => array('Комментарии', 'fitnesclub_review'),
+        'abonement'     => array('Заявка на абонемент', 'Abonements'),
+        'feedback'     => array('Звонок в клуб', 'feedback'),
+        'guest'     => array('Посетить клуб', 'guest'),
+        'question'     => array('Вопрос менеджеру клуба', 'question'),
     );
     private $categoryName = 'Авторизация';
     
@@ -238,7 +243,50 @@ class Hfnedjuhfnedju extends CI_Controller {
         $crud->set_relation('cityId', 'city', 'name');
         $this->render($crud->render());
     }
-        
+
+    function comments()
+    {
+        $this->setCurentState('comments');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('fitnesclubid', 'fitnesclub', 'name');
+        $this->render($crud->render());
+    }
+    function abonement()
+    {
+        $this->setCurentState('abonement');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('clubid', 'fitnesclub', 'name');
+        $this->render($crud->render());
+    }
+    
+    function feedback()
+    {
+        $this->setCurentState('feedback');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('clubid', 'fitnesclub', 'name');
+        $this->render($crud->render());
+    }
+    function guest()
+    {
+        $this->setCurentState('guest');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('clubid', 'fitnesclub', 'name');
+        $this->render($crud->render());
+    }
+       
+
+    function question()
+    {
+        $this->setCurentState('question');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('clubid', 'fitnesclub', 'name');
+        $this->render($crud->render());
+    } 
     function districts()
     {
                 $this->setCurentState('districts');

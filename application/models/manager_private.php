@@ -74,7 +74,12 @@ class Manager_private extends CI_Model {
             return 'OK';
         return 'ERR';
     }
-    
+
+    function manager($login)
+    {
+        $this->db->get_where('manager', array('login'=>$login))->row();
+    }
+
     function updateServices($data, $club)
     {
         if(!$this->db->delete('buf_club_services', array('clubId'=>$club)))
