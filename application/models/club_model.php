@@ -5,11 +5,16 @@ class Club_model extends CI_Model {
     public $rating = 'fitnesclub_rating';
     public $city = 'city';
 
-
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->config("paidShows");
+    }
     function prepare()
     {
         $this->db->select("$this->table.*, AVG($this->rating.value) as rating, $this->city.geo as city_geo")
                  ->from($this->table)
+                 ->join("paidShows",  "$this->table.id = paidShows.clubId", "left")
                  ->join("$this->rating", "$this->table.id = $this->rating.clubId", "left")
                  ->join("$this->city", "$this->table.cityId = $this->city.id")
                  ->group_by("$this->table.id");
@@ -43,8 +48,9 @@ class Club_model extends CI_Model {
     {
         $this->prepare();
         $set = $this->db
-                    ->where("$this->table.cityId = $city->id")
-                    ->order_by('RAND()')
+                    ->where(array("$this->table.cityId"=>"$city->id" ))
+                    ->where("(`paidShows`.`id` IS NULL OR `paidShows`.`paidBlockId` = '".$this->config->item("blockTitle")."')")
+                    ->order_by('`paidShows`.`id` DESC, RAND()')
                     ->limit($limit)
                     ->get()->result();
         $this->after_get($set);
@@ -62,14 +68,16 @@ class Club_model extends CI_Model {
     function analogs($clubId) {
         $club = $this->db->get_where($this->table, array('id'=>$clubId))->row();
         $query = "SELECT f1.*
-                FROM fitnesclub f1, fitnesclub f2
+                FROM fitnesclub f2 , fitnesclub f1 LEFT JOIN paidShows ON
+                paidShows.clubId = f1.id AND `paidShows`.`paidBlockId` = '".$this->config->item("blockAnalog")."'
                 WHERE
                     f1.id != f2.id
                     AND (  ( (f1.sub3 > f2.sub3)  AND (f1.sub3 - f2.sub3) <=500)
-                        OR ( (f1.sub3 <= f2.sub3) AND (f2.sub3 - f1.sub3) <=500))
+                        OR ( (f1.sub3 <= f2.sub3) AND (f2.sub3 - f1.sub3) <=500)
+                        )
                     AND
                       f1.cityid = $club->cityid
-                    AND f2.id = ? ORDER BY RAND() LIMIT 0,4";
+                    AND f2.id = ? ORDER BY paidShows.id DESC, RAND() LIMIT 0,4";
         
         $clubs = $this->db->query($query, array($clubId))->result();
         $indexes = array();

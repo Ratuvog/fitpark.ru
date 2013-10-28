@@ -45,6 +45,7 @@
         <li><a href="<?php echo site_url('Hfnedjuhfnedju/abonement')?>">Заявка на абонемент</a></li>
         <li><a href="<?php echo site_url('Hfnedjuhfnedju/guest')?>">Звонок в клуб</a></li>
         <li><a href="<?php echo site_url('Hfnedjuhfnedju/question')?>">Вопрос менеджеру</a></li>
+        <li><a href="<?php echo site_url('Hfnedjuhfnedju/paidShows')?>">Платные показы</a></li>
     </ul>
     </div>
 </div>

@@ -26,6 +26,7 @@ class Hfnedjuhfnedju extends CI_Controller {
         'feedback'     => array('Звонок в клуб', 'feedback'),
         'guest'     => array('Посетить клуб', 'guest'),
         'question'     => array('Вопрос менеджеру клуба', 'question'),
+        'paidShows' => array('Платные показы', 'paidShows')
     );
     private $categoryName = 'Авторизация';
     
@@ -330,6 +331,17 @@ class Hfnedjuhfnedju extends CI_Controller {
                 $crud->set_field_upload('icon','image/services_icon');
                 $output = $crud->render();
                 $this->render($output);
+        }
+
+        function paidShows()
+        {
+            $this->setCurentState('paidShows');
+            $crud = new grocery_CRUD();
+            $crud->set_table($this->currentTable);
+            $crud->set_relation('clubId','fitnesclub','name');
+            $crud->set_relation('paidBlockId','paidBlocks','name');
+            $output = $crud->render();
+            $this->render($output);
         }
         
         function subscribes()
