@@ -11,5 +11,10 @@ class District extends CI_Model {
             $map[$district->id] = $district->name;
         return $map;
     }
+
+    function byCity($cityId)
+    {
+        return $this->db->get_where($this->table, array('cityId'=>$cityId))->result();
+    }
 }
 ?>
