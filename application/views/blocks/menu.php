@@ -5,7 +5,13 @@
                 <div id="top-menu-inner" class="inline">
                     <ul>
                         <li class="split"><a href="<?=base_url();?>"><img src="<?=site_url(array('image/main_link.png'));?>"/></a></li>
-                        <li class="split"><a href="<?=site_url(array('clubs'));?>" class="padded">Фитнес-клубы</a></li>
+                        <li class="split">
+                            <a href="#" class="padded">Фитнес-клубы</a>
+                            <ul class="submenu menu-item-fitnesclubs">
+                                <li><a href="<?=site_url(array('clubs'));?>">Список клубов</a></li>
+                                <li><a href="<?=site_url(array('club_selector'));?>">Подобрать клуб</a></li>
+                            </ul>
+                        </li>
                         <li class="split"><a href="<?=site_url(array('sales'));?>" class="padded">Акции</a></li>
                         <li class="split">
                             <a href="#" class="padded">ФитГид</a>

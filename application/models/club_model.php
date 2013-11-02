@@ -25,7 +25,7 @@ class Club_model extends CI_Model {
         foreach ($set as &$club)
             $club->head_picture = ImageHelper::replace_path($club->head_picture, $this->config->item('empty_photo'));
     }
-    
+
     function after_get_row(&$row)
     {
         $row->head_picture = ImageHelper::replace_path($row->head_picture, $this->config->item('empty_photo'));
@@ -133,6 +133,19 @@ class Club_model extends CI_Model {
         if($info)
             return $info->managerId;
         return 0;
+    }
+
+    function byListDistrict($districtsList, $currentCity = 1)
+    {
+        $clubs = array();
+        $this->db->select("id, name, address");
+        $this->db->from($this->table);
+        if(count($districtsList))
+            $clubs = $this->db->where_in("districtId", $districtsList)->get()->result();
+        else
+            $clubs = $this->db->where(array("cityId" => $currentCity))->get()->result();
+
+        return $clubs;
     }
 
 }

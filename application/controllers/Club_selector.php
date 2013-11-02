@@ -52,6 +52,24 @@ class Club_selector extends Base
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->renderScene();
     }
+
+    function getClubsByDistrict()
+    {
+        $districtId = -1;
+        $res = array();
+        if(isset($_GET['districts']))
+            $res = $_GET['districts'];
+        $clubs = $this->club_model->byListDistrict($res, $this->localCity->id);
+        foreach ($clubs as &$club)
+        {
+            $club->url = site_url(array('club', $club->id));
+        }
+        $return_result = array(
+            $this->localCity->name,
+            $this->object_to_array($clubs)
+        );
+        echo(json_encode($return_result));
+    }
 }
 
 ?>

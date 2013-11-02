@@ -7,6 +7,7 @@
         <?$this->load->view('blocks/subtitle-block');?>
         <div id="main">
             <div id="main-inner">
+                <?$this->load->view('blocks/fitnesclub_content_menu');?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
                 <div id="page-club-list">
                     <div id="sidebar-options">
