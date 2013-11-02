@@ -97,7 +97,8 @@ function getClubs(districtsList)
                 // Создаем карту с нужным центром.
                 myMap = new ymaps.Map("YMapsID", {
                     center: firstGeoObject.geometry.getCoordinates(),
-                    zoom: 11
+                    zoom: 11,
+                    controls: ["zoomControl"]
                 });
                 contentLayoutClass = ymaps.templateLayoutFactory.createClass($("#baloonTemplate").html());
                 ymaps.layout.storage.add("myLayout", contentLayoutClass);

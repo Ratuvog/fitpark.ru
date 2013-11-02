@@ -9,7 +9,7 @@
                             <a href="#" class="padded">Фитнес-клубы</a>
                             <ul class="submenu menu-item-fitnesclubs">
                                 <li><a href="<?=site_url(array('clubs'));?>">Список клубов</a></li>
-                                <li><a href="<?=site_url(array('club_selector'));?>">Подобрать клуб</a></li>
+                                <li><a href="<?=site_url(array('club_selector'));?>">Клубы на карте</a></li>
                             </ul>
                         </li>
                         <li class="split"><a href="<?=site_url(array('sales'));?>" class="padded">Акции</a></li>
