@@ -19,18 +19,21 @@
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('assets/fileupload/css/jquery.fileupload-ui.css')?>"/>
     <link rel="stylesheet" type="text/css" href="<?=site_url('assets/fileupload/css/style.css')?>"/>
+    <link rel="stylesheet" href="<?=site_url("css/common/social-likes.css");?>"/>
     <!--END_CSS-->
     
     <!--SCRIPTS-->
 <!--    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="//api-maps.yandex.ru/2.1-dev/?lang=ru-RU&load=package.full" type="text/javascript"></script>
+<!--    <script src="//api-maps.yandex.ru/2.1-dev/?lang=ru-RU&load=package.full" type="text/javascript"></script>-->
+<!--    <script src="//api-maps.yandex.ru/2.0/?load=package.standard,package.geoObjects&lang=ru-RU" type="text/javascript"></script>-->
+    <script src="//api-maps.yandex.ru/2.0.31/?load=package.standard,package.geoQuery&lang=ru-RU" type="text/javascript"></script>
     <script src="/js/Club_selector.js"></script>
 
 
     <script src="http://api.jquery.com/jquery-wp-content/themes/jquery/js/jquery-migrate-1.1.1.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-    <script src="http://malsup.github.com/jquery.form.js"></script> 
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="//vk.com/js/api/openapi.js?96"></script>
     <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
 
@@ -51,6 +54,8 @@
     <script type="text/javascript" src="<?=site_url("js/validator_helper.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/raty-2.5.2/jquery.raty.js");?>"></script>
     <script type="text/javascript" src="<?=site_url("js/slider/jquery.bxslider.js");?>"></script>
+    <script src="<?=site_url(array('js/social-likes.min.js'));?>"></script>
+    <script src="<?=site_url("js/exercise.js");?>"></script>
     <script type="text/javascript" src="<?php echo site_url(array("js/fix_style_ckeditor.js")); ?>"></script>
     <!--END_SCRIPTS-->
 </head>

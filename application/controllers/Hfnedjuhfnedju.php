@@ -222,6 +222,11 @@ class Hfnedjuhfnedju extends CI_Controller {
         $crud->set_table($this->currentTable);
         $crud->set_relation('typeId', 'exerciseType', 'name');
         $crud->set_field_upload('image','image/exercises');
+        $crud->set_field_upload('image1', 'image/exercises');
+        $crud->set_field_upload('image2', 'image/exercises');
+        $crud->set_field_upload('image3', 'image/exercises');
+        $crud->set_field_upload('image4', 'image/exercises');
+        $crud->set_field_upload('image5', 'image/exercises');
         $this->render($crud->render());
     }
 

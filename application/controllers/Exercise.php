@@ -20,6 +20,22 @@ class Exercise extends Base {
     function index($id)
     {
         $exercise = $this->exercises_model->byId($id);
+        $exercise->simular_exercises = $this->exercises_model->byTypeIdWidget($exercise->typeId);
+        foreach ($exercise->simular_exercises as &$currentExercise) {
+            $currentExercise->image = site_url(array($this->config->item("exercises_image_path"),
+                $currentExercise->image));
+            $currentExercise->url   = site_url(array('exercise',$currentExercise->id));
+        }
+
+        $exercise->photos = array();
+        for($i=1;$i<=5;$i++) {
+            if($exercise->{"image".$i}) {
+                $newPhotos = new stdClass();
+                $newPhotos->url = site_url(array('image/exercises', $exercise->{"image".$i}));
+                $exercise->photos[] = $newPhotos;
+            }
+        }
+
         $this->title = sprintf("%s, описание, техника, видео. ФитПарк",
             $exercise->name);
 
@@ -42,6 +58,8 @@ class Exercise extends Base {
             'name' => $exercise->name,
             'url'  => site_url(array('exercises',$exercise->id))
         );
+
+
 
         $this->content->view = $this->view;
         $this->content->data->content_title->title = $exercise->name;

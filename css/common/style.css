@@ -1146,6 +1146,10 @@ a.sort-down {
     width: 100%x;
 }
 
+.exercise-footer-splitter {
+    margin-top: 20px;
+}
+
 .exercise-inline {
     display: inline-table;
     vertical-align: top;
@@ -1513,6 +1517,11 @@ a.sort-down {
     font-family: cricket;
 }
 
+#similar-exercise h2 {
+    font-family: cricket;
+    margin-left: 30px;
+}
+
 #select-form-main-inner table tr{
     width: 385px;
 }
@@ -1745,13 +1754,39 @@ div.addqa {
 }
 
 
-#exercise-content-inner>table {
+#exercise-content-inner>.left-content {
     /*width: 100%;*/
-    margin: 30px;
+    margin: 0 30px 30px;
+    float: left;
+    width: 600px;
+}
+
+#exercise-content-inner>.left-content h2 {
+    margin-top: 0px;
+}
+
+.exercise-photo img {
+    max-width: 300px;
+}
+
+.social-likes {
+    margin-top: 20px !important;
+}
+
+#exercise-content-inner>.right-content {
+    margin-top: 30px;
+}
+
+.exercise-photo td {
+    padding-top: 20px;
 }
 
 #exercise-content-inner p {
     line-height: 1.5;
+}
+
+#exercise-content-inner>div.right-content{
+    /*float: left;*/
 }
 
 .club-description-text p{
@@ -2211,4 +2246,8 @@ a.balloonHref:hover{
 
 .menu-item-fitnesclubs {
     width: 180px;
+}
+
+.splitter {
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.2)
 }

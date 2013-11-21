@@ -37,7 +37,10 @@ function addClubToMap(city, currentAddress, clubName, clubUrl)
                     hintContent: clubName
                 },
                 {
-                    balloonContentLayout: contentLayoutClass
+                    balloonContentLayout: contentLayoutClass,
+                    iconImageHref: 'http://samara.fitpark.com/image/balloon.png',
+                    iconImageSize: [24, 24], // размеры картинки
+                    iconImageOffset: [-6, -10] // смещение картинки
                 }
             )
             myMap.geoObjects.add(placemark);
@@ -69,7 +72,7 @@ function addClubsToMap(city, clubs, collectionsClubs, myMap)
                 myMap.setBounds(myMap.geoObjects.getBounds());
             else
             {
-                myMap.setCenter(myMap.geoObjects.get(0).geometry.getCoordinates(), 16, {
+                myMap.setCenter(myMap.geoObjects.getBounds()[0], 16, {
                     checkZoomRange: true
                 })
             }
@@ -110,7 +113,9 @@ function getClubs(districtsList)
             })
             isStarted = false;
         } else {
-            collectionsClubs = myMap.geoObjects.removeAll();
+            myMap.geoObjects.each(function(el){
+                myMap.geoObjects.remove(el);
+            })
             addClubsToMap(city, clubs, collectionsClubs, myMap);
         }
     })
