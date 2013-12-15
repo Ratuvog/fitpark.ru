@@ -34,7 +34,6 @@
                                                     <a href="#" id="submit">Войти</a>
                                                 </td>
                                             </tr>
-
                                         </table>
                                     </form>
                                 </td>

@@ -77,7 +77,7 @@ class Manager_private extends CI_Model {
 
     function manager($login)
     {
-        $this->db->get_where('manager', array('login'=>$login))->row();
+        return $this->db->get_where("manager", array("login"=>$login))->row();
     }
 
     function updateServices($data, $club)

@@ -214,24 +214,13 @@ class Manager extends Base {
             'url'  => site_url('manager')
         );
 
-        $this->breadcrumbs []= (object)array(
-            'name' => "gfdgfgdfgdgf",
-            'url'  => "dfgfdghdfgfdg"
-        );
-
         $userId = $this->session->userdata('userid');
         if(!$userId)
             return $this->auth();
 
         $this->content->view = 'manager/list';
-//        $this->categoryName = 'Cписок клубов';
-//        $this->viewData['categoryName'] = $this->categoryName;
-//        $this->headerData['titleText'] = "ФитПарк. Личный кабинет.";
-//
-//        $this->breadCrumbsData[] = array(
-//            'href'  => site_url(array($this->controllerName, 'clubs')),
-//            'title' => $this->categoryName
-//        );
+        $this->content->data->content_title->title = "Список доступных клубов";
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->content->data->clubs = $this->manager_private->clubs($userId);
         $this->renderScene();
     }
