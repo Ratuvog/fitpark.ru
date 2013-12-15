@@ -22,11 +22,19 @@
                                                 <td class="window-name-options">Пароль</td>
                                                 <td><input type="password" class="checkout-input search" text="E-mail" validator="email" name="pass"/></td>
                                             </tr>
+                                            <? if(isset($authError) && $authError!='OK') :?>
+                                                <tr>
+                                                    <td colspan="2" align="center" class="error">
+                                                        <?=$authError;?>
+                                                    </td>
+                                                </tr>
+                                            <? endif;?>
                                             <tr>
                                                 <td colspan="2" align="center" id="form-comment-wrap">
                                                     <a href="#" id="submit">Войти</a>
                                                 </td>
                                             </tr>
+
                                         </table>
                                     </form>
                                 </td>

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once(APPPATH.'controllers/Base_old.php');
-class Manager extends Base_old {
+require_once(APPPATH.'controllers/Base.php');
+class Manager extends Base {
 
     public $view = 'manager/private';
     public $controllerName = 'Manager';
@@ -10,15 +10,15 @@ class Manager extends Base_old {
     function __construct()
     {
         parent::__construct();
-        $this->breadcrumbs []= (object)array(
-            'name' => "Главная",
-            'url' => base_url()
-        );
-        
-        $this->breadcrumbs []= (object)array(
-            'name' => "Личный кабинет",
-            'url' => ""
-        );
+//        $this->breadcrumbs []= (object)array(
+//            'name' => "Главная",
+//            'url' => base_url()
+//        );
+//
+//        $this->breadcrumbs []= (object)array(
+//            'name' => "Личный кабинет",
+//            'url' => ""
+//        );
         $this->load->model('manager_private');
     }
 
@@ -36,14 +36,19 @@ class Manager extends Base_old {
     
     function auth()
     {
-        $this->view = 'old/manager/auth'; // by default
-        $this->categoryName = "Авторизация";
+        $this->breadcrumbs []= (object)array(
+            'name' => "Главная",
+            'url' => base_url()
+        );
 
-        $this->viewData['categoryName'] = $this->categoryName;
-        $this->viewData['authError'] = $this->authError;
-        
-        $this->headerData['titleText'] = "ФитПарк. Личный кабинет.";
-        
+        $this->breadcrumbs []= (object)array(
+            'name' => "Вход менеджерам клубов",
+            'url'  => site_url('sales')
+        );
+        $this->content->view = 'manager_in';
+        $this->content->data->content_title->title = 'Менеджерам клубов';
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
+        $this->content->data->authError = $this->authError;
         $this->renderScene();
     }
     
@@ -191,22 +196,43 @@ class Manager extends Base_old {
 
     function clubs()
     {
+        $this->title = sprintf("%s, описание, техника, видео. ФитПарк",
+            "хер");
+
+        $this->description = sprintf("%s. Подробное описание, порядок выполнения, нюансы упражнения, видео.",
+            "хур");
+
+        $this->keywords = "хер";
+
+        $this->breadcrumbs []= (object)array(
+            'name' => "Панель менеджера",
+            'url' => base_url()
+        );
+
+        $this->breadcrumbs []= (object)array(
+            'name' => "Спиосок клубов",
+            'url'  => site_url('manager')
+        );
+
+        $this->breadcrumbs []= (object)array(
+            'name' => "gfdgfgdfgdgf",
+            'url'  => "dfgfdghdfgfdg"
+        );
+
         $userId = $this->session->userdata('userid');
         if(!$userId)
             return $this->auth();
 
-        $this->view = 'old/manager/list';
-        
-        $this->categoryName = 'Cписок клубов';
-        $this->viewData['categoryName'] = $this->categoryName;
-        $this->headerData['titleText'] = "ФитПарк. Личный кабинет.";
-
-        $this->breadCrumbsData[] = array(
-            'href'  => site_url(array($this->controllerName, 'clubs')),
-            'title' => $this->categoryName
-        );
-        
-        $this->viewData['clubs'] = $this->manager_private->clubs($userId);
+        $this->content->view = 'manager/list';
+//        $this->categoryName = 'Cписок клубов';
+//        $this->viewData['categoryName'] = $this->categoryName;
+//        $this->headerData['titleText'] = "ФитПарк. Личный кабинет.";
+//
+//        $this->breadCrumbsData[] = array(
+//            'href'  => site_url(array($this->controllerName, 'clubs')),
+//            'title' => $this->categoryName
+//        );
+        $this->content->data->clubs = $this->manager_private->clubs($userId);
         $this->renderScene();
     }
     
