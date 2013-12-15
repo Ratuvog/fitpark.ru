@@ -135,20 +135,22 @@ class Manager extends Base {
 
         $this->view = 'manager/private';
 
-        $this->viewData['club'] = $this->manager_private->club($clubId);
-        $this->viewData['cities'] = $this->manager_private->cities();
+        $this->content->data->club = $this->manager_private->club($clubId);
+        $this->content->data->cities = $this->manager_private->cities();
 
-        $cityId = $this->viewData['club']->cityid;
-        $this->viewData['districts'] = $this->manager_private->districts($cityId);
-        $this->viewData['services'] = $this->manager_private->services($clubId);
-
-        $this->categoryName = $this->viewData['club']->name;
-        $this->viewData['categoryName'] = $this->categoryName;
-        $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
-        $this->breadCrumbsData[] = array(
-            'href'  =>  site_url(array($this->controllerName, 'getClub', $clubId)),
-            'title' =>  $this->categoryName
+        $cityId = $this->content->data->club->cityid;
+        $this->content->data->districts = $this->manager_private->districts($cityId);
+        $this->content->data->services= $this->manager_private->services($clubId);
+        $this->breadcrumbs[] = (object)array(
+            'url'  =>  site_url(array('Manager/clubs')),
+            'name' =>  "Панель менеджера"
         );
+
+        $this->breadcrumbs[] = (object)array(
+            'url'  =>  site_url(array($this->controllerName, 'getClub', $clubId)),
+            'name' =>  $this->content->data->club->name
+        );
+
         if(isset($tab) && $tab == "photo") {
             $this->renderPhoto($clubId);
         } else {
@@ -175,22 +177,23 @@ class Manager extends Base {
             $this->js_files[] = implode("/",$fileArray);
         }
 
-        $this->viewData["output"] = $output;
-        $this->breadCrumbsData[] = array(
-            'href'  =>  site_url(array($this->controllerName, 'getClub', $clubId, "photo")),
-            'title' =>  "Фотографии клуба"
+        $this->content->data->output = $output;
+        $this->breadcrumbs[] = (object)array(
+            'url'  =>  site_url(array($this->controllerName, 'getClub', $clubId, "photo")),
+            'name' =>  "Фотографии клуба"
         );
+        $this->content->view = $this->view;
+        $this->content->data->content_title->title = 'Фото клуба клубов';
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->renderScene();
     }
 
     private function renderBaseInfo($clubId) {
 
-        $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
-        $this->breadCrumbsData[] = array(
-            'href'  =>  site_url(array($this->controllerName, 'club', $clubId)),
-            'title' =>  'Общая информация'
-        );
-
+//        $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
+        $this->content->view = $this->view;
+        $this->content->data->content_title->title = 'Базовая информация списка клубов';
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->renderScene();
     }
 
@@ -241,21 +244,18 @@ class Manager extends Base {
         $image_crud_cur->set_image_path('image/club/');
         $image_crud_cur->set_relation_field('fitnesclubid');
         
-        $this->viewData['cur_photos'] = $image_crud_cur->render();
+        $this->content->data->cur_photos = $image_crud_cur->render();
         
         $this->view = 'manager/photos';
         
-        $this->viewData['club'] = $this->manager_private->club($clubId);
-
-        $this->categoryName = $this->viewData['club']->name;
-        $this->viewData['categoryName'] = $this->categoryName;
-        $this->headerData['titleText'] = "ФитПарк. Личный кабинет.";
-        
-        $this->breadCrumbsData[] = array(
-            'href'  => site_url(array($this->controllerName, 'photo', $clubId)),
-            'title' => 'Фотографии'
+        $this->content->data->club = $this->manager_private->club($clubId);
+        $this->breadcrumbs[] = array(
+            'url'  => site_url(array($this->controllerName, 'photo', $clubId)),
+            'name' => 'Фотографии'
         );
-        
+        $this->content->view = $this->view;
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
+
         $this->renderScene();
     }
 

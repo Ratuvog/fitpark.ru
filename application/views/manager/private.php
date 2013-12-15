@@ -20,8 +20,8 @@
     <div id="content-inner">
         <div id="main">
             <div id="main-inner">
+                <?$this->load->view('blocks/content-manager-menu', $this);?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
-                <?$this->load->view('manager/blocks/content-menu', $this);?>
                 <div class="left-block">
                     <div class="info-block option">
                         <h3 class="sidebar-option-title">Логотип</h3>
