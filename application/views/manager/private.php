@@ -19,7 +19,7 @@
 <div id="content">
     <div id="content-inner">
         <div id="main">
-            <div id="main-inner">
+            <div id="main-inner" class="base-info-manager">
                 <?$this->load->view('blocks/content-manager-menu', $this);?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
                 <div class="left-block">
