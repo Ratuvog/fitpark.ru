@@ -142,6 +142,11 @@ class Manager extends Base {
         $this->content->data->districts = $this->manager_private->districts($cityId);
         $this->content->data->services= $this->manager_private->services($clubId);
         $this->breadcrumbs[] = (object)array(
+            'url' => base_url(),
+            'name' => "Главная"
+        );
+
+        $this->breadcrumbs[] = (object)array(
             'url'  =>  site_url(array('Manager/clubs')),
             'name' =>  "Панель менеджера"
         );
@@ -183,7 +188,8 @@ class Manager extends Base {
             'name' =>  "Фотографии клуба"
         );
         $this->content->view = $this->view;
-        $this->content->data->content_title->title = 'Фото клуба клубов';
+        $clubName = $this->content->data->club->name;
+        $this->content->data->content_title->title = 'Фото клуба "'.$clubName.'"';
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->renderScene();
     }
@@ -192,7 +198,8 @@ class Manager extends Base {
 
 //        $this->headerData['titleText'] = "ФитПарк. Личный кабинет. ".$this->categoryName;
         $this->content->view = $this->view;
-        $this->content->data->content_title->title = 'Базовая информация списка клубов';
+        $clubName = $this->content->data->club->name;
+        $this->content->data->content_title->title = 'Базовая информация о клубе "'.$clubName.'"';
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->renderScene();
     }
@@ -208,13 +215,13 @@ class Manager extends Base {
         $this->keywords = "хер";
 
         $this->breadcrumbs []= (object)array(
-            'name' => "Панель менеджера",
+            'name' => "Главная",
             'url' => base_url()
         );
 
         $this->breadcrumbs []= (object)array(
-            'name' => "Спиосок клубов",
-            'url'  => site_url('manager')
+            'name' => "Панель менеджера",
+            'url'  => site_url(array('Manager', 'clubs'))
         );
 
         $userId = $this->session->userdata('userid');
