@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__."/../libraries/image_crud.php";
 class Manager_private extends CI_Model {
     
     function cities()

@@ -27,8 +27,8 @@ foreach($output->css_files as $file): ?>
     <div id="content-inner">
         <div id="main">
             <div id="main-inner">
-                <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>   
-                <?$this->load->view('manager/blocks/content-menu', $this);?>
+                <?$this->load->view('blocks/content-manager-menu', $this);?>
+                <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
                 <div id="page-club">
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
@@ -40,7 +40,8 @@ foreach($output->css_files as $file): ?>
                         </div><!--#page-club-info-main[END]-->
                     </div>
                 </div>
-            </div> 
+                <div style="clear: both;"></div>
+            </div>
         </div><!--#main[END]-->
     </div>
 </div><!--#content[END]-->
