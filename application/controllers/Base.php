@@ -43,10 +43,7 @@ class Base extends Template {
         $this->content->data->header->menu->chooseCity->cities = $this->city->get();
 
         $block = json_decode($this->localCity->promotion);
-        if($block)
-        {
-            $this->footer->blocks = $block;
-        }
+        $this->footer->blocks = $block;
     }
    
     function head()

@@ -210,7 +210,7 @@ class Hfnedjuhfnedju extends CI_Controller {
         $crud->set_table($this->currentTable);
 
         $crud->set_field_upload('icon','assets/uploads/files');
-
+        $crud->unset_texteditor('promotion');
         $output = $crud->render();
         $this->render($output);
     }
