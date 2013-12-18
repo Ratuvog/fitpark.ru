@@ -34,6 +34,11 @@
                                                     <a href="#" id="submit">Войти</a>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td colspan="2" align="center" id="form-comment-wrap">
+                                                    <a href="<?= site_url('Manager_in/signup'); ?>" id="submit">Подать заявку</a>
+                                                </td>
+                                            </tr>
                                         </table>
                                     </form>
                                 </td>
