@@ -225,7 +225,6 @@ class CI_Migration {
 		}
 
 		$last_migration = basename(end($migrations));
-
 		// Calculate the last migration step from existing migration
 		// filenames and procceed to the standard version migration
 		return $this->version((int) substr($last_migration, 0, 3));
@@ -267,7 +266,6 @@ class CI_Migration {
 		// Load all *_*.php files in the migrations path
 		$files = glob($this->_migration_path . '*_*.php');
 		$file_count = count($files);
-
 		for ($i = 0; $i < $file_count; $i++)
 		{
 			// Mark wrongly formatted files as false for later filtering
@@ -277,7 +275,6 @@ class CI_Migration {
 				$files[$i] = FALSE;
 			}
 		}
-
 		sort($files);
 		return $files;
 	}
