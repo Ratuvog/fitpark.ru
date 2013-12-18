@@ -6,8 +6,8 @@ class Cities_advertisement extends CI_Model {
     function byCity($cityid)
     {
         $this->db->from($this->table);
-        $this->db->join('city', 'city.id ='.$this->table.'.city_id');
-        $this->db->join('fitnesclub', 'fitnesclub.id ='.$this->table.'.club_id');
+        $this->db->join('fitnesclub', "fitnesclub.id =".$this->table.".club_id");
+        $this->db->where('city_id', $cityid );
         return $this->db->get()->result();
     }
 }

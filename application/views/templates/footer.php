@@ -18,7 +18,7 @@
                                     <? foreach ($advert_links as $group) { ?>
                                     <ul class="inline">
                                         <? foreach ($group as $item) { ?>
-                                            <li><h3><a href="<?=site_url($item->url);?>"><?=$item->name;?></a></h3></li>
+                                            <li><h3><a href="<?=site_url(array('club', $item->club_id));?>"><?=$item->name;?></a></h3></li>
                                         <? } ?>
                                     </ul>
                                     <? } ?>

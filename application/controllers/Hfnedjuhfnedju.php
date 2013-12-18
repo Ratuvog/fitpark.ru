@@ -210,7 +210,10 @@ class Hfnedjuhfnedju extends CI_Controller {
         $crud->set_table($this->currentTable);
 
         $crud->set_field_upload('icon','assets/uploads/files');
-        $crud->unset_texteditor('promotion');
+        $crud->set_relation_n_n('promotion', 'cities_advertisement',
+           'fitnesclub', 'city_id', 'club_id', 'name', 'priority'
+        );
+
         $output = $crud->render();
         $this->render($output);
     }
@@ -295,11 +298,11 @@ class Hfnedjuhfnedju extends CI_Controller {
     } 
     function districts()
     {
-                $this->setCurentState('districts');
-                $crud = new grocery_CRUD();
-                $crud->set_table($this->currentTable);
-                $crud->set_relation('cityid', 'city', 'name');
-                $crud->set_field_upload('icon','assets/uploads/files');
+        $this->setCurentState('districts');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('cityid', 'city', 'name');
+        $crud->set_field_upload('icon','assets/uploads/files');
 
         $output = $crud->render();
         $this->render($output);
@@ -513,8 +516,8 @@ class Hfnedjuhfnedju extends CI_Controller {
         }
                 
         function index()
-	{
-            redirect('Hfnedjuhfnedju/clubs');
-	}		
+        {
+                redirect('Hfnedjuhfnedju/clubs');
+        }
 }
 ?>
