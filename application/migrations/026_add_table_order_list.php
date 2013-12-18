@@ -21,10 +21,6 @@ class Migration_add_table_order_list extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `order_list`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `order_list`");
+        $this->dbforge->drop_table('order_list');
     }
 }

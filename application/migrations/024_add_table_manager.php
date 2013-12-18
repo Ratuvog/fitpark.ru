@@ -26,10 +26,6 @@ class Migration_add_table_manager extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `manager`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `manager`");
+        $this->dbforge->drop_table('manager');
     }
 }

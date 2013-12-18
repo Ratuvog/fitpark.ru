@@ -31,10 +31,6 @@ class Migration_add_table_guest extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `guest`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `guest`");
+        $this->dbforge->drop_table('guest');
     }
 }

@@ -33,10 +33,6 @@ class Migration_add_table_qa extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `QA`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `QA`");
+        $this->dbforge->drop_table('QA');
     }
 }

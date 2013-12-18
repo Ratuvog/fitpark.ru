@@ -31,10 +31,6 @@ class Migration_add_table_city extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `city`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `city`");
+        $this->dbforge->drop_table('city');
     }
 }

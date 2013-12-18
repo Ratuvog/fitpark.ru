@@ -61,10 +61,6 @@ class Migration_add_table_district extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `district`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `district`");
+        $this->dbforge->drop_table('district');
     }
 }

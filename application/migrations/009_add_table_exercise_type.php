@@ -34,10 +34,6 @@ class Migration_add_table_exercise_type extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `exerciseType`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `exerciseType`");
+        $this->dbforge->drop_table('exerciseType');
     }
 }

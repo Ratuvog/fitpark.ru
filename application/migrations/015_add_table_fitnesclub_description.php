@@ -22,10 +22,6 @@ class Migration_add_table_fitnesclub_description extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `fitnesclub_description`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `fitnesclub_description`");
+        $this->dbforge->drop_table('fitnesclub_description');
     }
 }

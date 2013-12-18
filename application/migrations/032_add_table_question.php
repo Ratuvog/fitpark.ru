@@ -31,10 +31,6 @@ class Migration_add_table_question extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `question`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `question`");
+        $this->dbforge->drop_table('question');
     }
 }

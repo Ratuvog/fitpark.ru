@@ -23,10 +23,6 @@ class Migration_add_table_paid_blocks extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `paidBlocks`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `paidBlocks`");
+        $this->dbforge->drop_table('paidBlocks');
     }
 }

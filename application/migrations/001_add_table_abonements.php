@@ -31,10 +31,6 @@ class Migration_add_table_abonements extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `Abonements`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `Abonements`");
+        $this->dbforge->drop_table('Abonements');
     }
 }
