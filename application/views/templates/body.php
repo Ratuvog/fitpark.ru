@@ -2,7 +2,7 @@
     <?$this->load->view('seo_tools/facebook');?>
     <?$this->load->view('seo_tools/vkontakte');?>
     <?$this->load->view('seo_tools/googleTagManager');?>
-    <?=$currentCity->header_scripts;?>
+    <?$this->load->view("scripts/".$currentCity->english_name."/header");?>
     <div id="wrap">
         <?          
             if($content) {

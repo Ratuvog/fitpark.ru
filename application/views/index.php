@@ -38,7 +38,7 @@
 <body>
 
 
-        <?=$currentCity->header_scripts;?>
+        <? $this->load->view("scripts/".$currentCity->english_name."/header");?>
         <div class="main">
         <header id="title">
             <div id="title-menu">
