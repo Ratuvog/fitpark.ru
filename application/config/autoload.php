@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('idna_convert', 'session', 'image_lib', 'database');
+$autoload['libraries'] = array('idna_convert', 'session', 'image_lib', 'database', 'migration');
 
 
 /*
