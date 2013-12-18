@@ -25,7 +25,7 @@ class Migration_add_table_exercises extends CI_Migration
         ");
 
         $this->load->helper('file');
-        // Добавление данных в таблицу 'district'
+        // Добавление данных в таблицу 'exercises'
         if (file_exists("application/migrations/exercise_data_migration_008.query"))
             $this->db->query(read_file("application/migrations/exercise_data_migration_008.query"));
     }
@@ -34,8 +34,8 @@ class Migration_add_table_exercises extends CI_Migration
     {
         // Для быстрого удаления
         // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `district`");
+        $this->db->query("TRUNCATE TABLE `exercises`");
         // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `district`");
+        $this->db->query("DROP TABLE IF EXISTS `exercises`");
     }
 }
