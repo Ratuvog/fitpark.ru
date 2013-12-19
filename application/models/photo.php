@@ -9,6 +9,16 @@ class Photo extends CI_Model {
         $where = array($this->foreign_key => $club, 'state' => 1);
         $this->db->update($this->table, array('state' => 0), $where);
     }
+
+    function all()
+    {
+        return $this->db->get($this->table)->result_array();
+    }
+
+    function update($data, $id)
+    {
+        return $this->db->update($this->table,$data,array('id'=>$id));
+    }
     
     function byClub($club, $state = 0)
     {
@@ -29,7 +39,7 @@ class Photo extends CI_Model {
         $i=0;
         foreach ($result as &$image)
         {
-            $image->photo = "image/$image->photo";
+            $image->photo = "image/club/$image->photo";
             if(!$image->min_photo)
             {
                 $config['image_library'] = 'gd2';

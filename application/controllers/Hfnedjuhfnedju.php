@@ -484,15 +484,6 @@ class Hfnedjuhfnedju extends CI_Controller {
 
             $this->render($output, 'admin/club_changes', false);
         }
-          
-        
-        private function getImages($club)
-        {
-            $ADDITIONAL = "_min";
-            $this->load->model('photo');
-            $images = $this->photo->byClub($club, 1);
-            return $images;
-        }
         
         function changes_aproved($club)
         {
