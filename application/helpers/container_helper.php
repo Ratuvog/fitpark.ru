@@ -9,7 +9,7 @@ function groupOf($data, $group_size)
     if (count($data) < $group_size || $group_size == 0)
         return $data;
 
-    $group_data = [];
+    $group_data = array();
     $cnt = 0;
     foreach ($data as $item)
     {

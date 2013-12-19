@@ -467,9 +467,18 @@ class Hfnedjuhfnedju extends CI_Controller {
             
             $this->load->model('service');
             $output->services = $this->service->map();
-            
-            $output->images = $this->getImages($club);
-            
+
+            $image_crud = new image_CRUD();
+
+            $image_crud->set_table("fitnesclub_photo");
+            $image_crud->set_primary_key_field('id');
+            $image_crud->set_url_field('photo');
+            $image_crud->set_thumbnail_prefix("");
+            $image_crud->set_image_path('image/club');
+            $image_crud->set_relation_field('fitnesclubid');
+
+            $output->images = $image_crud->render();
+
             $this->load->model('Manager_model');
             $output->manager = $this->Manager_model->map();
 
