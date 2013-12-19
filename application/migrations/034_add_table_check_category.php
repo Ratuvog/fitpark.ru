@@ -22,10 +22,6 @@ class Migration_add_table_check_category extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `type_checkout`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `type_checkout`");
+        $this->dbforge->drop_table('type_checkout');
     }
 }

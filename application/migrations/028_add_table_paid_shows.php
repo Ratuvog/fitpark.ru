@@ -25,10 +25,6 @@ class Migration_add_table_paid_shows extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `paidShows`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `paidShows`");
+        $this->dbforge->drop_table('paidShows');
     }
 }

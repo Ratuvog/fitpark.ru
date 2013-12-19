@@ -26,10 +26,6 @@ class Migration_add_table_filters extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `fitnesclub_filter`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `fitnesclub_filter`");
+        $this->dbforge->drop_table('fitnesclub_filter');
     }
 }

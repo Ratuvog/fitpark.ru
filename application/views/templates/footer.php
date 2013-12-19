@@ -15,10 +15,10 @@
                                         <li><h3><a href="<?=site_url('sales');?>">Акции ФитПарка</a></h3></li>
                                         <li><h3><a href="<?=site_url('clubs');?>">Скидки в фитнес клуб</a></h3></li>
                                     </ul>
-                                    <? foreach ($blocks as $block) { ?>
+                                    <? foreach ($advert_links as $group) { ?>
                                     <ul class="inline">
-                                        <? foreach ($block as $item) { ?>
-                                            <li><h3><a href="<?=site_url($item->url);?>"><?=$item->name;?></a></h3></li>
+                                        <? foreach ($group as $item) { ?>
+                                            <li><h3><a href="<?=site_url(array('club', $item->club_id));?>"><?=$item->name;?></a></h3></li>
                                         <? } ?>
                                     </ul>
                                     <? } ?>
@@ -66,7 +66,7 @@
     </footer>
 </div><!--#footer[END]-->
 <script type="text/javascript" src="<?=site_url(array('js','footer.js'))?>"></script>
-<?=$currentCity->footer_scripts;?>
+<?$this->load->view("scripts/".$currentCity->english_name."/footer");?>
 <?$this->load->view('seo_tools/googleAnalitics');?>
 <?$this->load->view('seo_tools/yandexMetrika');?>
 <?$this->load->view('blocks/reformal-block');?>

@@ -20,10 +20,6 @@ class Migration_add_table_fcheck extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `fitnesclub_checkout`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `fitnesclub_checkout`");
+        $this->dbforge->drop_table('fitnesclub_checkout');
     }
 }

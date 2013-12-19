@@ -23,10 +23,6 @@ class Migration_add_table_fitnesclub_rel_services extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `fitnesclub_rel_services`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `fitnesclub_rel_services`");
+        $this->dbforge->drop_table('fitnesclub_rel_services');
     }
 }

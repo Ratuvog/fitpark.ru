@@ -24,10 +24,6 @@ class Migration_add_table_coach extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `coach`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `coach`");
+        $this->dbforge->drop_table('coach');
     }
 }

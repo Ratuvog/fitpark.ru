@@ -42,8 +42,9 @@ class Base extends Template {
         $this->content->data->header->menu->currentCity = $this->localCity;
         $this->content->data->header->menu->chooseCity->cities = $this->city->get();
 
-        $block = json_decode($this->localCity->promotion);
-        $this->footer->blocks = $block;
+        $this->load->model('cities_advertisement');
+        $this->load->helper('container');
+        $this->footer->advert_links = groupOf($this->cities_advertisement->byCity($this->localCity->id), 6);
     }
    
     function head()

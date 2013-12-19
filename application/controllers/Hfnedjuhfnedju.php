@@ -206,11 +206,15 @@ class Hfnedjuhfnedju extends CI_Controller {
     function cities()
     {
         $this->setCurentState('cities');
-        $crud = new grocery_CRUD();
+        $this->load->library('extended_grocery_CRUD');
+        $crud = new extended_grocery_CRUD();
         $crud->set_table($this->currentTable);
 
         $crud->set_field_upload('icon','assets/uploads/files');
-        $crud->unset_texteditor('promotion');
+        $crud->set_relation_n_n('promotion', 'cities_advertisement',
+           'fitnesclub', 'city_id', 'club_id', 'name', 'priority', null, 'cityid'
+        );
+
         $output = $crud->render();
         $this->render($output);
     }
@@ -295,11 +299,11 @@ class Hfnedjuhfnedju extends CI_Controller {
     } 
     function districts()
     {
-                $this->setCurentState('districts');
-                $crud = new grocery_CRUD();
-                $crud->set_table($this->currentTable);
-                $crud->set_relation('cityid', 'city', 'name');
-                $crud->set_field_upload('icon','assets/uploads/files');
+        $this->setCurentState('districts');
+        $crud = new grocery_CRUD();
+        $crud->set_table($this->currentTable);
+        $crud->set_relation('cityid', 'city', 'name');
+        $crud->set_field_upload('icon','assets/uploads/files');
 
         $output = $crud->render();
         $this->render($output);
@@ -457,26 +461,22 @@ class Hfnedjuhfnedju extends CI_Controller {
             
             $this->load->model('district');
             $output->districts = $this->district->map();
-
+            
             $this->load->model('buf_club_service');
             $output->club_services = $this->buf_club_service->byClub($club);
-
+            
             $this->load->model('service');
             $output->services = $this->service->map();
-
-            $image_crud_cur = new image_CRUD();
-            $image_crud_cur->set_table('fitnesclub_photo');
-            $image_crud_cur->set_primary_key_field('id');
-            $image_crud_cur->set_url_field('photo');
-            $image_crud_cur->set_image_path('image/club/');
-            $image_crud_cur->set_relation_field('fitnesclubid');
-
-            $output->images = $image_crud_cur->render();
+            
+            $output->images = $this->getImages($club);
+            
+            $this->load->model('Manager_model');
+            $output->manager = $this->Manager_model->map();
 
             $this->render($output, 'admin/club_changes', false);
         }
-
-
+          
+        
         private function getImages($club)
         {
             $ADDITIONAL = "_min";
@@ -484,11 +484,12 @@ class Hfnedjuhfnedju extends CI_Controller {
             $images = $this->photo->byClub($club, 1);
             return $images;
         }
-
+        
         function changes_aproved($club)
         {
             $this->load->model('buffer_club');
             $buf = $this->buffer_club->byId($club, false);
+            
             $this->load->model('club_model');
             $this->club_model->updateFromBuffer($buf);
             
@@ -503,8 +504,7 @@ class Hfnedjuhfnedju extends CI_Controller {
             
             $status = array('state' => 2, 'comment' => '');
             $this->buffer_club->setData($club, $status);
-            die('<meta http-equiv="refresh" content="0;URL='.site_url('Hfnedjuhfnedju/order_list_active').'">');
-            $this->customRedirect(site_url('Hfnedjuhfnedju/order_list_active'));
+            redirect(site_url('Hfnedjuhfnedju/order_list_active'));          
         }
         
         function changes_rejected($club)
@@ -513,16 +513,12 @@ class Hfnedjuhfnedju extends CI_Controller {
             $status = array('state' => 3, 'comment' => $this->input->post('comment'));
             $this->buffer_club->setData($club, $status);
 
-            $this->customRedirect(site_url('Hfnedjuhfnedju/order_list_active'));
+            redirect(site_url('Hfnedjuhfnedju/order_list_active'));          
         }
                 
         function index()
-	{
-            $this->customRedirect('Hfnedjuhfnedju/clubs');
-	}
-    protected function customRedirect($url)
-    {
-        redirect($this->idna_convert->encode($url));
-    }
+        {
+                redirect('Hfnedjuhfnedju/clubs');
+        }
 }
 ?>

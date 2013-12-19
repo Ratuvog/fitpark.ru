@@ -19,10 +19,6 @@ class Migration_add_table_sale extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `sale`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `sale`");
+        $this->dbforge->drop_table('sale');
     }
 }

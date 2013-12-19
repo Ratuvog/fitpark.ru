@@ -28,10 +28,6 @@ class Migration_add_table_fitnesclub_photo_buffer extends CI_Migration
 
     public function down()
     {
-        // Для быстрого удаления
-        // Сначала очищаем таблицу
-        $this->db->query("TRUNCATE TABLE `buf_club_photo`");
-        // Потом удаляем
-        $this->db->query("DROP TABLE IF EXISTS `buf_club_photo`");
+        $this->dbforge->drop_table('buf_club_photo');
     }
 }
