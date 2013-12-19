@@ -36,12 +36,17 @@ class Club_model extends CI_Model {
         }
     }
             
-    function updateFromBuffer($bufData)
+    function updatefrombuffer($bufData)
     {
-        $cur = $this->db->get_where($this->table, array('id' => $bufData->id))->row();
-        foreach($cur as $key => $value)
-            $cur->$key = $bufData->$key;
-        $this->db->update($this->table, $cur, array('id' => $cur->id));
+        $data = (array)$this->db->get_where($this->table, array('id' => $bufData->id))->row();
+        $cur = array();
+        foreach($data as $key => $value)
+        {
+            if($key == 'id')
+                continue;
+            $cur[$key] = $bufData->$key;
+        }
+        $this->db->update($this->table, $cur, array('id' => $bufData->id));
     }
     
     function get_rand($limit, $city)

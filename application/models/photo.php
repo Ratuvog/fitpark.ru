@@ -29,7 +29,7 @@ class Photo extends CI_Model {
         $i=0;
         foreach ($result as &$image)
         {
-            $image->photo = "image/club/$image->photo";
+            $image->photo = "image/$image->photo";
             if(!$image->min_photo)
             {
                 $config['image_library'] = 'gd2';
@@ -39,25 +39,19 @@ class Photo extends CI_Model {
                 $config['width'] = 300;
                 $config['height'] = 150;
                 $config['thumb_marker'] = $ADDITIONAL;
-
-                $this->image_lib->initialize($config);
-                if(!$this->image_lib->resize())
+                if($this->image_lib->initialize($config) && $this->image_lib->resize())
                 {
-                    echo $i."<br>";
-                    echo $this->image_lib->display_errors();
-                    exit;
-                }
-                
-                $i++;
-                $fileParts = explode('.', $image->photo);
-                $extension = $fileParts[count($fileParts)-1];
-                array_pop($fileParts);
-                $fileName = implode('.', $fileParts);
+                    $fileParts = explode('.', $image->photo);
+                    $extension = $fileParts[count($fileParts)-1];
+                    array_pop($fileParts);
+                    $fileName = implode('.', $fileParts);
 
-                $resultFileName = $fileName.$ADDITIONAL.'.'.$extension;
-                $this->photo->setData($image->id, 'min_photo', $resultFileName);
-                $image->min_photo = $resultFileName;
-                $this->image_lib->clear();
+                    $resultFileName = $fileName.$ADDITIONAL.'.'.$extension;
+                    $this->photo->setData($image->id, 'min_photo', $resultFileName);
+                    $image->min_photo = $resultFileName;
+                    $this->image_lib->clear();
+                }
+                $i++;
             }
             $image->photo = site_url($image->photo);
             $image->min_photo = site_url($image->min_photo);

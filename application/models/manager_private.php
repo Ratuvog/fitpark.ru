@@ -95,6 +95,8 @@ class Manager_private extends CI_Model {
                     return "ERR";
             }
         }
+
+        $this->updateCommon(array(),$club);
         return "OK";
     }
     
@@ -120,7 +122,11 @@ class Manager_private extends CI_Model {
     }
 
     function updateHeadImage($clubId, $picture) {
-        $this->db->update("buf_club", array("head_picture" => $picture), array("id"=>$clubId));
+        $data = array(
+            "state" => 1,
+            "head_picture" => $picture
+        );
+        $this->db->update("buf_club", $data, array("id"=>$clubId));
     }
 
     /**

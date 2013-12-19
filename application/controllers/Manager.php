@@ -207,12 +207,7 @@ class Manager extends Base {
     function clubs()
     {
         $this->title = sprintf("%s, описание, техника, видео. ФитПарк",
-            "хер");
-
-        $this->description = sprintf("%s. Подробное описание, порядок выполнения, нюансы упражнения, видео.",
-            "хур");
-
-        $this->keywords = "хер";
+            "Панель менеджера");
 
         $this->breadcrumbs []= (object)array(
             'name' => "Главная",
@@ -243,15 +238,6 @@ class Manager extends Base {
 
         if($this->manager_private->owner($clubId) != $userId)
             return $this->clubs();
-        
-        $image_crud_cur = new image_CRUD();
-        $image_crud_cur->set_table('fitnesclub_photo');
-        $image_crud_cur->set_primary_key_field('id');
-        $image_crud_cur->set_url_field('photo');
-        $image_crud_cur->set_image_path('image/club/');
-        $image_crud_cur->set_relation_field('fitnesclubid');
-        
-        $this->content->data->cur_photos = $image_crud_cur->render();
         
         $this->view = 'manager/photos';
         

@@ -22,6 +22,7 @@
             <div id="main-inner" class="base-info-manager">
                 <?$this->load->view('blocks/content-manager-menu', $this);?>
                 <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
+                <input name="" type="hidden" id="clubid" value="<?=$club->id;?>"/>
                 <div class="left-block">
                     <div class="info-block option">
                         <h3 class="sidebar-option-title">Логотип</h3>

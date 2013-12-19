@@ -1,4 +1,11 @@
 <?$this->load->view('admin/head');?>
+<?php
+foreach($images->css_files as $file): ?>
+    <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+<?php endforeach; ?>
+<?php foreach($images->js_files as $file): ?>
+    <script src="<?php echo $file; ?>"></script>
+<?php endforeach; ?>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span2">
@@ -100,15 +107,7 @@
                 <tr>
                     <td colspan="2">
                         <section id="image-club">
-                            <? if($images) { ?>
-                                <? foreach ($images as $currentImage) {?>
-                                    <a href="<?=$currentImage->photo;?>" class="fancybox gallery" rel="gallery1">
-                                        <img src="<?=$currentImage->min_photo;?>" alt="" />
-                                    </a>
-                                <? } ?>
-                              <? } else { ?>
-                                <h4 class="no-info">Новых фотографий нет</h4>
-                            <? } ?>
+                            <?=$images->output;?>
                         </section>
                     <td>
                 </tr>
