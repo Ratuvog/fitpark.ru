@@ -206,12 +206,13 @@ class Hfnedjuhfnedju extends CI_Controller {
     function cities()
     {
         $this->setCurentState('cities');
-        $crud = new grocery_CRUD();
+        $this->load->library('extended_grocery_CRUD');
+        $crud = new extended_grocery_CRUD();
         $crud->set_table($this->currentTable);
 
         $crud->set_field_upload('icon','assets/uploads/files');
         $crud->set_relation_n_n('promotion', 'cities_advertisement',
-           'fitnesclub', 'city_id', 'club_id', 'name', 'priority'
+           'fitnesclub', 'city_id', 'club_id', 'name', 'priority', null, 'cityid'
         );
 
         $output = $crud->render();
