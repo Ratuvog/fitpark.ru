@@ -6,7 +6,7 @@
  */
 function groupOf($data, $group_size)
 {
-    if (count($data) < $group_size || $group_size == 0)
+    if ($group_size == 0)
         return $data;
 
     $group_data = array();
