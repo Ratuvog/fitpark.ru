@@ -6,19 +6,24 @@ class Manager extends Base {
     public $controllerName = 'Manager';
     public $breadcrumbs = array();
     public $authError = 'OK';
+
+    private $publicPages = array("login, logout, signup");
     
     function __construct()
     {
         parent::__construct();
-//        $this->breadcrumbs []= (object)array(
-//            'name' => "Главная",
-//            'url' => base_url()
-//        );
-//
-//        $this->breadcrumbs []= (object)array(
-//            'name' => "Личный кабинет",
-//            'url' => ""
-//        );
+
+        $this->title = sprintf("Панель менеджера. ФитПарк. %s Тренажерные залы, фитнес центры,
+                                отзывы, стоимость, рейтинги, акции, скидки.",
+            lang('title'));
+
+        $this->description = sprintf("%s. Отзывы, рейтинг, фотографии, цены, описание.",
+            lang("common_desc"));
+
+        $this->keywords = sprintf("%s. Бассейн, тренажерный зал, аэробика,
+                                   танцы, йога, пилатес, тренажеры.",
+            lang("common_keys"));
+
         $this->load->model('manager_private');
     }
 
@@ -26,15 +31,15 @@ class Manager extends Base {
      * Перед переходом на любую страницу ЛК
      * проверяем авторизацию пользователя
      */
-    function _remap($method, $param) 
+    function _remap($method, $param)
     {
-        if($this->session->userdata('logged_in') === true || $method === 'login')
+        if (in_array($method, $this->publicPages) || $this->session->userdata('logged_in') === true)
             call_user_func_array(array($this, $method), $param);
         else
-            $this->auth();
+            $this->authorization();
     }
     
-    function auth()
+    function authorization()
     {
         $this->breadcrumbs []= (object)array(
             'name' => "Главная",
@@ -42,13 +47,15 @@ class Manager extends Base {
         );
 
         $this->breadcrumbs []= (object)array(
-            'name' => "Вход менеджерам клубов",
+            'name' => "Вход для менеджера",
             'url'  => site_url('sales')
         );
-        $this->content->view = 'manager_in';
-        $this->content->data->content_title->title = 'Менеджерам клубов';
+
+        $this->content->view = 'manager/auth';
+        $this->content->data->content_title->title = 'Панель менеджера';
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->content->data->authError = $this->authError;
+
         $this->renderScene();
     }
     
@@ -62,7 +69,7 @@ class Manager extends Base {
             if(!$userInfo) 
             {
                 $this->authError = 'Пользователя с таким именем не существует';
-                return $this->auth();
+                return $this->authorization();
             }
             
             if(md5($login.$password) === $userInfo->password)
@@ -74,13 +81,13 @@ class Manager extends Base {
             else
             {
                 $this->authError = 'Введен неправильный логин или пароль';
-                return $this->auth();
+                return $this->authorization();
             }
         }
         else
         {
             $this->authError = 'Введен неправильный логин или пароль';
-            $this->auth();
+            $this->authorization();
         }
     }
 
@@ -88,7 +95,7 @@ class Manager extends Base {
     {
         $this->session->set_userdata('logged_in',false);
         $this->session->unset_userdata('userid');
-        $this->auth();
+        $this->authorization();
     }
    
     function index()
@@ -221,7 +228,7 @@ class Manager extends Base {
 
         $userId = $this->session->userdata('userid');
         if(!$userId)
-            return $this->auth();
+            return $this->authorization();
 
         $this->content->view = 'manager/list';
         $this->content->data->content_title->title = "Список доступных клубов";
@@ -234,7 +241,7 @@ class Manager extends Base {
     {
         $userId = $this->session->userdata('userid');
         if(!$userId)
-            return $this->auth();
+            return $this->authorization();
 
         if($this->manager_private->owner($clubId) != $userId)
             return $this->clubs();

@@ -86,10 +86,12 @@ table[class='user-input'] {
 }
 
 .user-input input {
-    border-radius: 5px;
+    font-size: 16px;
+
     border: 1px solid #aaa;
-    padding: 5px;
-    width: 98%;
+
+    width: 220px;
+    padding: 6px;
 }
 
 .user-input input[type="button"] {
@@ -117,10 +119,8 @@ table[class='user-input'] {
 }
 
 .user-input .caption {
-    padding-top: 5px;  
-    margin-bottom: 2px;
-    float:left;
-    font-size: 14px;
+    margin-bottom: 6px;
+    font-size: 16px;
     color: #555;
     
 }
@@ -255,11 +255,6 @@ input.custom-combobox-input {
     width: 160px;
 }
 
-#auth-button{
-    margin: 0;
-    margin-top: 20px;
-}
-
 .club-list-item {
     width: 100%;
     margin: 20px 0;
@@ -275,4 +270,30 @@ input.custom-combobox-input {
 
 .mini-card-club-part {
     width: 25%;
+}
+
+.input-block {
+    margin-bottom: 20px;
+}
+
+.blue-long-button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#3a9cee), to(#005fa6));
+    background-image: linear-gradient(bottom, ##005fa6, #3a9cee);
+    background-image: -o-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -moz-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -ms-linear-gradient(bottom, #005fa6, #3a9cee);
+    text-shadow: 1px 2px black;
+
+    font-size: 18px;
+    font-family: cricket;
+    color: white;
+    text-align: center;
+
+    display: block;
+    width: 224px;
+    padding: 5px 5px;
+
+    cursor: pointer;
+    border: none !important;
+    border-radius: 5px;
 }

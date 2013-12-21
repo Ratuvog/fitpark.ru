@@ -74,7 +74,7 @@ $route['sales']                     = 'Sales/index';
 $route['sales/(:num)']              = 'Sales/sale/$1';
 $route['about']                     = 'About/index';
 
-$route['manager_in']                = 'Manager_in/index';
+$route['manager']                = 'Manager/index';
 $route['club_selector']             = 'Club_selector/club_selector';
 $route['club_selector/getClubsByDistrict'] = 'Club_selector/getClubsByDistrict';
 /* End of file routes.php */
