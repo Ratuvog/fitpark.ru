@@ -156,7 +156,7 @@ class Manager extends Base {
 
         $this->content->view = $this->view;
         $clubName = $this->content->data->club->name;
-        $this->content->data->content_title->title = 'Базовая информация о клубе '.$clubName;
+        $this->content->data->content_title->title = $clubName;
         $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
         $this->renderScene();
     }
