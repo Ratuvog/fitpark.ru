@@ -83,6 +83,12 @@ $route['manager']                = 'Manager/index';
 $route['manager/login']          = 'Manager/login';
 $route['manager/logout']          = 'Manager/logout';
 $route['manager/signup']          = 'Manager/signup';
+$route['manager/districts']          = 'Manager/districts';
+$route['manager/saveCommon']          = 'Manager/saveCommon';
+$route['manager/saveServices']          = 'Manager/saveServices';
+$route['manager/savePrices']          = 'Manager/savePrices';
+$route['manager/saveDescription']          = 'Manager/saveDescription';
+$route['manager/logoUpload']          = 'Manager/logoUpload';
 
 $route['club_selector']             = 'Club_selector/club_selector';
 $route['club_selector/getClubsByDistrict'] = 'Club_selector/getClubsByDistrict';
