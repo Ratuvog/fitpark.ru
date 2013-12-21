@@ -11,7 +11,7 @@
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
                             <div class="inline" style="float:left;">
-                                <form method="post" action="<?=site_url('Manager/login');?>" class="auth-block">
+                                <form method="post" action="<?=site_url('manager/login');?>" class="auth-block">
                                     <div class="box">
                                         <div class = "input-block">
                                             <div class="user-input">
@@ -42,7 +42,7 @@
                                         </div>
 
                                         <div class = "input-block">
-                                            <a href="<?= site_url('Manager/singup');?>" class="blue-long-button inline">Зарегистрироваться</a>
+                                            <a href="<?= site_url('manager/singup');?>" class="blue-long-button inline">Зарегистрироваться</a>
                                         </div>
                                     </div>
                                 </form>
@@ -57,6 +57,8 @@
                                         Менеджер может изменить всю видимую посетителями информацию о клубе - логотип, название, адрес, время работы, фотографии, перечень предоставляемых услуг, и пр.
                                 </div>
                             </div>
+
+                            <div style="clear: both;"> </div>
 
                         </div><!--#page-club-info-main[END]-->
                     </div>

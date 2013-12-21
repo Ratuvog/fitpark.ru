@@ -74,7 +74,16 @@ $route['sales']                     = 'Sales/index';
 $route['sales/(:num)']              = 'Sales/sale/$1';
 $route['about']                     = 'About/index';
 
+$route['manager/club/(:num)/photo/delete_file/(:num)']    = 'Manager/deleteImage/$1/$2';
+$route['manager/club/(:num)/upload_file']    = 'Manager/uploadImage/$1';
+$route['manager/club/(:num)/photo']    = 'Manager/photo/$1';
+$route['manager/club/(:num)']    = 'Manager/club/$1';
+$route['manager/clubs']          = 'Manager/index';
 $route['manager']                = 'Manager/index';
+$route['manager/login']          = 'Manager/login';
+$route['manager/logout']          = 'Manager/logout';
+$route['manager/signup']          = 'Manager/signup';
+
 $route['club_selector']             = 'Club_selector/club_selector';
 $route['club_selector/getClubsByDistrict'] = 'Club_selector/getClubsByDistrict';
 /* End of file routes.php */
