@@ -477,6 +477,8 @@ class Hfnedjuhfnedju extends CI_Controller {
             $image_crud->set_image_path('image/club');
             $image_crud->set_relation_field('fitnesclubid');
             $image_crud->set_custom_query("select * from fitnesclub_photo where state = 1");
+            $image_crud->unset_delete();
+            $image_crud->unset_upload();
 
             $output->images = $image_crud->render();
 
