@@ -12,7 +12,7 @@
                         <div id="page-club-info-main">
                             <section id="list">
                                 <? foreach ($clubs as $c) { ?>
-                                <a href="<?=site_url(array('Manager','getClub', $c->id, "base"));?>" class="mini-card-club">
+                                <a href="<?=site_url(array('manager','club', $c->id));?>" class="mini-card-club">
                                     <table class="club-list-item">
                                         <tr>
                                             <td class="mini-card-club-part image-mini-card" valign="top">
@@ -30,7 +30,7 @@
                                                 <section class="decription-club">
                                                     <header class="name-club">
                                                         <h3>
-                                                            <a href="<?=site_url(array('Manager', 'getClub', $c->id, "base"));?>" target="_blank"><?=$c->name;?></a>
+                                                            <a href="<?=site_url(array('manager', 'club', $c->id));?>" target="_blank"><?=$c->name;?></a>
                                                         </h3>
                                                         <div style="color: #aaa;">
                                                             <?=$c->address;?>

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__."/../libraries/image_crud.php";
+require_once __DIR__."/../libraries/extended_image_crud.php";
 class Manager_private extends CI_Model {
     
     function cities()
@@ -131,18 +131,20 @@ class Manager_private extends CI_Model {
 
     /**
      * Возвращает объект фотографий конкретного клуба
-     * @param $id id клуба
-     * @return image_CRUD объект
+     * @return image_CRUD объект.
+     * @param $url устанавливает относительный
+     * url, по-которому контроллер обрабатывает запросы
      */
-    function getPhotosObject($id) {
-        $image_crud = new image_CRUD();
+    function getPhotosObject($url) {
+        $image_crud = new extended_image_CRUD();
 
         $image_crud->set_table("fitnesclub_photo");
         $image_crud->set_primary_key_field('id');
-        $image_crud->set_url_field('photo');
+        $image_crud->set_url_field($url);
         $image_crud->set_thumbnail_prefix("");
         $image_crud->set_image_path('image/club');
-        $image_crud->set_relation_field('fitnesclubid');;
+        $image_crud->set_relation_field('fitnesclubid');
+        $image_crud->set_delete_url($url.'/delete_file');
         return $image_crud;
     }
 

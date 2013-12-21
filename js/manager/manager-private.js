@@ -153,7 +153,7 @@
 
             var city = cityBox.find('option:selected').val();
             $.ajax({
-                url: 'http://'+location.hostname+'/Manager/districts/',
+                url: 'http://'+location.hostname+'/manager/districts/',
                 type: 'post',
                 dataType: 'json',
                 data: { 
@@ -198,24 +198,24 @@ $(function() {
     FormSaver.storeFormState();
 
     $("#common-save").click(function (){
-        FormSaver.saveClicked($(this), 'Manager/saveCommon');
+        FormSaver.saveClicked($(this), 'manager/saveCommon');
     });
         
     $("#prices-save").click(function (){
-        FormSaver.saveClicked($(this), 'Manager/savePrices');
+        FormSaver.saveClicked($(this), 'manager/savePrices');
     }); 
     
     $("#descript-save").click(function (){
-        FormSaver.saveClicked($(this), 'Manager/saveDescription');
+        FormSaver.saveClicked($(this), 'manager/saveDescription');
     });
     
     $("#service-save").click(function (){
-        FormSaver.saveClicked($(this), 'Manager/saveServices');
+        FormSaver.saveClicked($(this), 'manager/saveServices');
     });
      
     updateLastTimeUpdate = function () {
         $.ajax({
-            url: 'http://'+location.hostname+'/Manager/lastTimeUpdate',
+            url: 'http://'+location.hostname+'/manager/lastTimeUpdate',
             type: 'post',
             dataType: 'json',
             data: { clubid: $('#clubid').val() },
@@ -261,7 +261,7 @@ $(function() {
         FormSaver.showResultMessage(status);
     })
     $('#fileupload').fileupload({
-        url: 'http://'+location.hostname+'/Manager/logoUpload/',
+        url: 'http://'+location.hostname+'/manager/logoUpload/',
         dataType: 'json',
         autoUpload: false,
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,

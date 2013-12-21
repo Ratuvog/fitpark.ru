@@ -9,7 +9,7 @@
                                 <nav>
                                     <ul class="inline">
                                         <li><h3><a href="<?=site_url('clubs');?>">Фитнес клубы</a></h3></li>
-                                        <li><h3><a href="<?=site_url('Manager_in');?>">Менеджерам</a></h3></li>
+                                        <li><h3><a href="<?=site_url('manager');?>">Менеджерам</a></h3></li>
                                         <li><h3><a href="<?=site_url('training_program');?>">Программа тренировок (на заказ)</a></h3></li>
                                         <li><h3><a href="<?=site_url('sales');?>">Акции фитнес клубов</a></h3></li>
                                         <li><h3><a href="<?=site_url('sales');?>">Акции ФитПарка</a></h3></li>

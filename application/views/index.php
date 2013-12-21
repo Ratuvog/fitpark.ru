@@ -45,7 +45,6 @@
                 <ul>
                     <li class="name-section"><a href="#" class="my-link">Главная</a></li>
                     <li class="name-section"><a href="clubs" class="my-link">Фитнес-клубы</a></li>
-                    <li class="name-section"><a href="Manager" class="my-link">Менеджерам</li>
                 </ul>
                 <ul class="title-section-right">
                     <li class="name-section">

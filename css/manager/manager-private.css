@@ -57,10 +57,8 @@
 }
 
 .info-block {
-    float: left;
-    min-height: 300px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .title {
@@ -86,14 +84,13 @@ table[class='user-input'] {
 }
 
 .user-input input {
-    border-radius: 5px;
+    font-size: 16px;
     border: 1px solid #aaa;
-    padding: 5px;
-    width: 98%;
+    padding: 6px;
 }
 
-.user-input input[type="button"] {
-    width: 160px;
+.user-input .large {
+    width: 400px;
 }
 
 .user-input input[type="file"] {
@@ -117,10 +114,8 @@ table[class='user-input'] {
 }
 
 .user-input .caption {
-    padding-top: 5px;  
-    margin-bottom: 2px;
-    float:left;
-    font-size: 14px;
+    margin-bottom: 6px;
+    font-size: 16px;
     color: #555;
     
 }
@@ -138,6 +133,10 @@ table[class='user-input'] {
     max-width: 160px;
     float: left;
     margin-right: 20px;
+}
+
+.club-logo-input {
+    margin-left: 12px;
 }
 
 .result {
@@ -171,12 +170,14 @@ table[class='user-input'] {
 }
 input.custom-combobox-input {
     margin: 0;
-    padding: 0.3em;
+    padding: 6px;
     background: none;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: trebuc;
+    font-size: 16px;
     color: #000000;
     font-weight: normal;
+    border-radius: 0px;
+    width: 400px;
 }
 
 .status-cell {
@@ -235,14 +236,13 @@ input.custom-combobox-input {
     display: inline-block;
     width: 220px;
     float: left;
-    padding: 10px 20px;
+    margin-left: 40px;
 }
 
 .right-block {
     width: 700px;
     display: inline-block;
-    padding: 10px 20px;
-    padding-top: 30px;
+    margin-left: 40px;
 }
 
 .MainHeader {
@@ -253,11 +253,6 @@ input.custom-combobox-input {
 
 .img-placeholder img {
     width: 160px;
-}
-
-#auth-button{
-    margin: 0;
-    margin-top: 20px;
 }
 
 .club-list-item {
@@ -275,4 +270,56 @@ input.custom-combobox-input {
 
 .mini-card-club-part {
     width: 25%;
+}
+
+.input-block {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 220px;
+}
+
+.blue-long-button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#3a9cee), to(#005fa6));
+    background-image: linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -o-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -moz-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -ms-linear-gradient(bottom, #005fa6, #3a9cee);
+    text-shadow: 1px 2px black;
+
+    font-size: 18px !important;
+    font-family: cricket;
+    color: white;
+    text-align: center;
+
+    display: block;
+    width: 224px;
+    padding: 5px 5px;
+
+    cursor: pointer;
+    border: none !important;
+    border-radius: 5px;
+}
+
+.blue-small-button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#3a9cee), to(#005fa6));
+    background-image: linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -o-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -moz-linear-gradient(bottom, #005fa6, #3a9cee);
+    background-image: -ms-linear-gradient(bottom, #005fa6, #3a9cee);
+    text-shadow: 1px 2px black;
+
+    font-size: 18px !important;
+    font-family: cricket;
+    color: white;
+    text-align: center;
+
+    display: block;
+    width: 165px;
+    padding: 5px 5px;
+
+    cursor: pointer;
+    border: none !important;
+    border-radius: 5px;
 }
