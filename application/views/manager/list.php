@@ -6,7 +6,7 @@
     <div id="content-inner">
         <div id="main">
             <div id="main-inner">
-                <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>   
+                <?$this->load->view('manager/breadcrumbs', $breadcrumbs);?>
                 <div id="page-club">
                     <div id="page-club-inner">
                         <div id="page-club-info-main">

@@ -28,7 +28,7 @@ foreach($output->css_files as $file): ?>
         <div id="main">
             <div id="main-inner">
                 <?$this->load->view('blocks/content-manager-menu', $this);?>
-                <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
+                <?$this->load->view('manager/breadcrumbs', $breadcrumbs);?>
                 <div id="page-club">
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
