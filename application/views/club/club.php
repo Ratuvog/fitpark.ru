@@ -2,6 +2,9 @@
 <?$this->load->view('blocks/title-block', $content_title);?>
 
 <script type="text/javascript" src="<?=site_url("js/club.js");?>"></script>
+<script src="<?=site_url('js/bacbone/underscore-min.js');?>"></script>
+<script src="<?=site_url('js/bacbone/backbone-min.js');?>"></script>
+<script src="<?=site_url('/js/club-page-switcher.js');?>"></script>
 <div id="content">
     <div id="content-inner">
         <?$this->load->view('blocks/subtitle-block');?>
@@ -111,14 +114,14 @@
                         <div id="page-club-info-additional">
                             <div id="page-club-side-menu" active-page="<?=$page;?>">
                                 <ul>
-                                    <li class="page-side-menu-info-tab" for="page-side-menu-info-tz" pointer="35">
-                                        <img src="<?=site_url("image/file.png");?>" width="29px"/><h2>Описание</h2>
+                                    <li class="page-side-menu-info-tab" for="page-side-menu-info-tz">
+                                        <a href="#!/"><img src="<?=site_url("image/file.png");?>" width="29px"/><h2>Описание</h2></a>
                                     </li>
-                                    <li class="page-side-menu-info-tab" for="page-side-menu-info-photo" pointer="105">
-                                        <img src="<?=site_url("image/camera_2.png");?>" width="25px"/><h2>Фотографии</h2>
+                                    <li class="page-side-menu-info-tab" for="page-side-menu-info-photo">
+                                        <a href="#!/photo"><img src="<?=site_url("image/camera_2.png");?>" width="25px"/><h2>Фотографии</h2></a>
                                     </li>
-                                    <li id="page-side-menu-info-comment-tab" class="page-side-menu-info-tab" for="page-side-menu-info-comments" pointer="165">
-                                        <img src="<?=site_url("image/speach.png");?>" width="25px"/><h2>Отзывы</h2>
+                                    <li id="page-side-menu-info-comment-tab" class="page-side-menu-info-tab" for="page-side-menu-info-comments">
+                                        <a href="#!/review"><img src="<?=site_url("image/speach.png");?>" width="25px"/><h2>Отзывы</h2></a>
                                     </li>
                                 </ul>
                             </div>

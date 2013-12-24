@@ -32,10 +32,10 @@
                </div>
             </div>
             <div class="go-to-photos inline">
-                <a href="<?=$url;?>"><img src="<?=site_url('image/camera.png');?>" class="inline"/></a>
+                <a href="<?=$url."#!/photo";?>"><img src="<?=site_url('image/camera.png');?>" class="inline"/></a>
             </div>
             <div class="go-to-comments inline">
-                <a href="<?=$url;?>"><img src="<?=site_url('image/speach.png');?>" class="inline"/></a>
+                <a href="<?=$url."#!/review";?>"><img src="<?=site_url('image/speach.png');?>" class="inline"/></a>
             </div>
         </div>
     </div>

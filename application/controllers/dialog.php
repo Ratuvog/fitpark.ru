@@ -21,7 +21,7 @@ class Dialog extends CI_Controller {
         );
 
         $this->review->insert($data);
-        redirect($this->idna_convert->encode(site_url(array('club', $club, 'comments'))));
+        redirect($this->idna_convert->encode(site_url(array('club', $club."#!/review"))));
     }
 
     function getClubCard($club)

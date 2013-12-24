@@ -104,30 +104,7 @@ $(function(){
     $(".action-button").click(function(){
         createDialog($("#"+$(this).attr("for")), $(this).attr("href"));
     });
-    
-    function switchPage(tab)
-    {
-        $("#page-side-menu-info").find(".page-side-menu-info").each(function(){
-            $(this).hide();
-        })
-        var pointer = tab.attr("pointer");
-        $("#slide-pointer").animate({ top: pointer }, 500);
-        $("#"+tab.attr("for")).show();
-    }
-    
-    function selectPageOnLoad()
-    {
-        var page = $("#page-club-side-menu").attr('active-page');
-        if(page === 'comments')
-            switchPage($("#page-side-menu-info-comment-tab"));
-    }
-    selectPageOnLoad();
-    
-    $(".page-side-menu-info-tab").click(function(){
-        var self = $(this);
-        switchPage(self);
-    });
-    
+
     $(".dialog-ajax-form").ajaxForm({
        dataType: 'json',
        success: function(data) {
