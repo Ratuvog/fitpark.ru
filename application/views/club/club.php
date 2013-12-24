@@ -137,7 +137,13 @@
                                     </p>
                                     <p>
                                         <img src="<?=site_url("image/keyboard.png");?>" />
-                                        <span><a href="http://<?=$club->site;?>" target="_blank" rel=”nofollow”><? if($club->site) echo $club->site; else echo "Сайт не указан";?></a></span>
+                                        <span>
+                                            <? if($club->site):?>
+                                            <a href="http://<?=$club->site;?>" target="_blank" rel=”nofollow”><?=$club->site;?></a>
+                                            <? else: ?>
+                                            <?="Сайт не указан";?>
+                                            <? endif;?>
+                                        </span>
                                     </p>
                                     <p>
                                         <img src="<?=site_url("image/clock.png");?>" />
