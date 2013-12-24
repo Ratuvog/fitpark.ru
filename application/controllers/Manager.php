@@ -74,8 +74,8 @@ class Manager extends Base {
                 $this->authError = 'Пользователя с таким именем не существует';
                 return $this->authorization();
             }
-            
-            if(md5($login.$password) === $userInfo->password && $userInfo->activity === 1)
+
+            if(md5($login.$password) === $userInfo->password && $userInfo->activity == 1)
             {
                 $this->session->set_userdata('logged_in', true);
                 $this->session->set_userdata('userid', $userInfo->id);
@@ -170,7 +170,7 @@ class Manager extends Base {
             $data = array(
                 'name' => $this->input->post('username'),
                 'login' => $this->input->post('login'),
-                'password' => md5($this->input->post('password').$this->input->post('login')),
+                'password' => md5($this->input->post('login').$this->input->post('password')),
                 'email' => $this->input->post('email'),
                 'phone' => $this->input->post('phone'),
                 'comment' => $this->input->post('comment')

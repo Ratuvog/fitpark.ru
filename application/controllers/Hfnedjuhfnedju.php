@@ -16,6 +16,7 @@ class Hfnedjuhfnedju extends CI_Controller {
         'reviews' => array('Отзывы','fitnesclub_review'),
         'descriptions' => array('Описания','fitnesclub_description'),
         'photos' => array('Фотографии','fitnesclub_photo'),
+        'managers' => array('Менедежры', 'manager'),
         'order_list_active' => array('Заявки на изменение', ''),
         'club_changes' => array('Модерация изменений клуба', ''),
         'exercises'    => array('Упражнения','exercises'),
@@ -410,7 +411,31 @@ class Hfnedjuhfnedju extends CI_Controller {
                 $output = $crud->render();
                 $this->render($output);
         }
-        
+
+        function managers($state = null, $id = null)
+        {
+            $this->load->model('Manager_model');
+
+            if ($state === 'reject')
+            {
+                $this->Manager_model->reject($id);
+                redirect('Hfnedjuhfnedju/managers');
+            }
+            else if($state === 'accept')
+            {
+                $this->Manager_model->accept($id);
+                redirect('Hfnedjuhfnedju/managers');
+            }
+
+            $this->setCurentState('managers');
+
+            $output->managers = $this->Manager_model->get('activity = 1');
+            $output->managers_request = $this->Manager_model->get('activity = 0');
+            $output->managers_rejected = $this->Manager_model->get('activity = 2');
+
+            $this->render($output, 'admin/manager_list', false);
+        }
+
         function order_list_active()
         {
             $this->setCurentState('order_list_active');

@@ -5,7 +5,7 @@ class Manager_model extends CI_Model {
     
     function map()
     {
-        $managers = $this->db->get($this->table)->result();
+        $managers = $this->all();
         $map = array();
         foreach ($managers as $manager)
             $map[$manager->id] = $manager->name;
@@ -20,6 +20,26 @@ class Manager_model extends CI_Model {
     function insert($data)
     {
         $this->db->insert($this->table, $data);
+    }
+
+    function all()
+    {
+        return $this->db->get($this->table)->result();
+    }
+
+    function get($where)
+    {
+        return $this->db->get_where($this->table, $where)->result();
+    }
+
+    function reject($id)
+    {
+        $this->db->update($this->table, array('activity'=>2), array('id'=>$id));
+    }
+
+    function accept($id)
+    {
+        $this->db->update($this->table, array('activity'=>1), array('id'=>$id));
     }
 }
 ?>
