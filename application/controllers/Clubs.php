@@ -111,8 +111,7 @@ class Clubs extends Base {
         foreach ($list as &$club)
         {
             $club->minimalPrice = -1;
-            print_r($this->club);
-            foreach(array('1','3','6') as $v)
+            foreach(array('1','3','6','12') as $v)
             {
                 if($club->{'sub'.$v} !== "0.00")
                 {
