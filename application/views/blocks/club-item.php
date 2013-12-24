@@ -15,8 +15,8 @@
             <p class="street"><img src="<?=site_url('image/map_pin.png');?>" class="inline"/><span class="inline"><?=$address?></span></p>
             <p class="price"><img src="<?=site_url('image/pig.png');?>" class="inline"/>
                 <span class="inline">
-                    <?if($sub1 !== "0.00") {
-                        echo "от $sub1 руб.";
+                    <?if($minimalPrice !== -1) {
+                        echo "от $minimalPrice руб.";
                       } else {
                         echo "Цена не указана";
                       }
