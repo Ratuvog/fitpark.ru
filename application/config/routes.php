@@ -89,6 +89,8 @@ $route['manager/saveServices']          = 'Manager/saveServices';
 $route['manager/savePrices']          = 'Manager/savePrices';
 $route['manager/saveDescription']          = 'Manager/saveDescription';
 $route['manager/logoUpload']          = 'Manager/logoUpload';
+$route['manager/signup_submit']          = 'Manager/signup_submit';
+$route['manager/signup/success']          = 'Manager/signup/true';
 
 $route['club_selector']             = 'Club_selector/club_selector';
 $route['club_selector/getClubsByDistrict'] = 'Club_selector/getClubsByDistrict';

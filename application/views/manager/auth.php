@@ -42,7 +42,7 @@
                                         </div>
 
                                         <div class = "input-block">
-                                            <a href="<?= site_url('manager/singup');?>" class="blue-long-button inline">Зарегистрироваться</a>
+                                            <a href="<?= site_url('manager/signup');?>" class="blue-long-button inline">Зарегистрироваться</a>
                                         </div>
                                     </div>
                                 </form>

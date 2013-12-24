@@ -14,7 +14,12 @@ class Manager_model extends CI_Model {
     
     function byName($login)
     {
-        return $this->db->get_where($this->table, array('login' => $login))->first_row();
+        return $this->db->get_where($this->table, array('login' => $login))->row();
+    }
+
+    function insert($data)
+    {
+        $this->db->insert($this->table, $data);
     }
 }
 ?>

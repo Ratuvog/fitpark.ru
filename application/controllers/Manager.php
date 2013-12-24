@@ -7,7 +7,7 @@ class Manager extends Base {
     public $breadcrumbs = array();
     public $authError = 'OK';
 
-    private $publicPages = array("login", "logout", "signup");
+    private $publicPages = array("login", "logout", "signup", "signup_submit");
     
     function __construct()
     {
@@ -48,7 +48,7 @@ class Manager extends Base {
 
         $this->breadcrumbs []= (object)array(
             'name' => "Вход для менеджера",
-            'url'  => site_url('sales')
+            'url'  => site_url('manager')
         );
 
         $this->content->view = 'manager/auth';
@@ -75,7 +75,7 @@ class Manager extends Base {
                 return $this->authorization();
             }
             
-            if(md5($login.$password) === $userInfo->password)
+            if(md5($login.$password) === $userInfo->password && $userInfo->activity === 1)
             {
                 $this->session->set_userdata('logged_in', true);
                 $this->session->set_userdata('userid', $userInfo->id);
@@ -99,6 +99,98 @@ class Manager extends Base {
         $this->session->set_userdata('logged_in',false);
         $this->session->unset_userdata('userid');
         $this->customRedirect('manager');
+    }
+
+    function signup($success = false)
+    {
+        $this->breadcrumbs []= (object)array(
+            'name' => "Главная",
+            'url' => base_url()
+        );
+
+        $this->breadcrumbs []= (object)array(
+            'name' => "Регистрация",
+            'url'  => site_url('manager/signup')
+        );
+
+        if ($success)
+            $this->content->view = 'manager/success-registration';
+        else
+            $this->content->view = 'manager/registration';
+
+        $this->content->data->content_title->title = 'Панель менеджера';
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
+        $this->content->data->authError = $this->signupError;
+
+        $this->renderScene();
+    }
+
+    function signup_submit()
+    {
+        $this->load->library('form_validation');
+
+        $rules = array(
+            array(
+                'field'   => 'login',
+                'label'   => 'Логин',
+                'rules'   => 'trim|required|callback_check_login|xss_clean'
+            ),
+            array(
+                'field'   => 'password',
+                'label'   => 'Пароль',
+                'rules'   => 'trim|required|matches[passconf]|min_length[6]'
+            ),
+            array(
+                'field'   => 'passconf',
+                'label'   => 'Подтверждение пароля',
+                'rules'   => 'trim|required|xss_clean'
+            ),
+            array(
+                'field'   => 'email',
+                'label'   => 'E-mail',
+                'rules'   => 'trim|required|xss_clean'
+            ),
+            array(
+                'field'   => 'phone',
+                'label'   => 'Телефон',
+                'rules'   => 'trim|required|xss_clean'
+            )
+        );
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->signupError = $this->form_validation->error_string();
+            $this->signup();
+        }
+        else
+        {
+            $this->load->model('Manager_model');
+            $data = array(
+                'name' => $this->input->post('username'),
+                'login' => $this->input->post('login'),
+                'password' => md5($this->input->post('password').$this->input->post('login')),
+                'email' => $this->input->post('email'),
+                'phone' => $this->input->post('phone'),
+                'comment' => $this->input->post('comment')
+            );
+            $this->Manager_model->insert($data);
+
+            $this->customRedirect('manager/signup/success');
+        }
+    }
+
+    function check_login($value)
+    {
+        $this->load->model('Manager_model');
+        if (count($this->Manager_model->byName($value)) > 0)
+        {
+            $this->form_validation->set_message('check_login', 'Пользователем с таким логином уже существует');
+            return false;
+        }
+
+        return true;
     }
    
     function index()
@@ -314,6 +406,5 @@ class Manager extends Base {
 
         return $this->manager_private->owner($clubId) == $userId;
     }
-
 }
 ?>
