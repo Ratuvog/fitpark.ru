@@ -15,7 +15,7 @@ foreach($images->css_files as $file): ?>
 
             <input type="submit" class="btn btn-large btn-danger" value="Отклонить"></a>
             <div style="margin-top: 10px;">Причина отказа:</div>
-            <textarea name="comment" rows="10">Изменения не приняты в связи с нарушением информационной политики сайта</textarea>
+            <textarea name="comment" rows="10" class="club_changes_comments">Изменения не приняты в связи с нарушением информационной политики сайта</textarea>
             
         </form>
     </div>

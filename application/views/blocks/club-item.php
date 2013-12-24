@@ -15,8 +15,8 @@
             <p class="street"><img src="<?=site_url('image/map_pin.png');?>" class="inline"/><span class="inline"><?=$address?></span></p>
             <p class="price"><img src="<?=site_url('image/pig.png');?>" class="inline"/>
                 <span class="inline">
-                    <?if($sub1 !== "0.00") {
-                        echo "от $sub1 руб.";
+                    <?if($minimalPrice !== -1) {
+                        echo "от $minimalPrice руб.";
                       } else {
                         echo "Цена не указана";
                       }
@@ -32,10 +32,10 @@
                </div>
             </div>
             <div class="go-to-photos inline">
-                <a href="<?=$url;?>"><img src="<?=site_url('image/camera.png');?>" class="inline"/></a>
+                <a href="<?=$url."#!/photo";?>"><img src="<?=site_url('image/camera.png');?>" class="inline"/></a>
             </div>
             <div class="go-to-comments inline">
-                <a href="<?=$url;?>"><img src="<?=site_url('image/speach.png');?>" class="inline"/></a>
+                <a href="<?=$url."#!/review";?>"><img src="<?=site_url('image/speach.png');?>" class="inline"/></a>
             </div>
         </div>
     </div>

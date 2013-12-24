@@ -107,6 +107,20 @@ class Clubs extends Base {
     private function prapareClubList()
     {
         $list = call_user_func(array($this, $this->functionGetList));
+
+        foreach ($list as &$club)
+        {
+            $club->minimalPrice = -1;
+            foreach(array('1','3','6','12') as $v)
+            {
+                if($club->{'sub'.$v} !== "0.00")
+                {
+                    $club->minimalPrice = $club->{'sub'.$v};
+                    break;
+                }
+            }
+        }
+
         $this->rowCount = call_user_func(array($this, $this->functionRowCount));
         return $list;
     }
