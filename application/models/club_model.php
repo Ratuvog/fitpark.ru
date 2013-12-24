@@ -72,19 +72,29 @@ class Club_model extends CI_Model {
     
     function analogs($clubId) {
         $club = $this->db->get_where($this->table, array('id'=>$clubId))->row();
-        $query = "SELECT f1.*
-                FROM fitnesclub f2 , fitnesclub f1 LEFT JOIN paidShows ON
-                paidShows.clubId = f1.id AND `paidShows`.`paidBlockId` = '".$this->config->item("blockAnalog")."'
-                WHERE
-                    f1.id != f2.id
+        // TODO: потенциально непроизводительный запрос. Второй запрос по ходу не использует индексов
+        $query = "(SELECT f1.*
+                    FROM fitnesclub f1 inner JOIN paidShows ON
+                    paidShows.clubId = f1.id AND `paidShows`.`paidBlockId` = ?
+                    ORDER BY RAND()
+                    LIMIT 0,4
+                  )
+                  union
+                  (SELECT f1.*
+                    FROM fitnesclub f2 , fitnesclub f1
+                    WHERE f1.id != f2.id
                     AND (  ( (f1.sub3 > f2.sub3)  AND (f1.sub3 - f2.sub3) <=500)
                         OR ( (f1.sub3 <= f2.sub3) AND (f2.sub3 - f1.sub3) <=500)
                         )
                     AND
-                      f1.cityid = $club->cityid
-                    AND f2.id = ? ORDER BY paidShows.id DESC, RAND() LIMIT 0,4";
-        
-        $clubs = $this->db->query($query, array($clubId))->result();
+                      f1.cityid = ?
+                    AND f2.id = ?
+                    ORDER BY RAND()
+                    LIMIT 0,4
+                  )
+                  LIMIT 0,4
+                ";
+        $clubs = $this->db->query($query, array($this->config->item("blockAnalog"), $club->cityid, $clubId))->result();
         $indexes = array();
         foreach ($clubs as $item)
             $indexes []= $item->id;
