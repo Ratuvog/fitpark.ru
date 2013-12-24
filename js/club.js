@@ -39,13 +39,14 @@ $(function(){
                         if(data.status == 'OK')
                         {
                             $('.rating-vote-answer').html(data.msg);
-                            $(".rating,club-big").raty('readOnly', true);
+                            $(".fit-rating").raty('readOnly', true);
                         }
                         else
                         {
                             $('.rating-vote-answer').html(data.msg);
-                            $(".rating,club-big").raty('reload');
                         }
+
+                        $("#rating-club-big").raty('reload');
                         $('.rating-vote-answer').fadeOut(3000);
                     }
             });
