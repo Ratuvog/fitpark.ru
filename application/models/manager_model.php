@@ -27,9 +27,19 @@ class Manager_model extends CI_Model {
         return $this->db->get($this->table)->result();
     }
 
-    function get($where)
+    function requested()
     {
-        return $this->db->get_where($this->table, $where)->result();
+        return $this->db->get_where($this->table, 'activity = 0')->result();
+    }
+
+    function accepted()
+    {
+        return $this->db->get_where($this->table, 'activity = 1')->result();
+    }
+
+    function rejected()
+    {
+        return $this->db->get_where($this->table, 'activity = 2')->result();
     }
 
     function reject($id)

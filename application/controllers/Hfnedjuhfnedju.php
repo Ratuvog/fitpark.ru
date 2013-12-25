@@ -66,6 +66,11 @@ class Hfnedjuhfnedju extends CI_Controller {
         }
     }
 
+    function customRedirect($url)
+    {
+        redirect($this->idna_convert->encode($url));
+    }
+
     function login()
     {
         if(isset($_POST['username']) && isset($_POST['password']))
@@ -419,19 +424,19 @@ class Hfnedjuhfnedju extends CI_Controller {
             if ($state === 'reject')
             {
                 $this->Manager_model->reject($id);
-                redirect('Hfnedjuhfnedju/managers');
+                $this->customRedirect('Hfnedjuhfnedju/managers');
             }
             else if($state === 'accept')
             {
                 $this->Manager_model->accept($id);
-                redirect('Hfnedjuhfnedju/managers');
+                $this->customRedirect('Hfnedjuhfnedju/managers');
             }
 
             $this->setCurentState('managers');
 
-            $output->managers = $this->Manager_model->get('activity = 1');
-            $output->managers_request = $this->Manager_model->get('activity = 0');
-            $output->managers_rejected = $this->Manager_model->get('activity = 2');
+            $output->managers = $this->Manager_model->accepted();
+            $output->managers_request = $this->Manager_model->requested();
+            $output->managers_rejected = $this->Manager_model->rejected();
 
             $this->render($output, 'admin/manager_list', false);
         }
