@@ -1,8 +1,8 @@
 <?php
 class Subscription extends CI_Model {
     
-    public $table = 'Abonements';
-            
+    private $table = 'Abonements';
+    private $acceptState = '1';
     function insert($data)
     {
         $this->db->insert($this->table, $data);
@@ -13,9 +13,14 @@ class Subscription extends CI_Model {
         return count($this->db->get_where($this->table, $where)->result());
     }
 
-    function all($clubId)
+    function active($clubId)
     {
-        return $this->db->get_where($this->table, array('clubid' => $clubId))->result_array();
+        return $this->db->get_where($this->table, array('clubid' => $clubId, 'state'=>$this->acceptState))->result_array();
+    }
+
+    function updateState($id, $state)
+    {
+        return $this->db->update($this->table, array('state' => $state), array('id'=>$id));
     }
 }
 ?>

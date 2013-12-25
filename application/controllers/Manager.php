@@ -74,7 +74,6 @@ class Manager extends Base {
                 $this->authError = 'Пользователя с таким именем не существует';
                 return $this->authorization();
             }
-
             if(md5($login.$password) === $userInfo->password && $userInfo->activity == 1)
             {
                 $this->session->set_userdata('logged_in', true);
@@ -294,8 +293,28 @@ class Manager extends Base {
     function requests($clubId)
     {
         $this->content->data->club = $this->manager_private->club($clubId);
-        $this->content->data->breadcrumbs = array();
-        $this->content->data->content_title = "dkjgfjsng";
+        $clubId = $this->content->data->club->id;
+        $this->breadcrumbs[] = (object)array(
+            'url' => base_url(),
+            'name' => "Главная"
+        );
+
+        $this->breadcrumbs[] = (object)array(
+            'url'  =>  site_url(array('manager/clubs')),
+            'name' =>  "Панель менеджера"
+        );
+
+        $this->breadcrumbs[] = (object)array(
+            'url'  =>  site_url(array($this->controllerName, 'club', $clubId)),
+            'name' =>  $this->content->data->club->name
+        );
+
+        $this->breadcrumbs[] = (object)array(
+            'url'  =>  site_url(array($this->controllerName, 'club', $clubId, 'requests')),
+            'name' =>  'Заявки на абонементы'
+        );
+        $this->content->data->breadcrumbs->stack = $this->breadcrumbs;
+        $this->content->data->content_title->title = "Заявки на абонементы";
         $this->content->view = "manager/request";
         $this->renderScene();
     }

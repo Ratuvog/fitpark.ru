@@ -35,7 +35,7 @@ class Dialog extends CI_Controller {
             "surname"=> $this->input->post("surname"),
             "tel"    => $this->input->post("tel"),
             "email"  => $this->input->post("e-mail"),
-            "date"   => $this->input->post("date")
+            "duration"   => $this->input->post("date")
         );
         
         $this->load->model('subscription');

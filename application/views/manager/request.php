@@ -22,24 +22,33 @@
 </script>
 
 <link rel="stylesheet" type="text/css" href="<?=site_url('css/manager/manager-private.css')?>"/>
-<link rel="stylesheet" href="<?=site_url('css/bootstrap/bootstrap.css');?>"/>
-<link rel="stylesheet" href="<?=site_url('css/bootstrap/bootstrap-responsive.css');?>"/>
+<link rel="stylesheet" href="<?=site_url('css/tableBootstrap/css/bootstrap.min.css');?>"/>
+<!--<link rel="stylesheet" href="--><?//=site_url('css/bootstrap/bootstrap-responsive.css');?><!--"/>-->
 <script type="text/html" id="requestView">
-    <td><a class="btn btn-large edit-request" href="#"><i class="icon-pencil"></i></a></td>
-    <td><%= id %></td>
-    <td><%= date %></td>
-    <td><%= name %></td>
-    <td><%= surname %></td>
-    <td><%= duration %></td>
-    <td><%= tel %></td>
-    <td><%= e-mail%></td>
+    <td valign="middle">
+        <a class="btn btn-small accept-request" title="Отметить заявку как принятую">
+            <i class="icon-ok"></i>
+        </a>
+    </td>
+    <td valign="middle">
+        <a class="btn btn-small reject-request" title="Отметить заявку как отклоненную">
+            <i class="icon-remove"></i>
+        </a>
+    </td>
+    <td valign="middle"><%= id %></td>
+    <td valign="middle"><%= date %></td>
+    <td valign="middle"><%= name %></td>
+    <td valign="middle"><%= surname %></td>
+    <td valign="middle"><%= duration %></td>
+    <td valign="middle"><%= tel %></td>
+    <td valign="middle"><%= email%></td>
 </script>
 <div id="content">
     <div id="content-inner">
         <div id="main">
             <div id="main-inner">
                 <?$this->load->view('blocks/content-manager-menu', $this);?>
-                <?$this->load->view('blocks/breadcrumbs', $breadcrumbs);?>
+                <?$this->load->view('manager/breadcrumbs', $breadcrumbs);?>
                 <div id="page-club">
                     <div id="page-club-inner">
                         <div id="page-club-info-main">
@@ -50,9 +59,12 @@
                                             <thead>
                                             <tr>
                                                 <th></th>
+                                                <th></th>
                                                 <th>#</th>
                                                 <th>Дата</th>
-                                                <th>Имя пользователя</th>
+                                                <th>Имя</th>
+                                                <th>Фамилия</th>
+                                                <th>Длительность абонемента</th>
                                                 <th>Телефон</th>
                                                 <th>E-mail</th>
                                             </tr>
@@ -62,8 +74,8 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div id="editRequest">
-
+                                    <div id="emptyRequestList">
+                                        <h3>Нет абонементов, ожидающих обработки</h3>
                                     </div>
                                 </div>
                             </div>

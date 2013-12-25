@@ -323,3 +323,12 @@ input.custom-combobox-input {
     border: none !important;
     border-radius: 5px;
 }
+
+#emptyRequestList
+{
+    text-align: center;
+}
+
+#requestList .table {
+    width: 100%;
+}
