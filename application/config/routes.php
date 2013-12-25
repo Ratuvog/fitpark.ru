@@ -77,6 +77,7 @@ $route['about']                     = 'About/index';
 $route['manager/club/(:num)/photo/delete_file/(:num)']    = 'Manager/deleteImage/$1/$2';
 $route['manager/club/(:num)/upload_file']    = 'Manager/uploadImage/$1';
 $route['manager/club/(:num)/photo']    = 'Manager/photo/$1';
+$route['manager/club/(:num)/requests'] = 'Manager/requests/$1';
 $route['manager/club/(:num)']    = 'Manager/club/$1';
 $route['manager/clubs']          = 'Manager/index';
 $route['manager']                = 'Manager/index';

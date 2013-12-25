@@ -291,6 +291,15 @@ class Manager extends Base {
         $this->renderScene();
     }
 
+    function requests($clubId)
+    {
+        $this->content->data->club = $this->manager_private->club($clubId);
+        $this->content->data->breadcrumbs = array();
+        $this->content->data->content_title = "dkjgfjsng";
+        $this->content->view = "manager/request";
+        $this->renderScene();
+    }
+
     function clubs()
     {
         $this->title = sprintf("%. Фитнес-клубы, описание, техника, видео. ФитПарк",
