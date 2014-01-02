@@ -8,7 +8,9 @@ class Manager extends Base {
     public $authError = 'OK';
 
     private $publicPages = array("login", "logout", "signup", "signup_submit");
-    
+
+    const MANAGER_PHOTOS = "manager/photos";
+
     function __construct()
     {
         parent::__construct();
@@ -257,7 +259,7 @@ class Manager extends Base {
         if (!$this->check_manager($clubId))
             $this->customRedirect('manager');
 
-        $this->view = "manager/photos";
+        $this->view = self::MANAGER_PHOTOS;
         $images = $this->manager_private->getPhotosObject(site_url('manager/club/'.$clubId.'/photo'));
         $output = $images->render();
 

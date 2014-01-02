@@ -140,11 +140,12 @@ class Manager_private extends CI_Model {
 
         $image_crud->set_table("fitnesclub_photo");
         $image_crud->set_primary_key_field('id');
-        $image_crud->set_url_field($url);
+        $image_crud->set_url_field('photo');
         $image_crud->set_thumbnail_prefix("");
         $image_crud->set_image_path('image/club');
         $image_crud->set_relation_field('fitnesclubid');
         $image_crud->set_delete_url($url.'/delete_file');
+        $image_crud->set_upload_url($url.'/upload_file');
         return $image_crud;
     }
 

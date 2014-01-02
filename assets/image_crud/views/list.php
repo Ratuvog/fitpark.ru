@@ -52,7 +52,7 @@ function createUploader() {
 	var uploader = new qq.FineUploader({
 		element: document.getElementById('fine-uploader'),
 		request: {
-			 endpoint: '<?php echo $upload_url?>'
+			 endpoint: '<?php echo $upload_url; ?>'
 		},
 		validation: {
 			 allowedExtensions: ['jpeg', 'jpg', 'png', 'gif']
