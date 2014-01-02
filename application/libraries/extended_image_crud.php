@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__."/../libraries/image_crud.php";
+require_once APPPATH."/libraries/image_crud.php";
 class extended_image_CRUD extends image_CRUD
 {
     protected $delete_url = null;
