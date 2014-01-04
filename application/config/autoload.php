@@ -80,7 +80,7 @@ $autoload['helper'] = array('language', 'url', 'image', 'geolocation','mutator')
 |
 */
 
-$autoload['config'] = array("global_const");
+$autoload['config'] = array("global_const", "depending_on_host");
 
 
 /*
