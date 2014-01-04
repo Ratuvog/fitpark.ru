@@ -38,7 +38,7 @@ function addClubToMap(city, currentAddress, clubName, clubUrl)
                 },
                 {
                     balloonContentLayout: contentLayoutClass,
-                    iconImageHref: 'http://samara.fitpark.com/image/balloon.png',
+                    iconImageHref: 'http://'+location.hostname+'/image/balloon.png',
                     iconImageSize: [24, 24], // размеры картинки
                     iconImageOffset: [-6, -10] // смещение картинки
                 }
