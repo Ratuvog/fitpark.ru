@@ -1,5 +1,5 @@
 <!--    vk.com    -->
 <script type="text/javascript">
-    VK.init({apiId: 3689827, onlyWidgets: true});
+    VK.init({apiId: <?=$this->config->item('vk-apiId');?>, onlyWidgets: true});
 </script>
 <!--    end vk.com-->
