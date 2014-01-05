@@ -1,0 +1,54 @@
+set :application, 'demo.fitpark.rf'
+set :repo_url, 'git@github.com:Ratuvog/fitpark.ru.git'
+set :branch, 'master'
+set :tmp_dir,  "/home/w/whidohost/.tmp"
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+
+# set :deploy_to, '/var/www/my_app'
+set :scm, :git
+set :ssh_options, { 
+ forward_agent:true,
+  user: 'whidohost' 
+}
+
+set :format, :pretty
+set :log_level, :debug
+set :deploy_via, :remote_cache
+set :shared_path, '/home/w/whidohost/shared'
+
+path_to_image_club = '/home/w/whidohost/shared/club'
+local_path_to_src = '/home/dmitry/fitpark.ru/fitpark.ru'
+# set :pty, true
+
+# set :linked_files, %w{config/database.yml}
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :keep_releases, 5
+namespace :my do
+	task :run_custom_tasks do
+		invoke 'my:create_image_club_symlink'
+		invoke 'my:copy_config'
+	end
+
+	task :create_image_club_symlink do
+		on roles :all do
+			execute :ln, '-s', path_to_image_club, "#{deploy_to}/public_html/image"
+		end
+	end	
+
+	task :copy_config do
+		on roles :all do
+			upload! "#{local_path_to_src}/config/deploy/#{fetch(:stage)}/config/database.php", "#{deploy_to}/public_html/application/config"
+			upload! "#{local_path_to_src}/config/deploy/#{fetch(:stage)}/config/config.php", "#{deploy_to}/public_html/application/config"
+			upload! "#{local_path_to_src}/config/deploy/shared/depending_on_host.php", "#{deploy_to}/public_html/application/config"
+		end
+	end	
+end
+
+namespace :deploy do   
+  task :restart do
+  end
+
+  after 'deploy:cleanup', 'my:run_custom_tasks'
+end
