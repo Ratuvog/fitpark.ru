@@ -8,7 +8,7 @@
 namespace MetaInfo\Parsers;
 interface IParser
 {
-    public function parse();
+    public function parse($serializedString);
 }
 
 ?>

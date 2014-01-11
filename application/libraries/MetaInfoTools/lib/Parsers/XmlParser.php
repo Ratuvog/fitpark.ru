@@ -12,23 +12,18 @@ require_once "IParser.php";
 
 class XmlParser implements IParser
 {
-    private $serializedString;
-    function __construct($string)
-    {
-        $this->serializedString = $string;
-    }
-
-    public function parse()
+    public function parse($serializedString)
     {
         $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = FALSE;
         try
         {
-            if(!$doc->loadXML($this->serializedString))
+            if(!$doc->loadXML($serializedString))
                 return FALSE;
 
             $root = $doc->documentElement;
             $result = array($root->nodeName => $this->objectToArray($root));
+            print_r($result);
             return $result;
         }
         catch(\Exception $e)
@@ -51,7 +46,7 @@ class XmlParser implements IParser
             $currentNode  = $nodeList->item($i);
             $key          = $currentNode->nodeName;
             if($currentNode->nodeType == XML_TEXT_NODE)
-                $result[] = trim($currentNode->nodeValue);
+                $result = trim($currentNode->nodeValue);
             else
                 $result[$key][] = $this->objectToArray($currentNode);
         }

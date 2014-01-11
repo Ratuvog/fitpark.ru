@@ -1,0 +1,52 @@
+-
+    -
+     controllers:
+      controllerName:
+       - breadcrumbs:
+          - item:
+             - { name: ['3'], url: ['4'] }
+             - { name: ['5'], url: ['6'] }
+    - [ {name: '3', url: '4'}, {name: '5', url: '6'} ]
+
+-
+    -
+     controllers:
+      controllerName:
+       - breadcrumbs:
+          - items:
+             - { name: ['3'], url: ['4'] }
+             - { name: ['5'], url: ['6'] }
+    - false
+
+-
+    -
+     controllers:
+      controllerName:
+       - breadcrumbs:
+          - item:
+             - { name: [ { foo: 3 } ], url: [4] }
+             - { name: [5], url: [6] }
+    - false
+
+-
+    -
+     controllers:
+      controllerName:
+       - breadcrumbs:
+          - items:
+             - { name: [3], url: [4] }
+             - { name: [5], url: [6] }
+    - false
+
+-
+    -
+     controllers:
+      controllerName2:
+       - breadcrumbs:
+          - item:
+             - { name: [3], url: [4] }
+             - { name: [5], url: [6] }
+    - false
+-
+    - {  }
+    - false

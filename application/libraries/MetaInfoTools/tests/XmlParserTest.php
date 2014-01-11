@@ -16,8 +16,8 @@ class XmlParserTest extends \PHPUnit_Framework_TestCase {
      */
     public function testParser($input, $output)
     {
-        $obj = new XmlParser($input);
-        $this->assertEquals($obj->parse(), $output);
+        $obj = new XmlParser();
+        $this->assertEquals($obj->parse($input), $output);
     }
 
     public function dataProvider()
@@ -60,17 +60,11 @@ class XmlParserTest extends \PHPUnit_Framework_TestCase {
                             (
                                     "description" => array
                                     (
-                                        0 => array
-                                        (
-                                            0 => 1
-                                        )
+                                        0 => 1
                                     ),
                                     "keywords" => array
                                     (
-                                        0 => array
-                                        (
-                                            0 => 2
-                                        )
+                                        0 => 2
                                     ),
 
                                     "breadcrumbs" => array
@@ -83,34 +77,22 @@ class XmlParserTest extends \PHPUnit_Framework_TestCase {
                                                 (
                                                     "name" => array
                                                     (
-                                                        0 => array
-                                                        (
-                                                            0 => 3
-                                                        )
+                                                        0 => 3
                                                     ),
                                                     "url" => array
                                                     (
-                                                        0 => array
-                                                        (
-                                                            0 => 4
-                                                        )
+                                                        0 => 4
                                                     )
                                                 ),
                                                 1 => array
                                                 (
                                                     "name" => array
                                                      (
-                                                        0 => array
-                                                        (
-                                                            0 => 5
-                                                        ),
+                                                        0 => 5
                                                      ),
                                                      "url" => array
                                                      (
-                                                        0 => array
-                                                        (
-                                                            0 => 6
-                                                        )
+                                                        0 => 6
                                                      )
                                                 )
 

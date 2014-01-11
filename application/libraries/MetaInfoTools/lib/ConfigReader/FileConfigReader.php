@@ -10,17 +10,9 @@ require_once 'IConfigReader.php';
 
 class FileConfigReader implements IConfigReader
 {
-    private $controllerName   = null;
-    private $pathToController = null;
-    function __construct($controllerName, $pathToController)
+    public function getData($className, $pathToController)
     {
-        $this->controllerName  = $controllerName;
-        $this->pathToController = $pathToController;
-    }
-
-    public function getData()
-    {
-        return file_get_contents($this->pathToController."/".$this->controllerName.".data");
+        return file_get_contents($pathToController."/".$className.".data");
     }
 }
 ?>

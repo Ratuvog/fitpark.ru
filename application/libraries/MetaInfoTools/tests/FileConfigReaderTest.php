@@ -33,7 +33,7 @@ class FileConfigReaderTest extends \PHPUnit_Framework_TestCase {
     }
     protected function setUp()
     {
-        $this->obj = new FileConfigReader('test', __DIR__.self::PathToSandbox);
+        $this->obj = new FileConfigReader();
         self::clearSandbox();
     }
 
@@ -42,20 +42,20 @@ class FileConfigReaderTest extends \PHPUnit_Framework_TestCase {
      */
     public function testReadNotExixtstFile()
     {
-        $this->assertEquals($this->obj->getData(), FALSE);
+        $this->assertEquals($this->obj->getData('test', __DIR__.self::PathToSandbox), FALSE);
     }
 
     public function testReadExistsFile()
     {
         $content = "Hello, world!";
         file_put_contents(__DIR__.self::PathToSandbox."/test.data", $content);
-        $this->assertEquals($this->obj->getData(), $content);
+        $this->assertEquals($this->obj->getData('test', __DIR__.self::PathToSandbox), $content);
     }
 
     public function testReadDir()
     {
         mkdir(__DIR__.self::PathToSandbox."/test.data");
-        $this->assertEquals($this->obj->getData(), FALSE);
+        $this->assertEquals($this->obj->getData('test', __DIR__.self::PathToSandbox), FALSE);
     }
 
     public static function tearDownAfterClass()

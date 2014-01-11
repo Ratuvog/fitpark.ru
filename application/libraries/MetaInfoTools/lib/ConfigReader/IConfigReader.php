@@ -10,7 +10,7 @@ namespace MetaInfo\ConfigReaders;
 
 interface IConfigReader
 {
-    public function getData();
+    public function getData($className, $pathToController);
 }
 
 ?>
