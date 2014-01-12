@@ -29,6 +29,7 @@ namespace :my do
 	task :run_custom_tasks do
 		invoke 'my:create_image_club_symlink'
 		invoke 'my:copy_config'
+		invoke 'my:setup_composer'
 	end
 
 	task :create_image_club_symlink do
@@ -44,6 +45,15 @@ namespace :my do
 			upload! "#{local_path_to_src}/config/deploy/shared/depending_on_host.php", "#{deploy_to}/public_html/application/config"
 		end
 	end	
+
+	task :setup_composer do
+		on roles :all do
+			execute :curl, '-sS', "-o #{deploy_to}/current/composer.phar", 'https://getcomposer.org/installer ', '&&', 
+			"php #{deploy_to}/current/composer.phar -- --install-dir=#{deploy_to}/current", "&&", 
+			:cd, "#{deploy_to}/current", "&&",
+			:php, "composer.phar", 'install --no-dev'
+		end
+	end
 end
 
 namespace :deploy do   

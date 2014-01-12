@@ -7,18 +7,10 @@
                         <div id="seo-blocks">
                             <div id="seo-blocks-inner">
                                 <nav>
-                                    <ul class="inline">
-                                        <li><h3><a href="<?=site_url('clubs');?>">Фитнес клубы</a></h3></li>
-                                        <li><h3><a href="<?=site_url('manager');?>">Менеджерам</a></h3></li>
-                                        <li><h3><a href="<?=site_url('training_program');?>">Программа тренировок (на заказ)</a></h3></li>
-                                        <li><h3><a href="<?=site_url('sales');?>">Акции фитнес клубов</a></h3></li>
-                                        <li><h3><a href="<?=site_url('sales');?>">Акции ФитПарка</a></h3></li>
-                                        <li><h3><a href="<?=site_url('clubs');?>">Скидки в фитнес клуб</a></h3></li>
-                                    </ul>
                                     <? foreach ($advert_links as $group) { ?>
                                     <ul class="inline">
                                         <? foreach ($group as $item) { ?>
-                                            <li><h3><a href="<?=site_url(array('club', $item->club_id));?>"><?=$item->name;?></a></h3></li>
+                                            <li><h3><a href="<?=$item->link;?>"><?=$item->name;?></a></h3></li>
                                         <? } ?>
                                     </ul>
                                     <? } ?>
