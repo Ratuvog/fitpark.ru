@@ -66,7 +66,7 @@ FormSaver = {
         if(input.attr("isReq") === "false")
             return "OK";
 
-        if (!validate[validator].func(input.val()) ) {
+        if (!validate[validator].func(input) ) {
             input.css("border-color", "red");
             return validate[validator].errorPattern(textField);
         }
