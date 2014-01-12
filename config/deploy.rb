@@ -58,7 +58,7 @@ namespace :my do
 
 	task :run_migration do
 		on roles :all do
-			execute :php, "#{deploy_to}/current/index.php", "MigrationRunner", "up"
+			execute :php, "#{deploy_to}/current/cli-index.php", "MigrationRunner", "up"
 		end
 	end
 end
