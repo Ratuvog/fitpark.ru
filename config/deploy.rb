@@ -30,6 +30,7 @@ namespace :my do
 		invoke 'my:create_image_club_symlink'
 		invoke 'my:copy_config'
 		invoke 'my:setup_composer'
+		invoke 'my:run_migration'
 	end
 
 	task :create_image_club_symlink do
@@ -52,6 +53,12 @@ namespace :my do
 			"php #{deploy_to}/current/composer.phar -- --install-dir=#{deploy_to}/current", "&&", 
 			:cd, "#{deploy_to}/current", "&&",
 			:php, "composer.phar", 'install --no-dev'
+		end
+	end
+
+	task :run_migration do
+		on role :all do
+			execute :php, "#{deploy_to}/current/index.php", "MigrationRunner", "up"
 		end
 	end
 end
