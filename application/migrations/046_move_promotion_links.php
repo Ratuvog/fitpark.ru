@@ -29,6 +29,7 @@ class Migration_Move_promotion_links extends CI_Migration{
         }
 
         $this->db->insert_batch('cities_advertisement', $result);
+        $this->db->remove_column('city', 'promotion');
         $this->db->trans_complete();
     }
 
