@@ -10,7 +10,7 @@ class MigrationRunner extends CI_Controller {
     function up()
     {
         // Выполнение этого метода должно совершаться только через командную строку
-        if (PHP_SAPI !== 'cli')
+        if (!$this->input->is_cli_request())
         {
             echo("Run only command line!");
             exit(1);

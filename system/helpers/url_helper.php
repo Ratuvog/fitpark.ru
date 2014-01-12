@@ -528,10 +528,10 @@ if ( ! function_exists('url_title'))
  */
 if ( ! function_exists('redirect'))
 {
-    function redirect($uri = '', $method = 'location', $http_response_code = 302)
+	function redirect($uri = '', $method = 'location', $http_response_code = 302)
 	{
-        if ( ! preg_match('#^https?://#i', $uri))
-        {
+		if ( ! preg_match('#^https?://#i', $uri))
+		{
 			$uri = site_url($uri);
 		}
 
