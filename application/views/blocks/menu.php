@@ -24,6 +24,7 @@
                             <a href="<?=site_url('about')?>" class="padded">Услуги</a>
                             <ul class="submenu menu-item-services">
                                 <li><a href="<?=site_url(array('training_program'));?>">Заказать программу тренировок</a></li>
+                                <li><a href="<?=site_url(array('manager'));?>">Менеджерам клубов</a></li>
                             </ul>
                         </li>
                         <li class="split"><a href="<?=site_url('about')?>" class="padded">О ФитПарке</a></li>
