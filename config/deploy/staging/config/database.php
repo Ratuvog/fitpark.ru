@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'whidohost_tpark';
+$db['default']['username'] = 'whidohost_park';
 $db['default']['password'] = '11221122';
-$db['default']['database'] = 'whidohost_tpark';
+$db['default']['database'] = 'whidohost_park';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
