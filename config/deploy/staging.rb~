@@ -1,0 +1,4 @@
+set :stage, :staging
+server '92.53.96.240', roles: :all, port: 22 
+set :deploy_to, '/home/w/whidohost/demo.fitpark.rf'
+set :shared_path, '/home/w/whidohost/shared'

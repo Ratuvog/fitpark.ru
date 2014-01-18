@@ -1,6 +1,5 @@
 set :application, 'demo.fitpark.rf'
 set :repo_url, 'git@github.com:Ratuvog/fitpark.ru.git'
-set :branch, 'master'
 set :tmp_dir,  "/home/w/whidohost/.tmp"
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
@@ -14,9 +13,9 @@ set :ssh_options, {
 set :format, :pretty
 set :log_level, :debug
 set :deploy_via, :remote_cache
-set :shared_path, '/home/w/whidohost/shared'
 
-path_to_image_club = '/home/w/whidohost/shared/club'
+set :path_to_share, '/home/w/whidohost/shared'
+path_to_image_club = "#{fetch(:path_to_share)}/club"
 local_path_to_src = '/home/dmitry/fitpark.ru/fitpark.ru'
 # set :pty, true
 
@@ -31,6 +30,7 @@ namespace :my do
 		invoke 'my:copy_config'
 		invoke 'my:setup_composer'
 		invoke 'my:run_migration'
+        invoke 'my:custom_task'
 	end
 
 	task :create_image_club_symlink do
