@@ -26,15 +26,16 @@ local_path_to_src = '/home/dmitry/fitpark.ru/fitpark.ru'
 set :keep_releases, 5
 namespace :my do
 	task :run_custom_tasks do
-		invoke 'my:create_image_club_symlink'
+		invoke 'my:create_image_symlink'
 		invoke 'my:copy_config'
 		invoke 'my:setup_composer'
 		invoke 'my:run_migration'
         invoke 'my:custom_task'
 	end
 
-	task :create_image_club_symlink do
+	task :create_image_symlink do
 		on roles :all do
+ 			execute :ln, '-s', "#{fetch(:path_to_share)}/exercises", "#{deploy_to}/public_html/image"
 			execute :ln, '-s', path_to_image_club, "#{deploy_to}/public_html/image"
 		end
 	end	
