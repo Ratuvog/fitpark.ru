@@ -1,0 +1,36 @@
+<?
+namespace MetaInfo\DescriptionReader;
+require_once 'IDescriptionReader.php';
+require_once __DIR__.'/../../../../../vendor/autoload.php';
+require_once 'Annotations/MetaInfo.php';
+use Doctrine\Common\Annotations\AnnotationReader;
+
+class AnnotationDescriptionReader implements IDescriptionReader
+{
+    public function get($class, $methodName)
+    {
+        $annotationReader = new AnnotationReader();
+        $reflectionMethod = new \ReflectionMethod($class, $methodName);
+        $obj = new \ReflectionObject($class);
+        $method = $obj->getMethod($methodName);
+        print_r($method);
+        foreach ($annotationReader->getMethodAnnotations($method) as $o)
+        {
+            if ($o instanceof \MetaInfo)
+            {
+                echo $o->value;
+            }
+        }
+        print_r($reflectionMethod);
+        //die($reflectionMethod->getDocComment());
+        $methodAnnotation = $annotationReader->getMethodAnnotations($reflectionMethod);
+        print_r($methodAnnotation);
+        foreach ($methodAnnotation as $annotation)
+        {
+            if ($annotation instanceof \MetaInfo)
+                return $annotation->value;
+        }
+
+        return FALSE;
+    }
+}

@@ -1,0 +1,31 @@
+<controllers>
+    <index>
+        <keywords>
+            %s. Бассейн, тренажерный зал, аэробика, танцы, йога, пилатес, тренажеры.
+        </keywords>
+        <description>
+            %s. Отзывы, рейтинг, фотографии, цены, описание.
+        </description>
+        <title>
+            О нас. ФитПарк. %s Тренажерные залы, фитнес центры, отзывы, стоимость, рейтинги, акции, скидки.
+        </title>
+        <breadcrumbs>
+            <item>
+                <name>
+                    Главная
+                </name>
+                <url>
+                /
+                </url>
+            </item>
+            <item>
+                <name>
+                    О нас
+                </name>
+                <url>
+                    about
+                </url>
+            </item>
+        </breadcrumbs>
+    </index>
+</controllers>

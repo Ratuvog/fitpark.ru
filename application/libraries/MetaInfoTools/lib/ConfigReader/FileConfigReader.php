@@ -12,7 +12,11 @@ class FileConfigReader implements IConfigReader
 {
     public function getData($className, $pathToController)
     {
-        return file_get_contents($pathToController."/".$className.".data");
+        $pathToFile = $pathToController."/".$className.".data";
+        if (!file_exists($pathToFile))
+            return FALSE;
+
+        return file_get_contents($pathToFile);
     }
 }
 ?>

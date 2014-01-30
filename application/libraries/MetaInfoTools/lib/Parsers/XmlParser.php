@@ -23,7 +23,6 @@ class XmlParser implements IParser
 
             $root = $doc->documentElement;
             $result = array($root->nodeName => $this->objectToArray($root));
-            print_r($result);
             return $result;
         }
         catch(\Exception $e)

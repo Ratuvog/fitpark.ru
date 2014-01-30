@@ -9,10 +9,9 @@ namespace MetaInfo\MetaGetter;
 require_once "AbstractMetaGetter.php";
 
 class BreadCrumbsMetaGetter extends AbstractMetaGetter{
-    private $className;
-    function __construct($className)
+    function __construct($method)
     {
-        parent::__construct($className);
+        parent::__construct($method);
     }
 
     public function get($input)
@@ -21,7 +20,7 @@ class BreadCrumbsMetaGetter extends AbstractMetaGetter{
         if (!is_array($controller))
             return FALSE;
 
-        if(!isset($controller["breadcrumbs"][0]["item"]))
+        if (!isset($controller["breadcrumbs"][0]["item"]))
             return FALSE;
 
         $breadcrumbs = array();
@@ -34,7 +33,7 @@ class BreadCrumbsMetaGetter extends AbstractMetaGetter{
             )
                 return FALSE;
 
-            $breadcrumbs[] = array(
+            $breadcrumbs[] = (object)array(
                 "name" => $item["name"][0],
                 "url"  => $item["url"] [0]
             );
@@ -42,4 +41,4 @@ class BreadCrumbsMetaGetter extends AbstractMetaGetter{
 
         return $breadcrumbs;
     }
-} 
+}

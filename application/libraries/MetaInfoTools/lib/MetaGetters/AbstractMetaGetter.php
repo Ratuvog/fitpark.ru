@@ -12,9 +12,9 @@ require_once "IMetaGetter.php";
 abstract class AbstractMetaGetter implements IMetaGetter{
     private $className;
 
-    function __construct($className)
+    function __construct($method)
     {
-        $this->className = $className;
+        $this->method = $method;
     }
 
     protected function searchController($struct)
@@ -24,7 +24,7 @@ abstract class AbstractMetaGetter implements IMetaGetter{
             return FALSE;
 
         foreach ($struct[self::RootElement] as $key=>$value) {
-            if($key == $this->className && isset($value[0]))
+            if($key == $this->method && isset($value[0]))
             {
                 $controller = $value[0];
                 break;
@@ -33,4 +33,4 @@ abstract class AbstractMetaGetter implements IMetaGetter{
 
         return $controller;
     }
-} 
+}

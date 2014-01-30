@@ -11,9 +11,9 @@ require_once "AbstractMetaGetter.php";
 
 class SimpleMetaGetter extends AbstractMetaGetter{
     private $field;
-    function __construct($className, $field)
+    function __construct($method, $field)
     {
-        parent::__construct($className);
+        parent::__construct($method);
         $this->field = $field;
     }
 
@@ -28,4 +28,4 @@ class SimpleMetaGetter extends AbstractMetaGetter{
 
         return FALSE;
     }
-} 
+}
